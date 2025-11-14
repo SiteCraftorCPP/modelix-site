@@ -1,0 +1,1787 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Modelix - Воплощаем ваши идеи в 3D</title>
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="/media/services/modelix.png">
+    <link rel="apple-touch-icon" href="/media/services/modelix.png">
+    
+    <!-- SEO meta tags -->
+    <meta name="description" content="Modelix - комплексные 3D услуги в Санкт-Петербурге. Высокоточные принтеры FDM, SLA, SLM. Быстрое изготовление прототипов, функциональных деталей, декоративных изделий.">
+    <meta name="keywords" content="3D печать СПб, FDM, SLA, SLM, прототипирование, 3D принтер, изготовление деталей, 3D моделирование">
+    <meta name="author" content="Modelix">
+    
+    <!-- Open Graph -->
+    <meta property="og:title" content="Modelix - Воплощаем ваши идеи в 3D">
+    <meta property="og:description" content="Высокоточная 3D печать на современном оборудовании. FDM, SLA, SLM технологии.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="/">
+    
+    <script>document.documentElement.className += ' js-loading';</script>
+
+    <!-- Preload критических CSS для мобильной версии -->
+    <link rel="preload" href="/static/css/mobile.css?v=45.0" as="style">
+    
+    <link rel="stylesheet" href="/static/css/styles.css?v=146.0">
+    <link rel="stylesheet" href="/static/css/mobile.css?v=45.0" onload="document.documentElement.className = document.documentElement.className.replace('js-loading', '');">
+    <link rel="stylesheet" href="/static/css/social-links-fixed.css?v=1.3">
+    <link rel="stylesheet" href="/static/css/animated-icons-fix.css?v=1.4">
+    <link rel="stylesheet" href="/static/css/hero-responsive.css?v=1.0">
+    <link rel="stylesheet" href="/static/css/service-fix.css?v=1.0">
+    <style>
+        /* CSS переменная для изображения hero блока */
+        :root {
+            --hero-image-url: url('{% if hero_image %}{{ hero_image.image_url_with_cache_bust }}{% else %}/media/hero/hero_block1_v5qOCbx_TEgQx6C.png{% endif %}');
+        }
+        
+        .js-loading body {
+            visibility: hidden;
+        }
+        
+        /* КРИТИЧЕСКИЕ МОБИЛЬНЫЕ СТИЛИ - применяются сразу для предотвращения FOUC */
+        @media (max-width: 768px) {
+            /* Навигация */
+            nav.navigation,
+            .navigation,
+            header .navigation,
+            body .navigation {
+                background: linear-gradient(135deg, #191970 0%, #1e1a8a 20%, #0f0f23 40%, #0f0f23 100%) !important;
+                box-shadow: none !important;
+                position: relative !important;
+                padding: 15px 10px !important;
+                width: 100% !important;
+            }
+            
+            .navigation .nav-container,
+            .nav-container,
+            nav .nav-container {
+                background: linear-gradient(135deg, #191970 0%, #1e1a8a 20%, #0f0f23 40%, #0f0f23 100%) !important;
+                display: flex !important;
+                width: 100% !important;
+                padding: 0 !important;
+            }
+            
+            /* Основные блоки */
+            body,
+            html {
+                background: #1a1a1a !important;
+                background-color: #1a1a1a !important;
+                margin: 0 !important;
+                padding: 0 !important;
+            }
+            
+            .hero-section {
+                background: #1a1a1a !important;
+                background-color: #1a1a1a !important;
+                padding: 10px 5px !important;
+                width: 100vw !important;
+                max-width: 100vw !important;
+            }
+            
+            .hero-section .container {
+                padding: 0 5px !important;
+                width: 100% !important;
+                max-width: 100% !important;
+                margin: 0 !important;
+            }
+            
+            .hero-content-card {
+                background: #1a1a1a !important;
+                padding: 20px 15px !important;
+                width: 100% !important;
+                max-width: 100% !important;
+                margin: 0 !important;
+                display: flex !important;
+                flex-direction: column !important;
+            }
+            
+            .text-section {
+                background: transparent !important;
+                width: 100% !important;
+                padding: 0 !important;
+            }
+            
+            .hero-title {
+                text-align: left !important;
+                color: #f8fafc !important;
+                font-size: 2.2rem !important;
+                width: 100% !important;
+            }
+            
+            .hero-title .highlight-text {
+                display: inline !important;
+                word-spacing: normal !important;
+            }
+            
+            .about-company {
+                width: 100% !important;
+                max-width: 100% !important;
+                padding: 0 !important;
+            }
+            
+            .gradient-title {
+                text-align: left !important;
+                font-size: 1.3rem !important;
+                width: 100% !important;
+                max-width: 100% !important;
+            }
+            
+            .description-text {
+                text-align: left !important;
+                color: #cbd5e1 !important;
+                width: 100% !important;
+                max-width: 100% !important;
+                font-size: 1rem !important;
+            }
+            
+            .cta-section {
+                align-items: center !important;
+                width: 100% !important;
+            }
+            
+            .cta-button {
+                width: 100% !important;
+                max-width: 350px !important;
+                display: block !important;
+                margin: 10px auto !important;
+            }
+            
+            .disclaimer-text {
+                text-align: center !important;
+                max-width: 350px !important;
+                margin-left: auto !important;
+                margin-right: auto !important;
+            }
+            
+            .about-company::after {
+                aspect-ratio: 1 / 1 !important;
+                margin: 40px auto 25px auto !important;
+            }
+            
+            .social-links {
+                justify-content: flex-start !important;
+            }
+            
+            .container {
+                width: 100% !important;
+                max-width: 100% !important;
+                padding: 0 5px !important;
+                margin: 0 !important;
+            }
+        }
+        
+        /* СУПЕР-ПРИНУДИТЕЛЬНЫЕ СТИЛИ ДЛЯ МОБИЛКИ */
+        @media (max-width: 768px) {
+            html body .service-content-new,
+            body .service-content-new,
+            div.service-content-new,
+            .service-card-new .service-content-new,
+            .services-grid-new .service-card-new .service-content-new {
+                padding: 25px 15px 15px 15px !important;
+            }
+        }
+        
+        /* Исправление проблем с кнопками на мобильных устройствах */
+        .expand-btn {
+            -webkit-tap-highlight-color: transparent;
+            touch-action: manipulation;
+        }
+        
+        /* Исправление выравнивания контактной информации на мобилке */
+        @media (max-width: 768px) {
+            .footer-section .contact-item {
+                justify-content: center !important;
+                text-align: center !important;
+            }
+            
+            .footer-section .contact-item span {
+                text-align: center !important;
+            }
+        }
+    </style>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <!-- Fallback CDN -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.5.1/css/all.min.css">
+    
+    <!-- Структурированные данные -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "Organization",
+        "name": "Modelix",
+        "url": "/",
+        "email": "{{ contact_info.email }}",
+        "telephone": "{{ contact_info.phone|slice:'1:' }}",
+        "description": "Воплощаем ваши идеи в 3D на высокоточном оборудовании",
+        "founder": {
+            "@type": "Person",
+            "name": "{{ contact_info.owner_name }}"
+        }
+    }
+    </script>
+</head>
+<body>
+    <!-- КРАСИВАЯ НАВИГАЦИЯ -->
+    <nav class="navigation" id="navigation">
+        <div class="nav-container">
+            <div class="logo">
+            </div>
+            
+            <!-- Кнопка мобильного меню -->
+            <button class="mobile-menu-btn" onclick="toggleMobileMenu()">
+                <span class="hamburger-line"></span>
+                <span class="hamburger-line"></span>
+                <span class="hamburger-line"></span>
+            </button>
+            
+            <ul class="nav-menu" id="navMenu">
+                <li><a href="#hero" class="nav-link" data-tooltip="Главная">Главная</a></li>
+                <li><a href="#about" class="nav-link" data-tooltip="О нас">О нас</a></li>
+                <li><a href="#technologies" class="nav-link" data-tooltip="Услуги">Услуги</a></li>
+                <li><a href="javascript:void(0)" class="nav-link" data-tooltip="Наши проекты" onclick="openProjectsModal()">Наши проекты</a></li>
+                <li><a href="#contact" class="nav-link call-btn" data-tooltip="Заказать услугу">Заказать услугу</a></li>
+            </ul>
+        </div>
+        
+        <!-- Кнопка переключения навигации -->
+        <button class="nav-toggle-btn" onclick="toggleNavPanel()" title="Скрыть/показать навигацию">
+            <div class="toggle-icon">
+                <span class="toggle-line toggle-line-1"></span>
+                <span class="toggle-line toggle-line-2"></span>
+                <span class="toggle-line toggle-line-3"></span>
+            </div>
+        </button>
+    </nav>
+    
+
+    <!-- Мобильное меню -->
+    <div class="mobile-menu" id="mobileMenu">
+        <div class="mobile-menu-close" onclick="closeMobileMenu()">&times;</div>
+        <div class="mobile-menu-content">
+            <a href="#hero" class="nav-link" onclick="closeMobileMenu()">Главная</a>
+            <a href="#about" class="nav-link" onclick="closeMobileMenu()">О нас</a>
+            <a href="#technologies" class="nav-link" onclick="closeMobileMenu()">Услуги</a>
+            <a href="javascript:void(0)" class="nav-link" onclick="openProjectsModal(); closeMobileMenu()">Наши проекты</a>
+            <a href="#contact" class="nav-link" onclick="closeMobileMenu()">Заказать услугу</a>
+            <div class="mobile-contact-info">
+                <div class="contact-item">
+                    <i class="fas fa-phone"></i>
+                    <a href="tel:{{ contact_info.phone|slice:'1:' }}">{{ contact_info.phone }}</a>
+                </div>
+                <div class="contact-item">
+                    <i class="fas fa-envelope"></i>
+                    <a href="mailto:{{ contact_info.email }}">{{ contact_info.email }}</a>
+                </div>
+                <div class="contact-item">
+                    <i class="fas fa-clock"></i>
+                    <span>{{ contact_info.work_hours }}</span>
+                </div>
+            </div>
+        </div>
+        <div class="mobile-menu-close" onclick="closeMobileMenu()">&times;</div>
+    </div>
+
+    <!-- Модальное окно "Наши проекты" -->
+    <div id="projectsModal" class="modal">
+        <div class="modal-content projects-modal">
+            <span class="close" onclick="closeProjectsModal()">&times;</span>
+            <div class="modal-header">
+                <i class="fas fa-images modal-icon"></i>
+                <h3>Наши проекты</h3>
+            </div>
+            <div class="projects-modal-content">
+                <p class="projects-text">Примеры наших проектов можно увидеть в наших соц. сетях:</p>
+                <div class="projects-social-links">
+                    {% for social in social_links %}
+                        <a href="{{ social.url }}" class="projects-social-link {{ social.platform }}" target="_blank" title="{{ social.get_platform_display }}">
+                            <i class="{{ social.get_icon_class }}"></i>
+                            <span>{{ social.get_platform_display }}</span>
+                        </a>
+                    {% endfor %}
+                </div>
+                </div>
+        </div>
+    </div>
+
+    <!-- Блок 1: Героический блок -->
+    <section id="hero" class="hero-section">
+        <div class="container">
+            <!-- Основной логотип -->
+            <div class="main-logo-section">
+                <div class="main-logo animated-entrance">
+                    <h1>Modelix</h1>
+                </div>
+            </div>
+
+            <!-- Основной контент блок -->
+            <div class="hero-content-card">
+                <div class="text-section">
+                    <div class="hero-text-content">
+                        <h2 class="hero-title">
+                            <span class="highlight-text">Воплощаем ваши идеи в 3D!</span>
+                        </h2>
+                        
+                        <div class="about-company">
+                            <h3 class="gradient-title"><span class="modelix-brand">Modelix</span> — это полный цикл 3D-решений в Санкт-Петербурге.</h3>
+                            <p class="description-text">Моделирование, печать любыми технологиями (FDM, SLA, SLS, SLM и др.), 3D-сканирование, реверс-инжиниринг и постобработка.</p>
+                            <p class="description-text">Мы превращаем ваши идеи в точные и качественные результаты — быстро, профессионально и с вниманием к деталям.</p>
+                        </div>
+                        
+                        <div class="cta-section">
+                            <button class="cta-button" onclick="scrollToContactForm()">
+                                <span>ЗАКАЗАТЬ УСЛУГУ</span>
+                                <i class="fas fa-arrow-right"></i>
+                            </button>
+                            <p class="disclaimer-text">Работаем с юридическими и физическими лицами.</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="image-section">
+                    <div class="social-links">
+                        {% for social in social_links %}
+                            <a href="{{ social.url }}" class="social-btn {{ social.platform }}" target="_blank" title="{{ social.get_platform_display }}">
+                                <i class="{{ social.get_icon_class }}"></i>
+                            </a>
+                        {% endfor %}
+                    </div>
+                    
+                    <!-- Интегрированное изображение принтера -->
+                    <div class="integrated-printer-block">
+                        {% if hero_image %}
+                        <img src="{{ hero_image.image_url_with_cache_bust }}" alt="{{ hero_image.alt_text }}" class="integrated-printer-image">
+                        {% else %}
+                            <img src="/media/hero/hero_block1_v5qOCbx_TEgQx6C.png" alt="3D принтер" class="integrated-printer-image">
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Блок 2: О нас и преимущества -->
+    <section id="about" class="about-section">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Преимущества работы с нами</h2>
+            </div>
+            
+            <div class="advantages-grid">
+                <div class="advantage-card modern-card">
+                    <div class="advantage-icon modern-icon">
+                        <i class="fas fa-cogs animated-icon"></i>
+                    </div>
+                    <div class="text-content">
+                        <h3 class="advantage-title">Решение задач любой сложности</h3>
+                        <p class="advantage-text">Мы берем на себя полный цикл работы: от идеи до готового результата. Если для реализации потребуется дополнительная технология или сервис, мы подключим проверенных партнёров и организуем процесс так, чтобы клиент получил решение «под ключ» без лишних забот.</p>
+                    </div>
+                </div>
+                
+                <div class="advantage-card modern-card">
+                    <div class="advantage-icon modern-icon">
+                        <i class="fas fa-rocket animated-icon"></i>
+                    </div>
+                    <div class="text-content">
+                        <h3 class="advantage-title">Оптимизация процессов работы</h3>
+                        <p class="advantage-text">Мы выстраиваем работу так, чтобы каждый этап — от моделирования до постобработки — занимал минимум времени и ресурсов. Благодаря продуманным технологиям и автоматизации вы получаете результат быстрее и без лишних затрат.</p>
+                    </div>
+                </div>
+                
+                <div class="advantage-card modern-card">
+                    <div class="advantage-icon modern-icon">
+                        <i class="fas fa-user-friends animated-icon"></i>
+                    </div>
+                    <div class="text-content">
+                        <h3 class="advantage-title">Индивидуальный подход к клиенту</h3>
+                        <p class="advantage-text">Каждый проект мы рассматриваем как уникальный. Мы внимательно изучаем задачу, учитываем все пожелания и подбираем оптимальные материалы, технологии и решения.</p>
+                    </div>
+                </div>
+                
+                <div class="advantage-card modern-card">
+                    <div class="advantage-icon modern-icon">
+                        <i class="fas fa-handshake animated-icon"></i>
+                    </div>
+                    <div class="text-content">
+                        <h3 class="advantage-title">Прозрачность и честность работы</h3>
+                        <p class="advantage-text">Мы открыто обсуждаем сроки, стоимость и возможные ограничения. Клиент всегда понимает, что получает и за что платит.</p>
+                    </div>
+                </div>
+                
+                <div class="advantage-card modern-card">
+                    <div class="advantage-icon modern-icon">
+                        <i class="fas fa-headset animated-icon"></i>
+                    </div>
+                    <div class="text-content">
+                        <h3 class="advantage-title">Высокий уровень сервиса и поддержки</h3>
+                        <p class="advantage-text">Консультируем на каждом этапе, помогаем выбрать оптимальное решение и остаёмся на связи даже после выполнения заказа.</p>
+                    </div>
+                </div>
+                
+                <div class="advantage-card modern-card">
+                    <div class="advantage-icon modern-icon">
+                        <i class="fas fa-microchip animated-icon"></i>
+                    </div>
+                    <div class="text-content">
+                        <h3 class="advantage-title">Современное оборудование и технологии</h3>
+                        <p class="advantage-text">Используем 3D-принтеры и сканеры нового поколения, что обеспечивает высокую точность, детализацию и скорость изготовления изделий.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Блок 3: Услуги -->
+    <section id="technologies" class="services-section-new">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Наши 3D-возможности</h2>
+            </div>
+            
+            <div class="services-grid-new">
+                <!-- 3D моделирование -->
+                <div class="service-card-new">
+                    <div class="service-image-new">
+                        {% for service in services %}
+                            {% if service.service_type == '3d_modeling' %}
+                                {% if service.image %}
+                                <img src="{{ service.image.url }}" alt="{{ service.title }}">
+                                {% else %}
+                                    <img src="/media/services/3d_modeling.jpg" alt="3D моделирование">
+                                {% endif %}
+                            {% endif %}
+                        {% endfor %}
+                        {% if not services %}
+                            <img src="/media/services/3d_modeling.jpg" alt="3D моделирование">
+                        {% endif %}
+                    </div>
+                    <div class="service-content-new">
+                        {% for service in services %}
+                            {% if service.service_type == '3d_modeling' %}
+                                <h3 class="service-name-new">{{ service.title }}</h3>
+                                <div class="service-expandable">
+                                    <button class="expand-btn" onclick="toggleServiceDetails('model1', event)">
+                                        Подробнее <i class="fas fa-chevron-down"></i>
+                                    </button>
+                                    <div class="service-details" id="model1" >
+                                        <p>{{ service.description }}</p>
+                                    </div>
+                                </div>
+                            {% endif %}
+                        {% endfor %}
+                    </div>
+                </div>
+
+                <!-- 3D печать -->
+                <div class="service-card-new">
+                    <div class="service-image-new">
+                        {% for service in services %}
+                            {% if service.service_type == '3d_printing' %}
+                                {% if service.image %}
+                                <img src="{{ service.image.url }}" alt="{{ service.title }}">
+                                {% else %}
+                                    <img src="/media/services/3d_printing.jpg" alt="3D печать">
+                                {% endif %}
+                            {% endif %}
+                        {% endfor %}
+                        {% if not services %}
+                            <img src="/media/services/3d_printing.jpg" alt="3D печать">
+                        {% endif %}
+                    </div>
+                    <div class="service-content-new">
+                        {% for service in services %}
+                            {% if service.service_type == '3d_printing' %}
+                                <h3 class="service-name-new">{{ service.title }}</h3>
+                        <div class="service-expandable">
+                            <button class="expand-btn" onclick="toggleServiceDetails('tech1', event)">
+                                Подробнее <i class="fas fa-chevron-down"></i>
+                            </button>
+                            <div class="service-details" id="tech1" >
+                                        <p>{{ service.description }}</p>
+                            </div>
+                        </div>
+                            {% endif %}
+                        {% endfor %}
+                    </div>
+                </div>
+
+                <!-- 3D сканирование -->
+                <div class="service-card-new">
+                    <div class="service-image-new">
+                        {% for service in services %}
+                            {% if service.service_type == '3d_scanning' %}
+                                {% if service.image %}
+                                <img src="{{ service.image.url }}" alt="{{ service.title }}">
+                                {% else %}
+                                    <img src="/media/services/3d_scanning.jpg" alt="3D сканирование">
+                                {% endif %}
+                            {% endif %}
+                        {% endfor %}
+                        {% if not services %}
+                            <img src="/media/services/3d_scanning.jpg" alt="3D сканирование">
+                        {% endif %}
+                    </div>
+                    <div class="service-content-new">
+                        {% for service in services %}
+                            {% if service.service_type == '3d_scanning' %}
+                                <h3 class="service-name-new">{{ service.title }}</h3>
+                        <div class="service-expandable">
+                                    <button class="expand-btn" onclick="toggleServiceDetails('scan1', event)">
+                                Подробнее <i class="fas fa-chevron-down"></i>
+                            </button>
+                                    <div class="service-details" id="scan1" >
+                                        <p>{{ service.description }}</p>
+                            </div>
+                        </div>
+                            {% endif %}
+                        {% endfor %}
+                    </div>
+                </div>
+
+                <!-- Реверс-инжиниринг -->
+                <div class="service-card-new">
+                    <div class="service-image-new">
+                        {% for service in services %}
+                            {% if service.service_type == 'reverse_engineering' %}
+                                {% if service.image %}
+                                <img src="{{ service.image.url }}" alt="{{ service.title }}">
+                                {% else %}
+                                    <img src="/media/services/reverse_engineering.jpg" alt="Реверс-инжиниринг">
+                                {% endif %}
+                            {% endif %}
+                        {% endfor %}
+                        {% if not services %}
+                            <img src="/media/services/reverse_engineering.jpg" alt="Реверс-инжиниринг">
+                        {% endif %}
+                    </div>
+                    <div class="service-content-new">
+                        {% for service in services %}
+                            {% if service.service_type == 'reverse_engineering' %}
+                                <h3 class="service-name-new">{{ service.title }}</h3>
+                        <div class="service-expandable">
+                            <button class="expand-btn" onclick="toggleServiceDetails('rev1', event)">
+                                Подробнее <i class="fas fa-chevron-down"></i>
+                            </button>
+                            <div class="service-details" id="rev1" >
+                                        <p>{{ service.description }}</p>
+                            </div>
+                        </div>
+                            {% endif %}
+                        {% endfor %}
+                    </div>
+                </div>
+
+                <!-- Инжиниринг -->
+                <div class="service-card-new">
+                    <div class="service-image-new">
+                        {% for service in services %}
+                            {% if service.service_type == 'engineering' %}
+                                {% if service.image %}
+                                <img src="{{ service.image.url }}" alt="{{ service.title }}">
+                                {% else %}
+                                    <img src="/media/services/engineering.jpg" alt="Инжиниринг">
+                                {% endif %}
+                            {% endif %}
+                        {% endfor %}
+                        {% if not services %}
+                            <img src="/media/services/engineering.jpg" alt="Инжиниринг">
+                        {% endif %}
+                    </div>
+                    <div class="service-content-new">
+                        {% for service in services %}
+                            {% if service.service_type == 'engineering' %}
+                                <h3 class="service-name-new">{{ service.title }}</h3>
+                                <div class="service-expandable">
+                                    <button class="expand-btn" onclick="toggleServiceDetails('eng1', event)">
+                                        Подробнее <i class="fas fa-chevron-down"></i>
+                                    </button>
+                                    <div class="service-details" id="eng1" >
+                                        <p>{{ service.description }}</p>
+                                    </div>
+                                </div>
+                            {% endif %}
+                        {% endfor %}
+                    </div>
+                </div>
+
+
+                <!-- Постобработка -->
+                <div class="service-card-new">
+                    <div class="service-image-new">
+                        {% for service in services %}
+                            {% if service.service_type == 'post_processing' %}
+                                {% if service.image %}
+                                <img src="{{ service.image.url }}" alt="{{ service.title }}">
+                                {% else %}
+                                    <img src="/media/services/post_processing.jpg" alt="Постобработка">
+                                {% endif %}
+                            {% endif %}
+                        {% endfor %}
+                        {% if not services %}
+                            <img src="/media/services/post_processing.jpg" alt="Постобработка">
+                        {% endif %}
+                    </div>
+                    <div class="service-content-new">
+                        {% for service in services %}
+                            {% if service.service_type == 'post_processing' %}
+                                <h3 class="service-name-new">{{ service.title }}</h3>
+                                <div class="service-expandable">
+                                    <button class="expand-btn" onclick="toggleServiceDetails('post1', event)">
+                                        Подробнее <i class="fas fa-chevron-down"></i>
+                                    </button>
+                                    <div class="service-details" id="post1" >
+                                        <p>{{ service.description }}</p>
+                                    </div>
+                                </div>
+                            {% endif %}
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Блок 5: Как мы работаем -->
+    <section class="workflow-section">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Как мы работаем</h2>
+            </div>
+            
+            <div class="workflow-steps-new">
+                <div class="workflow-step-new" data-step="1">
+                    <div class="step-progress-circle">
+                        <div class="progress-ring">
+                            <svg class="progress-svg" width="120" height="120" style="shape-rendering: geometricPrecision;">
+                                <circle class="progress-bg" cx="60" cy="60" r="50" stroke-width="8" fill="none"></circle>
+                                <circle class="progress-bar" cx="60" cy="60" r="50" stroke-width="8" fill="none" 
+                                        stroke-dasharray="314" stroke-dashoffset="251" stroke-linecap="round"></circle>
+                            </svg>
+                            <div class="step-icon-new">
+                                <i class="fas fa-handshake"></i>
+                            </div>
+                        </div>
+                        <div class="step-number">25%</div>
+                    </div>
+                    <div class="step-content-new">
+                        <h3>Согласование</h3>
+                        <p>Мы обсуждаем задачу, уточняем все детали и подбираем оптимальное решение. На этом этапе фиксируем ваши пожелания и согласовываем формат работы.</p>
+                    </div>
+                </div>
+                
+                <div class="workflow-step-new" data-step="2">
+                    <div class="step-progress-circle">
+                        <div class="progress-ring">
+                            <svg class="progress-svg" width="120" height="120" style="shape-rendering: geometricPrecision;">
+                                <circle class="progress-bg" cx="60" cy="60" r="50" stroke-width="8" fill="none"></circle>
+                                <circle class="progress-bar" cx="60" cy="60" r="50" stroke-width="8" fill="none" 
+                                        stroke-dasharray="314" stroke-dashoffset="157" stroke-linecap="round"></circle>
+                            </svg>
+                            <div class="step-icon-new">
+                                <i class="fas fa-calculator"></i>
+                            </div>
+                        </div>
+                        <div class="step-number">50%</div>
+                    </div>
+                    <div class="step-content-new">
+                        <h3>Просчёт стоимости<br>и сроков</h3>
+                        <p>После согласования готовим прозрачный расчёт цены и сроков. Вы заранее знаете стоимость и дату готовности результата без скрытых доплат.</p>
+                    </div>
+                </div>
+                
+                <div class="workflow-step-new" data-step="3">
+                    <div class="step-progress-circle">
+                        <div class="progress-ring">
+                            <svg class="progress-svg" width="120" height="120" style="shape-rendering: geometricPrecision;">
+                                <circle class="progress-bg" cx="60" cy="60" r="50" stroke-width="8" fill="none"></circle>
+                                <circle class="progress-bar" cx="60" cy="60" r="50" stroke-width="8" fill="none" 
+                                        stroke-dasharray="314" stroke-dashoffset="78" stroke-linecap="round"></circle>
+                            </svg>
+                            <div class="step-icon-new">
+                                <i class="fas fa-credit-card"></i>
+                            </div>
+                        </div>
+                        <div class="step-number">75%</div>
+                    </div>
+                    <div class="step-content-new">
+                        <h3>Оплата</h3>
+                        <p>Когда условия утверждены, принимаем оплату удобным способом и сразу приступаем к работе. Все договорённости фиксируются, чтобы вы были уверены в результате.</p>
+                    </div>
+                </div>
+                
+                <div class="workflow-step-new" data-step="4">
+                    <div class="step-progress-circle">
+                        <div class="progress-ring">
+                            <svg class="progress-svg" width="120" height="120" style="shape-rendering: geometricPrecision;">
+                                <circle class="progress-bg" cx="60" cy="60" r="50" stroke-width="8" fill="none"></circle>
+                                <circle class="progress-bar" cx="60" cy="60" r="50" stroke-width="8" fill="none" 
+                                        stroke-dasharray="314" stroke-dashoffset="0" stroke-linecap="round"></circle>
+                            </svg>
+                            <div class="step-icon-new">
+                                <i class="fas fa-check-circle"></i>
+                            </div>
+                        </div>
+                        <div class="step-number">100%</div>
+                    </div>
+                    <div class="step-content-new">
+                        <h3 style="white-space: nowrap !important;">Получение результата</h3>
+                        <p>Вы получаете готовый результат в согласованные сроки. Детали можем отправить курьером или подготовить к самовывозу, а 3D-файлы отправить удобным для вас образом.</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="stats-grid">
+                {% for stat in stats %}
+                <div class="stat-item modern-stat">
+                    <div class="stat-icon">
+                        <i class="fas {{ stat.icon_class }}"></i>
+                    </div>
+                    <div class="stat-number">{{ stat.number }}</div>
+                    <div class="stat-label">{{ stat.label }}</div>
+                </div>
+                {% empty %}
+                <!-- Fallback если статистика не загружена -->
+                <div class="stat-item modern-stat">
+                    <div class="stat-icon">
+                        <i class="fas fa-calendar-alt"></i>
+                    </div>
+                    <div class="stat-number">3+</div>
+                    <div class="stat-label">Лет опыта.</div>
+                </div>
+                
+                <div class="stat-item modern-stat">
+                    <div class="stat-icon">
+                        <i class="fas fa-check-circle"></i>
+                    </div>
+                    <div class="stat-number">100+</div>
+                    <div class="stat-label">Успешно выполненных заказов.</div>
+                </div>
+                
+                <div class="stat-item modern-stat">
+                    <div class="stat-icon">
+                        <i class="fas fa-cube"></i>
+                    </div>
+                    <div class="stat-number">4+</div>
+                    <div class="stat-label">Технологии печати.</div>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+    </section>
+
+    <!-- Блок 5: Форма заявки -->
+    <section id="contact" class="contact-section">
+        <div class="container">
+            <div class="contact-header">
+                <h2>ОСТАВЬТЕ ЗАЯВКУ</h2>
+                <p>И мы проконсультируем, быстро просчитаем стоимость и сроки выполнения вашего заказа.</p>
+            </div>
+            
+            <div class="contact-content">
+                <form id="orderForm" class="order-form">
+                    {% csrf_token %}
+                    <div class="form-row">
+                        <input type="text" name="name" placeholder="Имя:" required class="form-input">
+                        <input type="tel" name="phone" placeholder="Телефон:" required class="form-input">
+                        <input type="email" name="email" placeholder="E-mail:" required class="form-input">
+                    </div>
+                    
+                    <div class="form-row form-row-service-type">
+                        <div class="service-type-selector">
+                            <button type="button" class="service-type-btn" id="serviceTypeBtn" onclick="toggleServiceDropdown()">
+                                <span id="serviceTypeText">Тип услуги</span>
+                                <i class="fas fa-chevron-down"></i>
+                            </button>
+                            <input type="hidden" name="service_type" id="serviceTypeInput" value="">
+                            <div class="service-dropdown" id="serviceDropdown">
+                                <div class="service-option" onclick="selectService('other', 'Другое')">Другое</div>
+                                <div class="service-option" onclick="selectService('complex', 'Комплекс услуг')">Комплекс услуг</div>
+                                <div class="service-option" onclick="selectService('3d_modeling', '3D моделирование')">3D моделирование</div>
+                                <div class="service-option" onclick="selectService('3d_printing', '3D печать')">3D печать</div>
+                                <div class="service-option" onclick="selectService('3d_scanning', '3D сканирование')">3D сканирование</div>
+                                <div class="service-option" onclick="selectService('reverse_engineering', 'Реверс-инжиниринг')">Реверс-инжиниринг</div>
+                                <div class="service-option" onclick="selectService('engineering', 'Инжиниринг')">Инжиниринг</div>
+                                <div class="service-option" onclick="selectService('post_processing', 'Постобработка')">Постобработка</div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="form-row">
+                        <textarea name="message" placeholder="Опишите ваши пожелания, требования и особенности проекта." class="form-textarea"></textarea>
+                        
+                        <div class="file-upload">
+                            <input type="file" name="file" id="fileInput" accept=".stl,.obj,.3mf,.step,.iges">
+                            <label for="fileInput" class="file-label">
+                                <i class="fas fa-upload"></i>
+                                <span>Прикрепить файл</span>
+                                <small>Можно отправить любую фотографию модели, эскиза или 3D файл.</small>
+                            </label>
+                        </div>
+                        
+                        <button type="button" class="submit-btn enhanced-submit" onclick="submitOrderForm(event)">
+                            <i class="fas fa-paper-plane"></i>
+                            ЗАКАЗАТЬ УСЛУГУ
+                        </button>
+                    </div>
+                    
+                    <div class="additional-service">
+                        <div class="service-item">
+                            <div class="service-icon">
+                                <i class="fas fa-shopping-cart"></i>
+                            </div>
+                            <span class="service-text">Можем помочь с покупкой трёхмерных моделей</span>
+                        </div>
+                    </div>
+                </form>
+                
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Блок 6: Наши работы -->
+    <section id="projects" class="projects-section">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">НАШИ ПРОЕКТЫ</h2>
+            </div>
+            
+            <!-- Интро текст -->
+            <div class="projects-intro">
+                <p>Отслеживайте наши проекты в социальных сетях.</p>
+            </div>
+            
+            <!-- Блок со скриншотами -->
+            <div class="projects-gallery">
+                <!-- Главное окно (слева) -->
+                <div class="projects-main-window">
+                    <a href="{% if projects_block.main_url %}{{ projects_block.main_url }}{% else %}#{% endif %}" 
+                       id="mainProjectLink"
+                       {% if projects_block.main_url %}target="_blank" rel="noopener noreferrer"{% endif %}
+                       class="main-window-content" id="mainProjectWindow">
+                        {% if projects_block.main_screenshot %}
+                            <img src="{{ projects_block.main_screenshot_url }}" alt="Главный проект" id="mainScreenshot">
+                        {% else %}
+                            <div class="window-placeholder">
+                                <i class="fas fa-image"></i>
+                                <p>Загрузите скриншот</p>
+                            </div>
+                        {% endif %}
+                        <div class="window-overlay"></div>
+                    </a>
+                </div>
+
+                <!-- Боковые окна (справа) -->
+                <div class="projects-side-windows">
+                    <div class="side-window" 
+                         data-screenshot="{% if projects_block.left_screenshot %}{{ projects_block.left_screenshot_url }}{% endif %}"
+                         data-url="{% if projects_block.left_url %}{{ projects_block.left_url }}{% endif %}">
+                        {% if projects_block.left_screenshot %}
+                            <img src="{{ projects_block.left_screenshot_url }}" alt="Проект">
+                        {% else %}
+                            <div class="window-placeholder">
+                                <i class="fas fa-image"></i>
+                            </div>
+                        {% endif %}
+                    </div>
+                    
+                    <div class="side-window" 
+                         data-screenshot="{% if projects_block.right_screenshot %}{{ projects_block.right_screenshot_url }}{% endif %}"
+                         data-url="{% if projects_block.right_url %}{{ projects_block.right_url }}{% endif %}">
+                        {% if projects_block.right_screenshot %}
+                            <img src="{{ projects_block.right_screenshot_url }}" alt="Проект">
+                        {% else %}
+                            <div class="window-placeholder">
+                                <i class="fas fa-image"></i>
+                            </div>
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Плашка с соцсетями и иконки под галереей -->
+            <div class="projects-social-wrapper">
+                <div class="projects-social-banner">
+                    <p class="social-banner-text">Мы в социальных сетях</p>
+                </div>
+                <div class="social-icons-inline">
+                    {% if phone_links.telegram %}
+                    <a href="{{ phone_links.telegram.url }}" target="_blank" rel="noopener noreferrer" class="social-icon-small" title="Telegram">
+                        <i class="{{ phone_links.telegram.icon }}"></i>
+                    </a>
+                    {% endif %}
+                    {% if phone_links.vk_group %}
+                    <a href="{{ phone_links.vk_group.url }}" target="_blank" rel="noopener noreferrer" class="social-icon-small" title="VK">
+                        <i class="{{ phone_links.vk_group.icon }}"></i>
+                    </a>
+                    {% endif %}
+                    {% if phone_links.avito %}
+                    <a href="{{ phone_links.avito.url }}" target="_blank" rel="noopener noreferrer" class="social-icon-small" title="Авито">
+                        <i class="{{ phone_links.avito.icon }}"></i>
+                    </a>
+                    {% endif %}
+                    {% if phone_links.ozon %}
+                    <a href="{{ phone_links.ozon.url }}" target="_blank" rel="noopener noreferrer" class="social-icon-small" title="Ozon">
+                        <i class="{{ phone_links.ozon.icon }}"></i>
+                    </a>
+                    {% endif %}
+                </div>
+            </div>
+            
+            <!-- Текст о продукции -->
+            <div class="projects-marketplace-text">
+                <p>Мы выпускаем готовую продукцию. Отзывы, изделия и много другое смотрите на маркетплейсах.</p>
+            </div>
+            
+            <!-- Большие иконки Авито и Ozon -->
+            <div class="projects-marketplace-icons">
+                {% if phone_links.avito %}
+                <a href="{{ phone_links.avito.url }}" target="_blank" rel="noopener noreferrer" class="marketplace-icon-large avito">
+                    <i class="{{ phone_links.avito.icon }}"></i>
+                    <span>Авито</span>
+                </a>
+                {% endif %}
+                {% if phone_links.ozon %}
+                <a href="{{ phone_links.ozon.url }}" target="_blank" rel="noopener noreferrer" class="marketplace-icon-large ozon">
+                    <i class="{{ phone_links.ozon.icon }}"></i>
+                    <span>Ozon</span>
+                </a>
+                {% endif %}
+            </div>
+        </div>
+    </section>
+
+    <!-- Блок 7: FAQ -->
+    <section class="faq-section">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Часто задаваемые вопросы</h2>
+            </div>
+            
+            <div class="faq-container-new">
+                {% for faq in faq_items %}
+                <div class="faq-item-new">
+                    <button class="faq-question-new" onclick="toggleFAQNew('faq_new_{{ faq.id }}')">
+                        <span>{{ faq.question }}</span>
+                        <i class="fas fa-plus faq-icon-new"></i>
+                    </button>
+                    <div id="faq_new_{{ faq.id }}" class="faq-answer-new">
+                        <p>{{ faq.answer }}</p>
+                    </div>
+                </div>
+                {% empty %}
+                <!-- FAQ будут добавлены через админку -->
+                <div class="faq-item-new">
+                    <p style="text-align: center; color: #666; padding: 20px;">
+                        Вопросы и ответы будут добавлены через админку
+                    </p>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+    </section>
+
+    <!-- Контактная информация -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo">
+                    <span>Modelix</span>
+                </div>
+                
+                <div class="footer-section">
+                    <div class="contact-item">
+                        <i class="fas fa-phone"></i>
+                        <span style="font-size: 16px !important; font-weight: 700 !important;">{{ contact_info.phone }}</span>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fas fa-envelope"></i>
+                        <span style="font-size: 16px !important; font-weight: 700 !important;">{{ contact_info.email }}</span>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fas fa-clock"></i>
+                        <div class="working-hours-text">
+                            <div style="font-size: 16px !important; font-weight: 700 !important;">Часы работы:</div>
+                            <div style="font-size: 16px !important; font-weight: 700 !important; margin-top: -5px !important;">ПН-ПТ 10:00-20:00</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="footer-section">
+                    <div class="contact-item">
+                        <i class="fas fa-user"></i>
+                        <span style="font-size: 16px !important; font-weight: 700 !important; white-space: nowrap !important;">{{ contact_info.owner_name }}</span>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fas fa-id-card"></i>
+                        <span style="font-size: 16px !important; font-weight: 700 !important;">ИНН {{ contact_info.inn }}</span>
+                    </div>
+                </div>
+                
+                <div class="footer-social">
+                    <div class="social-icons-row">
+                        {% for social in social_links %}
+                            <a href="{{ social.url }}" class="social-link {{ social.platform }}-link" title="{{ social.get_platform_display }}" target="_blank">
+                                <i class="{{ social.get_icon_class }}"></i>
+                            </a>
+                        {% endfor %}
+                    </div>
+                </div>
+                
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; 2025 Modelix. Все права защищены.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Contact Modal -->
+    <div id="contactModal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <div class="modal-header">
+                <i class="fas fa-cube modal-icon"></i>
+                <h3>Контактная информация</h3>
+            </div>
+            <div class="modal-contacts">
+                <div class="modal-contact">
+                    <i class="fas fa-phone"></i>
+                    <div class="contact-details">
+                        <span class="contact-label">Телефон:</span>
+                        <a href="tel:{{ contact_info.phone }}" class="contact-value">{{ contact_info.phone }}</a>
+                    </div>
+                </div>
+                <div class="modal-contact">
+                    <i class="fas fa-envelope"></i>
+                    <div class="contact-details">
+                        <span class="contact-label">Почта:</span>
+                        <a href="mailto:{{ contact_info.email }}" class="contact-value">{{ contact_info.email }}</a>
+                    </div>
+                </div>
+                <div class="modal-actions">
+                    <a href="tel:{{ contact_info.phone }}" class="modal-btn phone-btn">
+                        <i class="fas fa-phone"></i>
+                        Позвонить
+                    </a>
+                    <a href="mailto:{{ contact_info.email }}" class="modal-btn email-btn">
+                        <i class="fas fa-envelope"></i>
+                        Написать
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Плавающая кнопка звонка -->
+    <div class="floating-call-btn" id="floatingCallBtn" onclick="openCallModal()" title="Заказать звонок">
+        <i class="fas fa-phone"></i>
+        <span class="call-btn-pulse"></span>
+    </div>
+
+    <!-- Модальное окно "Заказать звонок" -->
+    <div id="callModal" class="modal call-modal">
+        <div class="modal-content call-modal-content">
+            <span class="close" onclick="closeCallModal()">&times;</span>
+            <div class="modal-header">
+                <i class="fas fa-phone"></i>
+                <h3>Обсудим детали вашего проекта !</h3>
+            </div>
+            <form id="callRequestForm">
+                {% csrf_token %}
+                <p style="margin-top: 0; margin-bottom: 10px; color: #666; font-size: 16px;">Как вас зовут?</p>
+                <input type="text" name="name" placeholder="Ваше имя" required class="modal-input">
+                <p style="margin-top: 20px; margin-bottom: 10px; color: #666; font-size: 16px;">Ваш номер телефона</p>
+                <input type="tel" name="phone" placeholder="+7 (___) ___-__-__" required class="modal-input">
+                <button type="button" class="modal-submit-btn" onclick="submitCallRequest(event)">
+                    <i class="fas fa-phone"></i>
+                    ЗАКАЗАТЬ ЗВОНОК
+                </button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Модальное окно формы заявки -->
+    <div id="callFormModal" class="call-form-modal">
+        <div class="call-form-modal-content">
+            <button class="call-form-modal-close" onclick="closeCallFormModal()">&times;</button>
+            <h2>ОСТАВЬТЕ ЗАЯВКУ</h2>
+            <p>И мы проконсультируем, быстро просчитаем стоимость и сроки выполнения вашего заказа.</p>
+            
+            <form id="callOrderForm" class="order-form">
+                {% csrf_token %}
+                <div class="form-row">
+                    <input type="text" name="name" placeholder="Имя:" required class="form-input">
+                </div>
+                
+                <div class="form-row">
+                    <input type="tel" name="phone" placeholder="Телефон:" required class="form-input">
+                </div>
+                
+                <div class="form-row">
+                    <input type="email" name="email" placeholder="E-mail:" required class="form-input">
+                </div>
+                
+                <div class="form-row">
+                    <textarea name="message" placeholder="Опишите ваши пожелания, требования и особенности проекта." class="form-textarea"></textarea>
+                </div>
+                
+                <button type="button" class="submit-btn enhanced-submit" onclick="submitCallOrderForm(event)">
+                    <i class="fas fa-paper-plane"></i>
+                    ЗАКАЗАТЬ УСЛУГУ
+                </button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Scroll Notification -->
+    <div id="scrollNotification" class="scroll-notification">
+        <div class="notification-content">
+            <i class="fas fa-info-circle"></i>
+            <span>Пролистайте вниз, чтобы увидеть больше!</span>
+        </div>
+        <button class="close-notification">&times;</button>
+    </div>
+
+    <!-- Модальное окно материалов -->
+    <div id="materialsModal" onclick="this.style.display='none'" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.8); z-index: 99999; justify-content: center; align-items: center;">
+        <div onclick="event.stopPropagation()" style="background: white; border-radius: 20px; padding: 40px; max-width: 600px; max-height: 80%; overflow-y: auto; position: relative;">
+            <button onclick="document.getElementById('materialsModal').style.display='none'" style="position: absolute; top: 15px; right: 20px; background: #ff4444; color: white; border: none; border-radius: 50%; width: 40px; height: 40px; cursor: pointer; font-size: 20px; font-weight: bold;">×</button>
+            
+            <h2 style="text-align: center; color: #0ea5e9; margin: 0 0 30px 0; font-size: 28px;">Доступные материалы</h2>
+            
+            <div style="margin-bottom: 25px;">
+                <h3 style="color: #0ea5e9; margin: 0 0 15px 0; font-size: 20px; border-bottom: 2px solid #0ea5e9; padding-bottom: 8px;">🖨️ FDM пластики</h3>
+                <ul style="color: #333; line-height: 2; font-size: 16px; margin: 0; padding-left: 20px;">
+                    <li><strong>PLA</strong> - экологичный, простой в использовании</li>
+                    <li><strong>ABS</strong> - прочный, термостойкий</li>
+                    <li><strong>PETG</strong> - химически стойкий, прозрачный</li>
+                    <li><strong>TPU</strong> - гибкий, эластичный</li>
+                    <li><strong>Wood Fill</strong> - с древесными волокнами</li>
+                    <li><strong>Carbon Fiber</strong> - армированный углеволокном</li>
+                    <li><strong>Metal Fill</strong> - с металлическими частицами</li>
+                </ul>
+            </div>
+            
+            <div style="margin-bottom: 25px;">
+                <h3 style="color: #0ea5e9; margin: 0 0 15px 0; font-size: 20px; border-bottom: 2px solid #0ea5e9; padding-bottom: 8px;">🧪 SLA смолы</h3>
+                <ul style="color: #333; line-height: 2; font-size: 16px; margin: 0; padding-left: 20px;">
+                    <li><strong>Standard</strong> - универсальная смола</li>
+                    <li><strong>Tough</strong> - повышенная прочность</li>
+                    <li><strong>Flexible</strong> - гибкая смола</li>
+                    <li><strong>Clear</strong> - прозрачная</li>
+                    <li><strong>Dental</strong> - биосовместимая</li>
+                    <li><strong>Castable</strong> - для литья</li>
+                    <li><strong>High Temp</strong> - термостойкая</li>
+                </ul>
+            </div>
+            
+            <div style="margin-bottom: 30px;">
+                <h3 style="color: #0ea5e9; margin: 0 0 15px 0; font-size: 20px; border-bottom: 2px solid #0ea5e9; padding-bottom: 8px;">⚙️ SLM металлы</h3>
+                <ul style="color: #333; line-height: 2; font-size: 16px; margin: 0; padding-left: 20px;">
+                    <li><strong>Stainless Steel</strong> - нержавеющая сталь</li>
+                    <li><strong>Titanium</strong> - титановый сплав</li>
+                    <li><strong>Aluminum</strong> - алюминиевый сплав</li>
+                    <li><strong>Inconel</strong> - жаропрочный сплав</li>
+                    <li><strong>Maraging Steel</strong> - мартенситно-стареющая сталь</li>
+                    <li><strong>Cobalt Chrome</strong> - кобальт-хромовый сплав</li>
+                    <li><strong>Tool Steel</strong> - инструментальная сталь</li>
+                </ul>
+            </div>
+            
+            <button onclick="document.getElementById('materialsModal').style.display='none'" style="width: 100%; padding: 15px; background: linear-gradient(135deg, #0ea5e9, #0284c7); color: white; border: none; border-radius: 12px; cursor: pointer; font-size: 18px; font-weight: 600;">Закрыть</button>
+        </div>
+    </div>
+
+    <script>
+        function showContacts(event) {
+            event.preventDefault();
+            event.stopPropagation();
+            
+            var dropdown = document.getElementById('contactDropdown');
+            if (dropdown.style.display === 'none' || dropdown.style.display === '') {
+                dropdown.style.display = 'block';
+            } else {
+                dropdown.style.display = 'none';
+            }
+        }
+        
+        // Функция для скролла к форме заявки
+        function scrollToContactForm() {
+            var contactSection = document.getElementById('contact');
+            if (contactSection) {
+                contactSection.scrollIntoView({
+                    behavior: 'smooth',
+                    block: 'start'
+                });
+            }
+        }
+        
+        // Функции для модального окна "Заказать звонок"
+        function openCallModal() {
+            var modal = document.getElementById('callModal');
+            if (modal) {
+                modal.style.display = 'block';
+                document.body.style.overflow = 'hidden';
+            }
+        }
+        
+        function closeCallModal() {
+            var modal = document.getElementById('callModal');
+            if (modal) {
+                modal.style.display = 'none';
+                document.body.style.overflow = '';
+            }
+        }
+        
+        // Закрытие модального окна при клике на фон
+        document.addEventListener('DOMContentLoaded', function() {
+            var callModal = document.getElementById('callModal');
+            if (callModal) {
+                callModal.addEventListener('click', function(e) {
+                    if (e.target === callModal) {
+                        closeCallModal();
+                    }
+                });
+            }
+        });
+        
+        // Функция отправки формы заявки на звонок
+        function submitCallRequest(event) {
+            event.preventDefault();
+            event.stopPropagation();
+            
+            var form = document.getElementById('callRequestForm');
+            var submitBtn = event.target;
+            var originalText = submitBtn.innerHTML;
+            
+            // Получаем данные формы
+            var name = form.querySelector('input[name="name"]').value.trim();
+            var phone = form.querySelector('input[name="phone"]').value.trim();
+            
+            // Проверяем обязательные поля
+            if (!name || !phone) {
+                alert('Заполните все поля: Имя и Телефон');
+                return;
+            }
+            
+            // Показываем состояние загрузки
+            submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> ОТПРАВКА...';
+            submitBtn.disabled = true;
+            
+            // Создаем FormData
+            var formData = new FormData();
+            formData.append('name', name);
+            formData.append('phone', phone);
+            
+            // Добавляем CSRF токен
+            var csrfToken = form.querySelector('[name=csrfmiddlewaretoken]').value;
+            formData.append('csrfmiddlewaretoken', csrfToken);
+            
+            // Отправляем данные
+            fetch('/submit-call-request/', {
+                method: 'POST',
+                body: formData
+            })
+            .then(function(response) {
+                return response.json();
+            })
+            .then(function(data) {
+                if (data.success) {
+                    alert('Заявка на звонок успешно отправлена! Мы свяжемся с вами в ближайшее время.');
+                    form.reset();
+                    closeCallModal();
+                } else {
+                    alert(data.error || 'Произошла ошибка при отправке заявки');
+                }
+            })
+            .catch(function(error) {
+                console.error('Ошибка при отправке:', error);
+                alert('Произошла ошибка при отправке заявки');
+            })
+            .finally(function() {
+                submitBtn.innerHTML = originalText;
+                submitBtn.disabled = false;
+            });
+        }
+        
+        // Функции для модального окна формы заявки
+        function openCallFormModal() {
+            var modal = document.getElementById('callFormModal');
+            if (modal) {
+                modal.classList.add('active');
+                document.body.style.overflow = 'hidden';
+                document.documentElement.classList.add('modal-open');
+                document.body.classList.add('modal-open');
+            }
+        }
+        
+        function closeCallFormModal() {
+            var modal = document.getElementById('callFormModal');
+            if (modal) {
+                modal.classList.remove('active');
+                document.body.style.overflow = '';
+                document.documentElement.classList.remove('modal-open');
+                document.body.classList.remove('modal-open');
+            }
+        }
+        
+        // Закрытие модального окна при клике на фон
+        document.addEventListener('DOMContentLoaded', function() {
+            var modal = document.getElementById('callFormModal');
+            if (modal) {
+                modal.addEventListener('click', function(e) {
+                    if (e.target === modal) {
+                        closeCallFormModal();
+                    }
+                });
+            }
+        });
+        
+        // Функция отправки формы из модального окна
+        function submitCallOrderForm(event) {
+            event.preventDefault();
+            event.stopPropagation();
+            
+            var form = document.getElementById('callOrderForm');
+            var submitBtn = event.target;
+            var originalText = submitBtn.innerHTML;
+            
+            // Получаем данные формы
+            var name = form.querySelector('input[name="name"]').value.trim();
+            var phone = form.querySelector('input[name="phone"]').value.trim();
+            var email = form.querySelector('input[name="email"]').value.trim();
+            var message = form.querySelector('textarea[name="message"]').value.trim();
+            
+            // Проверяем обязательные поля
+            if (!name || !phone || !email) {
+                alert('Заполните все обязательные поля: Имя, Телефон, E-mail');
+                return;
+            }
+            
+            // Показываем состояние загрузки
+            submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> ОТПРАВКА...';
+            submitBtn.disabled = true;
+            
+            // Создаем FormData
+            var formData = new FormData();
+            formData.append('name', name);
+            formData.append('phone', phone);
+            formData.append('email', email);
+            formData.append('message', message);
+            
+            // Добавляем CSRF токен
+            var csrfToken = form.querySelector('[name=csrfmiddlewaretoken]').value;
+            formData.append('csrfmiddlewaretoken', csrfToken);
+            
+            // Отправляем данные
+            fetch('/submit-order/', {
+                method: 'POST',
+                body: formData
+            })
+            .then(function(response) {
+                return response.json();
+            })
+            .then(function(data) {
+                if (data.success) {
+                    alert('Заявка успешно отправлена! Мы свяжемся с вами в ближайшее время.');
+                    form.reset();
+                    closeCallFormModal();
+                } else {
+                    alert(data.error || 'Произошла ошибка при отправке заявки');
+                }
+            })
+            .catch(function(error) {
+                console.error('Ошибка при отправке:', error);
+                alert('Произошла ошибка при отправке заявки');
+            })
+            .finally(function() {
+                submitBtn.innerHTML = originalText;
+                submitBtn.disabled = false;
+            });
+        }
+        
+        // Функции для селектора типа услуги
+        function toggleServiceDropdown() {
+            var dropdown = document.getElementById('serviceDropdown');
+            var btn = document.getElementById('serviceTypeBtn');
+            dropdown.classList.toggle('active');
+            btn.classList.toggle('active');
+        }
+        
+        function selectService(value, text) {
+            document.getElementById('serviceTypeInput').value = value;
+            document.getElementById('serviceTypeText').textContent = text;
+            toggleServiceDropdown();
+        }
+        
+        // Закрытие выпадающего списка при клике вне его
+        document.addEventListener('click', function(event) {
+            var selector = document.querySelector('.service-type-selector');
+            var dropdown = document.getElementById('serviceDropdown');
+            if (selector && dropdown && !selector.contains(event.target)) {
+                dropdown.classList.remove('active');
+                document.getElementById('serviceTypeBtn').classList.remove('active');
+                }
+            });
+        
+        // Функция отправки формы заказа
+        function submitOrderForm(event) {
+            event.preventDefault();
+            event.stopPropagation();
+            
+            
+            var form = document.getElementById('orderForm');
+            var submitBtn = document.querySelector('.submit-btn');
+            var originalText = submitBtn.innerHTML;
+            
+            // Получаем данные формы
+            var name = form.querySelector('input[name="name"]').value.trim();
+            var phone = form.querySelector('input[name="phone"]').value.trim();
+            var email = form.querySelector('input[name="email"]').value.trim();
+            var message = form.querySelector('textarea[name="message"]').value.trim();
+            var serviceType = form.querySelector('input[name="service_type"]').value.trim();
+            var fileInput = form.querySelector('input[name="file"]');
+            
+            
+            // Проверяем обязательные поля
+            if (!name || !phone || !email) {
+                alert('Заполните все обязательные поля: Имя, Телефон, E-mail');
+                return;
+            }
+            
+            // Показываем состояние загрузки
+            submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> ОТПРАВКА...';
+            submitBtn.disabled = true;
+            
+            // Создаем FormData
+            var formData = new FormData();
+            formData.append('name', name);
+            formData.append('phone', phone);
+            formData.append('email', email);
+            formData.append('message', message);
+            if (serviceType) {
+                formData.append('service_type', serviceType);
+            }
+            if (fileInput.files[0]) {
+                formData.append('file', fileInput.files[0]);
+            }
+            
+            // Добавляем CSRF токен
+            var csrfToken = document.querySelector('[name=csrfmiddlewaretoken]').value;
+            formData.append('csrfmiddlewaretoken', csrfToken);
+            
+            
+            // Отправляем данные
+            fetch('/submit-order/', {
+                method: 'POST',
+                body: formData
+            })
+            .then(function(response) {
+                return response.json();
+            })
+            .then(function(data) {
+                if (data.success) {
+                    alert('Заявка успешно отправлена! Мы свяжемся с вами в ближайшее время.');
+                    form.reset();
+                    var fileLabel = document.querySelector('.file-label span');
+                    if (fileLabel) {
+                        fileLabel.textContent = 'Прикрепить файл';
+                    }
+            } else {
+                    alert(data.error || 'Произошла ошибка при отправке заявки');
+                }
+            })
+            .catch(function(error) {
+                console.error('Ошибка при отправке:', error);
+                alert('Произошла ошибка при отправке заявки');
+            })
+            .finally(function() {
+                submitBtn.innerHTML = originalText;
+                submitBtn.disabled = false;
+            });
+        }
+        
+        // НОВЫЕ ПРОСТЫЕ функции для материалов
+        function openMaterialsModal() {
+            var modal = document.getElementById('materialsModal');
+            if (modal) {
+                modal.style.display = 'flex';
+            } else {
+                alert('МОДАЛЬНОЕ ОКНО НЕ НАЙДЕНО!');
+            }
+        }
+        
+        function closeMaterialsModal() {
+            var modal = document.getElementById('materialsModal');
+            if (modal) {
+                modal.style.display = 'none';
+            }
+        }
+        
+        
+        // Закрытие списка материалов при клике вне блока
+        document.addEventListener('click', function(e) {
+            var materialsList = document.getElementById('materials-list');
+            var materialsButton = e.target.closest('[onclick*="toggleMaterialsList"]');
+            
+            if (materialsList && !materialsButton && !materialsList.contains(e.target)) {
+                materialsList.style.display = 'none';
+            }
+        });
+        
+        // Функция для раскрытия деталей услуг с плавным закрытием
+        function toggleServiceDetails(serviceId, event) {
+            var details = document.getElementById(serviceId);
+            var btn = event.target.closest('.expand-btn');
+            
+            if (!details) {
+                return;
+            }
+            
+            if (details.classList.contains('open')) {
+                details.classList.remove('open');
+                btn.classList.remove('active');
+            } else {
+                details.classList.add('open');
+                btn.classList.add('active');
+            }
+        }
+
+        // Функция для нового FAQ
+        function toggleFAQNew(faqId) {
+            // Находим элемент FAQ
+            var faqElement = document.getElementById(faqId);
+            var faqItem = faqElement.closest('.faq-item-new');
+            
+            // Закрываем все остальные FAQ
+            var allFaqItems = document.querySelectorAll('.faq-item-new');
+            allFaqItems.forEach(function(item) {
+                if (item !== faqItem) {
+                    item.classList.remove('active');
+                }
+            });
+            
+            // Переключаем текущий FAQ
+            faqItem.classList.toggle('active');
+        }
+
+        // Функции для модального окна "Наши проекты"
+        function openProjectsModal() {
+            document.getElementById('projectsModal').style.display = 'block';
+        }
+        
+        function closeProjectsModal() {
+            document.getElementById('projectsModal').style.display = 'none';
+        }
+        
+        // Закрытие модальных окон при клике вне их
+        window.onclick = function(event) {
+            var projectsModal = document.getElementById('projectsModal');
+            if (event.target === projectsModal) {
+                closeProjectsModal();
+            }
+        }
+        
+        // Закрытие при клике вне блока
+        document.addEventListener('click', function(e) {
+            var dropdown = document.getElementById('contactDropdown');
+            var container = document.querySelector('.contact-dropdown-container');
+            if (dropdown && container && !container.contains(e.target)) {
+                dropdown.style.display = 'none';
+            }
+        });
+        
+        // Функция мобильного меню
+        function toggleMobileMenu() {
+            const navMenu = document.querySelector('.nav-menu');
+            const menuBtn = document.querySelector('.mobile-menu-btn');
+            const mobileMenu = document.getElementById('mobileMenu');
+            
+            navMenu.classList.toggle('active');
+            menuBtn.classList.toggle('active');
+            mobileMenu.classList.toggle('active');
+        }
+        
+        // Закрытие мобильного меню
+        function closeMobileMenu() {
+            const navMenu = document.querySelector('.nav-menu');
+            const menuBtn = document.querySelector('.mobile-menu-btn');
+            const mobileMenu = document.getElementById('mobileMenu');
+            
+            navMenu.classList.remove('active');
+            menuBtn.classList.remove('active');
+            mobileMenu.classList.remove('active');
+        }
+        
+        // Закрытие мобильного меню при клике на ссылку
+        document.querySelectorAll('.nav-menu .nav-link').forEach(link => {
+            link.addEventListener('click', () => {
+                const navMenu = document.querySelector('.nav-menu');
+                const menuBtn = document.querySelector('.mobile-menu-btn');
+                
+                navMenu.classList.remove('active');
+                menuBtn.classList.remove('active');
+            });
+        });
+        
+        // Закрытие мобильного меню при клике вне его
+        document.addEventListener('click', function(e) {
+            const navMenu = document.querySelector('.nav-menu');
+            const menuBtn = document.querySelector('.mobile-menu-btn');
+            const navContainer = document.querySelector('.nav-container');
+            
+            if (navMenu && menuBtn && navContainer &&
+                !navContainer.contains(e.target) && 
+                navMenu.classList.contains('active')) {
+                navMenu.classList.remove('active');
+                menuBtn.classList.remove('active');
+            }
+        });
+        
+        
+        // Функция переключения панели навигации
+        function toggleNavPanel() {
+            const navContainer = document.querySelector('.nav-container');
+            const toggleBtn = document.querySelector('.nav-toggle-btn');
+            
+            if (navContainer && toggleBtn) {
+                navContainer.classList.toggle('hidden');
+                toggleBtn.classList.toggle('active');
+            }
+        }
+    </script>
+    
+    <!-- КРИТИЧЕСКИ ВАЖНО: Принудительное применение темной цветовой схемы -->
+    <script>
+        // Принудительно применяем темную цветовую схему
+        (function() {
+            'use strict';
+            
+            // Функция для принудительного применения темной темы
+            function forceDarkTheme() {
+                // Получаем корневой элемент
+                const root = document.documentElement;
+                
+                // Принудительно устанавливаем темную цветовую схему
+                root.style.colorScheme = 'dark';
+                root.style.setProperty('color-scheme', 'dark', 'important');
+                
+                // Переопределяем системные CSS переменные браузера
+                const style = document.createElement('style');
+                style.textContent = `
+                    :root {
+                        color-scheme: dark !important;
+                        -webkit-color-scheme: dark !important;
+                        -moz-color-scheme: dark !important;
+                        forced-color-adjust: none !important;
+                    }
+                    
+                    * {
+                        color-scheme: dark !important;
+                        -webkit-color-scheme: dark !important;
+                        -moz-color-scheme: dark !important;
+                        forced-color-adjust: none !important;
+                    }
+                    
+                    html, body {
+                        color-scheme: dark !important;
+                        -webkit-color-scheme: dark !important;
+                        -moz-color-scheme: dark !important;
+                        forced-color-adjust: none !important;
+                    }
+                    
+                    /* Принудительно переопределяем системные цвета */
+                    p, h1, h2, h3, h4, h5, h6, span, div, a, li, td, th, button, input, textarea, select {
+                        color-scheme: dark !important;
+                        forced-color-adjust: none !important;
+                    }
+                `;
+                
+                // Добавляем стили в head
+                document.head.appendChild(style);
+                
+                // Принудительно устанавливаем атрибут data-theme
+                root.setAttribute('data-theme', 'dark');
+                
+                console.log('Темная цветовая схема принудительно применена');
+            }
+            
+            // Применяем сразу при загрузке
+            forceDarkTheme();
+            
+            // Применяем при изменении размера окна
+            window.addEventListener('resize', forceDarkTheme);
+            
+            // Применяем при изменении видимости страницы
+            document.addEventListener('visibilitychange', function() {
+                if (!document.hidden) {
+                    forceDarkTheme();
+                }
+            });
+            
+            // Применяем при фокусе на окне
+            window.addEventListener('focus', forceDarkTheme);
+            
+        })();
+    </script>
+    
+    <!-- JavaScript для переключения скриншотов в блоке проектов -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const sideWindows = document.querySelectorAll('.side-window');
+            const mainScreenshot = document.getElementById('mainScreenshot');
+            const mainProjectLink = document.getElementById('mainProjectLink');
+            
+            // Сохраняем оригинальные данные главного окна
+            let currentMainData = {
+                screenshot: mainScreenshot ? mainScreenshot.src : '',
+                url: mainProjectLink ? mainProjectLink.href : ''
+            };
+            
+            sideWindows.forEach(function(window) {
+                window.addEventListener('click', function() {
+                    const newScreenshot = this.getAttribute('data-screenshot');
+                    const newUrl = this.getAttribute('data-url');
+                    
+                    if (newScreenshot && mainScreenshot) {
+                        // Анимация затухания
+                        mainScreenshot.style.opacity = '0';
+                        
+                        setTimeout(function() {
+                            // Меняем изображение
+                            mainScreenshot.src = newScreenshot;
+                            
+                            // Меняем ссылку
+                            if (newUrl && mainProjectLink) {
+                                mainProjectLink.href = newUrl;
+                                if (newUrl !== '#') {
+                                    mainProjectLink.setAttribute('target', '_blank');
+                                    mainProjectLink.setAttribute('rel', 'noopener noreferrer');
+                                } else {
+                                    mainProjectLink.removeAttribute('target');
+                                    mainProjectLink.removeAttribute('rel');
+                                }
+                            }
+                            
+                            // Анимация появления
+                            mainScreenshot.style.opacity = '1';
+                        }, 300);
+                    }
+                    
+                    // Добавляем активный класс
+                    sideWindows.forEach(w => w.classList.remove('active'));
+                    this.classList.add('active');
+                });
+            });
+        });
+    </script>
+    
+    <script src="/static/js/main.js?v=3.0"></script>
+    <script src="/static/js/hero-responsive.js?v=1.0"></script>
+    
+</body>
+</html>

@@ -13,6 +13,6 @@ class Migration(migrations.Migration):
         migrations.AlterField(
             model_name='projectsblock',
             name='marketplace_text',
-            field=models.TextField(default='Также, Помимо индивидуальных проектов, мы выпускаем готовую продукцию; оценить её качество и прочитать отзывы можно на наших онлайн-витринах.', max_length=300, verbose_name='Текст о продукции'),
+            field=models.TextField(default='Также, помимо индивидуальных проектов, мы выпускаем готовую продукцию; оценить её качество и прочитать отзывы можно на наших онлайн-витринах.', max_length=300, verbose_name='Текст о продукции'),
         ),
     ]

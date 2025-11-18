@@ -849,7 +849,7 @@
 @media (max-width: 768px), (orientation: landscape) and (max-height: 520px) {
     .about-section {
         background: var(--gray-900) !important;
-        padding: 40px 10px !important;
+        padding: 25px 10px !important;
         margin: 0 !important;
         width: 100% !important;
         display: flex !important;
@@ -869,7 +869,7 @@
     
     .section-header {
         text-align: center !important;
-        margin-bottom: 30px !important;
+        margin-bottom: 18px !important;
         padding: 0 !important;
         width: 100% !important;
         display: flex !important;
@@ -895,7 +895,7 @@
     .advantages-grid {
         display: grid !important;
         grid-template-columns: 1fr !important;
-        gap: 20px !important;
+        gap: 12px !important;
         margin: 0 !important;
         padding: 0 !important;
         width: 100% !important;
@@ -905,7 +905,7 @@
     .advantage-card {
         background: #ffffff !important;
         border-radius: 15px !important;
-        padding: 25px 10px !important;
+        padding: 18px 10px !important;
         margin: 0 !important;
         box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15) !important;
         text-align: center !important;
@@ -925,7 +925,7 @@
     }
     
     .advantage-icon {
-        margin: 0 auto 15px auto !important;
+        margin: 0 auto 10px auto !important;
         width: 60px !important;
         height: 60px !important;
         background: linear-gradient(135deg, var(--primary-blue), var(--accent-blue)) !important;
@@ -958,7 +958,7 @@
     .advantage-card h3 {
         font-size: 1.2rem !important;
         color: #1e293b !important;
-        margin: 0 0 15px 0 !important;
+        margin: 0 0 10px 0 !important;
         font-weight: 600 !important;
         text-align: center !important;
         width: 100% !important;
@@ -1065,10 +1065,17 @@
     }
     
     /* Полное соответствие десктопному блоку "Как мы работаем" */
+    .workflow-section {
+        padding: 25px 10px !important;
+    }
+    
+    .workflow-section .workflow-steps-new,
+    .workflow-section .container .workflow-steps-new,
     .workflow-steps-new {
         grid-template-columns: 1fr !important;
-        gap: 32px !important;
+        gap: 18px !important;
         justify-items: center !important;
+        margin-bottom: 30px !important;
     }
     
     .workflow-step-new {
@@ -1077,17 +1084,19 @@
         align-items: center !important;
         justify-content: flex-start !important;
         width: 100% !important;
+        margin: 0 !important;
+        padding: 0 !important;
     }
     
     .workflow-step-new .step-content-new {
         width: min(320px, 92%) !important;
-        margin: 24px auto 0 auto !important;
+        margin: 14px auto 0 auto !important;
         padding: 0 !important;
         text-align: center !important;
     }
     
     .workflow-step-new .step-content-new h3 {
-        margin: 0 auto 16px auto !important;
+        margin: 0 auto 10px auto !important;
         text-align: center !important;
         font-size: 20px !important;
         line-height: 1.4 !important;
@@ -1106,14 +1115,17 @@
 
 /* ПРИНУДИТЕЛЬНЫЕ СТИЛИ С МАКСИМАЛЬНОЙ СПЕЦИФИЧНОСТЬЮ */
 @media (max-width: 768px), (orientation: landscape) and (max-height: 520px) {
+    .workflow-section .workflow-steps-new,
+    .workflow-section .container .workflow-steps-new,
     .workflow-steps-new {
         grid-template-columns: 1fr !important;
-        gap: 28px !important;
+        gap: 18px !important;
+        margin-bottom: 30px !important;
     }
     
     .workflow-steps-new .workflow-step-new .step-content-new {
         width: min(320px, 94%) !important;
-        margin: 28px auto 0 auto !important;
+        margin: 14px auto 0 auto !important;
         padding: 0 !important;
         text-align: center !important;
     }
@@ -1122,6 +1134,7 @@
         font-size: 20px !important;
         line-height: 1.4 !important;
         color: #ffffff !important;
+        margin-bottom: 10px !important;
     }
     
     .workflow-steps-new .workflow-step-new .step-content-new p {
@@ -1446,13 +1459,14 @@
         width: 100% !important;
         max-width: 100% !important;
         padding: 0 !important;
-        margin: 0 !important;
+        margin: 0 0 25px 0 !important;
     }
     
     .additional-service .service-item {
         width: 100% !important;
         max-width: 100% !important;
         box-sizing: border-box !important;
+        margin-bottom: 0 !important;
     }
     
     /* ===== ДОПОЛНИТЕЛЬНЫЕ КОМФОРТНЫЕ ОТСТУПЫ ===== */
@@ -1478,24 +1492,45 @@
     }
     
     .projects-intro {
-        margin: 20px 15px 35px 15px !important;
+        margin: 12px 15px 35px 15px !important;
         padding: 0 !important;
+    }
+    
+    .projects-section .section-header {
+        margin-bottom: 12px !important;
+        margin-top: 0 !important;
+    }
+    
+    .projects-section .container .section-header {
+        margin-bottom: 12px !important;
+    }
+    
+    .projects-intro {
+        margin-top: 8px !important;
+    }
+    
+    .projects-section .projects-intro {
+        margin-top: 8px !important;
+        margin-bottom: 35px !important;
     }
     
     .projects-intro p {
         font-size: 16px !important;
         padding: 20px 25px !important;
         line-height: 1.5 !important;
+        margin: 0 !important;
     }
     
     /* Галерея проектов */
     .projects-gallery {
-        grid-template-columns: 1fr !important;
+        display: flex !important;
+        flex-direction: column !important;
         gap: 30px !important;
         padding: 0 15px !important;
         width: 100% !important;
         max-width: 560px !important;
         margin: 0 auto !important;
+        overflow: visible !important;
     }
     
     /* Главное окно */
@@ -1505,6 +1540,7 @@
         width: 100% !important;
         max-width: 560px !important;
         margin: 0 auto !important;
+        overflow: visible !important;
     }
     
     /* Боковые окна */
@@ -1515,20 +1551,73 @@
         width: 100% !important;
         max-width: 560px !important;
         margin: 0 auto !important;
+        overflow: visible !important;
+        justify-content: space-between !important;
     }
     
+    /* КРИТИЧЕСКИЕ ИСПРАВЛЕНИЯ ДЛЯ СКРИНШОТОВ - ПЕРЕКРЫВАЕМ ВСЕ СТИЛИ */
+    .projects-section .side-window,
+    .projects-gallery .side-window,
     .side-window {
         border-width: 2px !important;
         border-radius: 12px !important;
+        overflow: visible !important;
+        box-sizing: border-box !important;
+        aspect-ratio: unset !important;
+        min-height: auto !important;
+        height: auto !important;
+        position: relative !important;
+    }
+    
+    /* Боковые окна внутри projects-side-windows - по 50% ширины */
+    .projects-side-windows .side-window {
+        width: calc(50% - 7.5px) !important;
+        max-width: calc(50% - 7.5px) !important;
+        flex: 0 0 calc(50% - 7.5px) !important;
+    }
+    
+    .projects-section .side-window img,
+    .projects-gallery .side-window img,
+    .projects-side-windows .side-window img,
+    .side-window img {
+        object-fit: contain !important;
+        width: 100% !important;
+        height: auto !important;
+        max-height: none !important;
+        display: block !important;
+        position: relative !important;
     }
     
     .side-window:hover {
         transform: translateY(-3px) scale(1.02) !important;
     }
     
+    .projects-section .main-window-content,
+    .projects-gallery .main-window-content,
+    .projects-main-window .main-window-content,
     .main-window-content {
         border-width: 3px !important;
         border-radius: 15px !important;
+        overflow: visible !important;
+        width: 100% !important;
+        max-width: 100% !important;
+        box-sizing: border-box !important;
+        aspect-ratio: unset !important;
+        min-height: auto !important;
+        height: auto !important;
+        position: relative !important;
+    }
+    
+    .projects-section .main-window-content img,
+    .projects-gallery .main-window-content img,
+    .projects-main-window .main-window-content img,
+    .main-window-content img {
+        object-fit: contain !important;
+        width: 100% !important;
+        height: auto !important;
+        max-height: none !important;
+        display: block !important;
+        position: relative !important;
     }
     
     .main-window-content:hover {
@@ -1645,7 +1734,6 @@
 
 @media (orientation: landscape) and (max-height: 520px) {
     .projects-social-banner,
-    .projects-marketplace-text,
     .projects-social-wrapper,
     .social-icons-inline {
         margin-left: auto !important;
@@ -1654,7 +1742,10 @@
     }
 
     .projects-marketplace-text {
+        margin: 25px auto 15px auto !important;
+        width: min(85%, 480px) !important;
         justify-content: center !important;
+        transform: translateY(8px) !important;
     }
 }
 
@@ -1673,6 +1764,8 @@
 
     .projects-marketplace-text {
         max-width: 460px !important;
+        margin: 25px auto 15px auto !important;
+        transform: translateY(8px) !important;
     }
 
     .projects-marketplace-text p {
@@ -1731,6 +1824,41 @@
         box-shadow: 0 2px 12px rgba(144, 238, 144, 0.35) !important;
         white-space: nowrap !important;
         flex: 0 0 auto !important;
+    }
+}
+
+/* КРИТИЧЕСКИЕ ПЕРЕОПРЕДЕЛЕНИЯ ДЛЯ WORKFLOW - В КОНЦЕ ФАЙЛА ДЛЯ МАКСИМАЛЬНОЙ СПЕЦИФИЧНОСТИ */
+@media (max-width: 768px) {
+    body .workflow-section .container .workflow-steps-new,
+    html body .workflow-section .container .workflow-steps-new,
+    section.workflow-section .container .workflow-steps-new,
+    .workflow-section .workflow-steps-new,
+    .workflow-section .container .workflow-steps-new,
+    .workflow-steps-new {
+        gap: 18px !important;
+        margin-bottom: 30px !important;
+    }
+    
+    body .workflow-section .workflow-step-new .step-content-new,
+    html body .workflow-section .workflow-step-new .step-content-new,
+    section.workflow-section .workflow-step-new .step-content-new,
+    .workflow-step-new .step-content-new {
+        margin-top: 14px !important;
+        padding: 0 !important;
+    }
+    
+    body .workflow-section .workflow-step-new .step-content-new h3,
+    html body .workflow-section .workflow-step-new .step-content-new h3,
+    section.workflow-section .workflow-step-new .step-content-new h3,
+    .workflow-steps-new .workflow-step-new .step-content-new h3,
+    .workflow-step-new .step-content-new h3 {
+        margin-bottom: 10px !important;
+    }
+    
+    body .workflow-section,
+    html body .workflow-section,
+    section.workflow-section {
+        padding: 25px 10px !important;
     }
 }
 

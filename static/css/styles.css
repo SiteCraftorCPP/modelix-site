@@ -6421,6 +6421,26 @@ body section#about .container .advantages-grid .advantage-card.modern-card p {
     padding: 0;
     justify-items: center;
 }
+
+@media (max-width: 768px) {
+    .workflow-steps-new {
+        gap: 18px !important;
+        margin-bottom: 30px !important;
+    }
+    
+    .workflow-step-new .step-content-new {
+        margin-top: 14px !important;
+        padding: 0 !important;
+    }
+    
+    .workflow-step-new .step-content-new h3 {
+        margin-bottom: 10px !important;
+    }
+    
+    .workflow-section {
+        padding: 25px 10px !important;
+    }
+}
 .workflow-step-new {
     text-align: center;
     position: relative;
@@ -6644,22 +6664,25 @@ body section#about .container .advantages-grid .advantage-card.modern-card p {
 }
 @media (max-width: 768px) {
     .workflow-steps-new {
-        grid-template-columns: 1fr;
-        gap: 30px;
+        grid-template-columns: 1fr !important;
+        gap: 18px !important;
+        margin-bottom: 30px !important;
     }
     
-    .step-content-new {
+    .workflow-step-new .step-content-new {
         max-width: 100%;
         width: 100%;
-        padding: 30px 20px !important;
-        min-height: 260px;
+        padding: 0 !important;
+        min-height: auto !important;
         height: auto;
         box-sizing: border-box;
+        margin-top: 14px !important;
     }
     
     .step-content-new h3 {
         font-size: 18px;
         color: #ffffff !important;
+        margin-bottom: 10px !important;
     }
     
     .step-content-new p {
@@ -6669,16 +6692,30 @@ body section#about .container .advantages-grid .advantage-card.modern-card p {
         hyphens: auto !important;
         color: #ffffff !important;
     }
+    
+    .workflow-section {
+        padding: 25px 10px !important;
+    }
 }
 
 /* ПРИНУДИТЕЛЬНЫЕ СТИЛИ ДЛЯ ЗАГОЛОВКОВ "КАК МЫ РАБОТАЕМ" */
 @media (max-width: 768px) {
+    .workflow-steps-new {
+        gap: 18px !important;
+        margin-bottom: 30px !important;
+    }
+    
+    .workflow-step-new .step-content-new {
+        margin-top: 14px !important;
+        padding: 0 !important;
+    }
+    
     .workflow-steps-new .workflow-step-new .step-content-new h3 {
         font-size: 1.0rem !important;
         line-height: 1.3 !important;
         white-space: normal !important;
         text-align: center !important;
-        margin: 0 auto 15px auto !important;
+        margin: 0 auto 10px auto !important;
         display: block !important;
         color: #ffffff !important;
     }
@@ -6689,6 +6726,10 @@ body section#about .container .advantages-grid .advantage-card.modern-card p {
     .workflow-step-new p {
         text-align: justify !important;
         color: #ffffff !important;
+    }
+    
+    .workflow-section {
+        padding: 25px 10px !important;
     }
 }
 

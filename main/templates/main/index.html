@@ -23,10 +23,10 @@
     <script>document.documentElement.className += ' js-loading';</script>
 
     <!-- Preload критических CSS для мобильной версии -->
-    <link rel="preload" href="/static/css/mobile.css?v=45.0" as="style">
+    <link rel="preload" href="/static/css/mobile.css?v=48.0" as="style">
     
-    <link rel="stylesheet" href="/static/css/styles.css?v=146.0">
-    <link rel="stylesheet" href="/static/css/mobile.css?v=45.0" onload="document.documentElement.className = document.documentElement.className.replace('js-loading', '');">
+    <link rel="stylesheet" href="/static/css/styles.css?v=182.0">
+    <link rel="stylesheet" href="/static/css/mobile.css?v=48.0" onload="document.documentElement.className = document.documentElement.className.replace('js-loading', '');">
     <link rel="stylesheet" href="/static/css/social-links-fixed.css?v=1.3">
     <link rel="stylesheet" href="/static/css/animated-icons-fix.css?v=1.4">
     <link rel="stylesheet" href="/static/css/hero-responsive.css?v=1.0">
@@ -810,7 +810,7 @@
                     </div>
                     
                     <div class="form-row">
-                        <textarea name="message" placeholder="Опишите ваши пожелания, требования и особенности проекта." class="form-textarea"></textarea>
+                        <textarea name="message" placeholder="Опишите ваши пожелания, требования и особенности проекта." class="form-textarea main-font textarea-with-icon"></textarea>
                         
                         <div class="file-upload">
                             <input type="file" name="file" id="fileInput" accept=".stl,.obj,.3mf,.step,.iges">
@@ -849,27 +849,29 @@
                 <h2 class="section-title">НАШИ ПРОЕКТЫ</h2>
             </div>
             
+            {% with main_image=projects_block.main_screenshot_url left_image=projects_block.left_screenshot_url right_image=projects_block.right_screenshot_url %}
             <!-- Интро текст -->
             <div class="projects-intro">
-                <p>Отслеживайте наши проекты в социальных сетях.</p>
+                <p>{{ projects_block.intro_text }}</p>
             </div>
             
             <!-- Блок со скриншотами -->
             <div class="projects-gallery">
                 <!-- Главное окно (слева) -->
-                <div class="projects-main-window">
+                <div class="projects-main-window"
+                     data-screenshot="{{ main_image|default_if_none:'' }}"
+                     data-url="{{ projects_block.main_url|default_if_none:'' }}">
                     <a href="{% if projects_block.main_url %}{{ projects_block.main_url }}{% else %}#{% endif %}" 
                        id="mainProjectLink"
-                       {% if projects_block.main_url %}target="_blank" rel="noopener noreferrer"{% endif %}
-                       class="main-window-content" id="mainProjectWindow">
-                        {% if projects_block.main_screenshot %}
-                            <img src="{{ projects_block.main_screenshot_url }}" alt="Главный проект" id="mainScreenshot">
-                        {% else %}
-                            <div class="window-placeholder">
-                                <i class="fas fa-image"></i>
-                                <p>Загрузите скриншот</p>
-                            </div>
+                       class="main-window-content"
+                       {% if projects_block.main_url %}target="_blank" rel="noopener noreferrer"{% endif %}>
+                        {% if main_image %}
+                            <img src="{{ main_image }}" alt="Главный проект" id="mainScreenshot">
                         {% endif %}
+                        <div class="window-placeholder" {% if main_image %}style="display: none;"{% endif %}>
+                            <i class="fas fa-image"></i>
+                            <p>Загрузите скриншот</p>
+                        </div>
                         <div class="window-overlay"></div>
                     </a>
                 </div>
@@ -877,78 +879,71 @@
                 <!-- Боковые окна (справа) -->
                 <div class="projects-side-windows">
                     <div class="side-window" 
-                         data-screenshot="{% if projects_block.left_screenshot %}{{ projects_block.left_screenshot_url }}{% endif %}"
-                         data-url="{% if projects_block.left_url %}{{ projects_block.left_url }}{% endif %}">
-                        {% if projects_block.left_screenshot %}
-                            <img src="{{ projects_block.left_screenshot_url }}" alt="Проект">
-                        {% else %}
-                            <div class="window-placeholder">
-                                <i class="fas fa-image"></i>
-                            </div>
+                         data-screenshot="{{ left_image|default_if_none:'' }}"
+                         data-url="{{ projects_block.left_url|default_if_none:'' }}">
+                        {% if left_image %}
+                            <img src="{{ left_image }}" alt="Проект">
                         {% endif %}
+                        <div class="window-placeholder" {% if left_image %}style="display: none;"{% endif %}>
+                            <i class="fas fa-image"></i>
+                        </div>
                     </div>
                     
                     <div class="side-window" 
-                         data-screenshot="{% if projects_block.right_screenshot %}{{ projects_block.right_screenshot_url }}{% endif %}"
-                         data-url="{% if projects_block.right_url %}{{ projects_block.right_url }}{% endif %}">
-                        {% if projects_block.right_screenshot %}
-                            <img src="{{ projects_block.right_screenshot_url }}" alt="Проект">
-                        {% else %}
-                            <div class="window-placeholder">
-                                <i class="fas fa-image"></i>
-                            </div>
+                         data-screenshot="{{ right_image|default_if_none:'' }}"
+                         data-url="{{ projects_block.right_url|default_if_none:'' }}">
+                        {% if right_image %}
+                            <img src="{{ right_image }}" alt="Проект">
                         {% endif %}
+                        <div class="window-placeholder" {% if right_image %}style="display: none;"{% endif %}>
+                            <i class="fas fa-image"></i>
+                        </div>
                     </div>
                 </div>
             </div>
             
-            <!-- Плашка с соцсетями и иконки под галереей -->
-            <div class="projects-social-wrapper">
-                <div class="projects-social-banner">
-                    <p class="social-banner-text">Мы в социальных сетях</p>
-                </div>
-                <div class="social-icons-inline">
-                    {% if phone_links.telegram %}
-                    <a href="{{ phone_links.telegram.url }}" target="_blank" rel="noopener noreferrer" class="social-icon-small" title="Telegram">
-                        <i class="{{ phone_links.telegram.icon }}"></i>
-                    </a>
-                    {% endif %}
-                    {% if phone_links.vk_group %}
-                    <a href="{{ phone_links.vk_group.url }}" target="_blank" rel="noopener noreferrer" class="social-icon-small" title="VK">
-                        <i class="{{ phone_links.vk_group.icon }}"></i>
-                    </a>
-                    {% endif %}
-                    {% if phone_links.avito %}
-                    <a href="{{ phone_links.avito.url }}" target="_blank" rel="noopener noreferrer" class="social-icon-small" title="Авито">
-                        <i class="{{ phone_links.avito.icon }}"></i>
-                    </a>
-                    {% endif %}
-                    {% if phone_links.ozon %}
-                    <a href="{{ phone_links.ozon.url }}" target="_blank" rel="noopener noreferrer" class="social-icon-small" title="Ozon">
-                        <i class="{{ phone_links.ozon.icon }}"></i>
-                    </a>
-                    {% endif %}
-                </div>
+            <!-- Иконки соцсетей под скриншотами -->
+            <div class="projects-social-under">
+                {% if phone_links.telegram %}
+                <a href="{{ phone_links.telegram.url }}" target="_blank" rel="noopener noreferrer" class="social-icon-small telegram-icon" title="Telegram">
+                    <i class="{{ phone_links.telegram.icon }}"></i>
+                </a>
+                {% endif %}
+                {% if phone_links.vk_group %}
+                <a href="{{ phone_links.vk_group.url }}" target="_blank" rel="noopener noreferrer" class="social-icon-small vk-icon" title="VK">
+                    <i class="{{ phone_links.vk_group.icon }}"></i>
+                </a>
+                {% endif %}
+                {% if phone_links.youtube %}
+                <a href="{{ phone_links.youtube.url }}" target="_blank" rel="noopener noreferrer" class="social-icon-small youtube-icon" title="YouTube">
+                    <i class="{{ phone_links.youtube.icon }}"></i>
+                </a>
+                {% endif %}
             </div>
+            {% endwith %}
             
             <!-- Текст о продукции -->
             <div class="projects-marketplace-text">
-                <p>Мы выпускаем готовую продукцию. Отзывы, изделия и много другое смотрите на маркетплейсах.</p>
+                <p>{{ projects_block.marketplace_text }}</p>
             </div>
             
             <!-- Большие иконки Авито и Ozon -->
             <div class="projects-marketplace-icons">
                 {% if phone_links.avito %}
-                <a href="{{ phone_links.avito.url }}" target="_blank" rel="noopener noreferrer" class="marketplace-icon-large avito">
-                    <i class="{{ phone_links.avito.icon }}"></i>
-                    <span>Авито</span>
-                </a>
+                <div class="marketplace-item">
+                    <a href="{{ phone_links.avito.url }}" target="_blank" rel="noopener noreferrer" class="marketplace-icon-large avito">
+                        <i class="{{ phone_links.avito.icon }}"></i>
+                    </a>
+                    <span class="marketplace-label">Avito</span>
+                </div>
                 {% endif %}
                 {% if phone_links.ozon %}
-                <a href="{{ phone_links.ozon.url }}" target="_blank" rel="noopener noreferrer" class="marketplace-icon-large ozon">
-                    <i class="{{ phone_links.ozon.icon }}"></i>
-                    <span>Ozon</span>
-                </a>
+                <div class="marketplace-item">
+                    <a href="{{ phone_links.ozon.url }}" target="_blank" rel="noopener noreferrer" class="marketplace-icon-large ozon">
+                        <i class="{{ phone_links.ozon.icon }}"></i>
+                    </a>
+                    <span class="marketplace-label">Ozon</span>
+                </div>
                 {% endif %}
             </div>
         </div>

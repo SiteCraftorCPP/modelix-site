@@ -6,6 +6,7 @@ document.addEventListener('DOMContentLoaded', function() {
     initializeAnimations();
     initializeNavigation();
     initializeSlider();
+    initializeProjectsGallery();
     initializeFAQ();
     initializeMaterials();
     initializeContactForm();
@@ -54,13 +55,11 @@ function initializeNavigation() {
         window.addEventListener('scroll', () => {
             const currentScrollY = window.scrollY;
             
-            // Изменяем прозрачность в зависимости от скролла
+            // Изменяем тень в зависимости от скролла, градиент остается
             if (currentScrollY > 50) {
-                navigation.style.background = 'rgba(15, 23, 42, 0.98)';
-                navigation.style.boxShadow = '0 4px 20px rgba(0, 0, 0, 0.15)';
+                navigation.style.boxShadow = '0 2px 10px rgba(0, 0, 0, 0.25)';
             } else {
-                navigation.style.background = 'rgba(15, 23, 42, 0.95)';
-                navigation.style.boxShadow = '0 2px 10px rgba(0, 0, 0, 0.1)';
+                navigation.style.boxShadow = '0 2px 10px rgba(0, 0, 0, 0.2)';
             }
             
             lastScrollY = currentScrollY;
@@ -161,7 +160,7 @@ function initializeAnimations() {
     }
     
     // Анимация карточек при наведении
-    const cards = document.querySelectorAll('.tech-card, .info-card, .advantage-card, .workflow-step, .stat-item');
+    const cards = document.querySelectorAll('.tech-card, .info-card, .workflow-step, .stat-item');
     cards.forEach(card => {
         card.addEventListener('mouseenter', function() {
             this.style.transform = 'translateY(-10px) scale(1.02)';
@@ -198,10 +197,6 @@ function initializeScrollAnimations() {
             if (entry.isIntersecting) {
                 entry.target.classList.add('animated');
                 
-                // Анимация счетчиков
-                if (entry.target.classList.contains('stat-number')) {
-                    animateCounter(entry.target);
-                }
             }
         });
     }, observerOptions);
@@ -213,27 +208,6 @@ function initializeScrollAnimations() {
         observer.observe(el);
     });
     
-    // Анимация счетчиков
-    const statNumbers = document.querySelectorAll('.stat-number');
-    statNumbers.forEach(stat => observer.observe(stat));
-}
-
-function animateCounter(element) {
-    const target = element.textContent.replace(/[^0-9]/g, '');
-    const duration = 2000;
-    const step = target / (duration / 16);
-    let current = 0;
-    
-    const timer = setInterval(() => {
-        current += step;
-        if (current >= target) {
-            current = target;
-            clearInterval(timer);
-        }
-        
-        const prefix = element.textContent.includes('>') ? '>' : '';
-        element.textContent = prefix + Math.floor(current);
-    }, 16);
 }
 
 // ========================================
@@ -308,6 +282,145 @@ function initializeSlider() {
             }
         }
     }
+}
+
+// ========================================
+// ГАЛЕРЕЯ ПРОЕКТОВ
+// ========================================
+
+function initializeProjectsGallery() {
+    const mainWindow = document.querySelector('.projects-main-window');
+    const mainLink = document.getElementById('mainProjectLink');
+    if (!mainWindow || !mainLink) {
+        return;
+    }
+
+    const sideWindows = document.querySelectorAll('.projects-side-windows .side-window');
+    if (!sideWindows.length) {
+        return;
+    }
+
+    let mainImage = document.getElementById('mainScreenshot');
+    const mainPlaceholder = mainWindow.querySelector('.window-placeholder');
+
+    const getWindowData = (element) => ({
+        screenshot: (element?.dataset?.screenshot || '').trim(),
+        url: (element?.dataset?.url || '').trim()
+    });
+
+    const setWindowData = (element, data) => {
+        element.dataset.screenshot = data.screenshot || '';
+        element.dataset.url = data.url || '';
+    };
+
+    const updateMainWindow = (data) => {
+        setWindowData(mainWindow, data);
+
+        if (data.screenshot) {
+            if (!mainImage) {
+                mainImage = document.createElement('img');
+                mainImage.id = 'mainScreenshot';
+                mainImage.alt = 'Главный проект';
+                const overlay = mainLink.querySelector('.window-overlay');
+                if (overlay) {
+                    mainLink.insertBefore(mainImage, overlay);
+                } else {
+                    mainLink.appendChild(mainImage);
+                }
+            }
+            mainImage.src = data.screenshot;
+            mainImage.style.display = 'block';
+            if (mainPlaceholder) {
+                mainPlaceholder.style.display = 'none';
+            }
+        } else if (mainImage) {
+            mainImage.remove();
+            mainImage = null;
+            if (mainPlaceholder) {
+                mainPlaceholder.style.display = '';
+            }
+        } else if (mainPlaceholder) {
+            mainPlaceholder.style.display = '';
+        }
+
+        const targetUrl = data.url || '#';
+        mainLink.href = targetUrl;
+
+        if (data.url) {
+            mainLink.setAttribute('target', '_blank');
+            mainLink.setAttribute('rel', 'noopener noreferrer');
+        } else {
+            mainLink.removeAttribute('target');
+            mainLink.removeAttribute('rel');
+        }
+    };
+
+    const updateSideWindow = (windowEl, data) => {
+        setWindowData(windowEl, data);
+
+        let img = windowEl.querySelector('img');
+        const placeholder = windowEl.querySelector('.window-placeholder');
+
+        if (data.screenshot) {
+            if (!img) {
+                img = document.createElement('img');
+                img.alt = 'Проект';
+                if (placeholder) {
+                    windowEl.insertBefore(img, placeholder);
+                } else {
+                    windowEl.appendChild(img);
+                }
+            }
+            img.src = data.screenshot;
+            img.style.display = 'block';
+            if (placeholder) {
+                placeholder.style.display = 'none';
+            }
+        } else {
+            if (img) {
+                img.remove();
+            }
+            if (placeholder) {
+                placeholder.style.display = '';
+            }
+        }
+    };
+
+    const ensureInitialData = () => {
+        const initialMain = getWindowData(mainWindow);
+        if (!initialMain.screenshot && mainImage && mainImage.getAttribute('src')) {
+            initialMain.screenshot = mainImage.getAttribute('src');
+        }
+        if (!initialMain.url) {
+            initialMain.url = mainLink.getAttribute('href') || '';
+        }
+        updateMainWindow(initialMain);
+
+        sideWindows.forEach((windowEl) => {
+            const data = getWindowData(windowEl);
+            if (!data.screenshot) {
+                const img = windowEl.querySelector('img');
+                if (img && img.getAttribute('src')) {
+                    data.screenshot = img.getAttribute('src');
+                }
+            }
+            setWindowData(windowEl, data);
+        });
+    };
+
+    ensureInitialData();
+
+    sideWindows.forEach((windowEl) => {
+        windowEl.addEventListener('click', () => {
+            const sideData = getWindowData(windowEl);
+            if (!sideData.screenshot) {
+                return;
+            }
+            const mainData = getWindowData(mainWindow);
+            updateMainWindow(sideData);
+            updateSideWindow(windowEl, mainData);
+        });
+    });
 }
 
 // ========================================
@@ -720,7 +833,7 @@ function initializeModernEffects() {
     });
     
     // Интерактивные карточки с 3D эффектом
-    const cards = document.querySelectorAll('.advantage-card, .tech-card, .workflow-step');
+    const cards = document.querySelectorAll('.tech-card, .workflow-step');
     
     cards.forEach(card => {
         card.addEventListener('mousemove', handleCardMouseMove);
@@ -923,7 +1036,6 @@ function addModernCSS() {
             transform: translateY(0);
         }
         
-        .advantage-card,
         .tech-card,
         .workflow-step {
             transition: transform 0.3s ease, box-shadow 0.3s ease;
@@ -938,7 +1050,6 @@ function addModernCSS() {
                 display: none;
             }
             
-            .advantage-card,
             .tech-card,
             .workflow-step {
                 transform: none !important;

@@ -38,16 +38,14 @@ class MarketplaceLink(models.Model):
         ('youtube', 'YouTube'),
         ('ozon', 'Озон'),
         ('avito', 'Авито'),
-        ('telegram_channel', 'Telegram канал'),
     ]
     
     ICON_MAP = {
         'vk_group': 'fab fa-vk',
         'telegram': 'fab fa-telegram-plane',
         'youtube': 'fab fa-youtube',
-        'ozon': 'fas fa-box',
-        'avito': 'fas fa-newspaper',
-        'telegram_channel': 'fab fa-telegram-plane',
+        'ozon': 'fas fa-shopping-bag',
+        'avito': 'fas fa-shopping-cart',
     }
     
     COLOR_MAP = {
@@ -56,7 +54,6 @@ class MarketplaceLink(models.Model):
         'youtube': '#ff0000',
         'ozon': '#005BFF',
         'avito': '#FF6C37',
-        'telegram_channel': '#0088cc',
     }
     
     platform = models.CharField('Платформа', max_length=20, choices=PLATFORM_CHOICES, unique=True)
@@ -281,8 +278,8 @@ class WorksBlock(models.Model):
 class ProjectsBlock(models.Model):
     """Модель для управления блоком 'НАШИ ПРОЕКТЫ'"""
     # Тексты
-    intro_text = models.TextField('Текст о соцсетях', default='Отслеживайте наши проекты в социальных сетях.', max_length=200)
-    marketplace_text = models.TextField('Текст о продукции', default='Мы выпускаем готовую продукцию. Отзывы, готовую продукцию и многое другое вы можете посмотреть на наших площадках', max_length=300)
+    intro_text = models.TextField('Текст о соцсетях', default='С примерами проектов и тем, как мы их реализуем, можно ознакомиться в наших соцсетях.', max_length=200)
+    marketplace_text = models.TextField('Текст о продукции', default='Также, Помимо индивидуальных проектов, мы выпускаем готовую продукцию; оценить её качество и прочитать отзывы можно на наших онлайн-витринах.', max_length=300)
     social_banner_text = models.TextField('Текст плашки соцсетей', default='Вы можете смотреть нас в социальных сетях', max_length=150)
     
     # Главное окно (центр)

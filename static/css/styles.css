@@ -83,7 +83,8 @@ p, h1, h2, h3, h4, h5, h6, span, div, a, li, td, th, button, input, textarea, se
     
     /* Адаптивные переменные */
     --container-max-width: 1200px;
-    --section-padding: 80px 0;
+    --section-padding: 90px 0;
+    --section-spacing: 90px;
     --grid-gap: 40px;
     --border-radius: 16px;
     --font-size-h1: 3.5rem;
@@ -109,7 +110,8 @@ p, h1, h2, h3, h4, h5, h6, span, div, a, li, td, th, button, input, textarea, se
 @media (max-width: 1200px) {
     :root {
         --container-max-width: 960px;
-        --section-padding: 60px 0;
+        --section-padding: 70px 0;
+        --section-spacing: 70px;
         --grid-gap: 30px;
         --font-size-h1: 2.8rem;
         --font-size-h2: 2.1rem;
@@ -123,7 +125,8 @@ p, h1, h2, h3, h4, h5, h6, span, div, a, li, td, th, button, input, textarea, se
 @media (max-width: 992px) {
     :root {
         --container-max-width: 720px;
-        --section-padding: 50px 0;
+        --section-padding: 60px 0;
+        --section-spacing: 60px;
         --grid-gap: 25px;
         --font-size-h1: 2.5rem;
         --font-size-h2: 1.9rem;
@@ -143,7 +146,8 @@ p, h1, h2, h3, h4, h5, h6, span, div, a, li, td, th, button, input, textarea, se
 @media (max-width: 768px) {
     :root {
         --container-max-width: 100%;
-        --section-padding: 40px 0;
+        --section-padding: 50px 0;
+        --section-spacing: 50px;
         --grid-gap: 20px;
         --font-size-h1: 2.2rem;
         --font-size-h2: 1.7rem;
@@ -552,7 +556,8 @@ p, h1, h2, h3, h4, h5, h6, span, div, a, li, td, th, button, input, textarea, se
 }
 @media (max-width: 480px) {
     :root {
-        --section-padding: 25px 0;
+        --section-padding: 40px 0;
+        --section-spacing: 40px;
         --font-size-h1: 1.8rem;
         --font-size-h2: 1.4rem;
         --font-size-h3: 1.2rem;
@@ -1051,12 +1056,24 @@ html, body {
     left: 0 !important;
     right: 0 !important;
     width: 100% !important;
-    background: linear-gradient(135deg, #191970, #1e1a8a, #0f0f23) !important; /* Градиент из цветов сайта */
+    background: linear-gradient(135deg, #1a1a1a 0%, #1a1a24 50%, #1a1a1a 100%) !important; /* Очень мягкий градиент, близкий к фону сайта */
     padding: 16px 0 !important;
     z-index: 9999 !important; /* Высокий приоритет над всеми элементами */
-    box-shadow: 0 4px 20px rgba(25, 25, 112, 0.3) !important; /* Мягкая тень с синим оттенком */
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2) !important; /* Очень мягкая тень */
     backdrop-filter: none !important; /* Убираем размытие */
     transition: all 0.3s ease !important; /* Плавные переходы */
+}
+
+@keyframes gradientShift {
+    0% {
+        background-position: 0% 50%;
+    }
+    50% {
+        background-position: 100% 50%;
+    }
+    100% {
+        background-position: 0% 50%;
+    }
 }
 
 .nav-container {
@@ -1470,7 +1487,7 @@ html, body {
 
 .hero-section {
     min-height: 100vh;
-    padding: 60px 0;
+    padding: 90px 0 10px 0;
     background: #0f172a;
     position: relative;
     overflow: hidden;
@@ -1873,13 +1890,25 @@ div.social-links,
 ======================================== */
 
 .about-section {
-    padding: 40px 0 0 0; /* Уменьшено сверху */
+    padding: var(--grid-gap) 0 var(--section-padding) 0;
     background: #1a1a1a;
+    margin-bottom: -10px;
+    margin-top: -80px;
+    padding-top: 0;
+    position: relative;
+    z-index: 1;
 }
 
 .section-header {
     text-align: center;
-    margin-bottom: 0px; /* Убираем отступ снизу, так как он уже есть у .section-title */
+    margin-bottom: 0;
+}
+
+.about-section .section-header {
+    padding: var(--grid-gap) 0;
+    margin: 0;
+    padding-top: calc(var(--grid-gap) + 10px);
+    margin-bottom: -10px;
 }
 
 /* Уменьшаем отступы заголовков секций для мобильных */
@@ -1926,6 +1955,10 @@ div.social-links,
     text-align: center;
 }
 
+.about-section .section-title {
+    margin: 0;
+}
+
 /* Анимированный фон для заголовка */
 .section-title::before {
     content: '';
@@ -1953,15 +1986,17 @@ div.social-links,
 .advantages-grid {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    gap: var(--grid-gap);
-    margin-bottom: 100px;
+    column-gap: var(--grid-gap);
+    row-gap: var(--grid-gap);
+    margin-bottom: 0;
+    margin-top: -10px;
 }
 
 .info-card,
 .advantage-card {
     background: #ffffff;
     border-radius: 16px;
-    margin-bottom: 30px;
+    margin-bottom: 0;
     transition: var(--transition);
     border: 1px solid var(--gray-200);
     /* ВЕРТИКАЛЬНЫЙ LAYOUT: ИКОНКА СВЕРХУ, ТЕКСТ СНИЗУ */
@@ -1978,7 +2013,7 @@ div.social-links,
 
 .info-card:hover,
 .advantage-card:hover {
-    transform: translateY(-8px);
+    transform: none;
     box-shadow: var(--shadow-xl);
     border-color: var(--primary-blue);
 }
@@ -2266,7 +2301,7 @@ body .advantage-card.modern-card .advantage-text {
 ======================================== */
 
 .technologies-section {
-    padding: 60px 0; /* Уменьшено с 120px */
+    padding: var(--section-padding);
     background: #1a1a1a;
 }
 
@@ -2414,8 +2449,9 @@ body .advantage-card.modern-card .advantage-text {
 ======================================== */
 
 .workflow-section {
-    padding: 40px 0 60px 0; /* Уменьшено снизу с 120px до 60px */
+    padding: 60px 0 90px 0 !important;
     background: #1a1a1a;
+    margin-top: -20px !important;
 }
 
 .workflow-section .container {
@@ -2592,7 +2628,7 @@ body .advantage-card.modern-card .advantage-text {
 ======================================== */
 
 .contact-section {
-    padding: 60px 0; /* Уменьшено с 120px */
+    padding: var(--section-padding);
     background: linear-gradient(135deg, var(--primary-blue), var(--secondary-blue), #191970);
     color: white;
 }
@@ -2973,32 +3009,16 @@ body .advantage-card.modern-card .advantage-text {
 }
 
 .service-option::before {
-    content: '';
-    position: absolute;
-    left: 0;
-    top: 0;
-    bottom: 0;
-    width: 3px;
-    background: linear-gradient(180deg, #191970, #1e1a8a);
-    border-radius: 3px 0 0 3px;
-    opacity: 0;
-    transition: opacity 0.3s ease;
+    display: none;
 }
 
 .service-option:hover {
     background: rgba(255, 255, 255, 0.15);
     color: #fff;
     border-color: rgba(255, 255, 255, 0.3);
-    transform: translateX(4px);
-    box-shadow: 0 4px 12px rgba(25, 25, 112, 0.3);
-}
-
-.service-option:hover::before {
-    opacity: 1;
 }
 
 .service-option:active {
-    transform: translateX(2px);
     background: rgba(255, 255, 255, 0.2);
 }
 
@@ -3029,6 +3049,26 @@ body .advantage-card.modern-card .advantage-text {
 .form-textarea {
     resize: vertical;
     min-height: 80px;
+}
+
+.main-font {
+    font-family: 'Montserrat', 'Inter', 'Arial', sans-serif !important;
+    font-weight: 500;
+    letter-spacing: 0.02em;
+}
+
+.textarea-with-icon {
+    position: relative;
+    padding-top: 70px;
+    text-align: center;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='64' height='64' viewBox='0 0 64 64' fill='none'%3E%3Crect x='6' y='18' width='52' height='30' rx='5' ry='5' stroke='%23E2E8F0' stroke-width='2' fill='rgba(255,255,255,0.05)'/%3E%3Crect x='12' y='24' width='40' height='7' rx='2' ry='2' fill='%23CBD5F5'/%3E%3Cg fill='%23E2E8F0'%3E%3Crect x='14' y='34' width='4' height='4'/%3E%3Crect x='20' y='34' width='4' height='4'/%3E%3Crect x='26' y='34' width='4' height='4'/%3E%3Crect x='32' y='34' width='4' height='4'/%3E%3Crect x='38' y='34' width='4' height='4'/%3E%3Crect x='44' y='34' width='4' height='4'/%3E%3C/g%3E%3Crect x='22' y='40' width='20' height='4' rx='2' ry='2' fill='%23F8FAFC'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: center 14px;
+    background-size: 52px;
+}
+
+.textarea-with-icon::placeholder {
+    text-align: center;
 }
 
 .file-upload {
@@ -3607,7 +3647,10 @@ body .advantage-card.modern-card .advantage-text {
 ======================================== */
 
 .projects-section {
-    padding: 80px 0 100px 0;
+    margin-top: -40px;
+    --projects-gap: 32px;
+    --projects-block-gap: 52px;
+    padding: 50px 0 90px 0;
     background: linear-gradient(135deg, #0f0f23 0%, #1a1a1a 50%, #0f0f23 100%);
     position: relative;
     overflow: hidden;
@@ -3627,58 +3670,48 @@ body .advantage-card.modern-card .advantage-text {
 /* Интро текст */
 .projects-intro {
     text-align: center;
-    margin: 30px auto 50px;
-    max-width: 700px;
+    margin: 10px auto var(--projects-block-gap);
+    max-width: 1000px;
     position: relative;
     z-index: 1;
+    padding: 0 20px;
 }
 
 .projects-intro p {
-    font-size: 22px;
-    color: rgba(255, 255, 255, 0.88);
+    font-size: 21px;
+    color: rgba(255, 255, 255, 0.92);
+    line-height: 1.75;
     font-weight: 500;
-    letter-spacing: 0.3px;
-    line-height: 1.6;
-    background: linear-gradient(135deg, rgba(25, 25, 112, 0.2), rgba(30, 26, 138, 0.2));
-    padding: 25px 40px;
-    border-radius: 20px;
-    border: 2px solid rgba(255, 255, 255, 0.15);
-    backdrop-filter: blur(10px);
-    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.3);
-    transition: all 0.3s ease;
-}
-
-.projects-intro p:hover {
-    border-color: rgba(25, 25, 112, 0.5);
-    box-shadow: 0 12px 40px rgba(0, 0, 0, 0.4), 0 0 30px rgba(25, 25, 112, 0.3);
-    transform: translateY(-2px);
+    letter-spacing: 0.35px;
+    margin: 0;
 }
 
 /* Галерея проектов */
 .projects-gallery {
     display: flex;
     justify-content: center;
-    align-items: flex-start;
-    gap: 40px;
-    max-width: 1280px;
-    margin: 0 auto;
+    align-items: stretch;
+    gap: var(--projects-gap);
+    max-width: 1400px;
+    margin: 0 auto var(--projects-block-gap);
     position: relative;
-    z-index: 1;
+    z-index: 5;
     padding: 0 20px;
     width: 100%;
     box-sizing: border-box;
-    flex-wrap: wrap;
+    flex-wrap: nowrap;
 }
 
 /* Боковые окна (справа) */
 .projects-side-windows {
     display: flex;
     flex-direction: column;
-    gap: 25px;
+    gap: var(--projects-gap);
     position: relative;
-    z-index: 1;
+    z-index: 5;
     width: 350px;
     flex-shrink: 0;
+    align-self: stretch;
 }
 
 .side-window {
@@ -3692,7 +3725,7 @@ body .advantage-card.modern-card .advantage-text {
     background: #000;
     transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
     box-shadow: 0 8px 25px rgba(0, 0, 0, 0.4);
-    z-index: 1;
+    z-index: 5;
 }
 
 .side-window:hover,
@@ -3725,7 +3758,8 @@ body .advantage-card.modern-card .advantage-text {
     flex-shrink: 0;
     display: flex;
     flex-direction: column;
-    gap: 25px;
+    gap: var(--projects-gap);
+    align-self: stretch;
 }
 
 .main-window-content {
@@ -3795,14 +3829,15 @@ body .advantage-card.modern-card .advantage-text {
     display: flex;
     align-items: center;
     justify-content: center;
-    gap: 25px;
+    gap: var(--projects-gap);
     width: 100%;
     max-width: calc((350px * 9/16 * 2 + 25px) * 16/9 + 40px + 350px);
-    margin: 35px auto 0;
+    margin: 0 auto var(--projects-block-gap);
     padding: 0 20px;
     box-sizing: border-box;
     position: relative;
     z-index: 1;
+    flex-wrap: wrap;
 }
 
 /* Горизонтальный ряд иконок */
@@ -3815,7 +3850,7 @@ body .advantage-card.modern-card .advantage-text {
 
 /* Плашка с соцсетями (только текст) */
 .projects-social-banner {
-    padding: 20px 30px;
+    padding: 18px 32px;
     background: linear-gradient(135deg, rgba(25, 25, 112, 0.25), rgba(30, 26, 138, 0.25));
     border: 2px solid rgba(255, 255, 255, 0.2);
     border-radius: 18px;
@@ -3841,9 +3876,22 @@ body .advantage-card.modern-card .advantage-text {
 /* Горизонтальный ряд иконок */
 .social-icons-inline {
     display: flex;
-    justify-content: flex-start;
-    gap: 35px;
-    flex-wrap: nowrap;
+    justify-content: center;
+    gap: var(--projects-gap);
+    flex-wrap: wrap;
+}
+
+/* Вертикальный ряд иконок справа от скриншотов */
+.social-icons-vertical {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    margin-left: 1px;
+    flex-shrink: 0;
+    align-self: stretch;
+    padding: 0;
+    min-height: 100%;
 }
 .social-icon-small {
     width: 65px;
@@ -3859,6 +3907,8 @@ body .advantage-card.modern-card .advantage-text {
     text-decoration: none;
     transition: all 0.3s ease;
     backdrop-filter: blur(10px);
+    position: relative;
+    overflow: hidden;
 }
 
 .social-icon-small:hover {
@@ -3868,13 +3918,85 @@ body .advantage-card.modern-card .advantage-text {
     box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
 }
 
+.social-icon-small.telegram-icon {
+    background: linear-gradient(135deg, #1f94d0, #2bb6f5);
+    border: none;
+    box-shadow: 0 10px 30px rgba(34, 150, 210, 0.35);
+}
+
+.social-icon-small.telegram-icon i {
+    color: #ffffff;
+    font-size: 28px;
+}
+
+.social-icon-small.vk-icon {
+    background: linear-gradient(135deg, #0d6efd, #0a53c6);
+    border: none;
+    box-shadow: 0 10px 30px rgba(13, 110, 253, 0.35);
+}
+
+.social-icon-small.vk-icon i {
+    color: #ffffff;
+    font-size: 28px;
+}
+
+.social-icon-small.youtube-icon {
+    background: linear-gradient(135deg, #ef4444, #dc2626);
+    border: none;
+    box-shadow: 0 10px 30px rgba(220, 38, 38, 0.35);
+}
+
+.social-icon-small.youtube-icon i {
+    color: #ffffff;
+    font-size: 30px;
+}
+
+.social-icon-small.avito-icon {
+    background-color: #ffffff;
+    border: none;
+    box-shadow: 0 12px 32px rgba(15, 23, 42, 0.35);
+    color: transparent;
+    background-image:
+        radial-gradient(circle at 30% 30%, #a855f7 11%, transparent 12%),
+        radial-gradient(circle at 70% 24%, #38bdf8 18%, transparent 19%),
+        radial-gradient(circle at 32% 72%, #22c55e 22%, transparent 23%),
+        radial-gradient(circle at 70% 72%, #ef4444 16%, transparent 17%);
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+}
+
+.social-icon-small.avito-icon i {
+    display: none;
+}
+
+.social-icon-small.ozon-icon {
+    background: #2d5ef9;
+    border: none;
+    box-shadow: 0 12px 32px rgba(45, 94, 249, 0.35);
+    font-weight: 800;
+    letter-spacing: 0.08em;
+    color: transparent;
+}
+
+.social-icon-small.ozon-icon::after {
+    content: 'OZON';
+    color: #ffffff;
+    font-size: 18px;
+    letter-spacing: 0.08em;
+}
+
+.social-icon-small.ozon-icon i {
+    display: none;
+}
+
 /* Текст о продукции */
 .projects-marketplace-text {
     max-width: 1000px;
-    margin: 40px auto 30px;
+    margin: var(--projects-gap) auto;
     text-align: center;
     position: relative;
     z-index: 1;
+    padding: 0 20px;
 }
 
 .projects-marketplace-text p {
@@ -3885,15 +4007,41 @@ body .advantage-card.modern-card .advantage-text {
     letter-spacing: 0.35px;
 }
 
+/* Иконки соцсетей под скриншотами */
+.projects-social-under {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 35px;
+    max-width: 1400px;
+    margin: 20px auto var(--projects-block-gap);
+    padding: 0 20px;
+}
+
 /* Большие иконки маркетплейсов */
 .projects-marketplace-icons {
     display: flex;
     justify-content: center;
-    gap: 150px;
-    max-width: 1000px;
-    margin: 35px auto 0;
+    gap: var(--projects-gap);
+    max-width: 900px;
+    margin: var(--projects-gap) auto 0;
     position: relative;
     z-index: 1;
+    flex-wrap: wrap;
+}
+
+.marketplace-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+}
+
+@media (max-width: 768px) {
+    .projects-social-under {
+        gap: 25px;
+        margin: 15px auto var(--projects-block-gap);
+    }
 }
 
 .marketplace-icon-large {
@@ -3901,19 +4049,19 @@ body .advantage-card.modern-card .advantage-text {
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    gap: 12px;
-    width: 150px;
-    height: 150px;
-    background: linear-gradient(135deg, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.05));
-    border: 3px solid rgba(255, 255, 255, 0.2);
-    border-radius: 22px;
+    gap: 8px;
+    width: 78px;
+    height: 78px;
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.12), rgba(255, 255, 255, 0.06));
+    border: 2px solid rgba(255, 255, 255, 0.25);
+    border-radius: 14px;
     color: white;
     text-decoration: none;
-    font-size: 22px;
+    font-size: 14px;
     font-weight: 700;
     transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-    backdrop-filter: blur(10px);
-    box-shadow: 0 10px 35px rgba(0, 0, 0, 0.4);
+    backdrop-filter: blur(12px);
+    box-shadow: 0 8px 28px rgba(0, 0, 0, 0.35);
     position: relative;
     overflow: hidden;
 }
@@ -3960,7 +4108,7 @@ body .advantage-card.modern-card .advantage-text {
 }
 
 .marketplace-icon-large i {
-    font-size: 60px;
+    font-size: 36px;
     position: relative;
     z-index: 1;
     transition: transform 0.4s ease;
@@ -3971,9 +4119,26 @@ body .advantage-card.modern-card .advantage-text {
 }
 
 .marketplace-icon-large span {
-    position: relative;
-    z-index: 1;
-    letter-spacing: 1px;
+    display: none;
+}
+
+.marketplace-icon-large.ozon,
+.marketplace-icon-large.avito {
+    background: rgba(15, 23, 42, 0.35);
+    border: 1px solid rgba(148, 163, 184, 0.45);
+    box-shadow: 0 8px 18px rgba(2, 6, 23, 0.35);
+}
+
+.marketplace-icon-large.ozon i,
+.marketplace-icon-large.avito i {
+    color: #e2e8f0;
+}
+
+.marketplace-label {
+    font-size: 12px;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: rgba(248, 250, 252, 0.9);
 }
 
 /* Старые стили marketplace-section (оставляем для совместимости) */
@@ -4212,7 +4377,9 @@ body .advantage-card.modern-card .advantage-text {
 ======================================== */
 
 .faq-section {
-    padding: 40px 0 60px 0; /* Уменьшено снизу с 120px до 60px */
+    padding: var(--section-padding);
+    padding-top: 70px !important;
+    margin-top: -20px !important;
     background: #0f0f0f; /* Графитно-черный фон блока */
 }
 
@@ -4779,6 +4946,28 @@ html body .footer .footer-social .social-icons-row a:hover,
     border-top: 1px solid var(--gray-200);
     color: #475569 !important;
 }
+
+/* Прозрачные иконки соцсетей в футере */
+html body footer.footer .footer-social .social-icons-row .social-link {
+    background: rgba(15, 23, 42, 0.2) !important;
+    border: 1px solid rgba(255, 255, 255, 0.4) !important;
+    color: #ffffff !important;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2) !important;
+    backdrop-filter: blur(12px) !important;
+}
+
+html body footer.footer .footer-social .social-icons-row .social-link i {
+    color: inherit !important;
+}
+
+html body footer.footer .footer-social .social-icons-row .social-link:hover,
+html body footer.footer .footer-social .social-icons-row a.social-link:hover {
+    background: rgba(15, 23, 42, 0.35) !important;
+    border-color: rgba(255, 255, 255, 0.65) !important;
+    box-shadow: 0 12px 25px rgba(0, 0, 0, 0.35) !important;
+    transform: translateY(-4px) scale(1.05) !important;
+}
+
 
 /* ========================================
    МОДАЛЬНОЕ ОКНО
@@ -5765,7 +5954,7 @@ body section#about .container .advantages-grid .advantage-card.modern-card p {
 }
 
 .modern-card:hover {
-    transform: translateY(-12px) scale(1.02);
+    transform: none;
     box-shadow: 0 20px 40px rgba(25, 25, 112, 0.15);
     border-color: #191970;
 }
@@ -5790,7 +5979,7 @@ body section#about .container .advantages-grid .advantage-card.modern-card p {
 }
 
 .modern-card:hover .modern-icon {
-    transform: scale(1.15) rotateY(180deg);
+    transform: none;
     background: linear-gradient(135deg, var(--primary-blue), #191970);
 }
 
@@ -5809,7 +5998,7 @@ body section#about .container .advantages-grid .advantage-card.modern-card p {
 }
 
 .modern-card:hover .animated-icon {
-    animation: rotate-icon 0.6s ease-in-out;
+    animation: none;
 }
 
 @keyframes rotate-icon {
@@ -5844,24 +6033,24 @@ body section#about .container .advantages-grid .advantage-card.modern-card p {
 
 /* Стили для нового блока услуг */
 .services-section-new {
-    padding: 40px 0 60px 0; /* Уменьшено снизу с 120px до 60px */
+    padding: 90px 0 70px 0 !important;
     background: #1a1a1a;
 }
 
-/* Уменьшаем отступы для мобильных */
+/* Уменьшаем отступы для мобильных - используем единую переменную */
 @media (max-width: 768px) {
     .services-section-new {
-        padding: 40px 0 !important;
+        padding: var(--section-padding) !important;
     }
 }
 
 @media (max-width: 480px) {
     .services-section-new {
-        padding: 30px 0 !important;
+        padding: var(--section-padding) !important;
     }
 }
 
-/* Уменьшаем отступы для всех секций на мобильных */
+/* Уменьшаем отступы для всех секций на мобильных - используем единую переменную */
 @media (max-width: 768px) {
     .about-section,
     .technologies-section,
@@ -5869,7 +6058,7 @@ body section#about .container .advantages-grid .advantage-card.modern-card p {
     .contact-section,
     .marketplace-section,
     .faq-section {
-        padding: 40px 0 !important;
+        padding: var(--section-padding) !important;
     }
 }
 
@@ -5880,7 +6069,22 @@ body section#about .container .advantages-grid .advantage-card.modern-card p {
     .contact-section,
     .marketplace-section,
     .faq-section {
-        padding: 30px 0 !important;
+        padding: var(--section-padding) !important;
+    }
+}
+
+/* Переопределение для десктопа - уменьшаем отступ перед "Как мы работаем" */
+@media (min-width: 769px) {
+    .services-section-new {
+        padding: 90px 0 70px 0 !important;
+    }
+    .workflow-section {
+        padding: 60px 0 90px 0 !important;
+        margin-top: -20px !important;
+    }
+    .faq-section {
+        padding-top: 70px !important;
+        margin-top: -20px !important;
     }
 }
 
@@ -6228,6 +6432,24 @@ body section#about .container .advantages-grid .advantage-card.modern-card p {
     justify-content: flex-start;
     width: 100%;
 }
+
+.workflow-section .workflow-step-new .step-content-new h3 {
+    font-size: 20px !important;
+    font-weight: 700 !important;
+    color: #ffffff !important;
+    line-height: 1.4 !important;
+}
+
+.workflow-section .workflow-step-new .step-content-new p {
+    font-size: 16px !important;
+    line-height: 1.6 !important;
+    color: #ffffff !important;
+}
+
+.workflow-section .stats-grid .stat-label {
+    color: #1e293b !important;
+}
+
 .workflow-step-new p {
     text-align: justify;
     text-justify: inter-word;
@@ -6348,16 +6570,29 @@ body section#about .container .advantages-grid .advantage-card.modern-card p {
     color: white !important; /* Белый цвет для цифр с процентами */
 }
 
+.workflow-section .workflow-steps-new {
+    background: transparent !important;
+    box-shadow: none !important;
+    border: none !important;
+}
+
+.workflow-section .workflow-step-new,
+.workflow-section .step-progress-circle {
+    background: transparent !important;
+    box-shadow: none !important;
+    border: none !important;
+}
+
 .step-content-new {
     max-width: 280px;
     width: 280px;
     margin: 0 auto;
     /* Единый стандарт как у статистики */
-    background: #ffffff;
-    border: 1px solid rgba(226, 232, 240, 0.8);
+    background: transparent !important;
+    border: none !important;
     border-radius: 16px;
     padding: 40px 20px 30px 20px;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    box-shadow: none !important;
     transition: all 0.3s ease;
     min-height: 280px;
     height: auto;
@@ -6369,14 +6604,13 @@ body section#about .container .advantages-grid .advantage-card.modern-card p {
 
 .step-content-new:hover {
     transform: translateY(-4px);
-    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
-    border-color: #191970;
+    box-shadow: none !important;
 }
 
 .step-content-new h3 {
     font-size: 20px;
     font-weight: 700;
-    color: #191970 !important;
+    color: #ffffff !important;
     margin-bottom: 15px;
     text-align: center;
     line-height: 1.3;
@@ -6385,7 +6619,7 @@ body section#about .container .advantages-grid .advantage-card.modern-card p {
 .step-content-new p {
     font-size: 15px;
     line-height: 1.6;
-    color: #475569 !important;
+    color: #ffffff !important;
     text-align: justify;
     text-justify: inter-word;
     hyphens: auto;
@@ -6425,7 +6659,7 @@ body section#about .container .advantages-grid .advantage-card.modern-card p {
     
     .step-content-new h3 {
         font-size: 18px;
-        color: #191970 !important;
+        color: #ffffff !important;
     }
     
     .step-content-new p {
@@ -6433,7 +6667,7 @@ body section#about .container .advantages-grid .advantage-card.modern-card p {
         text-align: justify !important;
         text-justify: inter-word !important;
         hyphens: auto !important;
-        color: #475569 !important;
+        color: #ffffff !important;
     }
 }
 
@@ -6446,7 +6680,7 @@ body section#about .container .advantages-grid .advantage-card.modern-card p {
         text-align: center !important;
         margin: 0 auto 15px auto !important;
         display: block !important;
-        color: #191970 !important; /* Темный цвет для заголовка на белом фоне */
+        color: #ffffff !important;
     }
     
     /* ПРИНУДИТЕЛЬНОЕ ВЫРАВНИВАНИЕ ПО ШИРИНЕ ДЛЯ МОБИЛЬНОЙ ВЕРСИИ */
@@ -6454,7 +6688,7 @@ body section#about .container .advantages-grid .advantage-card.modern-card p {
     .workflow-step-new .step-content-new p,
     .workflow-step-new p {
         text-align: justify !important;
-        color: #475569 !important; /* Темный цвет для текста на белом фоне */
+        color: #ffffff !important;
     }
 }
 
@@ -6994,36 +7228,36 @@ nav.navigation .nav-link:not(.call-btn):hover,
 
 /* СУПЕР-ПРИНУДИТЕЛЬНЫЕ СТИЛИ ДЛЯ КНОПКИ ЗАКАЗАТЬ ЗВОНОК */
 @media (min-width: 769px) {
-    nav.navigation .call-btn,
-    .navigation .call-btn,
-    .nav-link.call-btn,
-    .call-btn,
-    *[class*="call-btn"],
-    a.call-btn {
-        background: linear-gradient(135deg, #90ee90, #98fb98) !important;
-        border: 2px solid #90ee90 !important;
-        color: #333 !important;
-        padding: 14px 28px !important;
-        border-radius: 12px !important;
-        font-weight: 600 !important;
-        transition: all 0.3s ease !important;
-        cursor: pointer !important;
-        box-shadow: 0 4px 15px rgba(144, 238, 144, 0.4) !important;
-        position: relative !important;
-        overflow: hidden !important;
-        text-transform: uppercase !important;
-        letter-spacing: 0.5px !important;
-    }
-    nav.navigation .call-btn:hover,
-    .navigation .call-btn:hover,
-    .nav-link.call-btn:hover,
-    .call-btn:hover,
-    *[class*="call-btn"]:hover,
-    a.call-btn:hover {
-        background: linear-gradient(135deg, #98fb98, #90ee90) !important;
-        border: 2px solid #98fb98 !important;
-        transform: translateY(-3px) !important;
-        box-shadow: 0 8px 25px rgba(144, 238, 144, 0.6) !important;
+nav.navigation .call-btn,
+.navigation .call-btn,
+.nav-link.call-btn,
+.call-btn,
+*[class*="call-btn"],
+a.call-btn {
+    background: linear-gradient(135deg, #90ee90, #98fb98) !important;
+    border: 2px solid #90ee90 !important;
+    color: #333 !important;
+    padding: 14px 28px !important;
+    border-radius: 12px !important;
+    font-weight: 600 !important;
+    transition: all 0.3s ease !important;
+    cursor: pointer !important;
+    box-shadow: 0 4px 15px rgba(144, 238, 144, 0.4) !important;
+    position: relative !important;
+    overflow: hidden !important;
+    text-transform: uppercase !important;
+    letter-spacing: 0.5px !important;
+}
+nav.navigation .call-btn:hover,
+.navigation .call-btn:hover,
+.nav-link.call-btn:hover,
+.call-btn:hover,
+*[class*="call-btn"]:hover,
+a.call-btn:hover {
+    background: linear-gradient(135deg, #98fb98, #90ee90) !important;
+    border: 2px solid #98fb98 !important;
+    transform: translateY(-3px) !important;
+    box-shadow: 0 8px 25px rgba(144, 238, 144, 0.6) !important;
     }
 }
 /* АНИМАЦИИ ДЛЯ КНОПОК */
@@ -8375,4 +8609,71 @@ div.service-details.closing,
     .floating-call-btn i {
         font-size: 24px;
     }
+}
+
+/* КРИТИЧЕСКОЕ ПЕРЕОПРЕДЕЛЕНИЕ - УМЕНЬШЕНИЕ ОТСТУПА ПЕРЕД "КАК МЫ РАБОТАЕМ" */
+body .workflow-section,
+html body .workflow-section,
+section.workflow-section {
+    padding-top: 50px !important;
+    margin-top: -30px !important;
+}
+
+body .services-section-new,
+html body .services-section-new,
+section.services-section-new {
+    padding-bottom: 60px !important;
+}
+
+@media (min-width: 769px) {
+    body .workflow-section,
+    html body .workflow-section,
+    section.workflow-section {
+        padding-top: 50px !important;
+        margin-top: -30px !important;
+    }
+    
+    body .services-section-new,
+    html body .services-section-new,
+    section.services-section-new {
+        padding-bottom: 60px !important;
+    }
+}
+
+/* УМЕНЬШЕНИЕ ОТСТУПА ПЕРВОГО БЛОКА (HERO) НА 40PX */
+body .hero-section,
+html body .hero-section,
+section.hero-section {
+    padding-bottom: 50px !important;
+}
+
+@media (min-width: 769px) {
+    body .hero-section,
+    html body .hero-section,
+    section.hero-section {
+        padding-bottom: 50px !important;
+    }
+}
+
+/* СДВИГ ЗАГОЛОВКА "ПРЕИМУЩЕСТВА РАБОТЫ С НАМИ" ВНИЗ НА 10PX И УМЕНЬШЕНИЕ ОТСТУПА ПОСЛЕ НЕГО */
+body .about-section .section-header,
+html body .about-section .section-header,
+section.about-section .section-header {
+    padding-top: calc(var(--grid-gap) + 10px) !important;
+    margin-top: 10px !important;
+    margin-bottom: -10px !important;
+}
+
+body .about-section .advantages-grid,
+html body .about-section .advantages-grid,
+section.about-section .advantages-grid {
+    margin-top: -10px !important;
+}
+
+/* ПОДНЯТЬ ПЛАШКУ "НАШИ ПРОЕКТЫ" ВЫШЕ */
+body .projects-section,
+html body .projects-section,
+section.projects-section {
+    margin-top: -40px !important;
+    padding-top: 50px !important;
 }

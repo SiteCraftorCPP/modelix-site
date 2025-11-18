@@ -9,14 +9,13 @@ def index(request):
     # Получаем данные для отображения
     marketplace_links_db = MarketplaceLink.objects.filter(is_active=True).order_by('order')  # Активные ссылки из базы
     
-    # Создаем список всех 6 платформ с дефолтными значениями
+    # Создаем список всех доступных платформ с дефолтными значениями
     PLATFORMS = [
         {'platform': 'vk_group', 'title': 'Группа ВКонтакте', 'icon': 'fab fa-vk', 'color': '#4680c2', 'url': '#'},
         {'platform': 'telegram', 'title': 'Telegram', 'icon': 'fab fa-telegram-plane', 'color': '#0088cc', 'url': '#'},
         {'platform': 'youtube', 'title': 'YouTube', 'icon': 'fab fa-youtube', 'color': '#ff0000', 'url': '#'},
         {'platform': 'ozon', 'title': 'Озон', 'icon': 'fas fa-shopping-bag', 'color': '#005BFF', 'url': '#'},
         {'platform': 'avito', 'title': 'Авито', 'icon': 'fas fa-store', 'color': '#FF6C37', 'url': '#'},
-        {'platform': 'telegram_channel', 'title': 'Telegram канал', 'icon': 'fab fa-telegram-plane', 'color': '#0088cc', 'url': '#'},
     ]
     
     # Создаем словарь ссылок из базы для быстрого поиска
@@ -155,9 +154,9 @@ def index(request):
     # Получаем блок "НАШИ ПРОЕКТЫ" (новый)
     projects_block = ProjectsBlock.get_instance()
     
-    # Получаем ссылки для iPhone (Telegram, VK, Avito, Ozon)
+    # Получаем ссылки для мини-иконок и маркетплейсов в блоке проектов
     phone_links = {}
-    phone_platforms = ['telegram', 'vk_group', 'avito', 'ozon']
+    phone_platforms = ['telegram', 'youtube', 'vk_group', 'avito', 'ozon']
     for platform in phone_platforms:
         try:
             link = MarketplaceLink.objects.get(platform=platform, is_active=True)
@@ -171,6 +170,7 @@ def index(request):
             # Дефолтные значения если нет в базе
             defaults = {
                 'telegram': {'url': '#', 'title': 'Telegram', 'icon': 'fab fa-telegram-plane', 'color': '#0088cc'},
+                'youtube': {'url': '#', 'title': 'YouTube', 'icon': 'fab fa-youtube', 'color': '#ff0000'},
                 'vk_group': {'url': '#', 'title': 'ВКонтакте', 'icon': 'fab fa-vk', 'color': '#4680c2'},
                 'avito': {'url': '#', 'title': 'Авито', 'icon': 'fas fa-store', 'color': '#FF6C37'},
                 'ozon': {'url': '#', 'title': 'Озон', 'icon': 'fas fa-shopping-bag', 'color': '#005BFF'},

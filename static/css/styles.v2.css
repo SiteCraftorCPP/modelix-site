@@ -1011,33 +1011,33 @@ html, body {
     background: linear-gradient(135deg, #87ceeb, #5f9ea0) !important;
     border: 2px solid rgba(255, 255, 255, 0.4) !important;
     cursor: pointer !important;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2) !important;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15) !important;
 }
 
 .nav-link:hover {
     background: linear-gradient(135deg, #add8e6, #87ceeb) !important;
     transform: translateY(-2px);
-    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3) !important;
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.25) !important;
     border: 2px solid rgba(255, 255, 255, 0.6) !important;
 }
 
 .call-btn {
     background: linear-gradient(135deg, #90ee90, #98fb98) !important;
-    border: 2px solid #90ee90 !important;
+    border: 2px solid rgba(144, 238, 144, 0.6) !important;
     color: #333 !important;
     padding: 12px 24px !important;
     border-radius: 8px !important;
     font-weight: 500 !important;
     transition: all 0.3s ease !important;
     cursor: pointer !important;
-    box-shadow: 0 2px 8px rgba(144, 238, 144, 0.4) !important;
+    box-shadow: 0 4px 12px rgba(144, 238, 144, 0.3) !important;
 }
 
 .call-btn:hover {
     background: linear-gradient(135deg, #98fb98, #90ee90) !important;
-    border: 2px solid #98fb98 !important;
+    border: 2px solid rgba(152, 251, 152, 0.8) !important;
     transform: translateY(-2px) !important;
-    box-shadow: 0 8px 25px rgba(144, 238, 144, 0.6) !important;
+    box-shadow: 0 6px 20px rgba(144, 238, 144, 0.4) !important;
 }
 
 /* СТАРЫЕ СТИЛИ УДАЛЕНЫ */
@@ -2462,11 +2462,48 @@ body .advantage-card.modern-card .advantage-text {
     grid-template-columns: repeat(3, 1fr);
     gap: var(--grid-gap);
     max-width: 1200px;
-    margin: 60px auto 0 auto;
+    margin: 0 auto !important;
     padding: 0 20px;
+    padding-top: 0 !important;
     justify-items: center;
     width: 100%;
     box-sizing: border-box;
+}
+
+.workflow-section .stats-grid {
+    margin-top: -60px !important;
+    margin-bottom: 30px !important;
+    padding-top: 0 !important;
+}
+
+.workflow-section .container .stats-grid {
+    margin-top: -60px !important;
+    margin-bottom: 30px !important;
+    padding-top: 0 !important;
+}
+
+body .workflow-section .stats-grid,
+html body .workflow-section .stats-grid,
+section.workflow-section .stats-grid {
+    margin-top: -60px !important;
+    margin-bottom: 30px !important;
+    padding-top: 0 !important;
+}
+
+.workflow-section .workflow-steps-new + .stats-grid {
+    margin-top: -60px !important;
+    padding-top: 0 !important;
+}
+
+@media (max-width: 768px) {
+    .workflow-section .stats-grid,
+    .workflow-section .container .stats-grid,
+    body .workflow-section .stats-grid,
+    html body .workflow-section .stats-grid,
+    section.workflow-section .stats-grid,
+    .workflow-section .workflow-steps-new + .stats-grid {
+        margin-top: 0 !important;
+    }
 }
 
 .stat-item {
@@ -3735,25 +3772,57 @@ footer .footer-social .social-icons-row a[class*="telegram"]:hover {
 */
 
 /* МАКСИМАЛЬНО АГРЕССИВНОЕ ОТКЛЮЧЕНИЕ ВСЕХ HOVER ЭФФЕКТОВ */
+/* Тёмно-серые иконки в футере */
+.footer .social-icons-row .social-link,
+.footer .social-icons-row a.social-link,
+.footer-social .social-icons-row .social-link,
+.footer-social .social-icons-row a.social-link,
+footer .footer-social .social-icons-row .social-link,
+footer .footer-social .social-icons-row a.social-link,
+html body .footer .footer-social .social-icons-row .social-link,
+html body .footer .footer-social .social-icons-row a.social-link,
+.footer .social-icons-row a[class*="vk"],
+.footer .social-icons-row a[class*="youtube"],
+.footer .social-icons-row a[class*="telegram"],
+.footer .social-icons-row a[href*="vk"],
+.footer .social-icons-row a[href*="youtube"],
+.footer .social-icons-row a[href*="t.me"],
+.footer .social-link,
+.footer-social .social-link,
+.footer .social-link.vk-link,
+.footer .social-link.youtube-link,
+.footer .social-link.telegram-link {
+    background: #4a5568 !important;
+    background-color: #4a5568 !important;
+    border: none !important;
+    color: white !important;
+    opacity: 1 !important;
+}
+
 .footer .social-icons-row .social-link:hover,
-.footer .social-icons-row a:hover,
+.footer .social-icons-row a.social-link:hover,
 .footer-social .social-icons-row .social-link:hover,
-.footer-social .social-icons-row a:hover,
+.footer-social .social-icons-row a.social-link:hover,
 footer .footer-social .social-icons-row .social-link:hover,
-footer .footer-social .social-icons-row a:hover,
+footer .footer-social .social-icons-row a.social-link:hover,
 html body .footer .footer-social .social-icons-row .social-link:hover,
-html body .footer .footer-social .social-icons-row a:hover,
+html body .footer .footer-social .social-icons-row a.social-link:hover,
 .footer .social-icons-row a[class*="vk"]:hover,
 .footer .social-icons-row a[class*="youtube"]:hover,
 .footer .social-icons-row a[class*="telegram"]:hover,
 .footer .social-icons-row a[href*="vk"]:hover,
 .footer .social-icons-row a[href*="youtube"]:hover,
-.footer .social-icons-row a[href*="t.me"]:hover {
-    background: #374151 !important;
-    background-color: #374151 !important;
-    transform: none !important;
-    box-shadow: none !important;
-    border-color: transparent !important;
+.footer .social-icons-row a[href*="t.me"]:hover,
+.footer .social-link:hover,
+.footer-social .social-link:hover,
+.footer .social-link.vk-link:hover,
+.footer .social-link.youtube-link:hover,
+.footer .social-link.telegram-link:hover {
+    background: #2d3748 !important;
+    background-color: #2d3748 !important;
+    transform: translateY(-4px) scale(1.05) !important;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2) !important;
+    border: none !important;
     color: white !important;
     opacity: 1 !important;
 }
@@ -5240,6 +5309,7 @@ body section#about .container .advantages-grid .advantage-card.modern-card p {
     margin: 0 auto;
 }
 
+
 .workflow-step-new p {
     text-align: justify;
     text-justify: inter-word;
@@ -5428,8 +5498,22 @@ body section#about .container .advantages-grid .advantage-card.modern-card p {
 
 @media (max-width: 768px) {
     .workflow-steps-new {
-        grid-template-columns: 1fr;
-        gap: 30px;
+        grid-template-columns: 1fr !important;
+        gap: 0 !important;
+        row-gap: 0 !important;
+        column-gap: 0 !important;
+    }
+    
+    .workflow-step-new {
+        margin-bottom: 30px !important;
+    }
+    
+    .workflow-step-new:first-child {
+        margin-bottom: 0 !important;
+    }
+    
+    .workflow-step-new:last-child {
+        margin-bottom: 0 !important;
     }
     
     .step-content-new {
@@ -5994,7 +6078,7 @@ nav.navigation .nav-link:not(.call-btn),
     border-radius: 12px !important;
     transition: all 0.3s ease !important;
     cursor: pointer !important;
-    box-shadow: 0 4px 15px rgba(65, 105, 225, 0.3) !important;
+    box-shadow: 0 4px 12px rgba(65, 105, 225, 0.25) !important;
     position: relative !important;
     overflow: hidden !important;
     text-transform: uppercase !important;
@@ -6008,7 +6092,7 @@ nav.navigation .nav-link:not(.call-btn):hover,
     background: linear-gradient(135deg, #6495ed, #87ceeb) !important;
     border: 2px solid rgba(100, 149, 237, 0.8) !important;
     transform: translateY(-3px) !important;
-    box-shadow: 0 8px 25px rgba(100, 149, 237, 0.4) !important;
+    box-shadow: 0 6px 20px rgba(100, 149, 237, 0.35) !important;
 }
 
 /* СУПЕР-ПРИНУДИТЕЛЬНЫЕ СТИЛИ ДЛЯ КНОПКИ ЗАКАЗАТЬ ЗВОНОК */
@@ -6020,20 +6104,20 @@ nav.navigation .nav-link:not(.call-btn):hover,
     *[class*="call-btn"],
     a.call-btn {
         background: linear-gradient(135deg, #90ee90, #98fb98) !important;
-        border: 2px solid #90ee90 !important;
+        border: 2px solid rgba(144, 238, 144, 0.6) !important;
         color: #333 !important;
         padding: 14px 28px !important;
         border-radius: 12px !important;
         font-weight: 600 !important;
         transition: all 0.3s ease !important;
         cursor: pointer !important;
-        box-shadow: 0 4px 15px rgba(144, 238, 144, 0.4) !important;
+        box-shadow: 0 4px 12px rgba(144, 238, 144, 0.3) !important;
         position: relative !important;
         overflow: hidden !important;
         text-transform: uppercase !important;
         letter-spacing: 0.5px !important;
     }
-
+    
     nav.navigation .call-btn:hover,
     .navigation .call-btn:hover,
     .nav-link.call-btn:hover,
@@ -6041,9 +6125,9 @@ nav.navigation .nav-link:not(.call-btn):hover,
     *[class*="call-btn"]:hover,
     a.call-btn:hover {
         background: linear-gradient(135deg, #98fb98, #90ee90) !important;
-        border: 2px solid #98fb98 !important;
+        border: 2px solid rgba(152, 251, 152, 0.8) !important;
         transform: translateY(-3px) !important;
-        box-shadow: 0 8px 25px rgba(144, 238, 144, 0.6) !important;
+        box-shadow: 0 6px 20px rgba(144, 238, 144, 0.4) !important;
     }
 }
 
@@ -7383,11 +7467,48 @@ div.service-details.closing,
     grid-template-columns: repeat(3, 1fr);
     gap: var(--grid-gap);
     max-width: 1200px;
-    margin: 60px auto 0 auto;
+    margin: 0 auto !important;
     padding: 0 20px;
+    padding-top: 0 !important;
     justify-items: center;
     width: 100%;
     box-sizing: border-box;
+}
+
+.workflow-section .stats-grid {
+    margin-top: -60px !important;
+    margin-bottom: 30px !important;
+    padding-top: 0 !important;
+}
+
+.workflow-section .container .stats-grid {
+    margin-top: -60px !important;
+    margin-bottom: 30px !important;
+    padding-top: 0 !important;
+}
+
+body .workflow-section .stats-grid,
+html body .workflow-section .stats-grid,
+section.workflow-section .stats-grid {
+    margin-top: -60px !important;
+    margin-bottom: 30px !important;
+    padding-top: 0 !important;
+}
+
+.workflow-section .workflow-steps-new + .stats-grid {
+    margin-top: -60px !important;
+    padding-top: 0 !important;
+}
+
+@media (max-width: 768px) {
+    .workflow-section .stats-grid,
+    .workflow-section .container .stats-grid,
+    body .workflow-section .stats-grid,
+    html body .workflow-section .stats-grid,
+    section.workflow-section .stats-grid,
+    .workflow-section .workflow-steps-new + .stats-grid {
+        margin-top: 0 !important;
+    }
 }
 
 .stat-item {

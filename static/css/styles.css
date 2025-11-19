@@ -1102,33 +1102,33 @@ html, body {
     background: linear-gradient(135deg, #87ceeb, #5f9ea0) !important;
     border: 2px solid rgba(255, 255, 255, 0.4) !important;
     cursor: pointer !important;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2) !important;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15) !important;
 }
 
 .nav-link:hover {
     background: linear-gradient(135deg, #add8e6, #87ceeb) !important;
     transform: translateY(-2px);
-    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3) !important;
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.25) !important;
     border: 2px solid rgba(255, 255, 255, 0.6) !important;
 }
 
 .call-btn {
     background: linear-gradient(135deg, #90ee90, #98fb98) !important;
-    border: 2px solid #90ee90 !important;
+    border: 2px solid rgba(144, 238, 144, 0.6) !important;
     color: #333 !important;
     padding: 12px 24px !important;
     border-radius: 8px !important;
     font-weight: 500 !important;
     transition: all 0.3s ease !important;
     cursor: pointer !important;
-    box-shadow: 0 2px 8px rgba(144, 238, 144, 0.4) !important;
+    box-shadow: 0 4px 12px rgba(144, 238, 144, 0.3) !important;
 }
 
 .call-btn:hover {
     background: linear-gradient(135deg, #98fb98, #90ee90) !important;
-    border: 2px solid #98fb98 !important;
+    border: 2px solid rgba(152, 251, 152, 0.8) !important;
     transform: translateY(-2px) !important;
-    box-shadow: 0 8px 25px rgba(144, 238, 144, 0.6) !important;
+    box-shadow: 0 6px 20px rgba(144, 238, 144, 0.4) !important;
 }
 
 /* СТАРЫЕ СТИЛИ УДАЛЕНЫ */
@@ -2578,7 +2578,59 @@ body .advantage-card.modern-card .advantage-text {
     grid-template-columns: repeat(3, 1fr);
     gap: var(--grid-gap);
     max-width: 900px;
-    margin: 0 auto;
+    margin: 0 auto !important;
+}
+
+.workflow-section .stats-grid {
+    margin-top: -60px !important;
+    margin-bottom: 30px !important;
+    padding-top: 0 !important;
+}
+
+@media (max-width: 768px) {
+    .workflow-section .stats-grid {
+        margin-top: 0 !important;
+    }
+}
+
+.workflow-section .container > .stats-grid {
+    margin-top: -60px !important;
+    padding-top: 0 !important;
+}
+
+body .workflow-section .stats-grid,
+html body .workflow-section .stats-grid,
+section.workflow-section .stats-grid,
+.workflow-section .container .stats-grid {
+    margin-top: -60px !important;
+    padding-top: 0 !important;
+}
+
+.workflow-section .workflow-steps-new + .stats-grid {
+    margin-top: -60px !important;
+    padding-top: 0 !important;
+}
+
+@media (min-width: 769px) {
+    .workflow-section .container > .stats-grid,
+    body .workflow-section .stats-grid,
+    html body .workflow-section .stats-grid,
+    section.workflow-section .stats-grid,
+    .workflow-section .container .stats-grid,
+    .workflow-section .workflow-steps-new + .stats-grid {
+        margin-top: -60px !important;
+    }
+}
+
+@media (max-width: 768px) {
+    .workflow-section .container > .stats-grid,
+    body .workflow-section .stats-grid,
+    html body .workflow-section .stats-grid,
+    section.workflow-section .stats-grid,
+    .workflow-section .container .stats-grid,
+    .workflow-section .workflow-steps-new + .stats-grid {
+        margin-top: 0 !important;
+    }
 }
 
 .stat-item {
@@ -4751,6 +4803,35 @@ body .advantage-card.modern-card .advantage-text {
     background: #e60000 !important;
 }
 
+/* Тёмно-серые иконки в футере */
+.footer .social-link,
+.footer-social .social-link,
+.footer .social-icons-row .social-link,
+.footer .social-link.vk-link,
+.footer .social-link.youtube-link,
+.footer .social-link.telegram-link,
+.footer .social-link[href*="t.me"],
+.footer .social-link[href*="vk.com"],
+.footer .social-link[href*="youtube.com"],
+.footer .social-link[href*="youtu.be"] {
+    background: #4a5568 !important;
+    background-color: #4a5568 !important;
+}
+
+.footer .social-link:hover,
+.footer-social .social-link:hover,
+.footer .social-icons-row .social-link:hover,
+.footer .social-link.vk-link:hover,
+.footer .social-link.youtube-link:hover,
+.footer .social-link.telegram-link:hover,
+.footer .social-link[href*="t.me"]:hover,
+.footer .social-link[href*="vk.com"]:hover,
+.footer .social-link[href*="youtube.com"]:hover,
+.footer .social-link[href*="youtu.be"]:hover {
+    background: #2d3748 !important;
+    background-color: #2d3748 !important;
+}
+
 /* Отключаем максимально специфичные стили для футера */
 /*
 .footer .social-link.vk-link:hover {
@@ -4917,25 +4998,46 @@ footer .footer-social .social-icons-row a[class*="telegram"]:hover {
 */
 
 /* МАКСИМАЛЬНО АГРЕССИВНОЕ ОТКЛЮЧЕНИЕ ВСЕХ HOVER ЭФФЕКТОВ */
+.footer .social-icons-row .social-link,
+.footer .social-icons-row a.social-link,
+.footer-social .social-icons-row .social-link,
+.footer-social .social-icons-row a.social-link,
+footer .footer-social .social-icons-row .social-link,
+footer .footer-social .social-icons-row a.social-link,
+html body .footer .footer-social .social-icons-row .social-link,
+html body .footer .footer-social .social-icons-row a.social-link,
+.footer .social-icons-row a[class*="vk"],
+.footer .social-icons-row a[class*="youtube"],
+.footer .social-icons-row a[class*="telegram"],
+.footer .social-icons-row a[href*="vk"],
+.footer .social-icons-row a[href*="youtube"],
+.footer .social-icons-row a[href*="t.me"] {
+    background: #4a5568 !important;
+    background-color: #4a5568 !important;
+    border: none !important;
+    color: white !important;
+    opacity: 1 !important;
+}
+
 .footer .social-icons-row .social-link:hover,
-.footer .social-icons-row a:hover,
+.footer .social-icons-row a.social-link:hover,
 .footer-social .social-icons-row .social-link:hover,
-.footer-social .social-icons-row a:hover,
+.footer-social .social-icons-row a.social-link:hover,
 footer .footer-social .social-icons-row .social-link:hover,
-footer .footer-social .social-icons-row a:hover,
+footer .footer-social .social-icons-row a.social-link:hover,
 html body .footer .footer-social .social-icons-row .social-link:hover,
-html body .footer .footer-social .social-icons-row a:hover,
+html body .footer .footer-social .social-icons-row a.social-link:hover,
 .footer .social-icons-row a[class*="vk"]:hover,
 .footer .social-icons-row a[class*="youtube"]:hover,
 .footer .social-icons-row a[class*="telegram"]:hover,
 .footer .social-icons-row a[href*="vk"]:hover,
 .footer .social-icons-row a[href*="youtube"]:hover,
 .footer .social-icons-row a[href*="t.me"]:hover {
-    background: #374151 !important;
-    background-color: #374151 !important;
-    transform: none !important;
-    box-shadow: none !important;
-    border-color: transparent !important;
+    background: #2d3748 !important;
+    background-color: #2d3748 !important;
+    transform: translateY(-4px) scale(1.05) !important;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2) !important;
+    border: none !important;
     color: white !important;
     opacity: 1 !important;
 }
@@ -4947,24 +5049,32 @@ html body .footer .footer-social .social-icons-row a:hover,
     color: #475569 !important;
 }
 
-/* Прозрачные иконки соцсетей в футере */
-html body footer.footer .footer-social .social-icons-row .social-link {
-    background: rgba(15, 23, 42, 0.2) !important;
-    border: 1px solid rgba(255, 255, 255, 0.4) !important;
+/* Тёмно-серые иконки соцсетей в футере */
+html body footer.footer .footer-social .social-icons-row .social-link,
+html body footer.footer .footer-social .social-icons-row a.social-link,
+footer.footer .footer-social .social-icons-row .social-link,
+footer.footer .footer-social .social-icons-row a.social-link {
+    background: #4a5568 !important;
+    background-color: #4a5568 !important;
+    border: none !important;
     color: #ffffff !important;
-    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2) !important;
-    backdrop-filter: blur(12px) !important;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1) !important;
+    backdrop-filter: none !important;
 }
 
-html body footer.footer .footer-social .social-icons-row .social-link i {
-    color: inherit !important;
+html body footer.footer .footer-social .social-icons-row .social-link i,
+html body footer.footer .footer-social .social-icons-row a.social-link i {
+    color: #ffffff !important;
 }
 
 html body footer.footer .footer-social .social-icons-row .social-link:hover,
-html body footer.footer .footer-social .social-icons-row a.social-link:hover {
-    background: rgba(15, 23, 42, 0.35) !important;
-    border-color: rgba(255, 255, 255, 0.65) !important;
-    box-shadow: 0 12px 25px rgba(0, 0, 0, 0.35) !important;
+html body footer.footer .footer-social .social-icons-row a.social-link:hover,
+footer.footer .footer-social .social-icons-row .social-link:hover,
+footer.footer .footer-social .social-icons-row a.social-link:hover {
+    background: #2d3748 !important;
+    background-color: #2d3748 !important;
+    border: none !important;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2) !important;
     transform: translateY(-4px) scale(1.05) !important;
 }
 
@@ -6413,7 +6523,7 @@ body section#about .container .advantages-grid .advantage-card.modern-card p {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
     gap: 30px;
-    margin-bottom: 60px;
+    margin-bottom: 0 !important;
     align-items: start;
     max-width: 1400px;
     margin-left: auto;
@@ -6424,8 +6534,23 @@ body section#about .container .advantages-grid .advantage-card.modern-card p {
 
 @media (max-width: 768px) {
     .workflow-steps-new {
-        gap: 18px !important;
-        margin-bottom: 30px !important;
+        grid-template-columns: 1fr !important;
+        gap: 0 !important;
+        row-gap: 0 !important;
+        column-gap: 0 !important;
+        margin-bottom: 0 !important;
+    }
+    
+    .workflow-step-new {
+        margin-bottom: 18px !important;
+    }
+    
+    .workflow-step-new:first-child {
+        margin-bottom: 0 !important;
+    }
+    
+    .workflow-step-new:last-child {
+        margin-bottom: 0 !important;
     }
     
     .workflow-step-new .step-content-new {
@@ -6439,6 +6564,30 @@ body section#about .container .advantages-grid .advantage-card.modern-card p {
     
     .workflow-section {
         padding: 25px 10px !important;
+    }
+    
+    .workflow-section .stats-grid {
+        margin-top: 0 !important;
+        margin-bottom: 30px !important;
+        padding-top: 0 !important;
+        padding-bottom: 0 !important;
+    }
+    
+    .workflow-section .container .stats-grid {
+        margin-top: 0 !important;
+        padding-top: 0 !important;
+    }
+    
+    body .workflow-section .stats-grid,
+    html body .workflow-section .stats-grid,
+    section.workflow-section .stats-grid {
+        margin-top: 0 !important;
+        padding-top: 0 !important;
+    }
+    
+    .workflow-section .workflow-steps-new + .stats-grid {
+        margin-top: 0 !important;
+        padding-top: 0 !important;
     }
 }
 .workflow-step-new {
@@ -6594,6 +6743,13 @@ body section#about .container .advantages-grid .advantage-card.modern-card p {
     background: transparent !important;
     box-shadow: none !important;
     border: none !important;
+    margin-bottom: 0 !important;
+}
+
+@media (min-width: 769px) {
+    .workflow-section .workflow-steps-new {
+        margin-bottom: 0 !important;
+    }
 }
 
 .workflow-section .workflow-step-new,
@@ -6665,8 +6821,9 @@ body section#about .container .advantages-grid .advantage-card.modern-card p {
 @media (max-width: 768px) {
     .workflow-steps-new {
         grid-template-columns: 1fr !important;
-        gap: 18px !important;
-        margin-bottom: 30px !important;
+        column-gap: 0 !important;
+        row-gap: 18px !important;
+        margin-bottom: 0 !important;
     }
     
     .workflow-step-new .step-content-new {
@@ -6701,8 +6858,22 @@ body section#about .container .advantages-grid .advantage-card.modern-card p {
 /* ПРИНУДИТЕЛЬНЫЕ СТИЛИ ДЛЯ ЗАГОЛОВКОВ "КАК МЫ РАБОТАЕМ" */
 @media (max-width: 768px) {
     .workflow-steps-new {
-        gap: 18px !important;
-        margin-bottom: 30px !important;
+        gap: 0 !important;
+        row-gap: 0 !important;
+        column-gap: 0 !important;
+        margin-bottom: 0 !important;
+    }
+    
+    .workflow-step-new {
+        margin-bottom: 18px !important;
+    }
+    
+    .workflow-step-new:first-child {
+        margin-bottom: 0 !important;
+    }
+    
+    .workflow-step-new:last-child {
+        margin-bottom: 0 !important;
     }
     
     .workflow-step-new .step-content-new {
@@ -7250,7 +7421,7 @@ nav.navigation .nav-link:not(.call-btn),
     border-radius: 12px !important;
     transition: all 0.3s ease !important;
     cursor: pointer !important;
-    box-shadow: 0 4px 15px rgba(65, 105, 225, 0.3) !important;
+    box-shadow: 0 4px 12px rgba(65, 105, 225, 0.25) !important;
     position: relative !important;
     overflow: hidden !important;
     text-transform: uppercase !important;
@@ -7264,7 +7435,7 @@ nav.navigation .nav-link:not(.call-btn):hover,
     background: linear-gradient(135deg, #6495ed, #87ceeb) !important;
     border: 2px solid rgba(100, 149, 237, 0.8) !important;
     transform: translateY(-3px) !important;
-    box-shadow: 0 8px 25px rgba(100, 149, 237, 0.4) !important;
+    box-shadow: 0 6px 20px rgba(100, 149, 237, 0.35) !important;
 }
 
 /* СУПЕР-ПРИНУДИТЕЛЬНЫЕ СТИЛИ ДЛЯ КНОПКИ ЗАКАЗАТЬ ЗВОНОК */
@@ -7276,14 +7447,14 @@ nav.navigation .call-btn,
 *[class*="call-btn"],
 a.call-btn {
     background: linear-gradient(135deg, #90ee90, #98fb98) !important;
-    border: 2px solid #90ee90 !important;
+    border: 2px solid rgba(144, 238, 144, 0.6) !important;
     color: #333 !important;
     padding: 14px 28px !important;
     border-radius: 12px !important;
     font-weight: 600 !important;
     transition: all 0.3s ease !important;
     cursor: pointer !important;
-    box-shadow: 0 4px 15px rgba(144, 238, 144, 0.4) !important;
+    box-shadow: 0 4px 12px rgba(144, 238, 144, 0.3) !important;
     position: relative !important;
     overflow: hidden !important;
     text-transform: uppercase !important;
@@ -7296,9 +7467,9 @@ nav.navigation .call-btn:hover,
 *[class*="call-btn"]:hover,
 a.call-btn:hover {
     background: linear-gradient(135deg, #98fb98, #90ee90) !important;
-    border: 2px solid #98fb98 !important;
+    border: 2px solid rgba(152, 251, 152, 0.8) !important;
     transform: translateY(-3px) !important;
-    box-shadow: 0 8px 25px rgba(144, 238, 144, 0.6) !important;
+    box-shadow: 0 6px 20px rgba(144, 238, 144, 0.4) !important;
     }
 }
 /* АНИМАЦИИ ДЛЯ КНОПОК */
@@ -8010,8 +8181,13 @@ a.call-btn:active {
         padding: 15px !important;
     }
     
+    .stat-icon {
+        margin-bottom: 25px !important;
+    }
+    
     .stat-number {
         font-size: 1.8rem !important;
+        margin-top: 10px !important;
     }
     
     .stat-label {
@@ -8674,6 +8850,37 @@ section.services-section-new {
         margin-top: -30px !important;
     }
     
+    .workflow-steps-new,
+    body .workflow-section .workflow-steps-new,
+    html body .workflow-section .workflow-steps-new,
+    section.workflow-section .workflow-steps-new {
+        margin-bottom: 0 !important;
+    }
+    
+    .workflow-section .stats-grid,
+    body .workflow-section .stats-grid,
+    html body .workflow-section .stats-grid,
+    section.workflow-section .stats-grid {
+        margin-top: -60px !important;
+        margin-bottom: 30px !important;
+        padding-top: 0 !important;
+    }
+    
+    .workflow-section .workflow-steps-new + .stats-grid {
+        margin-top: -60px !important;
+        padding-top: 0 !important;
+    }
+    
+    @media (max-width: 768px) {
+        .workflow-section .stats-grid,
+        body .workflow-section .stats-grid,
+        html body .workflow-section .stats-grid,
+        section.workflow-section .stats-grid,
+        .workflow-section .workflow-steps-new + .stats-grid {
+            margin-top: 0 !important;
+        }
+    }
+    
     body .services-section-new,
     html body .services-section-new,
     section.services-section-new {
@@ -8717,4 +8924,41 @@ html body .projects-section,
 section.projects-section {
     margin-top: -40px !important;
     padding-top: 50px !important;
+}
+
+/* ПРИНУДИТЕЛЬНЫЕ СТИЛИ ДЛЯ РАССТОЯНИЙ В БЛОКЕ "КАК МЫ РАБОТАЕМ" - ДЕСКТОП */
+@media (min-width: 769px) {
+    body .workflow-section .workflow-steps-new,
+    html body .workflow-section .workflow-steps-new,
+    section.workflow-section .workflow-steps-new,
+    .workflow-section .container .workflow-steps-new {
+        margin-bottom: 0 !important;
+    }
+    
+    body .workflow-section .stats-grid,
+    html body .workflow-section .stats-grid,
+    section.workflow-section .stats-grid,
+    .workflow-section .container .stats-grid {
+        margin-top: -60px !important;
+        margin-bottom: 30px !important;
+        padding-top: 0 !important;
+    }
+    
+    .workflow-section .workflow-steps-new + .stats-grid,
+    body .workflow-section .workflow-steps-new + .stats-grid,
+    html body .workflow-section .workflow-steps-new + .stats-grid,
+    section.workflow-section .workflow-steps-new + .stats-grid {
+        margin-top: -60px !important;
+        padding-top: 0 !important;
+    }
+    
+    @media (max-width: 768px) {
+        body .workflow-section .stats-grid,
+        html body .workflow-section .stats-grid,
+        section.workflow-section .stats-grid,
+        .workflow-section .container .stats-grid,
+        .workflow-section .workflow-steps-new + .stats-grid {
+            margin-top: 0 !important;
+        }
+    }
 }

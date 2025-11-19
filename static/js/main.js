@@ -75,14 +75,17 @@ function initializeNavigation() {
             // Добавляем ripple эффект
             createRipple(e, this);
             
-            e.preventDefault();
             const targetId = this.getAttribute('href');
-            if (targetId && targetId !== 'javascript:void(0)') {
+            if (targetId && targetId.startsWith('#')) {
+                e.preventDefault();
                 const targetSection = document.querySelector(targetId);
                 if (targetSection) {
-                    targetSection.scrollIntoView({
-                        behavior: 'smooth',
-                        block: 'start'
+                    const navHeight = document.querySelector('.navigation')?.offsetHeight || 0;
+                    const targetPosition = targetSection.offsetTop - navHeight;
+                    
+                    window.scrollTo({
+                        top: targetPosition,
+                        behavior: 'smooth'
                     });
                 }
             }
@@ -746,9 +749,12 @@ function showNotification(message, type = 'info') {
 function scrollToSection(sectionId) {
     const section = document.getElementById(sectionId);
     if (section) {
-        section.scrollIntoView({
-            behavior: 'smooth',
-            block: 'start'
+        const navHeight = document.querySelector('.navigation')?.offsetHeight || 0;
+        const targetPosition = section.offsetTop - navHeight;
+        
+        window.scrollTo({
+            top: targetPosition,
+            behavior: 'smooth'
         });
     }
 }

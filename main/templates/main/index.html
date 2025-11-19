@@ -208,7 +208,7 @@
             
             .workflow-steps-new {
                 gap: 18px !important;
-                margin-bottom: 30px !important;
+                margin-bottom: 0 !important;
             }
             
             .workflow-step-new .step-content-new {
@@ -232,7 +232,7 @@
             .workflow-section .workflow-steps-new,
             .workflow-section .container .workflow-steps-new {
                 gap: 18px !important;
-                margin-bottom: 30px !important;
+                margin-bottom: 0 !important;
             }
             
             html body .workflow-step-new .step-content-new,
@@ -250,13 +250,33 @@
                 margin-bottom: 10px !important;
             }
             
-            /* КРИТИЧЕСКИЕ СТИЛИ ДЛЯ ПРОЕКТОВ - ПРИМЕНЯЮТСЯ НЕМЕДЛЕННО */
-            .projects-section .section-header {
-                margin-bottom: 12px !important;
+            /* КРИТИЧЕСКИЕ СТИЛИ ДЛЯ ПРОЕКТОВ - ТОЛЬКО ДЛЯ МОБИЛЬНОЙ ВЕРСИИ */
+            @media (max-width: 768px) {
+                .projects-section .section-header {
+                    margin-bottom: 0 !important;
+                    margin-top: -20px !important;
+                }
+                
+                .projects-section .section-header .section-title {
+                    margin-bottom: 0 !important;
+                    margin-top: 0 !important;
+                }
+                
+                .projects-section .projects-intro {
+                    margin-top: 4px !important;
+                }
             }
             
-            .projects-section .projects-intro {
-                margin-top: 8px !important;
+            /* ПРИНУДИТЕЛЬНЫЕ СТИЛИ ДЛЯ РАССТОЯНИЙ В БЛОКЕ "КАК МЫ РАБОТАЕМ" - ДЕСКТОП */
+            @media (min-width: 769px) {
+                .workflow-steps-new {
+                    margin-bottom: 0 !important;
+                }
+                
+                .workflow-section .stats-grid {
+                    margin-top: 0 !important;
+                    margin-bottom: 0 !important;
+                }
             }
         }
     </style>
@@ -300,7 +320,7 @@
                 <li><a href="#hero" class="nav-link" data-tooltip="Главная">Главная</a></li>
                 <li><a href="#about" class="nav-link" data-tooltip="О нас">О нас</a></li>
                 <li><a href="#technologies" class="nav-link" data-tooltip="Услуги">Услуги</a></li>
-                <li><a href="javascript:void(0)" class="nav-link" data-tooltip="Наши проекты" onclick="openProjectsModal()">Наши проекты</a></li>
+                <li><a href="#projects" class="nav-link" data-tooltip="Наши проекты">Наши проекты</a></li>
                 <li><a href="#contact" class="nav-link call-btn" data-tooltip="Заказать услугу">Заказать услугу</a></li>
             </ul>
         </div>
@@ -323,7 +343,7 @@
             <a href="#hero" class="nav-link" onclick="closeMobileMenu()">Главная</a>
             <a href="#about" class="nav-link" onclick="closeMobileMenu()">О нас</a>
             <a href="#technologies" class="nav-link" onclick="closeMobileMenu()">Услуги</a>
-            <a href="javascript:void(0)" class="nav-link" onclick="openProjectsModal(); closeMobileMenu()">Наши проекты</a>
+            <a href="#projects" class="nav-link" onclick="closeMobileMenu()">Наши проекты</a>
             <a href="#contact" class="nav-link" onclick="closeMobileMenu()">Заказать услугу</a>
             <div class="mobile-contact-info">
                 <div class="contact-item">
@@ -709,7 +729,7 @@
                 <h2 class="section-title">Как мы работаем</h2>
             </div>
             
-            <div class="workflow-steps-new" style="gap: 18px !important; margin-bottom: 30px !important;">
+            <div class="workflow-steps-new">
                 <div class="workflow-step-new" data-step="1">
                     <div class="step-progress-circle">
                         <div class="progress-ring">
@@ -791,7 +811,7 @@
                 </div>
             </div>
             
-            <div class="stats-grid">
+            <div class="stats-grid" style="margin-bottom: 30px !important; padding-top: 0 !important;">
                 {% for stat in stats %}
                 <div class="stat-item modern-stat">
                     <div class="stat-icon">
@@ -903,13 +923,13 @@
     <!-- Блок 6: Наши работы -->
     <section id="projects" class="projects-section">
         <div class="container">
-            <div class="section-header" style="margin-bottom: 12px !important;">
+            <div class="section-header">
                 <h2 class="section-title">НАШИ ПРОЕКТЫ</h2>
             </div>
             
             {% with main_image=projects_block.main_screenshot_url left_image=projects_block.left_screenshot_url right_image=projects_block.right_screenshot_url %}
             <!-- Интро текст -->
-            <div class="projects-intro" style="margin-top: 8px !important;">
+            <div class="projects-intro" style="margin-top: 4px !important;">
                 <p>{{ projects_block.intro_text }}</p>
             </div>
             

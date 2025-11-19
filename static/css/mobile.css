@@ -877,6 +877,17 @@
         align-items: center !important;
     }
     
+    .projects-section .section-header,
+    .projects-section .container .section-header,
+    .projects-section .section-header .section-title {
+        margin-bottom: 0 !important;
+        margin-top: -20px !important;
+    }
+    
+    .projects-section .section-header .section-title {
+        margin-top: 0 !important;
+    }
+    
     .section-title {
         font-size: 1.8rem !important;
         color: var(--white) !important;
@@ -992,6 +1003,10 @@
         overflow: hidden !important;
     }
     
+    .projects-section .section-title {
+        margin: 0 !important;
+    }
+    
     .section-title::before {
         content: '' !important;
         position: absolute !important;
@@ -1073,9 +1088,23 @@
     .workflow-section .container .workflow-steps-new,
     .workflow-steps-new {
         grid-template-columns: 1fr !important;
-        gap: 18px !important;
+        gap: 0 !important;
+        row-gap: 0 !important;
+        column-gap: 0 !important;
         justify-items: center !important;
         margin-bottom: 30px !important;
+    }
+    
+    .workflow-step-new {
+        margin-bottom: 18px !important;
+    }
+    
+    .workflow-step-new:first-child {
+        margin-bottom: 0 !important;
+    }
+    
+    .workflow-step-new:last-child {
+        margin-bottom: 0 !important;
     }
     
     .workflow-step-new {
@@ -1119,8 +1148,22 @@
     .workflow-section .container .workflow-steps-new,
     .workflow-steps-new {
         grid-template-columns: 1fr !important;
-        gap: 18px !important;
+        gap: 0 !important;
+        row-gap: 0 !important;
+        column-gap: 0 !important;
         margin-bottom: 30px !important;
+    }
+    
+    .workflow-step-new {
+        margin-bottom: 18px !important;
+    }
+    
+    .workflow-step-new:first-child {
+        margin-bottom: 0 !important;
+    }
+    
+    .workflow-step-new:last-child {
+        margin-bottom: 0 !important;
     }
     
     .workflow-steps-new .workflow-step-new .step-content-new {
@@ -1478,13 +1521,13 @@
     ======================================== */
     
     .projects-section {
-        padding: 40px 0 60px 0 !important;
+        padding: 0 0 30px 0 !important;
     }
 
     .projects-section .container {
         width: 100% !important;
         max-width: 100% !important;
-        padding: 0 12px !important;
+        padding: 0 6px !important;
         margin: 0 auto !important;
         display: flex !important;
         flex-direction: column !important;
@@ -1492,31 +1535,37 @@
     }
     
     .projects-intro {
-        margin: 12px 15px 35px 15px !important;
+        margin: 6px 7.5px 17.5px 7.5px !important;
         padding: 0 !important;
     }
     
     .projects-section .section-header {
-        margin-bottom: 12px !important;
-        margin-top: 0 !important;
+        margin-bottom: 0 !important;
+        margin-top: -20px !important;
     }
     
     .projects-section .container .section-header {
-        margin-bottom: 12px !important;
+        margin-bottom: 0 !important;
+        margin-top: -20px !important;
+    }
+    
+    .projects-section .section-header .section-title {
+        margin-bottom: 0 !important;
+        margin-top: 0 !important;
     }
     
     .projects-intro {
-        margin-top: 8px !important;
+        margin-top: 4px !important;
     }
     
     .projects-section .projects-intro {
-        margin-top: 8px !important;
-        margin-bottom: 35px !important;
+        margin-top: 4px !important;
+        margin-bottom: 17.5px !important;
     }
     
     .projects-intro p {
         font-size: 16px !important;
-        padding: 20px 25px !important;
+        padding: 10px 12.5px !important;
         line-height: 1.5 !important;
         margin: 0 !important;
     }
@@ -1525,8 +1574,8 @@
     .projects-gallery {
         display: flex !important;
         flex-direction: column !important;
-        gap: 30px !important;
-        padding: 0 15px !important;
+        gap: 15px !important;
+        padding: 0 7.5px !important;
         width: 100% !important;
         max-width: 560px !important;
         margin: 0 auto !important;
@@ -1536,7 +1585,7 @@
     /* Главное окно */
     .projects-main-window {
         order: 1 !important;
-        gap: 15px !important;
+        gap: 7.5px !important;
         width: 100% !important;
         max-width: 560px !important;
         margin: 0 auto !important;
@@ -1546,7 +1595,7 @@
     /* Боковые окна */
     .projects-side-windows {
         flex-direction: row !important;
-        gap: 15px !important;
+        gap: 7.5px !important;
         order: 2 !important;
         width: 100% !important;
         max-width: 560px !important;
@@ -1571,9 +1620,9 @@
     
     /* Боковые окна внутри projects-side-windows - по 50% ширины */
     .projects-side-windows .side-window {
-        width: calc(50% - 7.5px) !important;
-        max-width: calc(50% - 7.5px) !important;
-        flex: 0 0 calc(50% - 7.5px) !important;
+        width: calc(50% - 3.75px) !important;
+        max-width: calc(50% - 3.75px) !important;
+        flex: 0 0 calc(50% - 3.75px) !important;
     }
     
     .projects-section .side-window img,
@@ -1634,10 +1683,10 @@
     
     /* Обёртка для плашки и иконок */
     .projects-social-wrapper {
-        margin: 30px auto 0 auto !important;
+        margin: 15px auto 0 auto !important;
         padding: 0 !important;
         flex-direction: column !important;
-        gap: 18px !important;
+        gap: 9px !important;
         align-items: center !important;
         width: 100% !important;
         max-width: 560px !important;
@@ -1645,7 +1694,7 @@
     
     /* Плашка с соцсетями (только текст) */
     .projects-social-banner {
-        padding: 15px 20px !important;
+        padding: 7.5px 10px !important;
         margin: 0 auto !important;
         flex-shrink: 0 !important;
         width: min(90%, 460px) !important;
@@ -1663,7 +1712,7 @@
     }
     
     .social-icons-inline {
-        gap: 12px !important;
+        gap: 6px !important;
         justify-content: center !important;
         flex-shrink: 0 !important;
         flex-wrap: wrap !important;
@@ -1673,9 +1722,9 @@
     }
     
     .social-icon-small {
-        width: 50px !important;
-        height: 50px !important;
-        font-size: 24px !important;
+        width: 55px !important;
+        height: 55px !important;
+        font-size: 26px !important;
         border-radius: 15px !important;
     }
     
@@ -1683,10 +1732,42 @@
         transform: translateY(-3px) scale(1.05) !important;
     }
     
+    .projects-section .social-icon-small,
+    .projects-social-under .social-icon-small {
+        width: 55px !important;
+        height: 55px !important;
+        font-size: 26px !important;
+    }
+    
+    .projects-section .social-icon-small i,
+    .projects-social-under .social-icon-small i {
+        font-size: 26px !important;
+    }
+    
+    .projects-section .social-icon-small.telegram-icon i,
+    .projects-social-under .social-icon-small.telegram-icon i {
+        font-size: 26px !important;
+    }
+    
+    .projects-section .social-icon-small.vk-icon i,
+    .projects-social-under .social-icon-small.vk-icon i {
+        font-size: 26px !important;
+    }
+    
+    .projects-section .social-icon-small.youtube-icon i,
+    .projects-social-under .social-icon-small.youtube-icon i {
+        font-size: 28px !important;
+    }
+    
+    /* Иконки соц сетей под скриншотами */
+    .projects-social-under {
+        margin-bottom: 8px !important;
+    }
+    
     /* Текст о продукции */
     .projects-marketplace-text {
-        margin: 30px auto 25px auto !important;
-        padding: 0 10px !important;
+        margin: 8px auto 12.5px auto !important;
+        padding: 0 5px !important;
         max-width: 520px !important;
         display: flex !important;
         justify-content: center !important;
@@ -1705,16 +1786,16 @@
     .projects-marketplace-icons {
         flex-direction: row !important;
         flex-wrap: wrap !important;
-        gap: 40px !important;
-        margin: 25px auto 0 auto !important;
-        padding: 0 10px !important;
+        gap: 20px !important;
+        margin: 12.5px auto 0 auto !important;
+        padding: 0 5px !important;
         align-items: center !important;
         justify-content: center !important;
     }
     
     .marketplace-icon-large {
-        width: 95px !important;
-        height: 95px !important;
+        width: 85px !important;
+        height: 85px !important;
         border-radius: 18px !important;
         border-width: 2px !important;
     }
@@ -1724,7 +1805,7 @@
     }
     
     .marketplace-icon-large i {
-        font-size: 40px !important;
+        font-size: 36px !important;
     }
     
     .marketplace-icon-large span {
@@ -1742,10 +1823,10 @@
     }
 
     .projects-marketplace-text {
-        margin: 25px auto 15px auto !important;
+        margin: 12.5px auto 7.5px auto !important;
         width: min(85%, 480px) !important;
         justify-content: center !important;
-        transform: translateY(8px) !important;
+        transform: translateY(4px) !important;
     }
 }
 
@@ -1764,8 +1845,8 @@
 
     .projects-marketplace-text {
         max-width: 460px !important;
-        margin: 25px auto 15px auto !important;
-        transform: translateY(8px) !important;
+        margin: 12.5px auto 7.5px auto !important;
+        transform: translateY(4px) !important;
     }
 
     .projects-marketplace-text p {
@@ -1859,6 +1940,27 @@
     html body .workflow-section,
     section.workflow-section {
         padding: 25px 10px !important;
+    }
+    
+    /* Исправление наложения иконки на текст в статистике */
+    .workflow-section .stat-icon,
+    .stats-grid .stat-icon,
+    .stat-item .stat-icon {
+        margin-bottom: 20px !important;
+        margin-top: 0 !important;
+    }
+    
+    .workflow-section .stat-number,
+    .stats-grid .stat-number,
+    .stat-item .stat-number {
+        margin-top: 0 !important;
+        margin-bottom: 12px !important;
+    }
+    
+    .workflow-section .stat-item,
+    .stats-grid .stat-item {
+        padding-top: 30px !important;
+        padding-bottom: 30px !important;
     }
 }
 

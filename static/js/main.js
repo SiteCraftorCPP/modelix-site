@@ -14,7 +14,6 @@ document.addEventListener('DOMContentLoaded', function() {
     initializeModernEffects();
     initializeParticles();
     initializeInteractiveElements();
-    initializeScrollNotifications();
     
     // Добавляем класс загрузки страницы
     setTimeout(() => {
@@ -1130,65 +1129,6 @@ if (modal) {
 // ========================================
 // УВЕДОМЛЕНИЯ О СКРОЛЛЕ
 // ========================================
-
-function initializeScrollNotifications() {
-    const notification = document.getElementById('scrollNotification');
-    const closeBtn = notification?.querySelector('.close-notification');
-    let hasShown = false;
-    let scrollTimeout;
-    
-    // Показываем уведомление после небольшой задержки
-    setTimeout(() => {
-        if (!hasShown && window.pageYOffset < 100) {
-            showScrollNotification();
-        }
-    }, 3000);
-    
-    function showScrollNotification() {
-        if (notification && !hasShown) {
-            notification.classList.add('show');
-            hasShown = true;
-            
-            // Автоматически скрываем через 5 секунд
-            setTimeout(hideScrollNotification, 5000);
-        }
-    }
-    
-    function hideScrollNotification() {
-        if (notification) {
-            notification.classList.remove('show');
-        }
-    }
-    
-    // Закрытие по кнопке
-    if (closeBtn) {
-        closeBtn.addEventListener('click', hideScrollNotification);
-    }
-    
-    // Скрываем при скролле
-    window.addEventListener('scroll', () => {
-        if (window.pageYOffset > 200) {
-            hideScrollNotification();
-        }
-    });
-    
-    // Показываем другие уведомления при достижении определенных секций
-    const sections = document.querySelectorAll('section');
-    const sectionObserver = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                // Можно добавить специфические уведомления для каждой секции
-                triggerSectionNotification(entry.target);
-            }
-        });
-    }, {
-        threshold: 0.3
-    });
-    
-    sections.forEach(section => {
-        sectionObserver.observe(section);
-    });
-}
 
 function triggerSectionNotification(section) {
     // Здесь можно добавить специфические уведомления для разных секций

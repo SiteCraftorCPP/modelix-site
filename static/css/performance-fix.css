@@ -1,0 +1,428 @@
+/* =====================================================
+   КРИТИЧЕСКИЕ ОПТИМИЗАЦИИ ПРОИЗВОДИТЕЛЬНОСТИ
+   Фиксит лаги на MacBook M4 и других устройствах
+   ===================================================== */
+
+/* 1. ОТКЛЮЧАЕМ ВСЕ backdrop-filter (главная причина лагов) */
+* {
+    backdrop-filter: none !important;
+    -webkit-backdrop-filter: none !important;
+}
+
+/* 2. УПРОЩАЕМ HOVER-ЭФФЕКТЫ - убираем scale и сложные тени */
+.service-card-new:hover,
+.advantage-card:hover,
+.modern-card:hover,
+.side-window:hover,
+.side-window.active {
+    transform: none !important;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3) !important;
+}
+
+/* Убираем scale с изображений при hover */
+.side-window:hover img,
+.side-window.active img,
+.integrated-printer-image:hover,
+.service-image-new img:hover {
+    transform: none !important;
+}
+
+/* 3. ОПТИМИЗАЦИЯ НАВИГАЦИИ - убираем blur */
+.navigation,
+nav.navigation {
+    backdrop-filter: none !important;
+    background: rgba(15, 15, 35, 0.98) !important;
+}
+
+/* 4. ОПТИМИЗАЦИЯ МОДАЛЬНЫХ ОКОН - убираем blur */
+.modal,
+#callModal,
+#contactModal,
+#projectsModal,
+#callFormModal,
+.mobile-menu {
+    backdrop-filter: none !important;
+    background: rgba(0, 0, 0, 0.95) !important;
+}
+
+/* 5. ОТКЛЮЧАЕМ СЛОЖНЫЕ АНИМАЦИИ ГРАДИЕНТОВ */
+.integrated-printer-block {
+    animation: none !important;
+    background: linear-gradient(45deg, #191970, #4169e1) !important;
+}
+
+/* 6. УПРОЩАЕМ HOVER ДЛЯ БЛОКА ПРИНТЕРА */
+.integrated-printer-block:hover {
+    transform: translateY(-50%) !important;
+    box-shadow: 0 20px 40px rgba(25, 25, 112, 0.4) !important;
+}
+
+/* 7. ОПТИМИЗАЦИЯ КАРТОЧЕК УСЛУГ */
+.service-card-new {
+    will-change: auto !important;
+    transition: opacity 0.2s ease !important;
+}
+
+.service-card-new:hover {
+    opacity: 0.95 !important;
+}
+
+/* 7.1. ОПТИМИЗАЦИЯ WORKFLOW - НО СОХРАНЯЕМ ЦЕНТРИРОВАНИЕ */
+.workflow-step-new:hover .step-icon-new {
+    transform: translate(-50%, -50%) translateZ(0) !important;
+    box-shadow: 0 8px 20px rgba(25, 25, 112, 0.3) !important;
+}
+
+/* 8. УБИРАЕМ ЛИШНИЕ will-change (они едят память) */
+* {
+    will-change: auto !important;
+}
+
+/* ИСКЛЮЧЕНИЯ: элементы с position:absolute и центрированием translate(-50%, -50%) */
+.mobile-menu-content,
+[style*="translate(-50%, -50%)"] {
+    position: absolute !important;
+    top: 50% !important;
+    left: 50% !important;
+    transform: translate(-50%, -50%) !important;
+}
+
+/* Модальные окна - правильное центрирование через margin */
+.modal-content {
+    position: relative !important;
+    margin: 10% auto !important;
+    top: auto !important;
+    left: auto !important;
+    transform: none !important;
+}
+
+.call-modal-content {
+    position: relative !important;
+    margin: 10% auto !important;
+    top: auto !important;
+    left: auto !important;
+    transform: none !important;
+}
+
+.call-form-modal-content {
+    position: relative !important;
+    margin: 5% auto !important;
+    top: auto !important;
+    left: auto !important;
+    transform: none !important;
+}
+
+/* Иконки workflow - центрирование + GPU acceleration */
+.step-icon-new {
+    position: absolute !important;
+    top: 50% !important;
+    left: 50% !important;
+    transform: translate(-50%, -50%) translateZ(0) !important;
+    backface-visibility: hidden !important;
+    will-change: auto !important;
+}
+
+.step-icon-new i {
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+}
+
+/* Центрирование для SVG внутри progress ring */
+.progress-ring {
+    position: relative !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+}
+
+/* 9. ОПТИМИЗАЦИЯ АНИМИРОВАННЫХ ИКОНОК */
+.animated-icon {
+    animation: none !important;
+}
+
+/* 10. УПРОЩАЕМ TRANSITIONS - только opacity и простые свойства */
+.service-card-new,
+.advantage-card,
+.modern-card,
+.workflow-step-new,
+.faq-item-new {
+    transition: opacity 0.2s ease !important;
+}
+
+/* 11. ОПТИМИЗАЦИЯ SOCIAL BUTTONS */
+.social-btn:hover,
+.social-link:hover {
+    transform: none !important;
+    opacity: 0.8 !important;
+}
+
+/* 12. ОПТИМИЗАЦИЯ CTA КНОПОК */
+.cta-button:hover,
+.submit-btn:hover,
+.modal-submit-btn:hover {
+    transform: none !important;
+    background: linear-gradient(135deg, #1e40af, #1e3a8a) !important;
+}
+
+/* 13. ОТКЛЮЧАЕМ АНИМАЦИИ ПРИ СКРОЛЛЕ */
+[data-aos] {
+    opacity: 1 !important;
+    transform: none !important;
+    transition: none !important;
+}
+
+/* 14. УПРОЩАЕМ FAQ HOVER */
+.faq-question-new:hover {
+    background: #2a2a2a !important;
+    transform: none !important;
+}
+
+/* 15. ОПТИМИЗАЦИЯ ПРОЕКТНОЙ ГАЛЕРЕИ */
+.projects-main-window:hover,
+.main-window-content:hover {
+    transform: none !important;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3) !important;
+}
+
+/* 16. ОТКЛЮЧАЕМ PARTICLE ЭФФЕКТЫ (если есть) */
+.particles,
+.particle,
+#particles-js {
+    display: none !important;
+}
+
+/* 17. УЛУЧШАЕМ РЕНДЕРИНГ ТЕКСТА */
+body,
+* {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeSpeed !important;
+}
+
+/* 18. CSS CONTAINMENT для изоляции */
+.service-card-new,
+.advantage-card,
+.workflow-step-new,
+.faq-item-new,
+.projects-main-window,
+.side-window {
+    contain: layout style !important;
+}
+
+/* 19. ОПТИМИЗАЦИЯ ИЗОБРАЖЕНИЙ */
+img {
+    image-rendering: -webkit-optimize-contrast;
+    image-rendering: crisp-edges;
+    transform: translateZ(0);
+    backface-visibility: hidden;
+}
+
+/* 20. ОТКЛЮЧАЕМ СЛОЖНЫЕ BOX-SHADOWS при hover */
+*:hover {
+    box-shadow: none !important;
+}
+
+/* Возвращаем только простые тени для важных элементов */
+.service-card-new,
+.advantage-card,
+.modern-card {
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2) !important;
+}
+
+/* 21. ОПТИМИЗАЦИЯ ДЛЯ RETINA ДИСПЛЕЕВ */
+@media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
+    * {
+        -webkit-font-smoothing: subpixel-antialiased !important;
+    }
+    
+    /* Упрощаем все эффекты на retina */
+    *:hover {
+        transform: none !important;
+        filter: none !important;
+    }
+    
+    /* ИСКЛЮЧЕНИЯ: иконки workflow всегда центрированы */
+    .step-icon-new,
+    .workflow-step-new:hover .step-icon-new {
+        transform: translate(-50%, -50%) translateZ(0) !important;
+    }
+}
+
+/* 22. FORCE GPU ACCELERATION только где критично */
+.navigation,
+.modal,
+.mobile-menu {
+    transform: translateZ(0);
+    backface-visibility: hidden;
+}
+
+/* 23. ОТКЛЮЧАЕМ TRANSITION на скролле для плавности */
+.nav-link,
+.social-btn,
+.service-card-new {
+    transition: none !important;
+}
+
+/* Включаем только при hover */
+.nav-link:hover,
+.social-btn:hover,
+.service-card-new:hover {
+    transition: opacity 0.15s ease !important;
+}
+
+/* 24. КРИТИЧЕСКАЯ ОПТИМИЗАЦИЯ: отключаем все анимации на слабых устройствах */
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        animation: none !important;
+        transition: none !important;
+    }
+}
+
+/* 25. УПРОЩАЕМ FOOTER */
+.footer {
+    box-shadow: none !important;
+}
+
+/* 26. ОПТИМИЗАЦИЯ HERO БЛОКА */
+.hero-section {
+    will-change: auto !important;
+}
+
+.hero-content-card {
+    transition: none !important;
+}
+
+/* 27. ОТКЛЮЧАЕМ OVERFLOW АНИМАЦИИ */
+* {
+    scroll-behavior: auto !important;
+}
+
+/* 28. МИНИМИЗИРУЕМ REPAINTS + GPU ACCELERATION для изображений */
+.service-image-new,
+.advantage-icon {
+    backface-visibility: hidden;
+    transform: translateZ(0);
+}
+
+.progress-svg {
+    backface-visibility: hidden;
+    transform: translateZ(0);
+}
+
+/* 29. УБИРАЕМ SHADOW от FLOATING КНОПКИ */
+.floating-call-btn {
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2) !important;
+}
+
+.floating-call-btn:hover {
+    transform: none !important;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2) !important;
+}
+
+.call-btn-pulse {
+    display: none !important;
+}
+
+/* 30. КРИТИЧЕСКАЯ ОПТИМИЗАЦИЯ: упрощаем все псевдоэлементы */
+*::before,
+*::after {
+    transition: none !important;
+    animation: none !important;
+}
+
+/* ===================================================== 
+   ДОПОЛНИТЕЛЬНО: Оптимизация для конкретных блоков
+   ===================================================== */
+
+/* Убираем сложные эффекты с социальных кнопок */
+.social-icons-row a:hover {
+    transform: none !important;
+}
+
+/* Упрощаем анимацию прогресс-баров */
+.progress-bar,
+.progress-ring {
+    transition: none !important;
+}
+
+/* Отключаем анимацию для статистики */
+.stat-number {
+    transition: none !important;
+}
+
+/* Убираем эффекты с навигации */
+.nav-toggle-btn:hover {
+    transform: none !important;
+}
+
+/* МОБИЛЬНАЯ ОПТИМИЗАЦИЯ */
+@media (max-width: 768px) {
+    /* На мобилках вообще отключаем hover эффекты */
+    *:hover {
+        transform: none !important;
+        box-shadow: none !important;
+        filter: none !important;
+        opacity: 1 !important;
+    }
+    
+    /* ИСКЛЮЧЕНИЯ: иконки workflow всегда центрированы */
+    .step-icon-new,
+    .step-icon-new:hover,
+    .workflow-step-new:hover .step-icon-new {
+        transform: translate(-50%, -50%) translateZ(0) !important;
+    }
+    
+    /* Модальные окна на мобилках - правильное позиционирование */
+    .modal-content,
+    .call-modal-content,
+    .call-form-modal-content {
+        position: relative !important;
+        margin: 5% auto !important;
+        top: auto !important;
+        left: auto !important;
+        transform: none !important;
+    }
+    
+    /* Упрощаем всё до минимума */
+    * {
+        transition: none !important;
+        animation: none !important;
+        will-change: auto !important;
+    }
+}
+
+/* ФИНАЛЬНАЯ ОПТИМИЗАЦИЯ: принудительное отключение тяжёлых свойств */
+body * {
+    filter: none !important;
+    backdrop-filter: none !important;
+    -webkit-backdrop-filter: none !important;
+}
+
+/* ===================================================== 
+   КРИТИЧЕСКОЕ ИСКЛЮЧЕНИЕ: Иконки workflow ВСЕГДА центрированы
+   Должно быть в самом конце для максимального приоритета
+   ===================================================== */
+.step-icon-new,
+.workflow-step-new .step-icon-new,
+body .step-icon-new,
+html body .step-icon-new,
+.workflow-section .step-icon-new,
+.step-progress-circle .step-icon-new {
+    position: absolute !important;
+    top: 50% !important;
+    left: 50% !important;
+    transform: translate(-50%, -50%) translateZ(0) !important;
+    backface-visibility: hidden !important;
+}
+
+/* Во всех состояниях, включая hover */
+.step-icon-new:hover,
+.workflow-step-new:hover .step-icon-new,
+.workflow-step-new:active .step-icon-new,
+body .workflow-step-new .step-icon-new:hover {
+    transform: translate(-50%, -50%) translateZ(0) !important;
+}
+

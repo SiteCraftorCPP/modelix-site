@@ -31,6 +31,8 @@
     <link rel="stylesheet" href="/static/css/animated-icons-fix.css?v=1.4">
     <link rel="stylesheet" href="/static/css/hero-responsive.css?v=1.0">
     <link rel="stylesheet" href="/static/css/service-fix.css?v=1.0">
+    <!-- КРИТИЧЕСКАЯ ОПТИМИЗАЦИЯ ПРОИЗВОДИТЕЛЬНОСТИ -->
+    <link rel="stylesheet" href="/static/css/performance-fix.css?v=4.0">
     <style>
         /* CSS переменная для изображения hero блока */
         :root {
@@ -431,9 +433,9 @@
                     <!-- Интегрированное изображение принтера -->
                     <div class="integrated-printer-block">
                         {% if hero_image %}
-                        <img src="{{ hero_image.image_url_with_cache_bust }}" alt="{{ hero_image.alt_text }}" class="integrated-printer-image">
+                        <img src="{{ hero_image.image_url_with_cache_bust }}" alt="{{ hero_image.alt_text }}" class="integrated-printer-image" loading="eager" decoding="async">
                         {% else %}
-                            <img src="/media/hero/hero_block1_v5qOCbx_TEgQx6C.png" alt="3D принтер" class="integrated-printer-image">
+                            <img src="/media/hero/hero_block1_v5qOCbx_TEgQx6C.png" alt="3D принтер" class="integrated-printer-image" loading="eager" decoding="async">
                         {% endif %}
                     </div>
                 </div>
@@ -526,14 +528,14 @@
                         {% for service in services %}
                             {% if service.service_type == '3d_modeling' %}
                                 {% if service.image %}
-                                <img src="{{ service.image.url }}" alt="{{ service.title }}">
+                                <img src="{{ service.image.url }}" alt="{{ service.title }}" loading="lazy" decoding="async">
                                 {% else %}
-                                    <img src="/media/services/3d_modeling.jpg" alt="3D моделирование">
+                                    <img src="/media/services/3d_modeling.jpg" alt="3D моделирование" loading="lazy" decoding="async">
                                 {% endif %}
                             {% endif %}
                         {% endfor %}
                         {% if not services %}
-                            <img src="/media/services/3d_modeling.jpg" alt="3D моделирование">
+                            <img src="/media/services/3d_modeling.jpg" alt="3D моделирование" loading="lazy" decoding="async">
                         {% endif %}
                     </div>
                     <div class="service-content-new">
@@ -559,14 +561,14 @@
                         {% for service in services %}
                             {% if service.service_type == '3d_printing' %}
                                 {% if service.image %}
-                                <img src="{{ service.image.url }}" alt="{{ service.title }}">
+                                <img src="{{ service.image.url }}" alt="{{ service.title }}" loading="lazy" decoding="async">
                                 {% else %}
-                                    <img src="/media/services/3d_printing.jpg" alt="3D печать">
+                                    <img src="/media/services/3d_printing.jpg" alt="3D печать" loading="lazy" decoding="async">
                                 {% endif %}
                             {% endif %}
                         {% endfor %}
                         {% if not services %}
-                            <img src="/media/services/3d_printing.jpg" alt="3D печать">
+                            <img src="/media/services/3d_printing.jpg" alt="3D печать" loading="lazy" decoding="async">
                         {% endif %}
                     </div>
                     <div class="service-content-new">
@@ -592,14 +594,14 @@
                         {% for service in services %}
                             {% if service.service_type == '3d_scanning' %}
                                 {% if service.image %}
-                                <img src="{{ service.image.url }}" alt="{{ service.title }}">
+                                <img src="{{ service.image.url }}" alt="{{ service.title }}" loading="lazy" decoding="async">
                                 {% else %}
-                                    <img src="/media/services/3d_scanning.jpg" alt="3D сканирование">
+                                    <img src="/media/services/3d_scanning.jpg" alt="3D сканирование" loading="lazy" decoding="async">
                                 {% endif %}
                             {% endif %}
                         {% endfor %}
                         {% if not services %}
-                            <img src="/media/services/3d_scanning.jpg" alt="3D сканирование">
+                            <img src="/media/services/3d_scanning.jpg" alt="3D сканирование" loading="lazy" decoding="async">
                         {% endif %}
                     </div>
                     <div class="service-content-new">
@@ -625,14 +627,14 @@
                         {% for service in services %}
                             {% if service.service_type == 'reverse_engineering' %}
                                 {% if service.image %}
-                                <img src="{{ service.image.url }}" alt="{{ service.title }}">
+                                <img src="{{ service.image.url }}" alt="{{ service.title }}" loading="lazy" decoding="async">
                                 {% else %}
-                                    <img src="/media/services/reverse_engineering.jpg" alt="Реверс-инжиниринг">
+                                    <img src="/media/services/reverse_engineering.jpg" alt="Реверс-инжиниринг" loading="lazy" decoding="async">
                                 {% endif %}
                             {% endif %}
                         {% endfor %}
                         {% if not services %}
-                            <img src="/media/services/reverse_engineering.jpg" alt="Реверс-инжиниринг">
+                            <img src="/media/services/reverse_engineering.jpg" alt="Реверс-инжиниринг" loading="lazy" decoding="async">
                         {% endif %}
                     </div>
                     <div class="service-content-new">
@@ -658,14 +660,14 @@
                         {% for service in services %}
                             {% if service.service_type == 'engineering' %}
                                 {% if service.image %}
-                                <img src="{{ service.image.url }}" alt="{{ service.title }}">
+                                <img src="{{ service.image.url }}" alt="{{ service.title }}" loading="lazy" decoding="async">
                                 {% else %}
-                                    <img src="/media/services/engineering.jpg" alt="Инжиниринг">
+                                    <img src="/media/services/engineering.jpg" alt="Инжиниринг" loading="lazy" decoding="async">
                                 {% endif %}
                             {% endif %}
                         {% endfor %}
                         {% if not services %}
-                            <img src="/media/services/engineering.jpg" alt="Инжиниринг">
+                            <img src="/media/services/engineering.jpg" alt="Инжиниринг" loading="lazy" decoding="async">
                         {% endif %}
                     </div>
                     <div class="service-content-new">
@@ -692,14 +694,14 @@
                         {% for service in services %}
                             {% if service.service_type == 'post_processing' %}
                                 {% if service.image %}
-                                <img src="{{ service.image.url }}" alt="{{ service.title }}">
+                                <img src="{{ service.image.url }}" alt="{{ service.title }}" loading="lazy" decoding="async">
                                 {% else %}
-                                    <img src="/media/services/post_processing.jpg" alt="Постобработка">
+                                    <img src="/media/services/post_processing.jpg" alt="Постобработка" loading="lazy" decoding="async">
                                 {% endif %}
                             {% endif %}
                         {% endfor %}
                         {% if not services %}
-                            <img src="/media/services/post_processing.jpg" alt="Постобработка">
+                            <img src="/media/services/post_processing.jpg" alt="Постобработка" loading="lazy" decoding="async">
                         {% endif %}
                     </div>
                     <div class="service-content-new">
@@ -944,7 +946,7 @@
                        class="main-window-content"
                        {% if projects_block.main_url %}target="_blank" rel="noopener noreferrer"{% endif %}>
                         {% if main_image %}
-                            <img src="{{ main_image }}" alt="Главный проект" id="mainScreenshot">
+                            <img src="{{ main_image }}" alt="Главный проект" id="mainScreenshot" loading="lazy" decoding="async">
                         {% endif %}
                         <div class="window-placeholder" {% if main_image %}style="display: none;"{% endif %}>
                             <i class="fas fa-image"></i>
@@ -960,7 +962,7 @@
                          data-screenshot="{{ left_image|default_if_none:'' }}"
                          data-url="{{ projects_block.left_url|default_if_none:'' }}">
                         {% if left_image %}
-                            <img src="{{ left_image }}" alt="Проект">
+                            <img src="{{ left_image }}" alt="Проект" loading="lazy" decoding="async">
                         {% endif %}
                         <div class="window-placeholder" {% if left_image %}style="display: none;"{% endif %}>
                             <i class="fas fa-image"></i>
@@ -971,7 +973,7 @@
                          data-screenshot="{{ right_image|default_if_none:'' }}"
                          data-url="{{ projects_block.right_url|default_if_none:'' }}">
                         {% if right_image %}
-                            <img src="{{ right_image }}" alt="Проект">
+                            <img src="{{ right_image }}" alt="Проект" loading="lazy" decoding="async">
                         {% endif %}
                         <div class="window-placeholder" {% if right_image %}style="display: none;"{% endif %}>
                             <i class="fas fa-image"></i>
@@ -1208,15 +1210,6 @@
                 </button>
             </form>
         </div>
-    </div>
-
-    <!-- Scroll Notification -->
-    <div id="scrollNotification" class="scroll-notification">
-        <div class="notification-content">
-            <i class="fas fa-info-circle"></i>
-            <span>Пролистайте вниз, чтобы увидеть больше!</span>
-        </div>
-        <button class="close-notification">&times;</button>
     </div>
 
     <!-- Модальное окно материалов -->

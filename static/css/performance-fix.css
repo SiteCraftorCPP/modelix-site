@@ -3,6 +3,18 @@
    Фиксит лаги на MacBook M4 и других устройствах
    ===================================================== */
 
+/* 0. КРИТИЧЕСКИ ВАЖНО: hero-section всегда виден (ДО всех оптимизаций) */
+.hero-section,
+#hero,
+section.hero-section,
+body .hero-section,
+html body .hero-section {
+    display: flex !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+    min-height: 100vh !important;
+}
+
 /* 1. ОТКЛЮЧАЕМ ВСЕ backdrop-filter (главная причина лагов) */
 * {
     backdrop-filter: none !important;
@@ -257,17 +269,10 @@ img {
     backface-visibility: hidden;
 }
 
-/* 23. ОТКЛЮЧАЕМ TRANSITION на скролле для плавности */
+/* 23. УПРОЩАЕМ TRANSITION для плавности */
 .nav-link,
 .social-btn,
 .service-card-new {
-    transition: none !important;
-}
-
-/* Включаем только при hover */
-.nav-link:hover,
-.social-btn:hover,
-.service-card-new:hover {
     transition: opacity 0.15s ease !important;
 }
 
@@ -360,12 +365,22 @@ img {
 
 /* МОБИЛЬНАЯ ОПТИМИЗАЦИЯ */
 @media (max-width: 768px) {
-    /* На мобилках вообще отключаем hover эффекты */
+    /* КРИТИЧЕСКИ ВАЖНО: hero-section всегда виден */
+    .hero-section,
+    #hero,
+    section.hero-section,
+    body .hero-section {
+        display: flex !important;
+        visibility: visible !important;
+        opacity: 1 !important;
+        min-height: 100vh !important;
+    }
+    
+    /* На мобилках отключаем только hover эффекты, но НЕ базовое отображение */
     *:hover {
         transform: none !important;
         box-shadow: none !important;
         filter: none !important;
-        opacity: 1 !important;
     }
     
     /* ИСКЛЮЧЕНИЯ: иконки workflow всегда центрированы */
@@ -384,13 +399,6 @@ img {
         top: auto !important;
         left: auto !important;
         transform: none !important;
-    }
-    
-    /* Упрощаем всё до минимума */
-    * {
-        transition: none !important;
-        animation: none !important;
-        will-change: auto !important;
     }
 }
 

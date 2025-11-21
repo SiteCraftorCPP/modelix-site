@@ -1794,9 +1794,9 @@
     }
     
     .marketplace-icon-large {
-        width: 55px !important;
-        height: 55px !important;
-        border-radius: 12px !important;
+        width: 61px !important;
+        height: 61px !important;
+        border-radius: 13px !important;
         border-width: 2px !important;
     }
     
@@ -1805,11 +1805,11 @@
     }
     
     .marketplace-icon-large i {
-        font-size: 28px !important;
+        font-size: 31px !important;
     }
     
     .marketplace-icon-large span {
-        font-size: 13px !important;
+        font-size: 14px !important;
     }
 }
 

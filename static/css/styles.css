@@ -7677,7 +7677,7 @@ a.call-btn:active {
     /* Простая мобильная навигация */
     .navigation {
         padding: 2px 20px;
-        background: linear-gradient(135deg, #191970, #1e1a8a, #0f0f23) !important; /* Градиент из цветов сайта */
+        background: linear-gradient(135deg, #1a1a1a 0%, #1a1a24 50%, #1a1a1a 100%) !important; /* Темный градиент */
     }
     
     .nav-container {

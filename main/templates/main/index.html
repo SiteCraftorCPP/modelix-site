@@ -25,54 +25,79 @@
     <meta property="og:type" content="website">
     <meta property="og:url" content="/">
     
-    <script>
-        document.documentElement.className += ' js-loading';
-        // Fallback: принудительно убираем js-loading через 2 секунды, если CSS не загрузился
-        setTimeout(function() {
-            document.documentElement.className = document.documentElement.className.replace('js-loading', '');
-        }, 2000);
-    </script>
-
     <!-- Preload критических CSS для мобильной версии -->
-    <link rel="preload" href="/static/css/mobile.css?v=66.0" as="style">
+    <link rel="preload" href="/static/css/mobile.css?v=67.0" as="style">
     
-    <link rel="stylesheet" href="/static/css/styles.css?v=186.0">
-    <link rel="stylesheet" href="/static/css/mobile.css?v=66.0" 
-          onload="document.documentElement.className = document.documentElement.className.replace('js-loading', '');"
-          onerror="document.documentElement.className = document.documentElement.className.replace('js-loading', '');">
+    <link rel="stylesheet" href="/static/css/styles.css?v=193.0">
+    <link rel="stylesheet" href="/static/css/mobile.css?v=70.0">
     <link rel="stylesheet" href="/static/css/social-links-fixed.css?v=1.5">
     <link rel="stylesheet" href="/static/css/animated-icons-fix.css?v=1.6">
     <link rel="stylesheet" href="/static/css/hero-responsive.css?v=1.2">
     <link rel="stylesheet" href="/static/css/service-fix.css?v=1.2">
     <!-- КРИТИЧЕСКАЯ ОПТИМИЗАЦИЯ ПРОИЗВОДИТЕЛЬНОСТИ -->
-    <link rel="stylesheet" href="/static/css/performance-fix.css?v=4.2">
+    <link rel="stylesheet" href="/static/css/performance-fix.css?v=5.1">
     <style>
         /* CSS переменная для изображения hero блока */
         :root {
             --hero-image-url: url('{% if hero_image %}{{ hero_image.image_url_with_cache_bust }}{% else %}/media/hero/hero_block1_v5qOCbx_TEgQx6C.png{% endif %}');
         }
         
-        .js-loading body {
-            visibility: hidden;
+        /* Hero-section и body всегда видны */
+        body,
+        .hero-section,
+        #hero {
+            visibility: visible !important;
+            opacity: 1 !important;
         }
         
-        /* Но hero-section всегда видим даже при js-loading */
-        .js-loading .hero-section,
-        .js-loading #hero {
-            visibility: visible !important;
+        /* КРИТИЧЕСКИЕ СТИЛИ ДЛЯ НАВИГАЦИИ - применяются для всех размеров экрана */
+        nav.navigation,
+        .navigation,
+        header .navigation,
+        body .navigation {
+            background: linear-gradient(135deg, #1a1a1a 0%, #1a1a24 50%, #1a1a1a 100%) !important;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2) !important;
         }
         
         /* КРИТИЧЕСКИЕ МОБИЛЬНЫЕ СТИЛИ - применяются сразу для предотвращения FOUC */
         @media (max-width: 768px) {
             /* КРИТИЧЕСКИ ВАЖНО: hero-section должен быть виден и иметь высоту */
-            .hero-section {
+            body {
+                padding-top: 0 !important;
+            }
+            
+            .hero-section,
+            #hero,
+            section.hero-section,
+            section#hero {
                 min-height: 100vh !important;
+                height: auto !important;
                 display: flex !important;
                 align-items: center !important;
                 justify-content: center !important;
                 visibility: visible !important;
                 opacity: 1 !important;
+                background: #1a1a1a !important;
+                padding: 10px 5px !important;
+                margin: 0 !important;
+                width: 100vw !important;
+                max-width: 100vw !important;
             }
+            
+            .hero-section .container,
+            #hero .container {
+                display: flex !important;
+                flex-direction: column !important;
+                width: 100% !important;
+                visibility: visible !important;
+                opacity: 1 !important;
+            }
+            
+            .hero-section *,
+            #hero * {
+                visibility: visible !important;
+            }
+            
             /* Навигация */
             nav.navigation,
             .navigation,

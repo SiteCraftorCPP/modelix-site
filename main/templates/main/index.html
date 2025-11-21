@@ -25,19 +25,27 @@
     <meta property="og:type" content="website">
     <meta property="og:url" content="/">
     
-    <script>document.documentElement.className += ' js-loading';</script>
+    <script>
+        document.documentElement.className += ' js-loading';
+        // Fallback: принудительно убираем js-loading через 2 секунды, если CSS не загрузился
+        setTimeout(function() {
+            document.documentElement.className = document.documentElement.className.replace('js-loading', '');
+        }, 2000);
+    </script>
 
     <!-- Preload критических CSS для мобильной версии -->
-    <link rel="preload" href="/static/css/mobile.css?v=64.1" as="style">
+    <link rel="preload" href="/static/css/mobile.css?v=65.0" as="style">
     
-    <link rel="stylesheet" href="/static/css/styles.css?v=184.1">
-    <link rel="stylesheet" href="/static/css/mobile.css?v=64.1" onload="document.documentElement.className = document.documentElement.className.replace('js-loading', '');">
-    <link rel="stylesheet" href="/static/css/social-links-fixed.css?v=1.4">
-    <link rel="stylesheet" href="/static/css/animated-icons-fix.css?v=1.5">
-    <link rel="stylesheet" href="/static/css/hero-responsive.css?v=1.1">
-    <link rel="stylesheet" href="/static/css/service-fix.css?v=1.1">
+    <link rel="stylesheet" href="/static/css/styles.css?v=185.0">
+    <link rel="stylesheet" href="/static/css/mobile.css?v=65.0" 
+          onload="document.documentElement.className = document.documentElement.className.replace('js-loading', '');"
+          onerror="document.documentElement.className = document.documentElement.className.replace('js-loading', '');">
+    <link rel="stylesheet" href="/static/css/social-links-fixed.css?v=1.5">
+    <link rel="stylesheet" href="/static/css/animated-icons-fix.css?v=1.6">
+    <link rel="stylesheet" href="/static/css/hero-responsive.css?v=1.2">
+    <link rel="stylesheet" href="/static/css/service-fix.css?v=1.2">
     <!-- КРИТИЧЕСКАЯ ОПТИМИЗАЦИЯ ПРОИЗВОДИТЕЛЬНОСТИ -->
-    <link rel="stylesheet" href="/static/css/performance-fix.css?v=4.1">
+    <link rel="stylesheet" href="/static/css/performance-fix.css?v=4.2">
     <style>
         /* CSS переменная для изображения hero блока */
         :root {
@@ -48,8 +56,23 @@
             visibility: hidden;
         }
         
+        /* Но hero-section всегда видим даже при js-loading */
+        .js-loading .hero-section,
+        .js-loading #hero {
+            visibility: visible !important;
+        }
+        
         /* КРИТИЧЕСКИЕ МОБИЛЬНЫЕ СТИЛИ - применяются сразу для предотвращения FOUC */
         @media (max-width: 768px) {
+            /* КРИТИЧЕСКИ ВАЖНО: hero-section должен быть виден и иметь высоту */
+            .hero-section {
+                min-height: 100vh !important;
+                display: flex !important;
+                align-items: center !important;
+                justify-content: center !important;
+                visibility: visible !important;
+                opacity: 1 !important;
+            }
             /* Навигация */
             nav.navigation,
             .navigation,
@@ -1893,8 +1916,8 @@
         });
     </script>
     
-    <script src="/static/js/main.js?v=3.1"></script>
-    <script src="/static/js/hero-responsive.js?v=1.1"></script>
+    <script src="/static/js/main.js?v=3.2"></script>
+    <script src="/static/js/hero-responsive.js?v=1.2"></script>
     
 </body>
 </html>

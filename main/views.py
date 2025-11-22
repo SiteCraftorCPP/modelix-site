@@ -194,9 +194,14 @@ def index(request):
 
 def submit_order(request):
     """Обработка заявки на печать"""
+    import logging
+    logger = logging.getLogger(__name__)
     
     if request.method == 'POST':
         try:
+            logger.info(f"POST request received. FILES keys: {list(request.FILES.keys())}")
+            logger.info(f"POST keys: {list(request.POST.keys())}")
+            
             name = request.POST.get('name', '').strip()
             phone = request.POST.get('phone', '').strip()
             email = request.POST.get('email', '').strip()
@@ -204,6 +209,15 @@ def submit_order(request):
             service_type = request.POST.get('service_type', 'other').strip()
             file = request.FILES.get('file')
             
+            logger.info(f"File received: {file}")
+            if file:
+                logger.info(f"File name: {file.name}, size: {file.size}, content_type: {file.content_type}")
+            
+            # Проверка размера файла (если есть)
+            if file:
+                if file.size > 10485760:  # 10 MB
+                    logger.warning(f"File too large: {file.size} bytes")
+                    return JsonResponse({'success': False, 'error': 'Размер файла не должен превышать 10 MB'})
             
             if not all([name, phone, email]):
                 return JsonResponse({'success': False, 'error': 'Заполните все обязательные поля'})
@@ -224,10 +238,15 @@ def submit_order(request):
                     phone=phone
             )
             
+            logger.info(f"Order created successfully. File saved: {order.file.name if order.file else 'No file'}")
             return JsonResponse({'success': True, 'message': 'Заявка успешно отправлена!'})
             
         except Exception as e:
-            return JsonResponse({'success': False, 'error': f'Произошла ошибка: {str(e)}'})
+            import traceback
+            error_detail = traceback.format_exc()
+            logger.error(f"Error in submit_order: {str(e)}")
+            logger.error(f"Traceback: {error_detail}")
+            return JsonResponse({'success': False, 'error': f'Произошла ошибка: {str(e)}', 'detail': error_detail})
     
     return JsonResponse({'success': False, 'error': 'Метод не поддерживается'})
 

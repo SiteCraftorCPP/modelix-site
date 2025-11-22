@@ -12,7 +12,8 @@
 }
 
 /* Дополнительная защита от изменения цветов браузером */
-html, body {
+html,
+body {
     color-scheme: dark !important;
     forced-color-adjust: none !important;
     -webkit-color-scheme: dark !important;
@@ -30,7 +31,23 @@ html, body {
 }
 
 /* Дополнительная защита для всех текстовых элементов */
-p, h1, h2, h3, h4, h5, h6, span, div, a, li, td, th, button, input, textarea, select {
+p,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+span,
+div,
+a,
+li,
+td,
+th,
+button,
+input,
+textarea,
+select {
     color-scheme: dark !important;
     forced-color-adjust: none !important;
     -webkit-color-scheme: dark !important;
@@ -70,17 +87,17 @@ p, h1, h2, h3, h4, h5, h6, span, div, a, li, td, th, button, input, textarea, se
     --gray-700: #f1f5f9;
     --gray-800: #f8fafc;
     --gray-900: #0f172a;
-    
+
     --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.05);
     --shadow: 0 1px 3px 0 rgb(0 0 0 / 0.1), 0 1px 2px -1px rgb(0 0 0 / 0.1);
     --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
     --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
     --shadow-xl: 0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1);
     --shadow-2xl: 0 25px 50px -12px rgb(0 0 0 / 0.25);
-    
+
     --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
     --transition-fast: all 0.15s ease-in-out;
-    
+
     /* Адаптивные переменные */
     --container-max-width: 1200px;
     --section-padding: 90px 0;
@@ -102,9 +119,8 @@ p, h1, h2, h3, h4, h5, h6, span, div, a, li, td, th, button, input, textarea, se
         --font-size-h2: 2.3rem;
         --portfolio-image-size: 600px;
     }
-    
-    .text-section {
-    }
+
+    .text-section {}
 }
 
 @media (max-width: 1200px) {
@@ -117,9 +133,8 @@ p, h1, h2, h3, h4, h5, h6, span, div, a, li, td, th, button, input, textarea, se
         --font-size-h2: 2.1rem;
         --portfolio-image-size: 500px;
     }
-    
-    .text-section {
-    }
+
+    .text-section {}
 }
 
 @media (max-width: 992px) {
@@ -132,14 +147,16 @@ p, h1, h2, h3, h4, h5, h6, span, div, a, li, td, th, button, input, textarea, se
         --font-size-h2: 1.9rem;
         --portfolio-image-size: 450px;
     }
-    
+
     .text-section {
         text-align: center;
     }
-    
+
     .text-section * {
-        text-align: justify !important; /* Выравнивание по ширине */
-        text-justify: inter-word !important; /* Выравнивание по ширине */
+        text-align: justify !important;
+        /* Выравнивание по ширине */
+        text-justify: inter-word !important;
+        /* Выравнивание по ширине */
     }
 }
 
@@ -154,7 +171,7 @@ p, h1, h2, h3, h4, h5, h6, span, div, a, li, td, th, button, input, textarea, se
         --font-size-h3: 1.5rem;
         --portfolio-image-size: 350px;
     }
-    
+
     /* КРИТИЧЕСКИ ВАЖНО: Принудительное применение темной темы на мобильных */
     * {
         color-scheme: dark !important;
@@ -163,20 +180,21 @@ p, h1, h2, h3, h4, h5, h6, span, div, a, li, td, th, button, input, textarea, se
         -ms-color-scheme: dark !important;
         forced-color-adjust: none !important;
     }
-    
-    html, body {
+
+    html,
+    body {
         color-scheme: dark !important;
         -webkit-color-scheme: dark !important;
         -moz-color-scheme: dark !important;
         -ms-color-scheme: dark !important;
         forced-color-adjust: none !important;
     }
-    
+
     /* Мобильная навигация - показываем на экране */
     .nav-menu {
         display: flex;
     }
-    
+
     .mobile-menu-btn {
         display: flex !important;
         flex-direction: column;
@@ -189,12 +207,12 @@ p, h1, h2, h3, h4, h5, h6, span, div, a, li, td, th, button, input, textarea, se
         transition: all 0.3s ease;
         backdrop-filter: blur(10px);
     }
-    
+
     .mobile-menu-btn:hover {
         background: rgba(255, 255, 255, 0.2);
         border-color: rgba(255, 255, 255, 0.3);
     }
-    
+
     .hamburger-line {
         width: 20px;
         height: 2px;
@@ -202,31 +220,31 @@ p, h1, h2, h3, h4, h5, h6, span, div, a, li, td, th, button, input, textarea, se
         border-radius: 1px;
         transition: all 0.3s ease;
     }
-    
+
     .mobile-menu-btn.active .hamburger-line:nth-child(1) {
         transform: rotate(45deg) translate(4px, 4px);
     }
-    
+
     .mobile-menu-btn.active .hamburger-line:nth-child(2) {
         opacity: 0;
     }
-    
+
     .mobile-menu-btn.active .hamburger-line:nth-child(3) {
         transform: rotate(-45deg) translate(4px, -4px);
     }
-    
+
     .mobile-menu {
         display: block;
     }
-    
+
     .navigation {
         padding: 15px 10px;
     }
-    
+
     .nav-container {
         padding: 0;
     }
-    
+
     /* ПРИНУДИТЕЛЬНАЯ ФИКСАЦИЯ ИКОНОК СОЦИАЛЬНЫХ СЕТЕЙ - ЗАБЛОКИРОВАНО! */
     .social-links,
     div.social-links,
@@ -244,7 +262,7 @@ p, h1, h2, h3, h4, h5, h6, span, div, a, li, td, th, button, input, textarea, se
         gap: 16px !important;
         z-index: 10 !important;
     }
-    
+
     /* Принудительное центрирование всех текстовых элементов */
     .text-section,
     .text-section *,
@@ -256,13 +274,15 @@ p, h1, h2, h3, h4, h5, h6, span, div, a, li, td, th, button, input, textarea, se
     .text-section div,
     .text-section strong,
     .text-section em {
-        text-align: justify !important; /* Выравнивание по ширине */
-        text-justify: inter-word !important; /* Выравнивание по ширине */
+        text-align: justify !important;
+        /* Выравнивание по ширине */
+        text-justify: inter-word !important;
+        /* Выравнивание по ширине */
         display: block !important;
         margin-left: auto !important;
         margin-right: auto !important;
     }
-    
+
     .hero-content-card {
         grid-template-columns: 1fr !important;
         gap: 30px !important;
@@ -270,57 +290,65 @@ p, h1, h2, h3, h4, h5, h6, span, div, a, li, td, th, button, input, textarea, se
         width: 100% !important;
         max-width: none !important;
     }
-    
+
     .text-section {
-        text-align: justify; /* Выравнивание по ширине */
-        text-justify: inter-word; /* Выравнивание по ширине */
+        text-align: justify;
+        /* Выравнивание по ширине */
+        text-justify: inter-word;
+        /* Выравнивание по ширине */
         width: 100% !important;
         max-width: none !important;
         margin: 0 !important;
     }
-    
+
     .text-section * {
-        text-align: justify !important; /* Выравнивание по ширине */
-        text-justify: inter-word !important; /* Выравнивание по ширине */
+        text-align: justify !important;
+        /* Выравнивание по ширине */
+        text-justify: inter-word !important;
+        /* Выравнивание по ширине */
     }
-    
+
     .text-section h1,
     .text-section h2,
     .text-section h3,
     .text-section p,
     .text-section span,
     .text-section div {
-        text-align: justify !important; /* Выравнивание по ширине */
-        text-justify: inter-word !important; /* Выравнивание по ширине */
+        text-align: justify !important;
+        /* Выравнивание по ширине */
+        text-justify: inter-word !important;
+        /* Выравнивание по ширине */
         margin-left: auto !important;
         margin-right: auto !important;
     }
-    
+
     /* Дополнительные правила для всех текстовых элементов */
     .text-section p,
     .text-section span,
     .text-section div,
     .text-section strong,
     .text-section em {
-        text-align: justify !important; /* Выравнивание по ширине */
-        text-justify: inter-word !important; /* Выравнивание по ширине */
+        text-align: justify !important;
+        /* Выравнивание по ширине */
+        text-justify: inter-word !important;
+        /* Выравнивание по ширине */
         display: block !important;
         margin: 0 auto !important;
     }
-    
+
     .hero-title {
         margin-bottom: 30px !important;
         line-height: 1.1 !important;
         text-align: left !important;
         font-size: 2.8rem !important;
     }
-    
+
     .gradient-title {
         font-size: 2.8rem !important;
         margin-bottom: 30px !important;
         text-align: left !important;
     }
-    
+
     .description-text {
         font-size: 1.6rem !important;
         line-height: 1.6 !important;
@@ -328,43 +356,44 @@ p, h1, h2, h3, h4, h5, h6, span, div, a, li, td, th, button, input, textarea, se
         text-align: left !important;
         color: #ffffff !important;
     }
-    
+
     .cta-button {
         margin: 35px auto !important;
         padding: 20px 10px !important;
         font-size: 1.2rem !important;
         border-radius: 12px !important;
     }
-    
+
     /* Адаптация секций */
     .section-title {
         font-size: 2.2rem !important;
         margin-bottom: 35px !important;
         text-align: center !important;
     }
-    
+
     .advantages-grid {
         grid-template-columns: 1fr !important;
         gap: 25px !important;
     }
-    
+
     .advantage-card {
         border-radius: 16px !important;
         background: rgba(255, 255, 255, 0.05) !important;
         border: 1px solid rgba(255, 255, 255, 0.1) !important;
         backdrop-filter: blur(10px) !important;
     }
-    
+
     .advantage-card h3 {
         font-size: 1.4rem !important;
         margin-bottom: 18px !important;
         text-align: center !important;
     }
-    
+
     .advantage-card p {
         font-size: 1rem !important;
         line-height: 1.6 !important;
-        text-align: justify !important; /* Выравнивание по ширине */
+        text-align: justify !important;
+        /* Выравнивание по ширине */
     }
 }
 
@@ -379,17 +408,17 @@ p, h1, h2, h3, h4, h5, h6, span, div, a, li, td, th, button, input, textarea, se
         --font-size-body: 0.9rem;
         --portfolio-image-size: 300px;
     }
-    
+
     /* Навигация для маленьких экранов */
     .navigation {
         padding: 1px 12px;
     }
-    
+
     .nav-menu .nav-link {
         font-size: 0.35rem;
         padding: 2px 1px;
     }
-    
+
     /* ПРИНУДИТЕЛЬНАЯ ФИКСАЦИЯ ИКОНОК СОЦИАЛЬНЫХ СЕТЕЙ - ЗАБЛОКИРОВАНО! */
     .social-links,
     div.social-links,
@@ -407,7 +436,7 @@ p, h1, h2, h3, h4, h5, h6, span, div, a, li, td, th, button, input, textarea, se
         gap: 16px !important;
         z-index: 10 !important;
     }
-    
+
     .hero-content-card {
         grid-template-columns: 1fr !important;
         gap: 30px !important;
@@ -415,57 +444,65 @@ p, h1, h2, h3, h4, h5, h6, span, div, a, li, td, th, button, input, textarea, se
         width: 100% !important;
         max-width: none !important;
     }
-    
+
     .text-section {
-        text-align: justify !important; /* Выравнивание по ширине */
-        text-justify: inter-word !important; /* Выравнивание по ширине */
+        text-align: justify !important;
+        /* Выравнивание по ширине */
+        text-justify: inter-word !important;
+        /* Выравнивание по ширине */
         width: 100% !important;
         max-width: none !important;
         margin: 0 !important;
     }
-    
+
     .text-section * {
-        text-align: justify !important; /* Выравнивание по ширине */
-        text-justify: inter-word !important; /* Выравнивание по ширине */
+        text-align: justify !important;
+        /* Выравнивание по ширине */
+        text-justify: inter-word !important;
+        /* Выравнивание по ширине */
     }
-    
+
     .text-section h1,
     .text-section h2,
     .text-section h3,
     .text-section p,
     .text-section span,
     .text-section div {
-        text-align: justify !important; /* Выравнивание по ширине */
-        text-justify: inter-word !important; /* Выравнивание по ширине */
+        text-align: justify !important;
+        /* Выравнивание по ширине */
+        text-justify: inter-word !important;
+        /* Выравнивание по ширине */
         margin-left: auto !important;
         margin-right: auto !important;
     }
-    
+
     /* Дополнительные правила для всех текстовых элементов */
     .text-section p,
     .text-section span,
     .text-section div,
     .text-section strong,
     .text-section em {
-        text-align: justify !important; /* Выравнивание по ширине */
-        text-justify: inter-word !important; /* Выравнивание по ширине */
+        text-align: justify !important;
+        /* Выравнивание по ширине */
+        text-justify: inter-word !important;
+        /* Выравнивание по ширине */
         display: block !important;
         margin: 0 auto !important;
     }
-    
+
     .hero-title {
         margin-bottom: 20px !important;
         line-height: 1.1 !important;
         text-align: left !important;
         font-size: 2.2rem !important;
     }
-    
+
     .gradient-title {
         font-size: 1.4rem !important;
         margin-bottom: 18px !important;
         text-align: left !important;
     }
-    
+
     .description-text {
         font-size: 1.3rem !important;
         line-height: 1.5 !important;
@@ -473,58 +510,59 @@ p, h1, h2, h3, h4, h5, h6, span, div, a, li, td, th, button, input, textarea, se
         text-align: left !important;
         color: #ffffff !important;
     }
-    
+
     .cta-button {
         margin: 20px auto !important;
         padding: 12px 25px !important;
         font-size: 0.9rem !important;
     }
-    
+
     /* Адаптация секций для 576px */
     .section-title {
         font-size: 2rem !important;
         margin-bottom: 30px !important;
         text-align: center !important;
     }
-    
+
     .advantages-grid {
         grid-template-columns: 1fr !important;
         gap: 20px !important;
     }
-    
+
     .advantage-card {
         border-radius: 16px !important;
         background: rgba(255, 255, 255, 0.05) !important;
         border: 1px solid rgba(255, 255, 255, 0.1) !important;
         backdrop-filter: blur(10px) !important;
     }
-    
+
     .advantage-card h3 {
         font-size: 1.3rem !important;
         margin-bottom: 15px !important;
         text-align: center !important;
     }
-    
+
     .advantage-card p {
         font-size: 0.95rem !important;
         line-height: 1.5 !important;
-        text-align: justify !important; /* Выравнивание по ширине */
+        text-align: justify !important;
+        /* Выравнивание по ширине */
     }
-    
+
     /* Адаптация workflow */
     .workflow-steps-new {
         grid-template-columns: 1fr !important;
         gap: 30px !important;
     }
-    
+
     .workflow-step-new {
         padding: 10px !important;
     }
-    
+
     .step-content-new h3 {
         font-size: 1.3rem !important;
     }
-    
+
     .step-content-new p {
         font-size: 0.9rem !important;
         line-height: 1.4 !important;
@@ -533,27 +571,30 @@ p, h1, h2, h3, h4, h5, h6, span, div, a, li, td, th, button, input, textarea, se
         hyphens: auto !important;
         color: #ffffff !important;
     }
-    
+
     /* ПРИНУДИТЕЛЬНОЕ ВЫРАВНИВАНИЕ ПО ШИРИНЕ ДЛЯ 576px */
     .workflow-steps-new .workflow-step-new .step-content-new p,
     .workflow-step-new .step-content-new p,
     .workflow-step-new p {
         text-align: justify !important;
     }
-    
+
     .text-section p {
         margin-bottom: 15px !important;
         line-height: 1.4 !important;
-        text-align: justify !important; /* Выравнивание по ширине */
-        text-justify: inter-word !important; /* Выравнивание по ширине */
+        text-align: justify !important;
+        /* Выравнивание по ширине */
+        text-justify: inter-word !important;
+        /* Выравнивание по ширине */
     }
-    
+
     .cta-button {
         margin: 20px auto !important;
         display: block !important;
         width: fit-content !important;
     }
 }
+
 @media (max-width: 480px) {
     :root {
         --section-padding: 40px 0;
@@ -563,7 +604,7 @@ p, h1, h2, h3, h4, h5, h6, span, div, a, li, td, th, button, input, textarea, se
         --font-size-h3: 1.2rem;
         --portfolio-image-size: 280px;
     }
-    
+
     /* КРИТИЧЕСКИ ВАЖНО: Принудительное применение темной темы на очень маленьких экранах */
     * {
         color-scheme: dark !important;
@@ -572,25 +613,26 @@ p, h1, h2, h3, h4, h5, h6, span, div, a, li, td, th, button, input, textarea, se
         -ms-color-scheme: dark !important;
         forced-color-adjust: none !important;
     }
-    
-    html, body {
+
+    html,
+    body {
         color-scheme: dark !important;
         -webkit-color-scheme: dark !important;
         -moz-color-scheme: dark !important;
         -ms-color-scheme: dark !important;
         forced-color-adjust: none !important;
     }
-    
+
     /* Навигация для очень маленьких экранов */
     .navigation {
         padding: 1px 10px;
     }
-    
+
     .nav-menu .nav-link {
         font-size: 0.3rem;
         padding: 1px 1px;
     }
-    
+
     /* ИСПРАВЛЕНИЕ: Убираем конфликтующие стили для мобилки */
     .nav-menu .nav-link.call-btn,
     nav .nav-menu .nav-link.call-btn,
@@ -602,7 +644,7 @@ p, h1, h2, h3, h4, h5, h6, span, div, a, li, td, th, button, input, textarea, se
         flex-shrink: 0 !important;
         aspect-ratio: 1/1 !important;
     }
-    
+
     /* ПРИНУДИТЕЛЬНАЯ ФИКСАЦИЯ ИКОНОК СОЦИАЛЬНЫХ СЕТЕЙ - ЗАБЛОКИРОВАНО! */
     .social-links,
     div.social-links,
@@ -620,7 +662,7 @@ p, h1, h2, h3, h4, h5, h6, span, div, a, li, td, th, button, input, textarea, se
         gap: 16px !important;
         z-index: 10 !important;
     }
-    
+
     .hero-content-card {
         grid-template-columns: 1fr !important;
         gap: 25px !important;
@@ -628,118 +670,129 @@ p, h1, h2, h3, h4, h5, h6, span, div, a, li, td, th, button, input, textarea, se
         width: 100% !important;
         max-width: none !important;
     }
-    
+
     .text-section {
-        text-align: justify !important; /* Выравнивание по ширине */
-        text-justify: inter-word !important; /* Выравнивание по ширине */
+        text-align: justify !important;
+        /* Выравнивание по ширине */
+        text-justify: inter-word !important;
+        /* Выравнивание по ширине */
         width: 100% !important;
         max-width: none !important;
         margin: 0 !important;
     }
-    
+
     .text-section * {
-        text-align: justify !important; /* Выравнивание по ширине */
-        text-justify: inter-word !important; /* Выравнивание по ширине */
+        text-align: justify !important;
+        /* Выравнивание по ширине */
+        text-justify: inter-word !important;
+        /* Выравнивание по ширине */
     }
-    
+
     .text-section h1,
     .text-section h2,
     .text-section h3,
     .text-section p,
     .text-section span,
     .text-section div {
-        text-align: justify !important; /* Выравнивание по ширине */
-        text-justify: inter-word !important; /* Выравнивание по ширине */
+        text-align: justify !important;
+        /* Выравнивание по ширине */
+        text-justify: inter-word !important;
+        /* Выравнивание по ширине */
         margin-left: auto !important;
         margin-right: auto !important;
     }
-    
+
     /* Дополнительные правила для всех текстовых элементов */
     .text-section p,
     .text-section span,
     .text-section div,
     .text-section strong,
     .text-section em {
-        text-align: justify !important; /* Выравнивание по ширине */
-        text-justify: inter-word !important; /* Выравнивание по ширине */
+        text-align: justify !important;
+        /* Выравнивание по ширине */
+        text-justify: inter-word !important;
+        /* Выравнивание по ширине */
         display: block !important;
         margin: 0 auto !important;
     }
-    
+
     .hero-title {
         margin-bottom: 25px !important;
         line-height: 1.1 !important;
         text-align: center !important;
         font-size: 2.2rem !important;
     }
-    
+
     .gradient-title {
         font-size: 2.4rem !important;
         margin-bottom: 25px !important;
         text-align: left !important;
     }
-    
+
     .description-text {
         font-size: 1rem !important;
         line-height: 1.6 !important;
         margin-bottom: 18px !important;
-        text-align: justify !important; /* Выравнивание по ширине */
-        text-justify: inter-word !important; /* Выравнивание по ширине */
+        text-align: justify !important;
+        /* Выравнивание по ширине */
+        text-justify: inter-word !important;
+        /* Выравнивание по ширине */
         color: #ffffff !important;
     }
-    
+
     .cta-button {
         margin: 25px auto !important;
         padding: 16px 30px !important;
         font-size: 1rem !important;
         border-radius: 12px !important;
     }
-    
+
     /* Адаптация секций для 480px */
     .section-title {
         font-size: 1.8rem !important;
         margin-bottom: 25px !important;
         text-align: center !important;
     }
-    
+
     .advantages-grid {
         grid-template-columns: 1fr !important;
         gap: 18px !important;
     }
-    
+
     .advantage-card {
         border-radius: 16px !important;
         background: rgba(255, 255, 255, 0.05) !important;
         border: 1px solid rgba(255, 255, 255, 0.1) !important;
         backdrop-filter: blur(10px) !important;
     }
-    
+
     .advantage-card h3 {
         font-size: 1.2rem !important;
         margin-bottom: 12px !important;
         text-align: center !important;
     }
-    
+
     .advantage-card p {
         font-size: 0.9rem !important;
         line-height: 1.4 !important;
-        text-align: justify !important; /* Выравнивание по ширине */
+        text-align: justify !important;
+        /* Выравнивание по ширине */
     }
-    
+
     /* Адаптация workflow для 480px */
     .workflow-steps-new {
         grid-template-columns: 1fr !important;
         gap: 25px !important;
     }
-    
+
     .workflow-step-new {
         padding: 15px !important;
     }
-    
+
     .step-content-new h3 {
         font-size: 1.2rem !important;
     }
-    
+
     .step-content-new p {
         font-size: 0.85rem !important;
         line-height: 1.3 !important;
@@ -748,28 +801,28 @@ p, h1, h2, h3, h4, h5, h6, span, div, a, li, td, th, button, input, textarea, se
         hyphens: auto !important;
         color: #ffffff !important;
     }
-    
+
     /* ПРИНУДИТЕЛЬНОЕ ВЫРАВНИВАНИЕ ПО ШИРИНЕ ДЛЯ 480px */
     .workflow-steps-new .workflow-step-new .step-content-new p,
     .workflow-step-new .step-content-new p,
     .workflow-step-new p {
         text-align: justify !important;
     }
-    
+
     /* Адаптация форм */
     .form-row {
         grid-template-columns: 1fr !important;
         gap: 20px !important;
     }
-    
+
     .service-type-selector {
         width: 100%;
     }
-    
+
     .service-type-btn {
         width: 100%;
     }
-    
+
     .form-input,
     .form-textarea {
         width: 100% !important;
@@ -780,19 +833,19 @@ p, h1, h2, h3, h4, h5, h6, span, div, a, li, td, th, button, input, textarea, se
         background: rgba(255, 255, 255, 0.1) !important;
         color: white !important;
     }
-    
+
     .form-input:focus,
     .form-textarea:focus {
         border-color: #191970 !important;
         background: rgba(255, 255, 255, 0.15) !important;
         outline: none !important;
     }
-    
+
     .form-input::placeholder,
     .form-textarea::placeholder {
         color: rgba(255, 255, 255, 0.7) !important;
     }
-    
+
     .submit-btn {
         width: 100% !important;
         padding: 18px 25px !important;
@@ -805,19 +858,21 @@ p, h1, h2, h3, h4, h5, h6, span, div, a, li, td, th, button, input, textarea, se
         transition: all 0.3s ease !important;
         cursor: pointer !important;
     }
-    
+
     .submit-btn:hover {
         transform: translateY(-2px) !important;
         box-shadow: 0 8px 25px rgba(59, 130, 246, 0.4) !important;
     }
-    
+
     .text-section p {
         margin-bottom: 12px !important;
         line-height: 1.3 !important;
-        text-align: justify !important; /* Выравнивание по ширине */
-        text-justify: inter-word !important; /* Выравнивание по ширине */
+        text-align: justify !important;
+        /* Выравнивание по ширине */
+        text-justify: inter-word !important;
+        /* Выравнивание по ширине */
     }
-    
+
     .cta-button {
         margin: 15px auto !important;
         display: block !important;
@@ -839,7 +894,7 @@ p, h1, h2, h3, h4, h5, h6, span, div, a, li, td, th, button, input, textarea, se
         --font-size-body: 1rem;
         --portfolio-image-size: 600px;
     }
-    
+
     /* Оптимизация для блоков преимуществ на 1920x1080 */
     .advantages-grid {
         grid-template-columns: repeat(3, 1fr) !important;
@@ -847,12 +902,12 @@ p, h1, h2, h3, h4, h5, h6, span, div, a, li, td, th, button, input, textarea, se
         max-width: 1200px;
         margin: 0 auto;
     }
-    
+
     /* Оптимизация карточек преимуществ */
     .advantage-card.modern-card {
         min-height: 280px;
     }
-    
+
     /* ИКОНКА ЧЕТКО ПО ЦЕНТРУ БЛОКА */
     .advantage-icon {
         width: 65px !important;
@@ -862,21 +917,23 @@ p, h1, h2, h3, h4, h5, h6, span, div, a, li, td, th, button, input, textarea, se
         margin-right: auto !important;
         position: relative !important;
     }
-    
+
     /* ЗАГОЛОВКИ ПОД ИКОНКОЙ И ПО ЦЕНТРУ */
     section#about .advantages-grid .advantage-card.modern-card h3 {
         font-size: 22px !important;
-        margin: -20px auto 18px auto !important; /* Увеличиваем отступ от иконки */
+        margin: -20px auto 18px auto !important;
+        /* Увеличиваем отступ от иконки */
         text-align: center !important;
         width: 100% !important;
     }
-    
+
     /* ТЕКСТ ПОД ЗАГОЛОВКОМ И ПО ЛЕВОМУ КРАЮ */
     section#about .advantages-grid .advantage-card.modern-card p {
         font-size: 16px !important;
         line-height: 1.6 !important;
         margin: 18px auto 0 auto !important;
-        text-align: justify !important; /* Выравнивание по ширине */
+        text-align: justify !important;
+        /* Выравнивание по ширине */
         width: 100% !important;
     }
 }
@@ -1015,21 +1072,26 @@ img {
 }
 
 /* Принудительное исправление фона для всех экранов */
-html, body {
+html,
+body {
     background-color: #1a1a1a !important;
     background: #1a1a1a !important;
 }
 
 /* Дополнительная фиксация фона для маленьких экранов */
 @media (max-width: 768px) {
-    html, body {
+
+    html,
+    body {
         background-color: #1a1a1a !important;
         background: #1a1a1a !important;
     }
 }
 
 @media (max-width: 480px) {
-    html, body {
+
+    html,
+    body {
         background-color: #1a1a1a !important;
         background: #1a1a1a !important;
     }
@@ -1051,26 +1113,35 @@ html, body {
 ======================================== */
 
 .navigation {
-    position: fixed !important; /* Фиксируем навигацию к верху экрана */
-    top: 0 !important; /* Прижимаем к самому верху */
+    position: fixed !important;
+    /* Фиксируем навигацию к верху экрана */
+    top: 0 !important;
+    /* Прижимаем к самому верху */
     left: 0 !important;
     right: 0 !important;
     width: 100% !important;
-    background: linear-gradient(135deg, #1a1a1a 0%, #1a1a24 50%, #1a1a1a 100%) !important; /* Очень мягкий градиент, близкий к фону сайта */
+    background: linear-gradient(135deg, #1a1a1a 0%, #1a1a24 50%, #1a1a1a 100%) !important;
+    /* Очень мягкий градиент, близкий к фону сайта */
     padding: 16px 0 !important;
-    z-index: 9999 !important; /* Высокий приоритет над всеми элементами */
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2) !important; /* Очень мягкая тень */
-    backdrop-filter: none !important; /* Убираем размытие */
-    transition: all 0.3s ease !important; /* Плавные переходы */
+    z-index: 9999 !important;
+    /* Высокий приоритет над всеми элементами */
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2) !important;
+    /* Очень мягкая тень */
+    backdrop-filter: none !important;
+    /* Убираем размытие */
+    transition: all 0.3s ease !important;
+    /* Плавные переходы */
 }
 
 @keyframes gradientShift {
     0% {
         background-position: 0% 50%;
     }
+
     50% {
         background-position: 100% 50%;
     }
+
     100% {
         background-position: 0% 50%;
     }
@@ -1140,7 +1211,9 @@ html, body {
 
 
 @keyframes slideDown {
-    to { transform: translateY(0); }
+    to {
+        transform: translateY(0);
+    }
 }
 
 .nav-container {
@@ -1204,7 +1277,7 @@ html, body {
     border-radius: 12px;
     padding: 20px;
     min-width: 250px;
-    box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
     z-index: 1000;
     margin-top: 8px;
 }
@@ -1444,6 +1517,7 @@ html, body {
 .mobile-menu-close:hover {
     color: #191970;
 }
+
 .mobile-contact-info {
     margin-top: 30px;
     padding-top: 20px;
@@ -1525,8 +1599,13 @@ html, body {
 }
 
 @keyframes rotate {
-    from { transform: rotate(0deg); }
-    to { transform: rotate(360deg); }
+    from {
+        transform: rotate(0deg);
+    }
+
+    to {
+        transform: rotate(360deg);
+    }
 }
 
 .main-logo h1 {
@@ -1539,14 +1618,17 @@ html, body {
     background: #1a1a1a;
     border-radius: 24px;
     box-shadow: var(--shadow-2xl);
-    overflow: visible; /* Позволяем интегрированному блоку выходить за границы */
+    overflow: visible;
+    /* Позволяем интегрированному блоку выходить за границы */
     display: grid;
-    grid-template-columns: 1.4fr 0.6fr; /* Стык смещен правее (как было) */
+    grid-template-columns: 1.4fr 0.6fr;
+    /* Стык смещен правее (как было) */
     min-height: 700px;
     width: 100%;
     max-width: 1800px;
     margin: 0 auto;
-    position: relative !important; /* Важно для absolute позиционирования изображения */
+    position: relative !important;
+    /* Важно для absolute позиционирования изображения */
     opacity: 0;
     transform: translateY(50px);
     animation: fadeInUp 1s ease-out 0.4s forwards;
@@ -1555,8 +1637,10 @@ html, body {
 .text-section {
     padding: 60px 80px;
     background: #1a1a1a;
-    text-align: justify; /* Выравнивание по ширине */
-        text-justify: inter-word; /* Выравнивание по ширине */
+    text-align: justify;
+    /* Выравнивание по ширине */
+    text-justify: inter-word;
+    /* Выравнивание по ширине */
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -1568,8 +1652,10 @@ html, body {
     align-items: flex-start;
     justify-content: center;
     padding: 30px;
-    position: static; /* Убираем relative, чтобы фотография позиционировалась относительно hero-content-card, а не image-section */
-    overflow: visible; /* Позволяем выходить за границы для интегрированного блока */
+    position: static;
+    /* Убираем relative, чтобы фотография позиционировалась относительно hero-content-card, а не image-section */
+    overflow: visible;
+    /* Позволяем выходить за границы для интегрированного блока */
 }
 
 
@@ -1589,7 +1675,7 @@ html, body {
     background-clip: text;
     -webkit-background-clip: text;
     -webkit-text-fill-color: #ffffff;
-    text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
 }
 
 .about-company {
@@ -1605,7 +1691,8 @@ html, body {
 }
 
 .about-company p {
-    font-size: 14px !important; /* Уменьшаем размер шрифта */
+    font-size: 14px !important;
+    /* Уменьшаем размер шрифта */
     line-height: 1.7;
     color: #475569 !important;
     text-align: center;
@@ -1738,7 +1825,7 @@ html, body {
 /* ОСНОВНОЙ СЕЛЕКТОР СОЦИАЛЬНЫХ ССЫЛОК - ЗАФИКСИРОВАН! */
 .social-links,
 div.social-links,
-.image-section > .social-links {
+.image-section>.social-links {
     display: flex !important;
     gap: 16px !important;
     margin-top: -5px !important;
@@ -1870,7 +1957,8 @@ div.social-links,
     /* Оптимизация производительности */
     will-change: transform;
     backface-visibility: hidden;
-    transform: translateZ(0); /* GPU acceleration */
+    transform: translateZ(0);
+    /* GPU acceleration */
 }
 
 .integrated-printer-image:hover {
@@ -1938,7 +2026,8 @@ div.social-links,
     font-size: var(--font-size-h2);
     font-weight: 800;
     color: white;
-    margin-bottom: 30px; /* Уменьшено с 50px */
+    margin-bottom: 30px;
+    /* Уменьшено с 50px */
     background: linear-gradient(135deg, #191970, var(--primary-blue));
     padding: 16px 28px;
     border-radius: 16px;
@@ -2002,13 +2091,20 @@ div.social-links,
     /* ВЕРТИКАЛЬНЫЙ LAYOUT: ИКОНКА СВЕРХУ, ТЕКСТ СНИЗУ */
     display: flex !important;
     flex-direction: column !important;
-    align-items: center !important; /* Центрируем все элементы */
+    align-items: center !important;
+    /* Центрируем все элементы */
     gap: 0px !important;
-    padding: 40px 20px 25px 20px !important; /* Добавляем отступ сверху для иконок */
-    text-align: justify !important; /* Выравнивание по ширине */
-        text-justify: inter-word !important; /* Выравнивание по ширине */ /* Центрируем текст */
-    max-width: 100%; /* Ограничиваем ширину */
-    width: 100%; /* Занимаем всю доступную ширину */
+    padding: 40px 20px 25px 20px !important;
+    /* Добавляем отступ сверху для иконок */
+    text-align: justify !important;
+    /* Выравнивание по ширине */
+    text-justify: inter-word !important;
+    /* Выравнивание по ширине */
+    /* Центрируем текст */
+    max-width: 100%;
+    /* Ограничиваем ширину */
+    width: 100%;
+    /* Занимаем всю доступную ширину */
 }
 
 .info-card:hover,
@@ -2034,16 +2130,20 @@ section#about .advantages-grid .advantage-card .advantage-icon,
 .advantage-card.modern-card h3 {
     margin-left: auto !important;
     margin-right: auto !important;
-    margin-top: 0px !important; /* Убираем отступ от иконки */
+    margin-top: 0px !important;
+    /* Убираем отступ от иконки */
     text-align: center !important;
 }
 
 .advantage-card.modern-card p {
     margin-left: auto !important;
     margin-right: auto !important;
-    text-align: justify !important; /* Выравнивание по ширине */
-    text-justify: inter-word !important; /* Выравнивание по ширине */
-    word-spacing: normal !important; /* Нормальные промежутки между словами */
+    text-align: justify !important;
+    /* Выравнивание по ширине */
+    text-justify: inter-word !important;
+    /* Выравнивание по ширине */
+    word-spacing: normal !important;
+    /* Нормальные промежутки между словами */
 }
 
 /* УДАЛЕНО: Дублирующиеся правила для ПК */
@@ -2061,7 +2161,8 @@ section#about .advantages-grid .advantage-card .advantage-icon,
     color: #f8fafc !important;
     margin-bottom: 16px !important;
     text-align: center !important;
-    margin-top: 0 !important; /* Убираем верхний отступ */
+    margin-top: 0 !important;
+    /* Убираем верхний отступ */
     visibility: visible !important;
     opacity: 1 !important;
 }
@@ -2071,54 +2172,78 @@ section#about .advantages-grid .advantage-card .advantage-icon,
     font-size: 16px !important;
     line-height: 1.6 !important;
     color: #475569 !important;
-    text-align: justify !important; /* Выравнивание по ширине */
-        text-justify: inter-word !important; /* Выравнивание по ширине */ /* Возвращаем как было */
+    text-align: justify !important;
+    /* Выравнивание по ширине */
+    text-justify: inter-word !important;
+    /* Выравнивание по ширине */
+    /* Возвращаем как было */
     visibility: visible !important;
     opacity: 1 !important;
-    margin: 0 !important; /* Убираем лишние отступы */
+    margin: 0 !important;
+    /* Убираем лишние отступы */
 }
 
 /* Контейнер для текста в горизонтальном layout */
 .advantage-card .text-content,
 .info-card .text-content {
-    flex: 1; /* Занимает оставшееся место */
+    flex: 1;
+    /* Занимает оставшееся место */
     display: flex;
     flex-direction: column;
-    justify-content: flex-start; /* Выравнивание по верху */
-    align-items: center; /* Выравнивание по центру */
-    text-align: center; /* Заголовки по центру */
-    margin-left: auto !important; /* Центрируем */
-    margin-right: auto !important; /* Центрируем */
-    padding: 20px !important; /* Добавляем отступы внутри блока */
+    justify-content: flex-start;
+    /* Выравнивание по верху */
+    align-items: center;
+    /* Выравнивание по центру */
+    text-align: center;
+    /* Заголовки по центру */
+    margin-left: auto !important;
+    /* Центрируем */
+    margin-right: auto !important;
+    /* Центрируем */
+    padding: 20px !important;
+    /* Добавляем отступы внутри блока */
 }
 
 /* Выравнивание текста по ширине внутри центрированного контейнера */
 .advantage-card .text-content p {
-    text-align: justify !important; /* Выравнивание по ширине */
-    text-justify: inter-word !important; /* Выравнивание по ширине */
-    word-spacing: normal !important; /* Нормальные промежутки между словами */
-    width: 100% !important; /* Занимает всю ширину контейнера */
+    text-align: justify !important;
+    /* Выравнивание по ширине */
+    text-justify: inter-word !important;
+    /* Выравнивание по ширине */
+    word-spacing: normal !important;
+    /* Нормальные промежутки между словами */
+    width: 100% !important;
+    /* Занимает всю ширину контейнера */
 }
 
 /* ПРИНУДИТЕЛЬНОЕ ВЫРАВНИВАНИЕ ПО ШИРИНЕ ДЛЯ ВСЕХ ТЕКСТОВЫХ ЭЛЕМЕНТОВ */
 .advantage-card .text-content p,
 .advantage-card.modern-card p,
 .advantage-text {
-    text-align: justify !important; /* Выравнивание по ширине */
-    text-justify: inter-word !important; /* Выравнивание по ширине */
-    word-spacing: normal !important; /* Нормальные промежутки между словами */
-    hyphens: auto !important; /* Автоматические переносы слов */
+    text-align: justify !important;
+    /* Выравнивание по ширине */
+    text-justify: inter-word !important;
+    /* Выравнивание по ширине */
+    word-spacing: normal !important;
+    /* Нормальные промежутки между словами */
+    hyphens: auto !important;
+    /* Автоматические переносы слов */
 }
 
 /* СВЕРХ-СПЕЦИФИЧНОЕ ПРАВИЛО ДЛЯ ПРИНУДИТЕЛЬНОГО ВЫРАВНИВАНИЯ ПО ШИРИНЕ */
 body section#about .container .advantages-grid .advantage-card.modern-card .text-content p,
 body section#about .container .advantages-grid .advantage-card.modern-card p,
 body .advantage-card.modern-card .advantage-text {
-    text-align: justify !important; /* Выравнивание по ширине */
-    text-justify: inter-word !important; /* Выравнивание по ширине */
-    word-spacing: normal !important; /* Нормальные промежутки между словами */
-    hyphens: auto !important; /* Автоматические переносы слов */
-    direction: ltr !important; /* Направление текста слева направо */
+    text-align: justify !important;
+    /* Выравнивание по ширине */
+    text-justify: inter-word !important;
+    /* Выравнивание по ширине */
+    word-spacing: normal !important;
+    /* Нормальные промежутки между словами */
+    hyphens: auto !important;
+    /* Автоматические переносы слов */
+    direction: ltr !important;
+    /* Направление текста слева направо */
 }
 
 .process-section {
@@ -2150,7 +2275,8 @@ body .advantage-card.modern-card .advantage-text {
     /* Оптимизация производительности */
     will-change: transform;
     backface-visibility: hidden;
-    transform: translateZ(0); /* GPU acceleration */
+    transform: translateZ(0);
+    /* GPU acceleration */
 }
 
 .process-icon::before {
@@ -2178,7 +2304,8 @@ body .advantage-card.modern-card .advantage-text {
     /* Оптимизация производительности */
     will-change: transform;
     backface-visibility: hidden;
-    transform: translateZ(0); /* GPU acceleration */
+    transform: translateZ(0);
+    /* GPU acceleration */
 }
 
 .process-icon:hover {
@@ -2194,9 +2321,12 @@ body .advantage-card.modern-card .advantage-text {
 
 /* Анимации для иконки часов */
 @keyframes clockPulse {
-    0%, 100% {
+
+    0%,
+    100% {
         box-shadow: 0 0 0 0 rgba(25, 25, 112, 0.4);
     }
+
     50% {
         box-shadow: 0 0 0 20px rgba(25, 25, 112, 0);
     }
@@ -2206,15 +2336,19 @@ body .advantage-card.modern-card .advantage-text {
     0% {
         transform: rotate(0deg);
     }
+
     25% {
         transform: rotate(90deg);
     }
+
     50% {
         transform: rotate(180deg);
     }
+
     75% {
         transform: rotate(270deg);
     }
+
     100% {
         transform: rotate(360deg);
     }
@@ -2249,12 +2383,13 @@ body .advantage-card.modern-card .advantage-text {
     /* Оптимизация производительности */
     will-change: transform;
     backface-visibility: hidden;
-    transform: translateZ(0); /* GPU acceleration */
+    transform: translateZ(0);
+    /* GPU acceleration */
 }
 
 .process-img:hover {
     transform: translateZ(0) scale(1.03);
-    box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
 }
 
 /* Интерактивно-анимационная рамка для принтера в блоке "Проект в оптимальные сроки" */
@@ -2274,12 +2409,14 @@ body .advantage-card.modern-card .advantage-text {
     contain: layout style paint;
     backface-visibility: hidden;
 }
+
 .animated-printer-frame:hover {
     transform: scale(1.01);
     box-shadow: 0 25px 50px rgba(25, 25, 112, 0.5);
     /* Убираем ускорение анимации при hover */
     animation: midnightBlueGradient 5s ease infinite;
 }
+
 .animated-printer-frame .process-img {
     border-radius: 12px;
     transition: transform 0.3s ease;
@@ -2288,7 +2425,8 @@ body .advantage-card.modern-card .advantage-text {
     /* Оптимизация производительности */
     will-change: transform;
     backface-visibility: hidden;
-    transform: translateZ(0); /* GPU acceleration */
+    transform: translateZ(0);
+    /* GPU acceleration */
 }
 
 .animated-printer-frame:hover .process-img {
@@ -2323,7 +2461,8 @@ body .advantage-card.modern-card .advantage-text {
     /* Оптимизация производительности */
     will-change: transform;
     backface-visibility: hidden;
-    transform: translateZ(0); /* GPU acceleration */
+    transform: translateZ(0);
+    /* GPU acceleration */
 }
 
 .tech-card:hover {
@@ -2344,7 +2483,8 @@ body .advantage-card.modern-card .advantage-text {
     /* Оптимизация производительности */
     will-change: transform;
     backface-visibility: hidden;
-    transform: translateZ(0); /* GPU acceleration */
+    transform: translateZ(0);
+    /* GPU acceleration */
 }
 
 .tech-card:hover .tech-image img {
@@ -2463,7 +2603,8 @@ body .advantage-card.modern-card .advantage-text {
     display: flex;
     justify-content: space-between;
     gap: 30px;
-    margin-bottom: 60px; /* Уменьшено с 100px */
+    margin-bottom: 60px;
+    /* Уменьшено с 100px */
     overflow-x: auto;
     padding: 20px 0;
 }
@@ -2548,7 +2689,7 @@ body .advantage-card.modern-card .advantage-text {
 
 .workflow-step:hover .step-icon {
     transform: scale(1.1);
-    box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
 }
 
 .step-icon i {
@@ -2593,7 +2734,7 @@ body .advantage-card.modern-card .advantage-text {
     }
 }
 
-.workflow-section .container > .stats-grid {
+.workflow-section .container>.stats-grid {
     margin-top: -60px !important;
     padding-top: 0 !important;
 }
@@ -2606,29 +2747,31 @@ section.workflow-section .stats-grid,
     padding-top: 0 !important;
 }
 
-.workflow-section .workflow-steps-new + .stats-grid {
+.workflow-section .workflow-steps-new+.stats-grid {
     margin-top: -60px !important;
     padding-top: 0 !important;
 }
 
 @media (min-width: 769px) {
-    .workflow-section .container > .stats-grid,
+
+    .workflow-section .container>.stats-grid,
     body .workflow-section .stats-grid,
     html body .workflow-section .stats-grid,
     section.workflow-section .stats-grid,
     .workflow-section .container .stats-grid,
-    .workflow-section .workflow-steps-new + .stats-grid {
+    .workflow-section .workflow-steps-new+.stats-grid {
         margin-top: -60px !important;
     }
 }
 
 @media (max-width: 768px) {
-    .workflow-section .container > .stats-grid,
+
+    .workflow-section .container>.stats-grid,
     body .workflow-section .stats-grid,
     html body .workflow-section .stats-grid,
     section.workflow-section .stats-grid,
     .workflow-section .container .stats-grid,
-    .workflow-section .workflow-steps-new + .stats-grid {
+    .workflow-section .workflow-steps-new+.stats-grid {
         margin-top: 0 !important;
     }
 }
@@ -2857,12 +3000,19 @@ section.workflow-section .stats-grid,
 }
 
 @keyframes bounce {
-    0%, 20%, 50%, 80%, 100% {
+
+    0%,
+    20%,
+    50%,
+    80%,
+    100% {
         transform: translateY(0);
     }
+
     40% {
         transform: translateY(-8px);
     }
+
     60% {
         transform: translateY(-4px);
     }
@@ -2880,11 +3030,11 @@ section.workflow-section .stats-grid,
     .special-offer {
         padding: 25px 20px;
     }
-    
+
     .info-content h3 {
         font-size: 20px;
     }
-    
+
     .info-features {
         gap: 8px;
     }
@@ -2892,7 +3042,8 @@ section.workflow-section .stats-grid,
 
 .contact-header {
     text-align: center;
-    margin-bottom: 40px; /* Уменьшено с 60px */
+    margin-bottom: 40px;
+    /* Уменьшено с 60px */
 }
 
 .contact-header h2 {
@@ -3037,6 +3188,7 @@ section.workflow-section .stats-grid,
         opacity: 0;
         transform: translateY(-10px);
     }
+
     to {
         opacity: 1;
         transform: translateY(0);
@@ -3111,32 +3263,35 @@ section.workflow-section .stats-grid,
 
 .textarea-with-icon {
     position: relative;
-    padding-top: 70px;
+    padding-top: 20px;
     text-align: center;
-    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='64' height='64' viewBox='0 0 64 64' fill='none'%3E%3Crect x='6' y='18' width='52' height='30' rx='5' ry='5' stroke='%23E2E8F0' stroke-width='2' fill='rgba(255,255,255,0.05)'/%3E%3Crect x='12' y='24' width='40' height='7' rx='2' ry='2' fill='%23CBD5F5'/%3E%3Cg fill='%23E2E8F0'%3E%3Crect x='14' y='34' width='4' height='4'/%3E%3Crect x='20' y='34' width='4' height='4'/%3E%3Crect x='26' y='34' width='4' height='4'/%3E%3Crect x='32' y='34' width='4' height='4'/%3E%3Crect x='38' y='34' width='4' height='4'/%3E%3Crect x='44' y='34' width='4' height='4'/%3E%3C/g%3E%3Crect x='22' y='40' width='20' height='4' rx='2' ry='2' fill='%23F8FAFC'/%3E%3C/svg%3E");
-    background-repeat: no-repeat;
-    background-position: center 14px;
-    background-size: 52px;
 }
 
 .textarea-with-icon::placeholder {
     text-align: center;
+    opacity: 0.7;
+}
+
+.textarea-with-icon:focus::placeholder {
+    opacity: 0;
+    transition: opacity 0.2s ease;
 }
 
 .file-upload {
     position: relative;
     overflow: hidden;
 }
+
 .file-label {
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: center;
-    gap: 12px;
+    justify-content: flex-start;
+    gap: 8px;
     background: rgba(255, 255, 255, 0.1);
     border: 2px dashed rgba(255, 255, 255, 0.3);
     border-radius: 12px;
-    padding: 30px 20px;
+    padding: 20px 20px 30px 20px;
     cursor: pointer;
     transition: var(--transition);
     text-align: center;
@@ -3160,6 +3315,53 @@ section.workflow-section .stats-grid,
 .file-label small {
     font-size: 14px;
     opacity: 0.8;
+}
+
+.file-remove-btn {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    background: rgba(255, 0, 0, 0.7);
+    border: 2px solid rgba(255, 255, 255, 0.3);
+    color: white;
+    cursor: pointer;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+    z-index: 100;
+    padding: 0;
+    margin: 0;
+    pointer-events: auto;
+}
+
+.file-remove-btn:hover {
+    background: rgba(255, 0, 0, 0.9);
+    transform: scale(1.1);
+    border-color: rgba(255, 255, 255, 0.5);
+}
+
+.file-remove-btn i {
+    font-size: 14px;
+}
+
+.file-label {
+    position: relative;
+}
+
+.file-label .file-remove-btn {
+    pointer-events: auto;
+}
+
+.file-label-text {
+    word-break: break-word;
+    max-width: calc(100% - 50px);
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
 }
 
 #fileInput {
@@ -3199,7 +3401,8 @@ section.workflow-section .stats-grid,
 ======================================== */
 
 .portfolio-section {
-    padding: 40px 0 60px 0; /* Уменьшено снизу с 120px до 60px */
+    padding: 40px 0 60px 0;
+    /* Уменьшено снизу с 120px до 60px */
     background: #1a1a1a;
 }
 
@@ -3379,7 +3582,7 @@ section.workflow-section .stats-grid,
     background: linear-gradient(135deg, #1a1a1a 0%, #2a2a2a 50%, #1a1a1a 100%);
     border-radius: 45px;
     padding: 12px;
-    box-shadow: 
+    box-shadow:
         0 0 0 2px rgba(255, 255, 255, 0.1),
         0 30px 80px rgba(0, 0, 0, 0.6),
         inset 0 0 20px rgba(0, 0, 0, 0.3);
@@ -3449,7 +3652,7 @@ section.workflow-section .stats-grid,
     background: rgba(255, 255, 255, 0.2);
     border-color: var(--link-color);
     transform: translateX(8px) scale(1.03) translateZ(0);
-    box-shadow: inset 0 0 20px rgba(255, 255, 255, 0.1), 0 4px 10px rgba(0,0,0,0.5);
+    box-shadow: inset 0 0 20px rgba(255, 255, 255, 0.1), 0 4px 10px rgba(0, 0, 0, 0.5);
     z-index: 10;
 }
 
@@ -3563,9 +3766,12 @@ section.workflow-section .stats-grid,
 }
 
 @keyframes bannerPulse {
-    0%, 100% {
+
+    0%,
+    100% {
         box-shadow: 0 8px 30px rgba(0, 0, 0, 0.3), 0 0 0 rgba(25, 25, 112, 0);
     }
+
     50% {
         box-shadow: 0 8px 30px rgba(0, 0, 0, 0.3), 0 0 30px rgba(25, 25, 112, 0.4);
     }
@@ -3575,16 +3781,21 @@ section.workflow-section .stats-grid,
     0% {
         left: -100%;
     }
-    50%, 100% {
+
+    50%,
+    100% {
         left: 100%;
     }
 }
 
 @keyframes bannerUnderline {
-    0%, 100% {
+
+    0%,
+    100% {
         width: 0;
         opacity: 0;
     }
+
     50% {
         width: 80%;
         opacity: 1;
@@ -3604,9 +3815,12 @@ section.workflow-section .stats-grid,
 }
 
 @keyframes textGlow {
-    0%, 100% {
+
+    0%,
+    100% {
         text-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
     }
+
     50% {
         text-shadow: 0 2px 15px rgba(25, 25, 112, 0.5), 0 0 20px rgba(25, 25, 112, 0.3);
     }
@@ -3618,22 +3832,22 @@ section.workflow-section .stats-grid,
         grid-template-columns: 1fr;
         gap: 50px;
     }
-    
+
     .iphone-frame {
         width: 280px;
         height: 570px;
     }
-    
+
     .phone-link {
         padding: 18px 20px;
     }
-    
+
     .phone-link-icon {
         width: 45px;
         height: 45px;
         font-size: 22px;
     }
-    
+
     .phone-link-text {
         font-size: 16px;
     }
@@ -3644,51 +3858,51 @@ section.workflow-section .stats-grid,
     .works-section {
         padding: 40px 0 60px 0;
     }
-    
+
     .works-content {
         gap: 40px;
         padding: 0 15px;
     }
-    
+
     .youtube-btn {
         padding: 16px 30px;
         font-size: 16px;
     }
-    
+
     .iphone-frame {
         width: 240px;
         height: 490px;
         padding: 10px;
     }
-    
+
     .iphone-screen {
         padding: 40px 15px 60px 15px;
     }
-    
+
     .phone-links-grid {
         gap: 15px;
     }
-    
+
     .phone-link {
         padding: 15px 18px;
         gap: 15px;
     }
-    
+
     .phone-link-icon {
         width: 40px;
         height: 40px;
         font-size: 20px;
     }
-    
+
     .phone-link-text {
         font-size: 15px;
     }
-    
+
     .works-bottom-banner {
         padding: 20px 25px;
         margin-top: 40px;
     }
-    
+
     .works-bottom-banner p {
         font-size: 16px;
     }
@@ -3920,11 +4134,13 @@ section.workflow-section .stats-grid,
     white-space: nowrap;
     color: rgba(255, 255, 255, 0.95);
 }
+
 .projects-social-banner:hover {
     border-color: rgba(25, 25, 112, 0.6);
     box-shadow: 0 12px 40px rgba(0, 0, 0, 0.4), 0 0 30px rgba(25, 25, 112, 0.3);
     transform: translateY(-4px);
 }
+
 /* Горизонтальный ряд иконок */
 .social-icons-inline {
     display: flex;
@@ -3945,6 +4161,7 @@ section.workflow-section .stats-grid,
     padding: 0;
     min-height: 100%;
 }
+
 .social-icon-small {
     width: 65px;
     height: 65px;
@@ -4201,7 +4418,8 @@ section.workflow-section .stats-grid,
 
 .marketplace-grid {
     display: grid;
-    grid-template-columns: repeat(3, 1fr); /* Фиксированная сетка 3x3 */
+    grid-template-columns: repeat(3, 1fr);
+    /* Фиксированная сетка 3x3 */
     gap: 30px;
     max-width: 1400px;
     margin: 0 auto;
@@ -4354,6 +4572,7 @@ section.workflow-section .stats-grid,
     color: white;
     transition: transform 0.4s ease;
 }
+
 .marketplace-card:hover .marketplace-arrow i {
     transform: translateX(5px);
 }
@@ -4361,64 +4580,67 @@ section.workflow-section .stats-grid,
 /* Адаптация для планшетов */
 @media (max-width: 1024px) {
     .marketplace-grid {
-        grid-template-columns: repeat(2, 1fr); /* 2 колонки на планшетах */
+        grid-template-columns: repeat(2, 1fr);
+        /* 2 колонки на планшетах */
         gap: 25px;
     }
-    
+
     .marketplace-card-inner {
         padding: 35px 25px;
         min-height: 260px;
     }
-    
+
     .marketplace-icon {
         width: 70px;
         height: 70px;
     }
-    
+
     .marketplace-icon i {
         font-size: 32px;
     }
-    
+
     .marketplace-title {
         font-size: 22px;
     }
 }
+
 /* Адаптация для мобильных */
 @media (max-width: 768px) {
     .marketplace-grid {
-        grid-template-columns: 1fr; /* 1 колонка на мобильных */
+        grid-template-columns: 1fr;
+        /* 1 колонка на мобильных */
         gap: 20px;
         padding: 0 15px;
     }
-    
+
     .marketplace-card-inner {
         padding: 30px 20px;
         min-height: 240px;
     }
-    
+
     .marketplace-icon {
         width: 60px;
         height: 60px;
         margin-bottom: 20px;
     }
-    
+
     .marketplace-icon i {
         font-size: 28px;
     }
-    
+
     .marketplace-title {
         font-size: 20px;
     }
-    
+
     .marketplace-description {
         font-size: 14px;
     }
-    
+
     .marketplace-arrow {
         width: 40px;
         height: 40px;
     }
-    
+
     .marketplace-arrow i {
         font-size: 16px;
     }
@@ -4432,7 +4654,8 @@ section.workflow-section .stats-grid,
     padding: var(--section-padding);
     padding-top: 70px !important;
     margin-top: -20px !important;
-    background: #0f0f0f; /* Графитно-черный фон блока */
+    background: #0f0f0f;
+    /* Графитно-черный фон блока */
 }
 
 /* Новые стили для FAQ */
@@ -4471,7 +4694,8 @@ section.workflow-section .stats-grid,
     align-items: center;
     font-size: 20px;
     font-weight: 600;
-    color: #000000 !important; /* Черный цвет текста вопросов */
+    color: #000000 !important;
+    /* Черный цвет текста вопросов */
     transition: all 0.3s ease;
     position: relative;
 }
@@ -4492,12 +4716,15 @@ section.workflow-section .stats-grid,
 }
 
 .faq-item-new.active .faq-question-new {
-    color: black !important; /* При активном состоянии цвет остается черным */
+    color: black !important;
+    /* При активном состоянии цвет остается черным */
 }
 
 .faq-question-new:hover {
-    background: #a0a0a0 !important; /* Делаем фон при наведении еще темнее */
-    color: black !important; /* При наведении тоже черный */
+    background: #a0a0a0 !important;
+    /* Делаем фон при наведении еще темнее */
+    color: black !important;
+    /* При наведении тоже черный */
 }
 
 .faq-question-new span {
@@ -4526,7 +4753,8 @@ section.workflow-section .stats-grid,
 }
 
 .faq-item-new.active .faq-answer-new {
-    max-height: 1000px; /* Увеличено для длинных текстов */
+    max-height: 1000px;
+    /* Увеличено для длинных текстов */
     padding: 0 30px 30px 30px;
 }
 
@@ -4537,8 +4765,10 @@ section.workflow-section .stats-grid,
     margin: 0;
     padding-top: 20px;
     text-align: left;
-    opacity: 1; /* Убираем анимацию появления текста */
-    transform: none; /* Убираем трансформацию */
+    opacity: 1;
+    /* Убираем анимацию появления текста */
+    transform: none;
+    /* Убираем трансформацию */
 }
 
 /* Адаптивность для FAQ */
@@ -4547,23 +4777,24 @@ section.workflow-section .stats-grid,
         max-width: 100%;
         gap: 15px;
     }
-    
+
     .faq-question-new {
         padding: 20px;
         font-size: 18px;
-        color: black !important; /* На мобильных тоже черный */
+        color: black !important;
+        /* На мобильных тоже черный */
         text-align: left;
     }
-    
+
     .faq-question-new::before {
         left: 20px;
         right: 20px;
     }
-    
+
     .faq-item-new.active .faq-answer-new {
         padding: 0 20px 20px 20px;
     }
-    
+
     .faq-answer-new p {
         font-size: 15px;
         padding-top: 15px;
@@ -4633,6 +4864,7 @@ section.workflow-section .stats-grid,
         opacity: 0;
         transform: translateY(-10px);
     }
+
     to {
         opacity: 1;
         transform: translateY(0);
@@ -4759,14 +4991,14 @@ section.workflow-section .stats-grid,
     /* Включаем плавные переходы */
     transition: all 0.3s ease !important;
     transform: scale(1) !important;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.1) !important;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1) !important;
     font-size: 22px !important;
 }
 
 /* Hover эффекты для социальных ссылок в футере */
 .social-link:hover {
     transform: translateY(-4px) scale(1.05) !important;
-    box-shadow: 0 4px 15px rgba(0,0,0,0.2) !important;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2) !important;
 }
 
 /* Цвета для разных социальных сетей - цветные всегда */
@@ -4938,7 +5170,7 @@ html body .footer .footer-social .social-icons-row a.social-link.telegram:hover 
 /* УНИВЕРСАЛЬНЫЕ СТИЛИ ДЛЯ ВСЕХ ВОЗМОЖНЫХ КОМБИНАЦИЙ */
 .footer .social-icons-row a:hover {
     transform: translateY(-4px) !important;
-    box-shadow: 0 8px 25px rgba(0,0,0,0.15) !important;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15) !important;
 }
 
 /* VK - все возможные варианты */
@@ -4971,7 +5203,7 @@ html body .footer .footer-social .social-icons-row a.social-link.telegram:hover 
 /* ЭКСТРЕННЫЕ СТИЛИ - ПОСЛЕДНЯЯ НАДЕЖДА */
 footer .footer-social .social-icons-row a:hover {
     transform: translateY(-4px) !important;
-    box-shadow: 0 8px 25px rgba(0,0,0,0.15) !important;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15) !important;
 }
 
 /* VK - экстренные стили */
@@ -5112,6 +5344,7 @@ footer.footer .footer-social .social-icons-row a.social-link:hover {
         opacity: 0;
         transform: scale(0.8);
     }
+
     to {
         opacity: 1;
         transform: scale(1);
@@ -5163,176 +5396,179 @@ footer.footer .footer-social .social-icons-row a.social-link:hover {
     .hero-content-card {
         grid-template-columns: 1fr;
     }
-    
+
     /* На планшетах интегрированный блок центрируем */
     .integrated-printer-block {
         left: 50%;
         transform: translate(-50%, -50%);
-        width: 520px; /* Уменьшено с 600px */
-        height: 445px; /* Уменьшено с 510px */
+        width: 520px;
+        /* Уменьшено с 600px */
+        height: 445px;
+        /* Уменьшено с 510px */
     }
-    
+
     .integrated-printer-block:hover {
         transform: translate(-50%, -50%) scale(1.02);
     }
 
-    
+
     .advantages-grid {
         grid-template-columns: repeat(2, 1fr);
         gap: 30px;
     }
-    
+
     .workflow-steps {
         flex-direction: column;
         align-items: center;
     }
-    
+
     .workflow-step {
         flex: none;
         width: 100%;
         max-width: 400px;
     }
-    
+
     .process-section {
         grid-template-columns: 1fr;
         gap: 40px;
     }
-    
+
     .process-header {
         flex-direction: column;
         text-align: center;
         gap: 20px;
     }
 }
+
 @media (max-width: 768px) {
     .nav-menu {
         display: flex;
     }
-    
+
     .mobile-menu-toggle {
         display: flex;
     }
-    
+
     /* Уменьшаем отступ body для мобильных */
     body {
         padding-top: 70px !important;
     }
-    
+
     /* Адаптация фиксированной навигации для мобильных */
     .navigation {
         padding: 12px 0 !important;
     }
-    
+
     .main-logo h1 {
         font-size: 48px;
     }
-    
+
     .main-logo i {
         font-size: 40px;
     }
-    
+
     .main-logo-section {
         padding-left: 20px;
     }
-    
+
     /* Заголовки адаптируются через CSS переменные */
-    
+
     /* Text-section стили перенесены в верхние медиа-запросы */
-    
+
     .image-section {
         padding: 30px;
         justify-content: center;
     }
-    
 
-    
+
+
     /* Заголовки адаптируются через CSS переменные */
-    
+
     .tech-grid {
         grid-template-columns: 1fr;
         gap: 30px;
     }
-    
+
     .advantages-grid {
         grid-template-columns: 1fr;
         gap: 25px;
     }
-    
+
     .stats-grid {
         grid-template-columns: repeat(3, 1fr);
         gap: 20px;
     }
-    
+
     .form-row {
         grid-template-columns: 1fr;
         gap: 20px;
     }
-    
+
     .form-row:last-child {
         grid-template-columns: 1fr;
     }
-    
+
     .footer-content {
         display: flex !important;
         justify-content: space-between !important;
         align-items: flex-start !important;
         flex-direction: row !important;
     }
-    
+
     .footer-info {
         display: flex !important;
         flex-direction: row !important;
         gap: 30px !important;
     }
-    
+
     .faq-grid {
         grid-template-columns: 1fr;
     }
 }
+
 @media (max-width: 480px) {
     .container {
         padding: 0 16px;
     }
-    
+
     .main-logo h1 {
         font-size: 36px;
     }
-    
+
     .main-logo i {
         font-size: 32px;
     }
-    
+
     .main-logo-section {
         padding-left: 16px;
     }
-    
+
     .hero-title {
         font-size: 32px;
     }
-    
-    .text-section {
-    }
-    
 
-    
+    .text-section {}
+
+
+
     .section-title {
         font-size: 28px;
     }
-    
+
     .contact-header h2 {
         font-size: 36px;
         line-height: 1.2;
     }
-    
+
     .stats-grid {
         grid-template-columns: 1fr;
         gap: 20px;
     }
-    
+
     .social-links {
         gap: 12px;
     }
-    
+
     .social-btn {
         width: 48px;
         height: 48px;
@@ -5394,7 +5630,8 @@ footer.footer .footer-social .social-icons-row a.social-link:hover {
 
 
 /* Интерактивные кнопки */
-.cta-button, .submit-btn {
+.cta-button,
+.submit-btn {
     position: relative;
     overflow: hidden;
     background-size: 200% 200%;
@@ -5403,9 +5640,17 @@ footer.footer .footer-social .social-icons-row a.social-link:hover {
 }
 
 @keyframes gradientShift {
-    0% { background-position: 0% 50%; }
-    50% { background-position: 100% 50%; }
-    100% { background-position: 0% 50%; }
+    0% {
+        background-position: 0% 50%;
+    }
+
+    50% {
+        background-position: 100% 50%;
+    }
+
+    100% {
+        background-position: 0% 50%;
+    }
 }
 
 /* Улучшенные состояния наведения */
@@ -5721,6 +5966,7 @@ footer.footer .footer-social .social-icons-row a.social-link:hover {
 .form-group {
     margin-bottom: 15px;
 }
+
 .call-input {
     width: 100%;
     padding: 15px;
@@ -5731,11 +5977,13 @@ footer.footer .footer-social .social-icons-row a.social-link:hover {
     background: white;
     color: #000000;
 }
+
 .call-input:focus {
     outline: none;
     border-color: #191970;
     box-shadow: 0 0 0 3px rgba(25, 25, 112, 0.1);
 }
+
 .call-submit-btn {
     width: 100%;
     background: linear-gradient(135deg, #90ee90, #98fb98) !important;
@@ -5805,7 +6053,8 @@ footer.footer .footer-social .social-icons-row a.social-link:hover {
     color: #475569 !important;
     font-size: 16px !important;
     line-height: 1.6 !important;
-    text-align: justify !important; /* Выравнивание по ширине */
+    text-align: justify !important;
+    /* Выравнивание по ширине */
     visibility: visible !important;
     opacity: 1 !important;
     display: block !important;
@@ -5831,8 +6080,10 @@ div.advantage-card.modern-card p {
     text-shadow: none !important;
     background-color: transparent !important;
     background: none !important;
-    text-align: justify !important; /* Выравнивание по ширине */
-        text-justify: inter-word !important; /* Выравнивание по ширине */
+    text-align: justify !important;
+    /* Выравнивание по ширине */
+    text-justify: inter-word !important;
+    /* Выравнивание по ширине */
 }
 
 /* ПРИНУДИТЕЛЬНОЕ ПЕРЕОПРЕДЕЛЕНИЕ ЛЮБЫХ СКРЫВАЮЩИХ СТИЛЕЙ */
@@ -5896,7 +6147,8 @@ section#about .advantages-grid .advantage-card.modern-card p {
     color: #475569 !important;
     font-size: 16px !important;
     line-height: 1.6 !important;
-    text-align: justify !important; /* Выравнивание по ширине */
+    text-align: justify !important;
+    /* Выравнивание по ширине */
     margin: 20px auto 0 auto !important;
     margin-left: auto !important;
     max-width: 100% !important;
@@ -5925,27 +6177,32 @@ body section#about .container .advantages-grid .advantage-card.modern-card h3 {
 
 /* ДОПОЛНИТЕЛЬНЫЕ СТИЛИ ДЛЯ ТЕКСТА */
 body section#about .container .advantages-grid .advantage-card.modern-card p {
-    text-align: justify !important; /* Выравнивание по ширине */
+    text-align: justify !important;
+    /* Выравнивание по ширине */
     margin: 20px auto 0 auto !important;
     margin-left: auto !important;
     display: block !important;
     max-width: 100% !important;
 }
+
 /* МОБИЛЬНЫЕ СТИЛИ ДЛЯ ПРЕИМУЩЕСТВ - ПРИНУДИТЕЛЬНО */
 @media screen and (max-width: 768px) {
+
     /* Оптимизация карточек на мобильных */
     .advantage-card.modern-card {
-        min-height: auto !important; /* Убираем фиксированную высоту */
-        padding: 30px 20px 25px 20px !important; /* Добавляем отступ сверху для иконок на мобилке */
+        min-height: auto !important;
+        /* Убираем фиксированную высоту */
+        padding: 30px 20px 25px 20px !important;
+        /* Добавляем отступ сверху для иконок на мобилке */
     }
-    
+
     /* ИКОНКИ ЧЕТКО ПО ЦЕНТРУ БЛОКА НА МОБИЛКЕ */
     .advantage-icon.modern-icon {
         margin-top: 15px !important;
         margin-left: auto !important;
         margin-right: auto !important;
     }
-    
+
     /* ПРИНУДИТЕЛЬНОЕ ПЕРЕОПРЕДЕЛЕНИЕ ДЛЯ МОБИЛЬНЫХ */
     .advantages-grid .advantage-card .advantage-icon,
     section#about .advantages-grid .advantage-card .advantage-icon,
@@ -5954,74 +6211,86 @@ body section#about .container .advantages-grid .advantage-card.modern-card p {
         margin-left: auto !important;
         margin-right: auto !important;
     }
-    
+
     /* ВОССТАНАВЛИВАЕМ ОСНОВНЫЕ СТИЛИ ДЛЯ МОБИЛЬНЫХ */
     /* УДАЛЕНО: Дублирующиеся стили для мобильных иконок */
-    
+
     section#about .advantages-grid .advantage-card.modern-card h3 {
-        text-align: center !important; /* Центрируем заголовки на мобильных */
-        margin: -18px auto 12px auto !important; /* Увеличиваем отступ от иконки */
-        margin-left: 0 !important; /* Убираем сдвиг вправо */
+        text-align: center !important;
+        /* Центрируем заголовки на мобильных */
+        margin: -18px auto 12px auto !important;
+        /* Увеличиваем отступ от иконки */
+        margin-left: 0 !important;
+        /* Убираем сдвиг вправо */
     }
-    
+
     section#about .advantages-grid .advantage-card.modern-card p {
-        text-align: justify !important; /* Выравнивание по ширине */
-        margin: 15px auto 0 auto !important; /* Уменьшаем отступ сверху */
-        margin-left: auto !important; /* Центрируем текст */
+        text-align: justify !important;
+        /* Выравнивание по ширине */
+        margin: 15px auto 0 auto !important;
+        /* Уменьшаем отступ сверху */
+        margin-left: auto !important;
+        /* Центрируем текст */
         padding: 0 !important;
     }
-    
+
     /* ТОЧНОЕ ЦЕНТРИРОВАНИЕ ОТНОСИТЕЛЬНО ИКОНКИ НА МОБИЛКЕ */
     .advantage-card.modern-card h3 {
         text-align: center !important;
         margin: 0 auto !important;
-        margin-top: -15px !important; /* Увеличиваем отступ от иконки */
+        margin-top: -15px !important;
+        /* Увеличиваем отступ от иконки */
         margin-bottom: 15px !important;
         width: 100% !important;
     }
-    
+
     .advantage-card.modern-card p {
-        text-align: justify !important; /* Выравнивание по ширине */
+        text-align: justify !important;
+        /* Выравнивание по ширине */
         margin: 0 auto !important;
         margin-top: 0 !important;
         padding: 0 15px !important;
         width: 100% !important;
     }
-    
+
     /* СВЕРХ-СПЕЦИФИЧНЫЕ СТИЛИ */
     section#about .advantages-grid .advantage-card.modern-card .text-content h3 {
         text-align: center !important;
         margin: 0 auto !important;
-        margin-top: -15px !important; /* Увеличиваем отступ от иконки */
+        margin-top: -15px !important;
+        /* Увеличиваем отступ от иконки */
         margin-bottom: 15px !important;
         width: 100% !important;
     }
-    
+
     section#about .advantages-grid .advantage-card.modern-card .text-content p {
-        text-align: justify !important; /* Выравнивание по ширине */
+        text-align: justify !important;
+        /* Выравнивание по ширине */
         margin: 0 auto !important;
         margin-top: 0 !important;
         padding: 0 15px !important;
         width: 100% !important;
     }
-    
+
     /* ДОПОЛНИТЕЛЬНЫЕ СТИЛИ */
     body section#about .container .advantages-grid .advantage-card.modern-card .text-content h3 {
         text-align: center !important;
         margin: 0 auto !important;
-        margin-top: -15px !important; /* Увеличиваем отступ от иконки */
+        margin-top: -15px !important;
+        /* Увеличиваем отступ от иконки */
         margin-bottom: 15px !important;
         width: 100% !important;
     }
-    
+
     body section#about .container .advantages-grid .advantage-card.modern-card .text-content p {
-        text-align: justify !important; /* Выравнивание по ширине */
+        text-align: justify !important;
+        /* Выравнивание по ширине */
         margin: 0 auto !important;
         margin-top: 0 !important;
         padding: 0 15px !important;
         width: 100% !important;
     }
-    
+
     /* Блок "Индивидуальность" - стили только для десктопа */
     @media (min-width: 769px) {
         .advantage-card.modern-card:nth-child(3) h3 {
@@ -6038,8 +6307,10 @@ body section#about .container .advantages-grid .advantage-card.modern-card p {
     display: block !important;
     position: relative !important;
     z-index: 999 !important;
-    text-align: justify !important; /* Выравнивание по ширине */
-        text-justify: inter-word !important; /* Выравнивание по ширине */
+    text-align: justify !important;
+    /* Выравнивание по ширине */
+    text-justify: inter-word !important;
+    /* Выравнивание по ширине */
 }
 
 /* УБИРАЕМ ПСЕВДОЭЛЕМЕНТЫ, КОТОРЫЕ МОГУТ ПЕРЕКРЫВАТЬ ТЕКСТ */
@@ -6074,14 +6345,20 @@ body section#about .container .advantages-grid .advantage-card.modern-card p {
     background: linear-gradient(135deg, #191970, var(--primary-blue));
     transition: all 0.4s ease;
     animation: pulse 2s infinite;
-    margin-left: auto !important; /* Иконка по центру */
-    margin-right: auto !important; /* Иконка по центру */
+    margin-left: auto !important;
+    /* Иконка по центру */
+    margin-right: auto !important;
+    /* Иконка по центру */
 }
+
 @keyframes pulse {
-    0%, 100% {
+
+    0%,
+    100% {
         transform: scale(1);
         box-shadow: 0 0 0 0 rgba(25, 25, 112, 0.7);
     }
+
     50% {
         transform: scale(1.05);
         box-shadow: 0 0 0 10px rgba(25, 25, 112, 0);
@@ -6099,9 +6376,12 @@ body section#about .container .advantages-grid .advantage-card.modern-card p {
 }
 
 @keyframes float-icon {
-    0%, 100% {
+
+    0%,
+    100% {
         transform: translateY(0px);
     }
+
     50% {
         transform: translateY(-5px);
     }
@@ -6112,9 +6392,17 @@ body section#about .container .advantages-grid .advantage-card.modern-card p {
 }
 
 @keyframes rotate-icon {
-    0% { transform: rotate(0deg); }
-    50% { transform: rotate(180deg) scale(1.2); }
-    100% { transform: rotate(360deg); }
+    0% {
+        transform: rotate(0deg);
+    }
+
+    50% {
+        transform: rotate(180deg) scale(1.2);
+    }
+
+    100% {
+        transform: rotate(360deg);
+    }
 }
 
 /* ПРИНУДИТЕЛЬНОЕ ПРАВИЛО ДЛЯ БОЛЬШИХ ЭКРАНОВ */
@@ -6162,6 +6450,7 @@ body section#about .container .advantages-grid .advantage-card.modern-card p {
 
 /* Уменьшаем отступы для всех секций на мобильных - используем единую переменную */
 @media (max-width: 768px) {
+
     .about-section,
     .technologies-section,
     .workflow-section,
@@ -6173,6 +6462,7 @@ body section#about .container .advantages-grid .advantage-card.modern-card p {
 }
 
 @media (max-width: 480px) {
+
     .about-section,
     .technologies-section,
     .workflow-section,
@@ -6188,10 +6478,12 @@ body section#about .container .advantages-grid .advantage-card.modern-card p {
     .services-section-new {
         padding: 90px 0 70px 0 !important;
     }
+
     .workflow-section {
         padding: 60px 0 90px 0 !important;
         margin-top: -20px !important;
     }
+
     .faq-section {
         padding-top: 70px !important;
         margin-top: -20px !important;
@@ -6207,7 +6499,7 @@ body section#about .container .advantages-grid .advantage-card.modern-card p {
         align-items: center !important;
         justify-content: center !important;
     }
-    
+
     .portfolio-slider {
         margin: 20px auto !important;
     }
@@ -6221,16 +6513,16 @@ body section#about .container .advantages-grid .advantage-card.modern-card p {
         align-items: center !important;
         justify-content: center !important;
     }
-    
+
     .portfolio-slider {
         margin: 15px auto !important;
     }
-    
+
     .portfolio-caption {
         margin-top: 10px !important;
         font-size: 18px !important;
     }
-    
+
     /* Центрируем кнопку в первом блоке на очень маленьких экранах */
     .hero-section .cta-button {
         display: block !important;
@@ -6238,13 +6530,13 @@ body section#about .container .advantages-grid .advantage-card.modern-card p {
         text-align: center !important;
         width: fit-content !important;
     }
-    
+
     /* Дополнительные стили для очень маленьких экранов */
     .footer-section .contact-item {
         font-size: 13px !important;
         margin: 2px 0 !important;
     }
-    
+
     .footer-social .social-icons-row {
         gap: 12px !important;
     }
@@ -6255,7 +6547,7 @@ body section#about .container .advantages-grid .advantage-card.modern-card p {
         margin-top: 15px !important;
         font-size: 20px !important;
     }
-    
+
     /* Центрируем кнопку в первом блоке на мобильных */
     .hero-section .cta-button {
         display: block !important;
@@ -6263,7 +6555,7 @@ body section#about .container .advantages-grid .advantage-card.modern-card p {
         text-align: center !important;
         width: fit-content !important;
     }
-    
+
     /* МОБИЛЬНАЯ ВЕРСИЯ ФУТЕРА - ПРИНУДИТЕЛЬНОЕ ПЕРЕЗАПИСАНИЕ */
     html body .footer .footer-content {
         display: flex !important;
@@ -6276,7 +6568,7 @@ body section#about .container .advantages-grid .advantage-card.modern-card p {
         margin-right: 0 !important;
         grid-template-columns: none !important;
     }
-    
+
     html body .footer .footer-section {
         display: flex !important;
         flex-direction: column !important;
@@ -6284,7 +6576,7 @@ body section#about .container .advantages-grid .advantage-card.modern-card p {
         gap: 8px !important;
         width: 100% !important;
     }
-    
+
     html body .footer .footer-section .contact-item {
         display: flex !important;
         align-items: center !important;
@@ -6293,13 +6585,13 @@ body section#about .container .advantages-grid .advantage-card.modern-card p {
         font-size: 14px !important;
         width: 100% !important;
     }
-    
+
     html body .footer .footer-social {
         margin-top: 15px !important;
         display: flex !important;
         justify-content: center !important;
     }
-    
+
     html body .footer .footer-social .social-icons-row {
         display: flex !important;
         gap: 15px !important;
@@ -6377,14 +6669,16 @@ body section#about .container .advantages-grid .advantage-card.modern-card p {
 .service-name-new {
     font-size: 28px;
     font-weight: 700;
-    color: #f8fafc !important; /* Возвращаем нормальный цвет */
+    color: #f8fafc !important;
+    /* Возвращаем нормальный цвет */
     margin-bottom: 20px;
     text-align: center;
     transition: all 0.3s ease;
 }
 
 .service-card-new:hover .service-name-new {
-    color: white !important; /* При наведении белый */
+    color: white !important;
+    /* При наведении белый */
     transform: scale(1.05);
 }
 
@@ -6465,30 +6759,31 @@ body section#about .container .advantages-grid .advantage-card.modern-card p {
         grid-template-columns: 1fr;
         gap: 25px;
     }
-    
+
     .service-card-new {
         margin-bottom: 20px;
     }
-    
+
     .service-image-new {
         height: 220px;
     }
-    
+
     .service-content-new {
         max-width: 100%;
     }
-    
+
     .service-name-new {
         font-size: 24px;
-        color: #f8fafc !important; /* Возвращаем нормальный цвет */
+        color: #f8fafc !important;
+        /* Возвращаем нормальный цвет */
     }
-    
+
     .expand-btn {
         font-size: 14px;
         padding: 10px 20px;
         min-width: 180px;
     }
-    
+
 }
 
 /* УДАЛЕНО: Дублирующиеся стили для advantage-title и advantage-text */
@@ -6498,18 +6793,20 @@ body section#about .container .advantages-grid .advantage-card.modern-card p {
 /* МАКСИМАЛЬНО СПЕЦИФИЧНЫЕ СТИЛИ ДЛЯ МОБИЛКИ - В КОНЦЕ ФАЙЛА */
 @media screen and (max-width: 768px) {
     /* УДАЛЕНО: Дублирующиеся правила центрирования на мобилке */
-    
+
     /* ЗАГОЛОВКИ ПО ЦЕНТРУ, ТЕКСТ ПО ШИРИНЕ НА МОБИЛКЕ */
     .advantage-title {
         text-align: center !important;
-        margin-top: -15px !important; /* Увеличиваем отступ от иконки на мобилке */
+        margin-top: -15px !important;
+        /* Увеличиваем отступ от иконки на мобилке */
         margin-bottom: 15px !important;
         margin-left: auto !important;
         margin-right: auto !important;
     }
-    
+
     .advantage-text {
-        text-align: justify !important; /* Выравнивание по ширине */
+        text-align: justify !important;
+        /* Выравнивание по ширине */
         margin-top: 0 !important;
         margin-left: auto !important;
         margin-right: auto !important;
@@ -6540,56 +6837,57 @@ body section#about .container .advantages-grid .advantage-card.modern-card p {
         column-gap: 0 !important;
         margin-bottom: 0 !important;
     }
-    
+
     .workflow-step-new {
         margin-bottom: 18px !important;
     }
-    
+
     .workflow-step-new:first-child {
         margin-bottom: 0 !important;
     }
-    
+
     .workflow-step-new:last-child {
         margin-bottom: 0 !important;
     }
-    
+
     .workflow-step-new .step-content-new {
         margin-top: 14px !important;
         padding: 0 !important;
     }
-    
+
     .workflow-step-new .step-content-new h3 {
         margin-bottom: 10px !important;
     }
-    
+
     .workflow-section {
         padding: 25px 10px !important;
     }
-    
+
     .workflow-section .stats-grid {
         margin-top: 0 !important;
         margin-bottom: 30px !important;
         padding-top: 0 !important;
         padding-bottom: 0 !important;
     }
-    
+
     .workflow-section .container .stats-grid {
         margin-top: 0 !important;
         padding-top: 0 !important;
     }
-    
+
     body .workflow-section .stats-grid,
     html body .workflow-section .stats-grid,
     section.workflow-section .stats-grid {
         margin-top: 0 !important;
         padding-top: 0 !important;
     }
-    
-    .workflow-section .workflow-steps-new + .stats-grid {
+
+    .workflow-section .workflow-steps-new+.stats-grid {
         margin-top: 0 !important;
         padding-top: 0 !important;
     }
 }
+
 .workflow-step-new {
     text-align: center;
     position: relative;
@@ -6624,6 +6922,7 @@ body section#about .container .advantages-grid .advantage-card.modern-card p {
     text-justify: inter-word;
     hyphens: auto;
 }
+
 .workflow-step-new:hover {
     transform: translateY(-10px);
 }
@@ -6661,7 +6960,8 @@ body section#about .container .advantages-grid .advantage-card.modern-card p {
 
 /* Стили для фонового круга - более темный цвет вместо белого */
 .progress-bg {
-    stroke: rgba(100, 100, 120, 0.3) !important; /* Темно-серый вместо яркого белого */
+    stroke: rgba(100, 100, 120, 0.3) !important;
+    /* Темно-серый вместо яркого белого */
     stroke-width: 8;
     fill: none;
     /* Улучшенное сглаживание */
@@ -6711,12 +7011,19 @@ body section#about .container .advantages-grid .advantage-card.modern-card p {
 }
 
 @keyframes bounce {
-    0%, 20%, 50%, 80%, 100% {
+
+    0%,
+    20%,
+    50%,
+    80%,
+    100% {
         transform: translateY(0);
     }
+
     40% {
         transform: translateY(-8px);
     }
+
     60% {
         transform: translateY(-4px);
     }
@@ -6736,7 +7043,8 @@ body section#about .container .advantages-grid .advantage-card.modern-card p {
     margin-top: 15px;
     font-size: 18px;
     font-weight: 700;
-    color: white !important; /* Белый цвет для цифр с процентами */
+    color: white !important;
+    /* Белый цвет для цифр с процентами */
 }
 
 .workflow-section .workflow-steps-new {
@@ -6809,7 +7117,7 @@ body section#about .container .advantages-grid .advantage-card.modern-card p {
         grid-template-columns: repeat(2, 1fr);
         gap: 30px;
     }
-    
+
     .step-content-new {
         max-width: 100%;
         width: 100%;
@@ -6818,6 +7126,7 @@ body section#about .container .advantages-grid .advantage-card.modern-card p {
         box-sizing: border-box;
     }
 }
+
 @media (max-width: 768px) {
     .workflow-steps-new {
         grid-template-columns: 1fr !important;
@@ -6825,7 +7134,7 @@ body section#about .container .advantages-grid .advantage-card.modern-card p {
         row-gap: 18px !important;
         margin-bottom: 0 !important;
     }
-    
+
     .workflow-step-new .step-content-new {
         max-width: 100%;
         width: 100%;
@@ -6835,13 +7144,13 @@ body section#about .container .advantages-grid .advantage-card.modern-card p {
         box-sizing: border-box;
         margin-top: 14px !important;
     }
-    
+
     .step-content-new h3 {
         font-size: 18px;
         color: #ffffff !important;
         margin-bottom: 10px !important;
     }
-    
+
     .step-content-new p {
         font-size: 14px;
         text-align: justify !important;
@@ -6849,7 +7158,7 @@ body section#about .container .advantages-grid .advantage-card.modern-card p {
         hyphens: auto !important;
         color: #ffffff !important;
     }
-    
+
     .workflow-section {
         padding: 25px 10px !important;
     }
@@ -6863,24 +7172,24 @@ body section#about .container .advantages-grid .advantage-card.modern-card p {
         column-gap: 0 !important;
         margin-bottom: 0 !important;
     }
-    
+
     .workflow-step-new {
         margin-bottom: 18px !important;
     }
-    
+
     .workflow-step-new:first-child {
         margin-bottom: 0 !important;
     }
-    
+
     .workflow-step-new:last-child {
         margin-bottom: 0 !important;
     }
-    
+
     .workflow-step-new .step-content-new {
         margin-top: 14px !important;
         padding: 0 !important;
     }
-    
+
     .workflow-steps-new .workflow-step-new .step-content-new h3 {
         font-size: 1.0rem !important;
         line-height: 1.3 !important;
@@ -6890,7 +7199,7 @@ body section#about .container .advantages-grid .advantage-card.modern-card p {
         display: block !important;
         color: #ffffff !important;
     }
-    
+
     /* ПРИНУДИТЕЛЬНОЕ ВЫРАВНИВАНИЕ ПО ШИРИНЕ ДЛЯ МОБИЛЬНОЙ ВЕРСИИ */
     .workflow-steps-new .workflow-step-new .step-content-new p,
     .workflow-step-new .step-content-new p,
@@ -6898,7 +7207,7 @@ body section#about .container .advantages-grid .advantage-card.modern-card p {
         text-align: justify !important;
         color: #ffffff !important;
     }
-    
+
     .workflow-section {
         padding: 25px 10px !important;
     }
@@ -6940,10 +7249,13 @@ body section#about .container .advantages-grid .advantage-card.modern-card p {
 }
 
 @keyframes pulse-stat {
-    0%, 100% {
+
+    0%,
+    100% {
         transform: scale(1);
         box-shadow: 0 0 0 0 rgba(25, 25, 112, 0.7);
     }
+
     50% {
         transform: scale(1.05);
         box-shadow: 0 0 0 20px rgba(25, 25, 112, 0);
@@ -6970,6 +7282,7 @@ body section#about .container .advantages-grid .advantage-card.modern-card p {
         opacity: 0;
         transform: translateY(20px);
     }
+
     to {
         opacity: 1;
         transform: translateY(0);
@@ -7119,14 +7432,18 @@ a,
 /* Стили для выравнивания текста в первом блоке */
 .hero-text-content {
     max-width: 60%;
-    text-align: justify; /* Выравнивание по ширине */
-        text-justify: inter-word; /* Выравнивание по ширине */
+    text-align: justify;
+    /* Выравнивание по ширине */
+    text-justify: inter-word;
+    /* Выравнивание по ширине */
     padding-right: 40px;
 }
 
 .about-company {
-    text-align: justify; /* Выравнивание по ширине */
-        text-justify: inter-word; /* Выравнивание по ширине */
+    text-align: justify;
+    /* Выравнивание по ширине */
+    text-justify: inter-word;
+    /* Выравнивание по ширине */
     margin-bottom: 30px;
 }
 
@@ -7137,7 +7454,8 @@ a,
 
 /* Стили для переливающегося заголовка */
 .gradient-title {
-    color: #191970; /* Fallback цвет для браузеров без поддержки градиентов */
+    color: #191970;
+    /* Fallback цвет для браузеров без поддержки градиентов */
     background: linear-gradient(45deg, #0066ff, #4169e1, #00bfff, #1e90ff, #0066ff);
     background-size: 400% 400%;
     background-clip: text;
@@ -7155,15 +7473,19 @@ a,
     0% {
         background-position: 0% 50%;
     }
+
     25% {
         background-position: 100% 50%;
     }
+
     50% {
         background-position: 100% 100%;
     }
+
     75% {
         background-position: 0% 100%;
     }
+
     100% {
         background-position: 0% 50%;
     }
@@ -7172,14 +7494,16 @@ a,
 /* Стили для центрированного текста */
 .centered-text {
     text-align: center;
-    font-size: 14px !important; /* Уменьшаем размер шрифта */
+    font-size: 14px !important;
+    /* Уменьшаем размер шрифта */
 }
 
 .about-company p {
     text-align: justify;
     line-height: 1.7;
     margin-bottom: 15px;
-    font-size: 14px !important; /* Уменьшаем размер шрифта */
+    font-size: 14px !important;
+    /* Уменьшаем размер шрифта */
 }
 
 
@@ -7204,8 +7528,10 @@ a,
     background: #f8f9fa;
     border: none;
     padding: 24px;
-    text-align: justify; /* Выравнивание по ширине */
-        text-justify: inter-word; /* Выравнивание по ширине */
+    text-align: justify;
+    /* Выравнивание по ширине */
+    text-justify: inter-word;
+    /* Выравнивание по ширине */
     cursor: pointer;
     display: flex;
     justify-content: space-between;
@@ -7257,11 +7583,11 @@ a,
         max-width: none;
         transform: translateY(-200px);
     }
-    
+
     .custom-notification.show {
         transform: translateY(0);
     }
-    
+
     .materials-tooltip {
         min-width: 280px;
         left: 0;
@@ -7269,13 +7595,13 @@ a,
         transform: none;
         margin: 8px 20px 0;
     }
-    
+
     .materials-tooltip.show {
         transform: none;
     }
-    
 
-    
+
+
     .modal-content {
         margin: 5% auto;
         width: 95%;
@@ -7308,14 +7634,13 @@ a,
     .projects-social-link i {
         font-size: 20px !important;
     }
-    
-    .modal-contacts {
-    }
-    
+
+    .modal-contacts {}
+
     .modal-actions {
         grid-template-columns: 1fr;
     }
-    
+
     .footer-info {
         display: flex !important;
         flex-direction: row !important;
@@ -7327,26 +7652,30 @@ a,
 
 /* Оптимизация для мобильных устройств */
 @media (max-width: 768px) {
+
     .tech-card::before,
     .advantage-card::after {
         display: none;
     }
-    
+
     /* Адаптивные стили для интегрированного блока */
     .integrated-printer-block {
-        width: 390px; /* Уменьшено с 450px */
-        height: 320px; /* Уменьшено с 370px */
+        width: 390px;
+        /* Уменьшено с 450px */
+        height: 320px;
+        /* Уменьшено с 370px */
         left: 50%;
         top: 52%;
         transform: translate(-50%, -50%);
     }
-    
+
     .integrated-printer-block:hover {
         transform: translate(-50%, -50%) scale(1.02);
     }
-    
+
     .integrated-printer-image:hover {
-        transform: scale(1.05) rotateY(2deg); /* Меньше анимации на мобильных */
+        transform: scale(1.05) rotateY(2deg);
+        /* Меньше анимации на мобильных */
     }
 }
 
@@ -7385,46 +7714,51 @@ nav.navigation .nav-link:not(.call-btn):hover,
 
 /* СУПЕР-ПРИНУДИТЕЛЬНЫЕ СТИЛИ ДЛЯ КНОПКИ ЗАКАЗАТЬ ЗВОНОК */
 @media (min-width: 769px) {
-nav.navigation .call-btn,
-.navigation .call-btn,
-.nav-link.call-btn,
-.call-btn,
-*[class*="call-btn"],
-a.call-btn {
-    background: linear-gradient(135deg, #90ee90, #98fb98) !important;
-    border: 2px solid rgba(144, 238, 144, 0.6) !important;
-    color: #333 !important;
-    padding: 14px 28px !important;
-    border-radius: 12px !important;
-    font-weight: 600 !important;
-    transition: all 0.3s ease !important;
-    cursor: pointer !important;
-    box-shadow: 0 4px 12px rgba(144, 238, 144, 0.3) !important;
-    position: relative !important;
-    overflow: hidden !important;
-    text-transform: uppercase !important;
-    letter-spacing: 0.5px !important;
-}
-nav.navigation .call-btn:hover,
-.navigation .call-btn:hover,
-.nav-link.call-btn:hover,
-.call-btn:hover,
-*[class*="call-btn"]:hover,
-a.call-btn:hover {
-    background: linear-gradient(135deg, #98fb98, #90ee90) !important;
-    border: 2px solid rgba(152, 251, 152, 0.8) !important;
-    transform: translateY(-3px) !important;
-    box-shadow: 0 6px 20px rgba(144, 238, 144, 0.4) !important;
+
+    nav.navigation .call-btn,
+    .navigation .call-btn,
+    .nav-link.call-btn,
+    .call-btn,
+    *[class*="call-btn"],
+    a.call-btn {
+        background: linear-gradient(135deg, #90ee90, #98fb98) !important;
+        border: 2px solid rgba(144, 238, 144, 0.6) !important;
+        color: #333 !important;
+        padding: 14px 28px !important;
+        border-radius: 12px !important;
+        font-weight: 600 !important;
+        transition: all 0.3s ease !important;
+        cursor: pointer !important;
+        box-shadow: 0 4px 12px rgba(144, 238, 144, 0.3) !important;
+        position: relative !important;
+        overflow: hidden !important;
+        text-transform: uppercase !important;
+        letter-spacing: 0.5px !important;
+    }
+
+    nav.navigation .call-btn:hover,
+    .navigation .call-btn:hover,
+    .nav-link.call-btn:hover,
+    .call-btn:hover,
+    *[class*="call-btn"]:hover,
+    a.call-btn:hover {
+        background: linear-gradient(135deg, #98fb98, #90ee90) !important;
+        border: 2px solid rgba(152, 251, 152, 0.8) !important;
+        transform: translateY(-3px) !important;
+        box-shadow: 0 6px 20px rgba(144, 238, 144, 0.4) !important;
     }
 }
+
 /* АНИМАЦИИ ДЛЯ КНОПОК */
 @keyframes buttonPulse {
     0% {
         transform: translateY(-2px) scale(1);
     }
+
     50% {
         transform: translateY(-4px) scale(1.08);
     }
+
     100% {
         transform: translateY(-2px) scale(1.05);
     }
@@ -7432,21 +7766,31 @@ a.call-btn:hover {
 
 /* Простые анимации для современного вида */
 @keyframes buttonGlow {
-    0%, 100% {
+
+    0%,
+    100% {
         box-shadow: 0 4px 15px rgba(65, 105, 225, 0.3);
     }
+
     50% {
         box-shadow: 0 8px 25px rgba(100, 149, 237, 0.5);
     }
 }
 
 @keyframes buttonBounce {
-    0%, 20%, 50%, 80%, 100% {
+
+    0%,
+    20%,
+    50%,
+    80%,
+    100% {
         transform: translateY(0);
     }
+
     40% {
         transform: translateY(-8px);
     }
+
     60% {
         transform: translateY(-4px);
     }
@@ -7454,6 +7798,7 @@ a.call-btn:hover {
 
 /* Ландшафтные экраны с малой высотой: ужимаем навигацию */
 @media (max-height: 520px) {
+
     html,
     body {
         width: 100% !important;
@@ -7544,6 +7889,7 @@ a.call-btn:hover {
     0% {
         background-position: -200% 0;
     }
+
     100% {
         background-position: 200% 0;
     }
@@ -7555,6 +7901,7 @@ a.call-btn:hover {
         transform: scale(0);
         opacity: 1;
     }
+
     100% {
         transform: scale(4);
         opacity: 0;
@@ -7566,9 +7913,11 @@ a.call-btn:hover {
     0% {
         background-position: 0% 50%;
     }
+
     50% {
         background-position: 100% 50%;
     }
+
     100% {
         background-position: 0% 50%;
     }
@@ -7579,9 +7928,11 @@ a.call-btn:hover {
     0% {
         background-position: 0% 50%;
     }
+
     50% {
         background-position: 100% 50%;
     }
+
     100% {
         background-position: 0% 50%;
     }
@@ -7672,14 +8023,17 @@ a.call-btn:active {
 .mobile-menu-btn.active .hamburger-line:nth-child(3) {
     transform: rotate(-45deg) translate(7px, -6px);
 }
+
 /* Мобильные устройства */
 @media (max-width: 768px) {
+
     /* Простая мобильная навигация */
     .navigation {
         padding: 2px 20px;
-        background: linear-gradient(135deg, #1a1a1a 0%, #1a1a24 50%, #1a1a1a 100%) !important; /* Темный градиент */
+        background: linear-gradient(135deg, #1a1a1a 0%, #1a1a24 50%, #1a1a1a 100%) !important;
+        /* Темный градиент */
     }
-    
+
     .nav-container {
         display: flex;
         justify-content: center;
@@ -7690,11 +8044,11 @@ a.call-btn:active {
         opacity: 1;
         transform: translateY(0);
     }
-    
+
     .mobile-menu-btn {
         display: none;
     }
-    
+
     .nav-menu {
         display: flex;
         flex-direction: row;
@@ -7711,15 +8065,17 @@ a.call-btn:active {
         opacity: 1;
         transform: translateY(0);
     }
-    
+
     .nav-menu li {
         margin: 0;
         list-style: none;
         flex: none;
-        text-align: justify; /* Выравнивание по ширине */
-        text-justify: inter-word; /* Выравнивание по ширине */
+        text-align: justify;
+        /* Выравнивание по ширине */
+        text-justify: inter-word;
+        /* Выравнивание по ширине */
     }
-    
+
     .nav-menu .nav-link {
         display: block;
         font-size: 0.4rem;
@@ -7734,7 +8090,7 @@ a.call-btn:active {
         text-overflow: ellipsis;
         transition: all 0.3s ease;
     }
-    
+
     .nav-menu .nav-link.call-btn {
         background: linear-gradient(135deg, #90ee90, #98fb98) !important;
         border: 2px solid #90ee90 !important;
@@ -7750,129 +8106,132 @@ a.call-btn:active {
         text-transform: uppercase !important;
         letter-spacing: 0.5px !important;
     }
-    
-    
-    
+
+
+
     .nav-menu .nav-link:hover {
         background: var(--primary-color);
         color: white;
         transform: translateY(-2px);
     }
-    
+
     .social-links {
         margin-left: 0;
         margin-top: 10px;
         justify-content: center;
         width: 100%;
     }
-    
+
     .social-btn {
         width: 48px;
         height: 48px;
     }
-    
+
     /* Хедер */
     .hero-section {
         padding: 40px 15px;
         min-height: 70vh;
-        text-align: justify; /* Выравнивание по ширине */
-        text-justify: inter-word; /* Выравнивание по ширине */
-        background: #1a1a1a !important; /* Принудительный темный фон для мобилки */
+        text-align: justify;
+        /* Выравнивание по ширине */
+        text-justify: inter-word;
+        /* Выравнивание по ширине */
+        background: #1a1a1a !important;
+        /* Принудительный темный фон для мобилки */
     }
-    
+
     .hero-title {
         font-size: 2.5rem;
         line-height: 1.2;
         margin-bottom: 20px;
     }
-    
+
     .about-company h3 {
         font-size: 1.5rem;
         margin-bottom: 15px;
     }
-    
+
     .about-company p {
         font-size: 1rem;
         margin-bottom: 20px;
     }
-    
+
     .cta-button {
         font-size: 1.1rem;
         padding: 15px 30px;
         margin-bottom: 15px;
     }
-    
+
     /* Скрываем изображение принтера на мобильных */
     .integrated-printer-block {
         display: none;
     }
-    
+
     /* Секции */
     .section-title {
         font-size: 2rem;
         margin-bottom: 30px;
     }
-    
+
     .services-grid {
         grid-template-columns: 1fr;
         gap: 20px;
         padding: 0 15px;
     }
-    
+
     .service-card {
         padding: 20px;
     }
-    
+
     .service-card h3 {
         font-size: 1.3rem;
     }
-    
+
     .service-card p {
         font-size: 0.95rem;
     }
-    
+
     /* Портфолио */
     .portfolio-slider {
         width: 95%;
         margin: 0 auto;
     }
-    
+
     /* Портфолио адаптируется через CSS переменные */
-    
+
     .slider-controls {
         margin-top: 20px;
     }
-    
+
     .slider-btn {
         width: 40px;
         height: 40px;
         font-size: 1rem;
     }
-    
+
     .slider-dots {
         gap: 8px;
     }
-    
+
     .slider-dot {
         width: 8px;
         height: 8px;
     }
-    
+
     /* FAQ */
     .faq-item {
         margin-bottom: 15px;
     }
-    
+
     .faq-question {
         font-size: 1rem;
         padding: 15px;
     }
-    
+
     .faq-answer {
         font-size: 0.9rem;
         padding: 15px;
     }
-    
+
     /* Футер */
     .footer-content {
         display: flex !important;
@@ -7880,29 +8239,29 @@ a.call-btn:active {
         align-items: flex-start !important;
         flex-direction: row !important;
     }
-    
+
     .footer-info h3,
     .footer-social h3 {
         font-size: 1.3rem;
         margin-bottom: 15px;
     }
-    
+
     .footer-info p {
         font-size: 0.9rem;
         line-height: 1.6;
     }
-    
+
     .social-icons-row {
         justify-content: center;
         gap: 15px;
     }
-    
+
     .social-link {
         width: 50px;
         height: 50px;
         font-size: 1.2rem;
     }
-    
+
     /* Модальные окна */
     .modal-content {
         width: 95%;
@@ -7910,16 +8269,16 @@ a.call-btn:active {
         margin: 20px auto;
         padding: 20px;
     }
-    
+
     .modal-content h2 {
         font-size: 1.5rem;
         margin-bottom: 15px;
     }
-    
+
     .modal-content ul {
         font-size: 0.9rem;
     }
-    
+
     .modal-content li {
         margin-bottom: 8px;
     }
@@ -7930,59 +8289,59 @@ a.call-btn:active {
     .hero-title {
         font-size: 2rem;
     }
-    
+
     .about-company h3 {
         font-size: 1.3rem;
     }
-    
+
     .section-title {
         font-size: 1.8rem;
     }
-    
+
     .contact-header h2 {
         font-size: 30px !important;
         line-height: 1.1 !important;
         margin-bottom: 12px !important;
     }
-    
+
     .contact-content {
         padding: 0 16px !important;
     }
-    
+
     .contact-header {
         margin-bottom: 40px !important;
     }
-    
+
     .service-card {
         padding: 15px;
     }
-    
+
     .service-card h3 {
         font-size: 1.2rem;
     }
-    
+
     /* Портфолио адаптируется через CSS переменные */
-    
+
     .faq-question {
         font-size: 0.95rem;
         padding: 12px;
     }
-    
+
     .faq-answer {
         font-size: 0.85rem;
         padding: 12px;
     }
-    
+
     .cta-button {
         font-size: 1rem;
         padding: 12px 25px;
     }
-    
+
     .social-btn {
         width: 44px;
         height: 44px;
     }
-    
+
     .social-link {
         width: 45px;
         height: 45px;
@@ -7998,16 +8357,17 @@ a.call-btn:active {
         margin: 0 !important;
         width: 100vw !important;
         max-width: 100vw !important;
-        background: #1a1a1a !important; /* Принудительный темный фон для landscape */
+        background: #1a1a1a !important;
+        /* Принудительный темный фон для landscape */
     }
-    
+
     html body .hero-section .container {
         padding: 0 25px !important;
         margin: 0 !important;
         width: 100% !important;
         max-width: 100% !important;
     }
-    
+
     /* ИСКЛЮЧЕНИЕ ДЛЯ ПОРТФОЛИО - УБИРАЕМ ПРИНУДИТЕЛЬНЫЕ ОТСТУПЫ */
     html body .portfolio-section .container,
     html body .portfolio-slider,
@@ -8016,29 +8376,30 @@ a.call-btn:active {
         padding: 0 !important;
         margin: 0 !important;
     }
-    
+
     html body .hero-section .hero-content-card {
         padding: 25px !important;
         margin: 0 !important;
         width: 100% !important;
         max-width: 100% !important;
-        background: #1a1a1a !important; /* Принудительный темный фон */
+        background: #1a1a1a !important;
+        /* Принудительный темный фон */
     }
-    
+
     html body .hero-section .about-company {
         padding: 0 25px !important;
         margin: 0 !important;
         width: 100% !important;
         max-width: 100% !important;
     }
-    
+
     html body .hero-section .about-company .hero-title {
         font-size: 1.5rem !important;
         text-align: center !important;
         padding: 0 !important;
         margin: 0 0 20px 0 !important;
     }
-    
+
     html body .hero-section .about-company .gradient-title {
         font-size: 1.4rem !important;
         text-align: justify !important;
@@ -8047,7 +8408,7 @@ a.call-btn:active {
         padding: 0 !important;
         margin: 0 0 20px 0 !important;
     }
-    
+
     html body .hero-section .about-company .description-text {
         font-size: 1.1rem !important;
         text-align: justify !important;
@@ -8057,108 +8418,108 @@ a.call-btn:active {
         margin: 0 !important;
         color: #ffffff !important;
     }
-    
+
     html body .hero-section .about-company .modelix-brand {
         font-size: 1.3em !important;
     }
-    
+
     html body .cta-button {
         font-size: 1.1rem !important;
         padding: 15px 30px !important;
         margin-bottom: 15px !important;
     }
-    
+
     /* Дополнительные стили для других блоков в landscape */
     .navigation {
         padding: 8px 10px !important;
     }
-    
+
     .nav-menu .nav-link {
         font-size: 0.8rem !important;
         padding: 8px 12px !important;
     }
-    
+
     .main-logo h1 {
         font-size: 32px !important;
     }
-    
+
     .main-logo i {
         font-size: 28px !important;
     }
-    
+
     .section-title {
         font-size: 1.8rem !important;
         margin-bottom: 20px !important;
     }
-    
+
     .service-card {
         padding: 15px !important;
     }
-    
+
     .service-card h3 {
         font-size: 1.1rem !important;
     }
-    
+
     .service-card p {
         font-size: 0.9rem !important;
     }
-    
+
     .advantages-grid {
         gap: 15px !important;
     }
-    
-    .advantage-card {
-    }
-    
+
+    .advantage-card {}
+
     .advantage-card h3 {
         font-size: 1.1rem !important;
     }
-    
+
     .advantage-card p {
         font-size: 0.9rem !important;
     }
-    
+
     .stats-grid {
         gap: 15px !important;
     }
-    
+
     .stat-card {
         padding: 15px !important;
     }
-    
+
     .stat-icon {
         margin-bottom: 25px !important;
     }
-    
+
     .stat-number {
         font-size: 1.8rem !important;
         margin-top: 10px !important;
     }
-    
+
     .stat-label {
         font-size: 0.9rem !important;
     }
-    
+
     .faq-question {
         font-size: 0.9rem !important;
         padding: 10px !important;
     }
-    
+
     .faq-answer {
         font-size: 0.85rem !important;
         padding: 10px !important;
     }
-    
+
     .text-section {
         padding: 20px 15px !important;
-        background: #1a1a1a !important; /* Принудительный темный фон для мобилки */
+        background: #1a1a1a !important;
+        /* Принудительный темный фон для мобилки */
     }
-    
+
     .text-section h2 {
         font-size: 1.6rem !important;
         margin-bottom: 15px !important;
     }
-    
+
     .text-section p {
         font-size: 0.9rem !important;
         margin-bottom: 12px !important;
@@ -8170,8 +8531,10 @@ a.call-btn:active {
 /* Удалено конфликтующее правило */
 
 .footer-section {
-    text-align: justify; /* Выравнивание по ширине */
-        text-justify: inter-word; /* Выравнивание по ширине */
+    text-align: justify;
+    /* Выравнивание по ширине */
+    text-justify: inter-word;
+    /* Выравнивание по ширине */
     display: flex;
     flex-direction: column;
     align-items: flex-start;
@@ -8213,6 +8576,7 @@ div.image-section .social-links,
 
 /* АДАПТИВНОЕ ПОЗИЦИОНИРОВАНИЕ СОЦИАЛЬНЫХ ИКОНОК */
 @media (max-width: 1200px) {
+
     .hero-section .social-links,
     .image-section .social-links,
     div.image-section .social-links,
@@ -8222,6 +8586,7 @@ div.image-section .social-links,
 }
 
 @media (max-width: 1000px) {
+
     .hero-section .social-links,
     .image-section .social-links,
     div.image-section .social-links,
@@ -8231,6 +8596,7 @@ div.image-section .social-links,
 }
 
 @media (max-width: 800px) {
+
     .hero-section .social-links,
     .image-section .social-links,
     div.image-section .social-links,
@@ -8240,6 +8606,7 @@ div.image-section .social-links,
 }
 
 @media (max-width: 600px) {
+
     .hero-section .social-links,
     .image-section .social-links,
     div.image-section .social-links,
@@ -8263,11 +8630,16 @@ div.image-section .social-links,
 html body section#about .container .advantages-grid .advantage-card.modern-card .text-content p,
 html body section#about .container .advantages-grid .advantage-card.modern-card p,
 html body .advantage-card.modern-card .advantage-text {
-    text-align: justify !important; /* Выравнивание по ширине */
-    text-justify: inter-word !important; /* Выравнивание по ширине */
-    word-spacing: normal !important; /* Нормальные промежутки между словами */
-    hyphens: auto !important; /* Автоматические переносы слов */
-    direction: ltr !important; /* Направление текста слева направо */
+    text-align: justify !important;
+    /* Выравнивание по ширине */
+    text-justify: inter-word !important;
+    /* Выравнивание по ширине */
+    word-spacing: normal !important;
+    /* Нормальные промежутки между словами */
+    hyphens: auto !important;
+    /* Автоматические переносы слов */
+    direction: ltr !important;
+    /* Направление текста слева направо */
 }
 
 /* ПРИНУДИТЕЛЬНЫЕ СТИЛИ ДЛЯ ПЕРВОГО БЛОКА - МАКСИМАЛЬНАЯ СПЕЦИФИЧНОСТЬ */
@@ -8298,6 +8670,7 @@ html body .hero-section .about-company .gradient-title {
     font-size: 1.4em !important;
     font-weight: 800 !important;
 }
+
 /* МОБИЛЬНЫЕ СТИЛИ ДЛЯ ПЕРВОГО БЛОКА */
 @media (max-width: 768px) {
     .hero-section .about-company {
@@ -8306,7 +8679,7 @@ html body .hero-section .about-company .gradient-title {
         padding: 0 !important;
         margin: 0 !important;
     }
-    
+
     .hero-section .about-company .gradient-title {
         font-size: 18px !important;
         text-align: justify !important;
@@ -8315,7 +8688,7 @@ html body .hero-section .about-company .gradient-title {
         padding: 0 5px !important;
         margin: 0 0 20px 0 !important;
     }
-    
+
     .hero-section .about-company .description-text {
         font-size: 14px !important;
         text-align: justify !important;
@@ -8324,17 +8697,17 @@ html body .hero-section .about-company .gradient-title {
         padding: 0 5px !important;
         color: #ffffff !important;
     }
-    
+
     .hero-section .about-company .hero-title {
         text-align: center !important;
         width: 100% !important;
         padding: 0 5px !important;
     }
-    
+
     .modelix-brand {
         font-size: 1.1em !important;
     }
-    
+
     /* Уменьшаем отступы контейнера hero-section */
     .hero-section .container {
         padding-left: 10px !important;
@@ -8349,7 +8722,12 @@ body .service-details,
 .service-content-new .service-details,
 .service-expandable .service-details,
 div.service-details,
-#model1, #tech1, #scan1, #rev1, #eng1, #post1 {
+#model1,
+#tech1,
+#scan1,
+#rev1,
+#eng1,
+#post1 {
     width: calc(100% + 60px) !important;
     max-width: none !important;
     margin-left: -30px !important;
@@ -8371,7 +8749,12 @@ body .service-details.open,
 .service-content-new .service-details.open,
 .service-expandable .service-details.open,
 div.service-details.open,
-#model1.open, #tech1.open, #scan1.open, #rev1.open, #eng1.open, #post1.open {
+#model1.open,
+#tech1.open,
+#scan1.open,
+#rev1.open,
+#eng1.open,
+#post1.open {
     opacity: 1 !important;
     transform: translateY(0) !important;
     max-height: 500px !important;
@@ -8385,7 +8768,12 @@ body .service-details.closing,
 .service-content-new .service-details.closing,
 .service-expandable .service-details.closing,
 div.service-details.closing,
-#model1.closing, #tech1.closing, #scan1.closing, #rev1.closing, #eng1.closing, #post1.closing {
+#model1.closing,
+#tech1.closing,
+#scan1.closing,
+#rev1.closing,
+#eng1.closing,
+#post1.closing {
     opacity: 0 !important;
     transform: translateY(-15px) !important;
     max-height: 0 !important;
@@ -8396,12 +8784,18 @@ div.service-details.closing,
 
 /* Мобильная версия - расширяем на всю ширину карточки */
 @media (max-width: 768px) {
+
     html body .service-details,
     body .service-details,
     .service-content-new .service-details,
     .service-expandable .service-details,
     div.service-details,
-    #model1, #tech1, #scan1, #rev1, #eng1, #post1 {
+    #model1,
+    #tech1,
+    #scan1,
+    #rev1,
+    #eng1,
+    #post1 {
         width: calc(100% + 10px) !important;
         margin-left: -5px !important;
         margin-right: -5px !important;
@@ -8413,6 +8807,7 @@ div.service-details.closing,
 
 /* ПРИНУДИТЕЛЬНЫЕ СТИЛИ ДЛЯ МОБИЛКИ - service-content-new */
 @media (max-width: 768px) {
+
     html body .service-content-new,
     body .service-content-new,
     div.service-content-new,
@@ -8428,11 +8823,12 @@ div.service-details.closing,
 
 /* Принудительное применение темной темы на всех мобильных устройствах */
 @media (max-width: 768px) {
+
     /* Принудительно переопределяем CSS переменные для темной темы */
     :root {
         --gray-900: #1a1a1a !important;
     }
-    
+
     /* Принудительно отключаем адаптацию к теме браузера */
     * {
         color-scheme: dark !important;
@@ -8441,15 +8837,16 @@ div.service-details.closing,
         -ms-color-scheme: dark !important;
         forced-color-adjust: none !important;
     }
-    
-    html, body {
+
+    html,
+    body {
         color-scheme: dark !important;
         -webkit-color-scheme: dark !important;
         -moz-color-scheme: dark !important;
         -ms-color-scheme: dark !important;
         forced-color-adjust: none !important;
     }
-    
+
     /* Принудительно применяем темную тему для всех секций */
     .hero-section,
     .about-section,
@@ -8465,18 +8862,20 @@ div.service-details.closing,
         -ms-color-scheme: dark !important;
         forced-color-adjust: none !important;
     }
-    
+
     /* Конкретно для первого блока - принудительный темный фон */
     .hero-section {
         background: #1a1a1a !important;
     }
 }
+
 @media (max-width: 480px) {
+
     /* Принудительно переопределяем CSS переменные для темной темы */
     :root {
         --gray-900: #1a1a1a !important;
     }
-    
+
     /* Принудительно отключаем адаптацию к теме браузера на очень маленьких экранах */
     * {
         color-scheme: dark !important;
@@ -8485,15 +8884,16 @@ div.service-details.closing,
         -ms-color-scheme: dark !important;
         forced-color-adjust: none !important;
     }
-    
-    html, body {
+
+    html,
+    body {
         color-scheme: dark !important;
         -webkit-color-scheme: dark !important;
         -moz-color-scheme: dark !important;
         -ms-color-scheme: dark !important;
         forced-color-adjust: none !important;
     }
-    
+
     /* Принудительно применяем темную тему для всех секций */
     .hero-section,
     .about-section,
@@ -8509,7 +8909,7 @@ div.service-details.closing,
         -ms-color-scheme: dark !important;
         forced-color-adjust: none !important;
     }
-    
+
     /* Конкретно для первого блока - принудительный темный фон */
     .hero-section {
         background: #1a1a1a !important;
@@ -8518,13 +8918,14 @@ div.service-details.closing,
 
 /* КРИТИЧЕСКИ ВАЖНО: ПРИНУДИТЕЛЬНЫЙ ТЕМНЫЙ ФОН ДЛЯ ПЕРВОГО БЛОКА НА МОБИЛКЕ */
 @media (max-width: 768px) {
+
     html body .hero-section,
     body .hero-section,
     .hero-section {
         background: #1a1a1a !important;
         background-color: #1a1a1a !important;
     }
-    
+
     /* ПРИНУДИТЕЛЬНЫЙ ТЕМНЫЙ ФОН ДЛЯ КАРТОЧКИ ВНУТРИ HERO-SECTION */
     html body .hero-section .hero-content-card,
     body .hero-section .hero-content-card,
@@ -8536,13 +8937,14 @@ div.service-details.closing,
 }
 
 @media (max-width: 480px) {
+
     html body .hero-section,
     body .hero-section,
     .hero-section {
         background: #1a1a1a !important;
         background-color: #1a1a1a !important;
     }
-    
+
     /* ПРИНУДИТЕЛЬНЫЙ ТЕМНЫЙ ФОН ДЛЯ КАРТОЧКИ ВНУТРИ HERO-SECTION */
     html body .hero-section .hero-content-card,
     body .hero-section .hero-content-card,
@@ -8603,10 +9005,12 @@ div.service-details.closing,
         transform: scale(1);
         opacity: 0.6;
     }
+
     50% {
         transform: scale(1.3);
         opacity: 0.3;
     }
+
     100% {
         transform: scale(1.5);
         opacity: 0;
@@ -8652,6 +9056,7 @@ div.service-details.closing,
         transform: translateY(-50px);
         opacity: 0;
     }
+
     to {
         transform: translateY(0);
         opacity: 1;
@@ -8753,7 +9158,7 @@ div.service-details.closing,
         padding: 30px 20px;
         width: 95%;
     }
-    
+
     .call-form-modal h2 {
         font-size: 24px;
     }
@@ -8767,7 +9172,7 @@ div.service-details.closing,
         bottom: 20px;
         right: 20px;
     }
-    
+
     .floating-call-btn i {
         font-size: 24px;
     }
@@ -8788,20 +9193,21 @@ section.services-section-new {
 }
 
 @media (min-width: 769px) {
+
     body .workflow-section,
     html body .workflow-section,
     section.workflow-section {
         padding-top: 50px !important;
         margin-top: -30px !important;
     }
-    
+
     .workflow-steps-new,
     body .workflow-section .workflow-steps-new,
     html body .workflow-section .workflow-steps-new,
     section.workflow-section .workflow-steps-new {
         margin-bottom: 0 !important;
     }
-    
+
     .workflow-section .stats-grid,
     body .workflow-section .stats-grid,
     html body .workflow-section .stats-grid,
@@ -8810,22 +9216,23 @@ section.services-section-new {
         margin-bottom: 30px !important;
         padding-top: 0 !important;
     }
-    
-    .workflow-section .workflow-steps-new + .stats-grid {
+
+    .workflow-section .workflow-steps-new+.stats-grid {
         margin-top: -60px !important;
         padding-top: 0 !important;
     }
-    
+
     @media (max-width: 768px) {
+
         .workflow-section .stats-grid,
         body .workflow-section .stats-grid,
         html body .workflow-section .stats-grid,
         section.workflow-section .stats-grid,
-        .workflow-section .workflow-steps-new + .stats-grid {
+        .workflow-section .workflow-steps-new+.stats-grid {
             margin-top: 0 !important;
         }
     }
-    
+
     body .services-section-new,
     html body .services-section-new,
     section.services-section-new {
@@ -8841,6 +9248,7 @@ section.hero-section {
 }
 
 @media (min-width: 769px) {
+
     body .hero-section,
     html body .hero-section,
     section.hero-section {
@@ -8873,13 +9281,14 @@ section.projects-section {
 
 /* ПРИНУДИТЕЛЬНЫЕ СТИЛИ ДЛЯ РАССТОЯНИЙ В БЛОКЕ "КАК МЫ РАБОТАЕМ" - ДЕСКТОП */
 @media (min-width: 769px) {
+
     body .workflow-section .workflow-steps-new,
     html body .workflow-section .workflow-steps-new,
     section.workflow-section .workflow-steps-new,
     .workflow-section .container .workflow-steps-new {
         margin-bottom: 0 !important;
     }
-    
+
     body .workflow-section .stats-grid,
     html body .workflow-section .stats-grid,
     section.workflow-section .stats-grid,
@@ -8888,21 +9297,22 @@ section.projects-section {
         margin-bottom: 30px !important;
         padding-top: 0 !important;
     }
-    
-    .workflow-section .workflow-steps-new + .stats-grid,
-    body .workflow-section .workflow-steps-new + .stats-grid,
-    html body .workflow-section .workflow-steps-new + .stats-grid,
-    section.workflow-section .workflow-steps-new + .stats-grid {
+
+    .workflow-section .workflow-steps-new+.stats-grid,
+    body .workflow-section .workflow-steps-new+.stats-grid,
+    html body .workflow-section .workflow-steps-new+.stats-grid,
+    section.workflow-section .workflow-steps-new+.stats-grid {
         margin-top: -60px !important;
         padding-top: 0 !important;
     }
-    
+
     @media (max-width: 768px) {
+
         body .workflow-section .stats-grid,
         html body .workflow-section .stats-grid,
         section.workflow-section .stats-grid,
         .workflow-section .container .stats-grid,
-        .workflow-section .workflow-steps-new + .stats-grid {
+        .workflow-section .workflow-steps-new+.stats-grid {
             margin-top: 0 !important;
         }
     }

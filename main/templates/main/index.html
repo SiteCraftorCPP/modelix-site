@@ -28,8 +28,8 @@
     <!-- Preload критических CSS для мобильной версии -->
     <link rel="preload" href="/static/css/mobile.css?v=67.0" as="style">
     
-    <link rel="stylesheet" href="/static/css/styles.css?v=193.0">
-    <link rel="stylesheet" href="/static/css/mobile.css?v=73.0">
+    <link rel="stylesheet" href="/static/css/styles.css?v=197.0">
+    <link rel="stylesheet" href="/static/css/mobile.css?v=77.0">
     <link rel="stylesheet" href="/static/css/social-links-fixed.css?v=1.5">
     <link rel="stylesheet" href="/static/css/animated-icons-fix.css?v=1.6">
     <link rel="stylesheet" href="/static/css/hero-responsive.css?v=1.2">
@@ -949,14 +949,17 @@
                             <input type="file" name="file" id="fileInput">
                             <label for="fileInput" class="file-label">
                                 <i class="fas fa-upload"></i>
-                                <span>Прикрепить файл</span>
+                                <span class="file-label-text">Прикрепить файл</span>
                                 <small>Можно отправить любую фотографию модели, эскиза или 3D файл.</small>
+                                <button type="button" class="file-remove-btn" onclick="removeFile(event)" style="display: none;">
+                                    <i class="fas fa-times"></i>
+                                </button>
                             </label>
                         </div>
                         
                         <button type="button" class="submit-btn enhanced-submit" onclick="submitOrderForm(event)">
                             <i class="fas fa-paper-plane"></i>
-                            ЗАКАЗАТЬ УСЛУГУ
+                            <span class="submit-btn-text">ЗАКАЗАТЬ УСЛУГУ</span>
                         </button>
                     </div>
                     
@@ -1572,8 +1575,12 @@
                 return;
             }
             
-            // Показываем состояние загрузки
-            submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> ОТПРАВКА...';
+            // Показываем состояние загрузки - скрываем текст
+            var submitBtnText = submitBtn.querySelector('.submit-btn-text');
+            if (submitBtnText) {
+                submitBtnText.style.display = 'none';
+            }
+            submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i>';
             submitBtn.disabled = true;
             
             // Создаем FormData
@@ -1606,9 +1613,14 @@
                 if (data.success) {
                     alert('Заявка успешно отправлена! Мы свяжемся с вами в ближайшее время.');
                     form.reset();
-                    var fileLabel = document.querySelector('.file-label span');
+                    var fileLabel = document.querySelector('.file-label .file-label-text') || document.querySelector('.file-label span');
                     if (fileLabel) {
                         fileLabel.textContent = 'Прикрепить файл';
+                        fileLabel.style.color = '';
+                    }
+                    var removeBtn = document.querySelector('.file-remove-btn');
+                    if (removeBtn) {
+                        removeBtn.style.display = 'none';
                     }
             } else {
                     alert(data.error || 'Произошла ошибка при отправке заявки');
@@ -1620,9 +1632,57 @@
             })
             .finally(function() {
                 submitBtn.innerHTML = originalText;
+                var submitBtnText = submitBtn.querySelector('.submit-btn-text');
+                if (submitBtnText) {
+                    submitBtnText.style.display = '';
+                }
                 submitBtn.disabled = false;
             });
         }
+        
+        // Удаление файла
+        function removeFile(event) {
+            event.preventDefault();
+            event.stopPropagation();
+            
+            var fileInput = document.getElementById('fileInput');
+            var fileLabel = document.querySelector('.file-label');
+            var fileLabelText = fileLabel ? fileLabel.querySelector('.file-label-text') : null;
+            var removeBtn = document.querySelector('.file-remove-btn');
+            
+            if (fileInput) {
+                fileInput.value = '';
+            }
+            
+            if (fileLabelText) {
+                fileLabelText.textContent = 'Прикрепить файл';
+                fileLabelText.style.color = '';
+            }
+            
+            if (removeBtn) {
+                removeBtn.style.display = 'none';
+            }
+            
+            return false;
+        }
+        
+        // Обработка textarea - скрываем placeholder при фокусе
+        document.addEventListener('DOMContentLoaded', function() {
+            var textarea = document.querySelector('textarea.textarea-with-icon');
+            if (textarea) {
+                var originalPlaceholder = textarea.placeholder;
+                
+                textarea.addEventListener('focus', function() {
+                    this.placeholder = '';
+                });
+                
+                textarea.addEventListener('blur', function() {
+                    if (this.value === '') {
+                        this.placeholder = originalPlaceholder;
+                    }
+                });
+            }
+        });
         
         // НОВЫЕ ПРОСТЫЕ функции для материалов
         function openMaterialsModal() {

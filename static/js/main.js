@@ -2,7 +2,7 @@
 // ОСНОВНЫЕ ПЕРЕМЕННЫЕ И НАСТРОЙКИ
 // ========================================
 
-document.addEventListener('DOMContentLoaded', function() {
+document.addEventListener('DOMContentLoaded', function () {
     initializeAnimations();
     initializeNavigation();
     initializeSlider();
@@ -14,7 +14,7 @@ document.addEventListener('DOMContentLoaded', function() {
     initializeModernEffects();
     initializeParticles();
     initializeInteractiveElements();
-    
+
     // Добавляем класс загрузки страницы
     setTimeout(() => {
         document.body.classList.add('page-loaded');
@@ -36,7 +36,7 @@ function toggleContactDropdown(event) {
 }
 
 // Закрытие выпадающего блока при клике вне него
-document.addEventListener('click', function(e) {
+document.addEventListener('click', function (e) {
     const dropdown = document.getElementById('contactDropdown');
     if (dropdown && !e.target.closest('.contact-dropdown-container')) {
         dropdown.classList.remove('show');
@@ -47,33 +47,33 @@ function initializeNavigation() {
     // Инициализация красивой навигации
     const navigation = document.querySelector('.navigation');
     if (navigation) {
-        
+
         // Обработчик скролла для эффекта навигации
         let lastScrollY = window.scrollY;
-        
+
         window.addEventListener('scroll', () => {
             const currentScrollY = window.scrollY;
-            
+
             // Изменяем тень в зависимости от скролла, градиент остается
             if (currentScrollY > 50) {
                 navigation.style.boxShadow = '0 2px 10px rgba(0, 0, 0, 0.25)';
             } else {
                 navigation.style.boxShadow = '0 2px 10px rgba(0, 0, 0, 0.2)';
             }
-            
+
             lastScrollY = currentScrollY;
         });
     }
-    
+
     // Простая навигация без выпадающих блоков
-    
+
     // Обработчики для красивой навигации
     const navLinks = document.querySelectorAll('.nav-link');
     navLinks.forEach(link => {
-        link.addEventListener('click', function(e) {
+        link.addEventListener('click', function (e) {
             // Добавляем ripple эффект
             createRipple(e, this);
-            
+
             const targetId = this.getAttribute('href');
             if (targetId && targetId.startsWith('#')) {
                 e.preventDefault();
@@ -81,7 +81,7 @@ function initializeNavigation() {
                 if (targetSection) {
                     const navHeight = document.querySelector('.navigation')?.offsetHeight || 0;
                     const targetPosition = targetSection.offsetTop - navHeight;
-                    
+
                     window.scrollTo({
                         top: targetPosition,
                         behavior: 'smooth'
@@ -90,9 +90,9 @@ function initializeNavigation() {
             }
         });
     });
-    
+
     // Простая навигация без выпадающих блоков
-    
+
     // ВРЕМЕННО ОТКЛЮЧАЕМ ПОСТОЯННУЮ ПРОВЕРКУ
     /*
     setInterval(() => {
@@ -107,9 +107,9 @@ function initializeNavigation() {
         }
     }, 50);
     */
-    
+
     // ПРИНУДИТЕЛЬНО обновляем стили при загрузке
-    window.addEventListener('load', function() {
+    window.addEventListener('load', function () {
         const nav = document.querySelector('.site-menu');
         if (nav) {
             nav.style.setProperty('position', 'static', 'important');
@@ -120,7 +120,7 @@ function initializeNavigation() {
             nav.style.setProperty('bottom', 'auto', 'important');
         }
     });
-    
+
     // ВРЕМЕННО ОТКЛЮЧАЕМ ПРИНУДИТЕЛЬНОЕ ОБНОВЛЕНИЕ
     /*
     window.addEventListener('scroll', function() {
@@ -132,7 +132,7 @@ function initializeNavigation() {
         }
     });
     */
-    
+
     // Скрытие/показ навигации при скролле - ОТКЛЮЧЕНО
     // let lastScrollTop = 0;
     // window.addEventListener('scroll', function() {
@@ -160,23 +160,23 @@ function initializeAnimations() {
             mainLogo.classList.add('animated-entrance');
         }, 500);
     }
-    
+
     // Анимация карточек при наведении
     const cards = document.querySelectorAll('.tech-card, .info-card, .workflow-step, .stat-item');
     cards.forEach(card => {
-        card.addEventListener('mouseenter', function() {
+        card.addEventListener('mouseenter', function () {
             this.style.transform = 'translateY(-10px) scale(1.02)';
         });
-        
-        card.addEventListener('mouseleave', function() {
+
+        card.addEventListener('mouseleave', function () {
             this.style.transform = 'translateY(0) scale(1)';
         });
     });
-    
+
     // Эффект параллакса для принтера
     const floatingPrinter = document.querySelector('.floating-printer');
     if (floatingPrinter) {
-        window.addEventListener('scroll', function() {
+        window.addEventListener('scroll', function () {
             const scrolled = window.pageYOffset;
             const rate = scrolled * -0.5;
             floatingPrinter.style.transform = `translateY(calc(-50% + ${rate}px))`;
@@ -193,23 +193,23 @@ function initializeScrollAnimations() {
         threshold: 0.1,
         rootMargin: '0px 0px -50px 0px'
     };
-    
-    const observer = new IntersectionObserver(function(entries) {
+
+    const observer = new IntersectionObserver(function (entries) {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
                 entry.target.classList.add('animated');
-                
+
             }
         });
     }, observerOptions);
-    
+
     // Добавляем элементы для наблюдения
     const animatedElements = document.querySelectorAll('.tech-card, .info-card, .advantage-card, .workflow-step, .stat-item, .faq-item');
     animatedElements.forEach(el => {
         el.classList.add('animate-on-scroll');
         observer.observe(el);
     });
-    
+
 }
 
 // ========================================
@@ -221,34 +221,34 @@ let currentSlideIndex = 0;
 let totalSlides = 0;
 
 function initializeSlider() {
-    
+
     const track = document.querySelector('.portfolio-track');
     const items = document.querySelectorAll('.portfolio-item');
     const prevBtn = document.querySelector('.prev-btn');
     const nextBtn = document.querySelector('.next-btn');
     const dots = document.querySelectorAll('.dot');
-    
-    
+
+
     if (!track || !items.length) {
         return;
     }
-    
+
     totalSlides = items.length;
     currentSlideIndex = 0;
-    
+
     // Принудительная инициализация
     updateSliderManual();
-    
+
     // Дополнительная инициализация через небольшие интервалы
     setTimeout(() => updateSliderManual(), 100);
     setTimeout(() => updateSliderManual(), 500);
     setTimeout(() => updateSliderManual(), 1000);
-    
+
     // Поддержка свайпов на мобильных
     let startX = 0;
     let endX = 0;
     let isDragging = false;
-    
+
     if (track) {
         track.addEventListener('touchstart', e => {
             startX = e.touches[0].clientX;
@@ -256,12 +256,12 @@ function initializeSlider() {
             // Отключаем анимацию во время перетаскивания
             track.style.transition = 'none';
         }, { passive: true });
-        
+
         track.addEventListener('touchmove', e => {
             if (!isDragging) return;
             e.preventDefault();
         }, { passive: false });
-        
+
         track.addEventListener('touchend', e => {
             if (!isDragging) return;
             endX = e.changedTouches[0].clientX;
@@ -271,11 +271,11 @@ function initializeSlider() {
             handleSwipe();
         }, { passive: true });
     }
-    
+
     function handleSwipe() {
         const threshold = 50;
         const diff = startX - endX;
-        
+
         if (Math.abs(diff) > threshold) {
             if (diff > 0) {
                 nextSlideManual();
@@ -431,16 +431,16 @@ function initializeProjectsGallery() {
 
 function initializeFAQ() {
     const faqItems = document.querySelectorAll('.faq-item');
-    
+
     faqItems.forEach(item => {
         const question = item.querySelector('.faq-question');
         const answer = item.querySelector('.faq-answer');
         const icon = item.querySelector('.faq-icon');
-        
+
         if (question && answer) {
             question.addEventListener('click', () => {
                 const isActive = item.classList.contains('active');
-                
+
                 // Закрываем все другие элементы
                 faqItems.forEach(otherItem => {
                     if (otherItem !== item) {
@@ -451,7 +451,7 @@ function initializeFAQ() {
                         }
                     }
                 });
-                
+
                 // Переключаем текущий элемент
                 if (isActive) {
                     item.classList.remove('active');
@@ -471,7 +471,7 @@ function initializeFAQ() {
 
 function initializeMaterials() {
     const materialsBtns = document.querySelectorAll('.materials-btn');
-    
+
     // Предустановленные материалы для каждой технологии
     const materialsData = {
         'FDM': [
@@ -518,7 +518,7 @@ function initializeMaterials() {
             'Aluminum AlSi10Mg - алюминиевый сплав'
         ]
     };
-    
+
     materialsBtns.forEach(btn => {
         // Заранее создаем tooltip для материалов
         const tech = btn.dataset.tech;
@@ -528,20 +528,20 @@ function initializeMaterials() {
             tooltip.innerHTML = `
                 <div class="tooltip-header">Материалы ${tech}</div>
                 <div class="tooltip-content">
-                    ${materialsData[tech].map(material => 
-                        `<div class="tooltip-item">${material}</div>`
-                    ).join('')}
+                    ${materialsData[tech].map(material =>
+                `<div class="tooltip-item">${material}</div>`
+            ).join('')}
                 </div>
             `;
-            
+
             btn.parentNode.style.position = 'relative';
             btn.parentNode.appendChild(tooltip);
-            
+
             // События наведения
             btn.addEventListener('mouseenter', () => {
                 tooltip.classList.add('show');
             });
-            
+
             btn.addEventListener('mouseleave', () => {
                 setTimeout(() => {
                     if (!tooltip.matches(':hover')) {
@@ -549,14 +549,14 @@ function initializeMaterials() {
                     }
                 }, 100);
             });
-            
+
             tooltip.addEventListener('mouseleave', () => {
                 tooltip.classList.remove('show');
             });
         }
-        
+
         // Клик события (оставляем для мобильных)
-        btn.addEventListener('click', function(e) {
+        btn.addEventListener('click', function (e) {
             e.preventDefault();
             const tooltip = this.parentNode.querySelector('.materials-tooltip');
             if (tooltip) {
@@ -564,9 +564,9 @@ function initializeMaterials() {
             }
         });
     });
-    
+
     // Закрытие тултипов при клике вне них
-    document.addEventListener('click', function(e) {
+    document.addEventListener('click', function (e) {
         if (!e.target.closest('.materials-btn') && !e.target.closest('.materials-tooltip')) {
             document.querySelectorAll('.materials-tooltip').forEach(tooltip => {
                 tooltip.classList.remove('show');
@@ -582,40 +582,65 @@ function initializeMaterials() {
 function initializeContactForm() {
     const form = document.getElementById('orderForm');
     const fileInput = document.getElementById('fileInput');
-    const fileLabel = document.querySelector('.file-label span');
-    
-    
+    const fileLabel = document.querySelector('.file-label');
+
+
     // Обработка выбора файла
     if (fileInput && fileLabel) {
-        fileInput.addEventListener('change', function() {
+        fileInput.addEventListener('change', function () {
             if (this.files && this.files[0]) {
                 const fileName = this.files[0].name;
-                fileLabel.textContent = `Выбран: ${fileName}`;
-                fileLabel.style.color = '#0ea5e9';
+                // Обрезаем длинные имена файлов
+                const maxLength = 25;
+                let displayName = fileName;
+                if (fileName.length > maxLength) {
+                    const extension = fileName.substring(fileName.lastIndexOf('.'));
+                    const nameWithoutExt = fileName.substring(0, fileName.lastIndexOf('.'));
+                    if (nameWithoutExt.length > maxLength - extension.length - 3) {
+                        displayName = nameWithoutExt.substring(0, maxLength - extension.length - 3) + '...' + extension;
+                    }
+                }
+                const fileLabelText = fileLabel.querySelector('.file-label-text') || fileLabel;
+                fileLabelText.textContent = `Выбран: ${displayName}`;
+                fileLabelText.style.color = '#0ea5e9';
+
+                // Показываем кнопку удаления
+                const removeBtn = document.querySelector('.file-remove-btn');
+                if (removeBtn) {
+                    removeBtn.style.display = 'flex';
+                    removeBtn.style.pointerEvents = 'auto';
+                }
             } else {
-                fileLabel.textContent = 'Прикрепить файл';
-                fileLabel.style.color = '';
+                const fileLabelText = fileLabel.querySelector('.file-label-text') || fileLabel;
+                fileLabelText.textContent = 'Прикрепить файл';
+                fileLabelText.style.color = '';
+
+                // Скрываем кнопку удаления
+                const removeBtn = document.querySelector('.file-remove-btn');
+                if (removeBtn) {
+                    removeBtn.style.display = 'none';
+                }
             }
         });
     }
-    
+
     // Обработка отправки формы
     if (form) {
-        form.addEventListener('submit', function(e) {
+        form.addEventListener('submit', function (e) {
             e.preventDefault();
             e.stopPropagation();
-            
+
             const formData = new FormData(this);
             const submitBtn = this.querySelector('.submit-btn');
             const originalText = submitBtn.innerHTML;
-            
+
             // Показываем состояние загрузки
             submitBtn.innerHTML = '<i class=\"fas fa-spinner fa-spin\"></i> ОТПРАВКА...';
             submitBtn.disabled = true;
-            
+
             // Получаем CSRF токен
             const csrfToken = document.querySelector('[name=csrfmiddlewaretoken]');
-            
+
             // Отправляем данные
             fetch('/submit-order/', {
                 method: 'POST',
@@ -624,29 +649,34 @@ function initializeContactForm() {
                     'X-CSRFToken': csrfToken ? csrfToken.value : ''
                 }
             })
-            .then(response => {
-                return response.json();
-            })
-            .then(data => {
-                if (data.success) {
-                    showNotification('Заявка успешно отправлена! Мы свяжемся с вами в ближайшее время.', 'success');
-                    form.reset();
-                    if (fileLabel) {
-                        fileLabel.textContent = 'Прикрепить файл';
-                        fileLabel.style.color = '';
+                .then(response => {
+                    return response.json();
+                })
+                .then(data => {
+                    if (data.success) {
+                        showNotification('Заявка успешно отправлена! Мы свяжемся с вами в ближайшее время.', 'success');
+                        form.reset();
+                        const fileLabelText = fileLabel ? (fileLabel.querySelector('.file-label-text') || fileLabel.querySelector('span')) : null;
+                        if (fileLabelText) {
+                            fileLabelText.textContent = 'Прикрепить файл';
+                            fileLabelText.style.color = '';
+                        }
+                        const removeBtn = document.querySelector('.file-remove-btn');
+                        if (removeBtn) {
+                            removeBtn.style.display = 'none';
+                        }
+                    } else {
+                        showNotification(data.error || 'Произошла ошибка при отправке заявки', 'error');
                     }
-                } else {
-                    showNotification(data.error || 'Произошла ошибка при отправке заявки', 'error');
-                }
-            })
-            .catch(error => {
-                console.error('Ошибка при отправке:', error);
-                showNotification('Произошла ошибка при отправке заявки', 'error');
-            })
-            .finally(() => {
-                submitBtn.innerHTML = originalText;
-                submitBtn.disabled = false;
-            });
+                })
+                .catch(error => {
+                    console.error('Ошибка при отправке:', error);
+                    showNotification('Произошла ошибка при отправке заявки', 'error');
+                })
+                .finally(() => {
+                    submitBtn.innerHTML = originalText;
+                    submitBtn.disabled = false;
+                });
         });
     }
 }
@@ -666,7 +696,7 @@ function showNotification(message, type = 'info') {
         </div>
         <button class=\"notification-close\">&times;</button>
     `;
-    
+
     // Добавляем стили если их еще нет
     if (!document.querySelector('#notification-styles')) {
         const styles = document.createElement('style');
@@ -716,22 +746,22 @@ function showNotification(message, type = 'info') {
         `;
         document.head.appendChild(styles);
     }
-    
+
     // Добавляем в DOM
     document.body.appendChild(notification);
-    
+
     // Анимация появления
     setTimeout(() => {
         notification.style.transform = 'translateX(0)';
     }, 100);
-    
+
     // Обработчик закрытия
     const closeBtn = notification.querySelector('.notification-close');
     closeBtn.addEventListener('click', () => {
         notification.style.transform = 'translateX(100%)';
         setTimeout(() => notification.remove(), 300);
     });
-    
+
     // Автоматическое удаление через 5 секунд
     setTimeout(() => {
         if (document.body.contains(notification)) {
@@ -750,7 +780,7 @@ function scrollToSection(sectionId) {
     if (section) {
         const navHeight = document.querySelector('.navigation')?.offsetHeight || 0;
         const targetPosition = section.offsetTop - navHeight;
-        
+
         window.scrollTo({
             top: targetPosition,
             behavior: 'smooth'
@@ -785,7 +815,7 @@ window.addEventListener('scroll', optimizedScrollHandler);
 function initializeMobileMenu() {
     const toggle = document.querySelector('.mobile-menu-toggle');
     const menu = document.querySelector('.nav-menu');
-    
+
     if (toggle && menu) {
         toggle.addEventListener('click', () => {
             menu.classList.toggle('active');
@@ -810,7 +840,7 @@ function preloadImages() {
         '/media/services/3d_printing.jpg',
         '/media/services/3d_printing.jpg'
     ];
-    
+
     criticalImages.forEach(src => {
         const img = new Image();
         img.src = src;
@@ -829,17 +859,17 @@ function initializeModernEffects() {
     window.addEventListener('scroll', () => {
         const scrolled = window.pageYOffset;
         const parallaxElements = document.querySelectorAll('.parallax-bg');
-        
+
         parallaxElements.forEach(element => {
             const speed = element.dataset.speed || 0.5;
             const yPos = -(scrolled * speed);
             element.style.transform = `translateY(${yPos}px)`;
         });
     });
-    
+
     // Интерактивные карточки с 3D эффектом
     const cards = document.querySelectorAll('.tech-card, .workflow-step');
-    
+
     cards.forEach(card => {
         card.addEventListener('mousemove', handleCardMouseMove);
         card.addEventListener('mouseleave', handleCardMouseLeave);
@@ -851,13 +881,13 @@ function handleCardMouseMove(e) {
     const rect = card.getBoundingClientRect();
     const x = e.clientX - rect.left;
     const y = e.clientY - rect.top;
-    
+
     const centerX = rect.width / 2;
     const centerY = rect.height / 2;
-    
+
     const rotateX = (y - centerY) / 10;
     const rotateY = (centerX - x) / 10;
-    
+
     card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) translateZ(10px)`;
     card.style.boxShadow = '0 20px 40px rgba(0,0,0,0.2)';
 }
@@ -872,11 +902,11 @@ function handleCardMouseLeave(e) {
 function initializeParticles() {
     const heroSection = document.querySelector('.hero-section');
     if (!heroSection) return;
-    
+
     const particlesContainer = document.createElement('div');
     particlesContainer.className = 'particles-container';
     heroSection.appendChild(particlesContainer);
-    
+
     // Создаем частицы
     for (let i = 0; i < 50; i++) {
         createParticle(particlesContainer);
@@ -886,13 +916,13 @@ function initializeParticles() {
 function createParticle(container) {
     const particle = document.createElement('div');
     particle.className = 'particle';
-    
+
     // Случайные параметры
     const size = Math.random() * 4 + 2;
     const x = Math.random() * 100;
     const animationDuration = Math.random() * 20 + 10;
     const opacity = Math.random() * 0.5 + 0.1;
-    
+
     particle.style.cssText = `
         position: absolute;
         width: ${size}px;
@@ -904,9 +934,9 @@ function createParticle(container) {
         animation: floatUp ${animationDuration}s infinite linear;
         pointer-events: none;
     `;
-    
+
     container.appendChild(particle);
-    
+
     // Удаляем частицу после анимации
     setTimeout(() => {
         if (particle.parentNode) {
@@ -919,21 +949,21 @@ function createParticle(container) {
 function initializeInteractiveElements() {
     // Магнитный эффект для кнопок
     const buttons = document.querySelectorAll('.cta-button, .submit-btn');
-    
+
     buttons.forEach(button => {
         button.addEventListener('mousemove', (e) => {
             const rect = button.getBoundingClientRect();
             const x = e.clientX - rect.left - rect.width / 2;
             const y = e.clientY - rect.top - rect.height / 2;
-            
+
             button.style.transform = `translate(${x * 0.1}px, ${y * 0.1}px) scale(1.05)`;
         });
-        
+
         button.addEventListener('mouseleave', () => {
             button.style.transform = 'translate(0px, 0px) scale(1)';
         });
     });
-    
+
     // Волновой эффект при клике
     buttons.forEach(button => {
         button.addEventListener('click', createRippleEffect);
@@ -947,7 +977,7 @@ function createRippleEffect(e) {
     const size = Math.max(rect.width, rect.height);
     const x = e.clientX - rect.left - size / 2;
     const y = e.clientY - rect.top - size / 2;
-    
+
     ripple.style.cssText = `
         position: absolute;
         width: ${size}px;
@@ -960,11 +990,11 @@ function createRippleEffect(e) {
         animation: ripple 0.6s ease-out;
         pointer-events: none;
     `;
-    
+
     button.style.position = 'relative';
     button.style.overflow = 'hidden';
     button.appendChild(ripple);
-    
+
     setTimeout(() => {
         ripple.remove();
     }, 600);
@@ -973,7 +1003,7 @@ function createRippleEffect(e) {
 // Плавное появление элементов при скролле
 function initializeScrollReveal() {
     const revealElements = document.querySelectorAll('.reveal-on-scroll');
-    
+
     const revealObserver = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
@@ -985,7 +1015,7 @@ function initializeScrollReveal() {
         threshold: 0.1,
         rootMargin: '0px 0px -50px 0px'
     });
-    
+
     revealElements.forEach(element => {
         revealObserver.observe(element);
     });
@@ -1061,7 +1091,7 @@ function addModernCSS() {
             }
         }
     `;
-    
+
     document.head.appendChild(style);
 }
 
@@ -1076,7 +1106,7 @@ document.addEventListener('DOMContentLoaded', () => {
 // ========================================
 
 // Улучшение доступности клавиатуры
-document.addEventListener('keydown', function(e) {
+document.addEventListener('keydown', function (e) {
     // ESC для закрытия модальных окон
     if (e.key === 'Escape') {
         const modal = document.getElementById('contactModal');
@@ -1084,7 +1114,7 @@ document.addEventListener('keydown', function(e) {
             modal.style.display = 'none';
             document.body.style.overflow = 'auto';
         }
-        
+
         // Закрытие всех дропдаунов
         document.querySelectorAll('.materials-dropdown.active').forEach(dd => {
             dd.classList.remove('active');
@@ -1102,8 +1132,8 @@ function trapFocus(element) {
     );
     const firstElement = focusableElements[0];
     const lastElement = focusableElements[focusableElements.length - 1];
-    
-    element.addEventListener('keydown', function(e) {
+
+    element.addEventListener('keydown', function (e) {
         if (e.key === 'Tab') {
             if (e.shiftKey) {
                 if (document.activeElement === firstElement) {
@@ -1133,7 +1163,7 @@ if (modal) {
 function triggerSectionNotification(section) {
     // Здесь можно добавить специфические уведомления для разных секций
     const sectionId = section.id;
-    
+
     if (sectionId === 'technologies' && !localStorage.getItem('techNotificationShown')) {
         showCustomNotification('Нажмите на "Материал" чтобы посмотреть доступные материалы!', 'info');
         localStorage.setItem('techNotificationShown', 'true');
@@ -1150,13 +1180,13 @@ function showCustomNotification(message, type = 'info') {
         </div>
         <button class="close-notification">&times;</button>
     `;
-    
+
     document.body.appendChild(notification);
-    
+
     setTimeout(() => {
         notification.classList.add('show');
     }, 100);
-    
+
     // Закрытие
     const closeBtn = notification.querySelector('.close-notification');
     closeBtn.addEventListener('click', () => {
@@ -1165,7 +1195,7 @@ function showCustomNotification(message, type = 'info') {
             notification.remove();
         }, 300);
     });
-    
+
     // Автоматическое удаление
     setTimeout(() => {
         if (document.body.contains(notification)) {
@@ -1184,7 +1214,7 @@ function showCustomNotification(message, type = 'info') {
 // Ленивая загрузка изображений
 function initializeLazyLoading() {
     const images = document.querySelectorAll('img[data-src]');
-    
+
     const imageObserver = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
@@ -1195,7 +1225,7 @@ function initializeLazyLoading() {
             }
         });
     });
-    
+
     images.forEach(img => imageObserver.observe(img));
 }
 
@@ -1224,20 +1254,20 @@ function createRipple(event, element) {
     const circle = document.createElement('span');
     const diameter = Math.max(element.clientWidth, element.clientHeight);
     const radius = diameter / 2;
-    
+
     const rect = element.getBoundingClientRect();
     circle.style.width = circle.style.height = `${diameter}px`;
     circle.style.left = `${event.clientX - rect.left - radius}px`;
     circle.style.top = `${event.clientY - rect.top - radius}px`;
     circle.classList.add('nav-ripple');
-    
+
     const ripple = element.querySelector('.nav-ripple');
     if (ripple) {
         ripple.remove();
     }
-    
+
     element.appendChild(circle);
-    
+
     // Удаляем элемент после анимации
     setTimeout(() => {
         circle.remove();
@@ -1250,12 +1280,12 @@ function createRipple(event, element) {
 
 function addBackgroundAnimations() {
     const body = document.body;
-    
+
     // Анимация фонового градиента
     if (!body.classList.contains('bg-animated')) {
         body.classList.add('bg-animated');
     }
-    
+
     // Добавляем плавающие частицы
     createFloatingParticles();
 }
@@ -1266,19 +1296,19 @@ function activateHoverEffects() {
     buttons.forEach(button => {
         if (!button.classList.contains('hover-enhanced')) {
             button.classList.add('hover-enhanced');
-            
-            button.addEventListener('mouseenter', function() {
+
+            button.addEventListener('mouseenter', function () {
                 this.style.transform = 'translateY(-2px) scale(1.05)';
                 this.style.boxShadow = '0 10px 30px rgba(65, 105, 225, 0.4)';
             });
-            
-            button.addEventListener('mouseleave', function() {
+
+            button.addEventListener('mouseleave', function () {
                 this.style.transform = 'translateY(0) scale(1)';
                 this.style.boxShadow = '0 2px 8px rgba(65, 105, 225, 0.2)';
             });
         }
     });
-    
+
 }
 
 function startParticleSystem() {
@@ -1296,7 +1326,7 @@ function startParticleSystem() {
             pointer-events: none;
             z-index: 1;
         `;
-        
+
         // Создаем 20 частиц
         for (let i = 0; i < 20; i++) {
             const particle = document.createElement('div');
@@ -1314,7 +1344,7 @@ function startParticleSystem() {
             `;
             particleContainer.appendChild(particle);
         }
-        
+
         heroSection.appendChild(particleContainer);
     }
 }
@@ -1369,21 +1399,21 @@ function createFloatingParticles() {
 // Функции, которые вызываются из HTML
 function nextSlideManual() {
     if (totalSlides === 0) return;
-    
+
     currentSlideIndex = (currentSlideIndex + 1) % totalSlides;
     updateSliderManual();
 }
 
 function prevSlideManual() {
     if (totalSlides === 0) return;
-    
+
     currentSlideIndex = currentSlideIndex === 0 ? totalSlides - 1 : currentSlideIndex - 1;
     updateSliderManual();
 }
 
 function goToSlide(index) {
     if (totalSlides === 0) return;
-    
+
     currentSlideIndex = index;
     updateSliderManual();
 }
@@ -1392,14 +1422,14 @@ function updateSliderManual() {
     const track = document.querySelector('.portfolio-track');
     const items = document.querySelectorAll('.portfolio-item');
     const dots = document.querySelectorAll('.dot');
-    
+
     if (!track || !items.length) return;
-    
+
     // ПОЛНОСТЬЮ УБИРАЕМ TRANSFORM И ИСПОЛЬЗУЕМ DISPLAY
     track.style.transform = '';
     track.style.left = '';
     track.style.right = '';
-    
+
     // Скрываем все элементы
     items.forEach((item, index) => {
         item.style.display = 'none';
@@ -1408,23 +1438,23 @@ function updateSliderManual() {
         item.style.right = '';
         item.style.transform = '';
     });
-    
+
     // Показываем только текущий элемент
     if (items[currentSlideIndex]) {
         items[currentSlideIndex].style.display = 'flex';
         items[currentSlideIndex].style.alignItems = 'center';
         items[currentSlideIndex].style.justifyContent = 'center';
     }
-    
+
     // Обновляем точки
     dots.forEach((dot, index) => {
         dot.classList.toggle('active', index === currentSlideIndex);
     });
-    
+
     // Обновляем видимость кнопок
     const prevBtn = document.querySelector('.prev-btn');
     const nextBtn = document.querySelector('.next-btn');
-    
+
     if (prevBtn) {
         prevBtn.style.opacity = currentSlideIndex === 0 ? '0.5' : '1';
     }

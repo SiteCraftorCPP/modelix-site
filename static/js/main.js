@@ -583,45 +583,78 @@ function initializeContactForm() {
     const form = document.getElementById('orderForm');
     const fileInput = document.getElementById('fileInput');
     const fileLabel = document.querySelector('.file-label');
+    const fileList = document.getElementById('fileList');
 
+    // Функция для отображения списка файлов
+    function updateFileList() {
+        if (!fileList) return;
 
-    // Обработка выбора файла
-    if (fileInput && fileLabel) {
-        fileInput.addEventListener('change', function () {
-            if (this.files && this.files[0]) {
-                const fileName = this.files[0].name;
-                // Обрезаем длинные имена файлов
-                const maxLength = 25;
-                let displayName = fileName;
-                if (fileName.length > maxLength) {
-                    const extension = fileName.substring(fileName.lastIndexOf('.'));
-                    const nameWithoutExt = fileName.substring(0, fileName.lastIndexOf('.'));
+        const files = fileInput.files;
+        fileList.innerHTML = '';
+
+        if (files && files.length > 0) {
+            const fileLabelText = fileLabel.querySelector('.file-label-text');
+            if (fileLabelText) {
+                fileLabelText.textContent = `Выбрано файлов: ${files.length}`;
+                fileLabelText.style.color = '#0ea5e9';
+            }
+
+            // Показываем кнопку удаления
+            const removeBtn = document.querySelector('.file-remove-btn');
+            if (removeBtn) {
+                removeBtn.style.display = 'flex';
+                removeBtn.style.pointerEvents = 'auto';
+            }
+
+            // Создаем список файлов
+            for (let i = 0; i < files.length; i++) {
+                const file = files[i];
+                const maxLength = 30;
+                let displayName = file.name;
+
+                if (file.name.length > maxLength) {
+                    const extension = file.name.substring(file.name.lastIndexOf('.'));
+                    const nameWithoutExt = file.name.substring(0, file.name.lastIndexOf('.'));
                     if (nameWithoutExt.length > maxLength - extension.length - 3) {
                         displayName = nameWithoutExt.substring(0, maxLength - extension.length - 3) + '...' + extension;
                     }
                 }
-                const fileLabelText = fileLabel.querySelector('.file-label-text') || fileLabel;
-                fileLabelText.textContent = `Выбран: ${displayName}`;
-                fileLabelText.style.color = '#0ea5e9';
 
-                // Показываем кнопку удаления
-                const removeBtn = document.querySelector('.file-remove-btn');
-                if (removeBtn) {
-                    removeBtn.style.display = 'flex';
-                    removeBtn.style.pointerEvents = 'auto';
-                }
-            } else {
-                const fileLabelText = fileLabel.querySelector('.file-label-text') || fileLabel;
-                fileLabelText.textContent = 'Прикрепить файл';
-                fileLabelText.style.color = '';
-
-                // Скрываем кнопку удаления
-                const removeBtn = document.querySelector('.file-remove-btn');
-                if (removeBtn) {
-                    removeBtn.style.display = 'none';
-                }
+                const fileItem = document.createElement('div');
+                fileItem.className = 'file-item';
+                fileItem.innerHTML = `
+                    <span class="file-item-name">${displayName}</span>
+                    <span class="file-item-size">${formatFileSize(file.size)}</span>
+                `;
+                fileList.appendChild(fileItem);
             }
-        });
+        } else {
+            const fileLabelText = fileLabel.querySelector('.file-label-text');
+            if (fileLabelText) {
+                fileLabelText.textContent = 'Прикрепить файлы';
+                fileLabelText.style.color = '';
+            }
+
+            // Скрываем кнопку удаления
+            const removeBtn = document.querySelector('.file-remove-btn');
+            if (removeBtn) {
+                removeBtn.style.display = 'none';
+            }
+        }
+    }
+
+    // Функция для форматирования размера файла
+    function formatFileSize(bytes) {
+        if (bytes === 0) return '0 Bytes';
+        const k = 1024;
+        const sizes = ['Bytes', 'KB', 'MB', 'GB'];
+        const i = Math.floor(Math.log(bytes) / Math.log(k));
+        return Math.round(bytes / Math.pow(k, i) * 100) / 100 + ' ' + sizes[i];
+    }
+
+    // Обработка выбора файлов
+    if (fileInput && fileLabel) {
+        fileInput.addEventListener('change', updateFileList);
     }
 
     // Обработка отправки формы
@@ -641,6 +674,14 @@ function initializeContactForm() {
             // Получаем CSRF токен
             const csrfToken = document.querySelector('[name=csrfmiddlewaretoken]');
 
+            // Добавляем все файлы в FormData
+            const fileInput = document.getElementById('fileInput');
+            if (fileInput && fileInput.files) {
+                for (let i = 0; i < fileInput.files.length; i++) {
+                    formData.append('files', fileInput.files[i]);
+                }
+            }
+
             // Отправляем данные
             fetch('/submit-order/', {
                 method: 'POST',
@@ -658,8 +699,12 @@ function initializeContactForm() {
                         form.reset();
                         const fileLabelText = fileLabel ? (fileLabel.querySelector('.file-label-text') || fileLabel.querySelector('span')) : null;
                         if (fileLabelText) {
-                            fileLabelText.textContent = 'Прикрепить файл';
+                            fileLabelText.textContent = 'Прикрепить файлы';
                             fileLabelText.style.color = '';
+                        }
+                        const fileList = document.getElementById('fileList');
+                        if (fileList) {
+                            fileList.innerHTML = '';
                         }
                         const removeBtn = document.querySelector('.file-remove-btn');
                         if (removeBtn) {

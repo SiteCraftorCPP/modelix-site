@@ -1,7 +1,7 @@
 from django.shortcuts import render, redirect
 from django.http import JsonResponse
 from django.contrib import messages
-from .models import PrintOrder, CallRequest, Service, SocialLink, ContactInfo, FAQ, HeroImage, Stat, MarketplaceLink, WorksBlock, ProjectsBlock
+from .models import PrintOrder, CallRequest, Service, SocialLink, ContactInfo, FAQ, HeroImage, Stat, MarketplaceLink, WorksBlock, ProjectsBlock, OrderFile
 import json
 
 def index(request):
@@ -207,20 +207,30 @@ def submit_order(request):
             email = request.POST.get('email', '').strip()
             message = request.POST.get('message', '').strip()
             service_type = request.POST.get('service_type', 'other').strip()
-            file = request.FILES.get('file')
             
-            logger.info(f"File received: {file}")
-            if file:
+            # Получаем файлы (поддержка старого формата 'file' и нового 'files')
+            files = request.FILES.getlist('files')
+            old_file = request.FILES.get('file')  # Для обратной совместимости
+            
+            # Если есть старый формат, добавляем его в список
+            if old_file:
+                files = list(files) + [old_file]
+            
+            logger.info(f"Files received: {len(files)}")
+            for file in files:
                 logger.info(f"File name: {file.name}, size: {file.size}, content_type: {file.content_type}")
             
-            # Проверка размера файла (если есть)
-            if file:
+            # Проверка размера файлов
+            for file in files:
                 if file.size > 838860800:  # 800 MB
-                    logger.warning(f"File too large: {file.size} bytes")
-                    return JsonResponse({'success': False, 'error': 'Размер файла не должен превышать 800 MB'})
+                    logger.warning(f"File too large: {file.name} - {file.size} bytes")
+                    return JsonResponse({'success': False, 'error': f'Размер файла "{file.name}" не должен превышать 800 MB'})
             
             if not all([name, phone, email]):
                 return JsonResponse({'success': False, 'error': 'Заполните все обязательные поля'})
+            
+            # Сохраняем первый файл в старое поле для обратной совместимости
+            first_file = files[0] if files else None
             
             order = PrintOrder.objects.create(
                 name=name,
@@ -228,8 +238,12 @@ def submit_order(request):
                 email=email,
                 message=message,
                 service_type=service_type,
-                file=file
+                file=first_file
             )
+            
+            # Сохраняем все файлы в новую модель OrderFile
+            for file in files:
+                OrderFile.objects.create(order=order, file=file)
             
             # Также сохраняем информацию о звонке в CallRequest
             if name and phone:

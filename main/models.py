@@ -30,6 +30,20 @@ class PrintOrder(models.Model):
     def __str__(self):
         return f'Заявка от {self.name} - {self.created_at.strftime("%d.%m.%Y %H:%M")}'
 
+class OrderFile(models.Model):
+    """Модель для хранения файлов заявки"""
+    order = models.ForeignKey(PrintOrder, on_delete=models.CASCADE, related_name='files', verbose_name='Заявка')
+    file = models.FileField('Файл', upload_to='orders/')
+    created_at = models.DateTimeField('Дата создания', auto_now_add=True)
+    
+    class Meta:
+        verbose_name = 'Файл заявки'
+        verbose_name_plural = 'Файлы заявок'
+        ordering = ['-created_at']
+    
+    def __str__(self):
+        return f'{self.file.name} - {self.order.name}'
+
 class MarketplaceLink(models.Model):
     """Модель для ссылок на маркетплейсы и соц сети"""
     PLATFORM_CHOICES = [

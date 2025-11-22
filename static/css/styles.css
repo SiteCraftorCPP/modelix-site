@@ -3364,6 +3364,41 @@ section.workflow-section .stats-grid,
     white-space: nowrap;
 }
 
+.file-list {
+    width: 100%;
+    margin-top: 10px;
+    max-height: 200px;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.file-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 8px 12px;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 8px;
+    font-size: 14px;
+    gap: 10px;
+}
+
+.file-item-name {
+    flex: 1;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    color: #0ea5e9;
+}
+
+.file-item-size {
+    color: rgba(255, 255, 255, 0.7);
+    font-size: 12px;
+    white-space: nowrap;
+}
+
 #fileInput {
     position: absolute;
     opacity: 0;

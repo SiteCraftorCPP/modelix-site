@@ -946,12 +946,13 @@
                         <textarea name="message" placeholder="Опишите ваши пожелания, требования и особенности проекта." class="form-textarea main-font textarea-with-icon"></textarea>
                         
                         <div class="file-upload">
-                            <input type="file" name="file" id="fileInput">
+                            <input type="file" name="file" id="fileInput" multiple>
                             <label for="fileInput" class="file-label">
                                 <i class="fas fa-upload"></i>
-                                <span class="file-label-text">Прикрепить файл</span>
-                                <small>Можно отправить любую фотографию модели, эскиза или 3D файл.</small>
-                                <button type="button" class="file-remove-btn" onclick="removeFile(event)" style="display: none;">
+                                <span class="file-label-text">Прикрепить файлы</span>
+                                <small>Можно отправить любые фотографии модели, эскизы или 3D файлы.</small>
+                                <div class="file-list" id="fileList"></div>
+                                <button type="button" class="file-remove-btn" onclick="removeAllFiles(event)" style="display: none;">
                                     <i class="fas fa-times"></i>
                                 </button>
                             </label>
@@ -1592,8 +1593,11 @@
             if (serviceType) {
                 formData.append('service_type', serviceType);
             }
-            if (fileInput.files[0]) {
-                formData.append('file', fileInput.files[0]);
+            // Добавляем все файлы
+            if (fileInput.files && fileInput.files.length > 0) {
+                for (var i = 0; i < fileInput.files.length; i++) {
+                    formData.append('files', fileInput.files[i]);
+                }
             }
             
             // Добавляем CSRF токен
@@ -1640,8 +1644,8 @@
             });
         }
         
-        // Удаление файла
-        function removeFile(event) {
+        // Удаление всех файлов
+        function removeAllFiles(event) {
             event.preventDefault();
             event.stopPropagation();
             
@@ -1649,21 +1653,29 @@
             var fileLabel = document.querySelector('.file-label');
             var fileLabelText = fileLabel ? fileLabel.querySelector('.file-label-text') : null;
             var removeBtn = document.querySelector('.file-remove-btn');
+            var fileList = document.getElementById('fileList');
             
             if (fileInput) {
                 fileInput.value = '';
+                
+                if (fileLabelText) {
+                    fileLabelText.textContent = 'Прикрепить файлы';
+                    fileLabelText.style.color = '';
+                }
+                
+                if (fileList) {
+                    fileList.innerHTML = '';
+                }
+                
+                if (removeBtn) {
+                    removeBtn.style.display = 'none';
+                }
             }
-            
-            if (fileLabelText) {
-                fileLabelText.textContent = 'Прикрепить файл';
-                fileLabelText.style.color = '';
-            }
-            
-            if (removeBtn) {
-                removeBtn.style.display = 'none';
-            }
-            
-            return false;
+        }
+        
+        // Удаление файла (старая функция для совместимости)
+        function removeFile(event) {
+            removeAllFiles(event);
         }
         
         // Обработка textarea - скрываем placeholder при фокусе

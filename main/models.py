@@ -29,6 +29,18 @@ class PrintOrder(models.Model):
     
     def __str__(self):
         return f'Заявка от {self.name} - {self.created_at.strftime("%d.%m.%Y %H:%M")}'
+    
+    def get_all_files(self):
+        """Возвращает все файлы заявки (из OrderFile)"""
+        return self.files.all()
+    
+    def get_all_file_paths(self):
+        """Возвращает список путей ко всем файлам заявки"""
+        return [order_file.file.path for order_file in self.files.all()]
+    
+    def get_all_file_urls(self):
+        """Возвращает список URL всех файлов заявки"""
+        return [order_file.file.url for order_file in self.files.all()]
 
 class OrderFile(models.Model):
     """Модель для хранения файлов заявки"""

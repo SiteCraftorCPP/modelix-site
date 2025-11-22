@@ -12,15 +12,66 @@ from .models import (
     Stat,
     MarketplaceLink,
     ProjectsBlock,
+    OrderFile,
 )
+
+class OrderFileInline(admin.TabularInline):
+    """Inline для отображения всех файлов заявки"""
+    model = OrderFile
+    extra = 0
+    readonly_fields = ['file', 'created_at', 'get_file_preview']
+    fields = ['get_file_preview', 'file', 'created_at']
+    can_delete = False
+    
+    def get_file_preview(self, obj):
+        if obj and obj.file:
+            file_url = obj.file.url
+            file_name = obj.file.name.split('/')[-1]
+            # Определяем тип файла для превью
+            if file_name.lower().endswith(('.jpg', '.jpeg', '.png', '.gif', '.webp')):
+                return format_html(
+                    '<a href="{}" target="_blank"><img src="{}" style="max-width: 100px; max-height: 100px; border-radius: 4px;" /></a>',
+                    file_url, file_url
+                )
+            else:
+                return format_html(
+                    '<a href="{}" target="_blank">{}</a>',
+                    file_url, file_name
+                )
+        return 'Нет файла'
+    get_file_preview.short_description = 'Превью'
 
 @admin.register(PrintOrder)
 class PrintOrderAdmin(admin.ModelAdmin):
-    list_display = ['name', 'phone', 'email', 'service_type', 'created_at', 'is_processed']
+    list_display = ['name', 'phone', 'email', 'service_type', 'get_files_count', 'created_at', 'is_processed']
     list_filter = ['created_at', 'is_processed', 'service_type']
     search_fields = ['name', 'phone', 'email']
-    readonly_fields = ['created_at']
+    readonly_fields = ['created_at', 'get_all_files']
     list_editable = ['is_processed']
+    inlines = [OrderFileInline]
+    
+    def get_files_count(self, obj):
+        """Показывает количество прикрепленных файлов"""
+        count = obj.files.count()
+        if count > 0:
+            return format_html('<span style="color: green; font-weight: bold;">{} файл(ов)</span>', count)
+        return 'Нет файлов'
+    get_files_count.short_description = 'Файлы'
+    
+    def get_all_files(self, obj):
+        """Показывает все файлы заявки"""
+        files = obj.files.all()
+        if files:
+            file_list = []
+            for order_file in files:
+                file_url = order_file.file.url
+                file_name = order_file.file.name.split('/')[-1]
+                file_list.append(
+                    format_html('<a href="{}" target="_blank">{}</a>', file_url, file_name)
+                )
+            return format_html('<br>'.join(file_list))
+        return 'Нет файлов'
+    get_all_files.short_description = 'Все файлы'
 
 @admin.register(CallRequest)
 class CallRequestAdmin(admin.ModelAdmin):

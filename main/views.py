@@ -242,8 +242,11 @@ def submit_order(request):
             )
             
             # Сохраняем все файлы в новую модель OrderFile
+            saved_files = []
             for file in files:
-                OrderFile.objects.create(order=order, file=file)
+                order_file = OrderFile.objects.create(order=order, file=file)
+                saved_files.append(order_file.file.name)
+                logger.info(f"File saved to OrderFile: {order_file.file.name}")
             
             # Также сохраняем информацию о звонке в CallRequest
             if name and phone:
@@ -252,7 +255,9 @@ def submit_order(request):
                     phone=phone
             )
             
-            logger.info(f"Order created successfully. File saved: {order.file.name if order.file else 'No file'}")
+            logger.info(f"Order created successfully. Order ID: {order.id}")
+            logger.info(f"Total files saved: {len(saved_files)}")
+            logger.info(f"Files: {', '.join(saved_files)}")
             return JsonResponse({'success': True, 'message': 'Заявка успешно отправлена!'})
             
         except Exception as e:

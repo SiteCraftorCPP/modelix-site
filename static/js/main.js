@@ -579,36 +579,72 @@ function initializeMaterials() {
 // ФОРМА ЗАЯВКИ
 // ========================================
 
+// Глобальный массив для хранения выбранных файлов
+let selectedFiles = [];
+
 function initializeContactForm() {
     const form = document.getElementById('orderForm');
     const fileInput = document.getElementById('fileInput');
     const fileLabel = document.querySelector('.file-label');
     const fileList = document.getElementById('fileList');
 
+    // Функция для форматирования размера файла
+    function formatFileSize(bytes) {
+        if (bytes === 0) return '0 Bytes';
+        const k = 1024;
+        const sizes = ['Bytes', 'KB', 'MB', 'GB'];
+        const i = Math.floor(Math.log(bytes) / Math.log(k));
+        return Math.round(bytes / Math.pow(k, i) * 100) / 100 + ' ' + sizes[i];
+    }
+
+    // Функция для обновления input из массива файлов
+    function updateFileInput() {
+        const dataTransfer = new DataTransfer();
+        selectedFiles.forEach(file => {
+            dataTransfer.items.add(file);
+        });
+        fileInput.files = dataTransfer.files;
+    }
+
+    // Функция для обновления input из массива файлов (делаем доступной глобально)
+    window.updateFileInput = function () {
+        if (!fileInput) return;
+        const dataTransfer = new DataTransfer();
+        selectedFiles.forEach(file => {
+            dataTransfer.items.add(file);
+        });
+        fileInput.files = dataTransfer.files;
+    };
+
+    // Функция для удаления файла по индексу
+    function removeFile(index) {
+        selectedFiles.splice(index, 1);
+        window.updateFileInput();
+        updateFileList();
+    }
+
     // Функция для отображения списка файлов
     function updateFileList() {
         if (!fileList) return;
 
-        const files = fileInput.files;
         fileList.innerHTML = '';
 
-        if (files && files.length > 0) {
+        if (selectedFiles.length > 0) {
             const fileLabelText = fileLabel.querySelector('.file-label-text');
             if (fileLabelText) {
-                fileLabelText.textContent = `Выбрано файлов: ${files.length}`;
+                fileLabelText.textContent = `Выбрано файлов: ${selectedFiles.length}`;
                 fileLabelText.style.color = '#0ea5e9';
             }
 
-            // Показываем кнопку удаления
+            // Показываем кнопку удаления всех
             const removeBtn = document.querySelector('.file-remove-btn');
             if (removeBtn) {
                 removeBtn.style.display = 'flex';
                 removeBtn.style.pointerEvents = 'auto';
             }
 
-            // Создаем список файлов
-            for (let i = 0; i < files.length; i++) {
-                const file = files[i];
+            // Создаем список файлов с кнопками удаления
+            selectedFiles.forEach((file, index) => {
                 const maxLength = 30;
                 let displayName = file.name;
 
@@ -622,12 +658,26 @@ function initializeContactForm() {
 
                 const fileItem = document.createElement('div');
                 fileItem.className = 'file-item';
+                fileItem.setAttribute('data-file-index', index);
                 fileItem.innerHTML = `
                     <span class="file-item-name">${displayName}</span>
                     <span class="file-item-size">${formatFileSize(file.size)}</span>
+                    <button type="button" class="file-item-remove" data-index="${index}" title="Удалить файл">
+                        <i class="fas fa-times"></i>
+                    </button>
                 `;
+
+                // Добавляем обработчик клика на кнопку удаления
+                const removeBtnItem = fileItem.querySelector('.file-item-remove');
+                removeBtnItem.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    e.stopPropagation();
+                    const idx = parseInt(this.getAttribute('data-index'));
+                    removeFile(idx);
+                });
+
                 fileList.appendChild(fileItem);
-            }
+            });
         } else {
             const fileLabelText = fileLabel.querySelector('.file-label-text');
             if (fileLabelText) {
@@ -643,18 +693,32 @@ function initializeContactForm() {
         }
     }
 
-    // Функция для форматирования размера файла
-    function formatFileSize(bytes) {
-        if (bytes === 0) return '0 Bytes';
-        const k = 1024;
-        const sizes = ['Bytes', 'KB', 'MB', 'GB'];
-        const i = Math.floor(Math.log(bytes) / Math.log(k));
-        return Math.round(bytes / Math.pow(k, i) * 100) / 100 + ' ' + sizes[i];
-    }
+    // Глобальная функция для удаления файла по индексу (для совместимости)
+    window.removeFileByIndex = function (index) {
+        removeFile(index);
+    };
 
-    // Обработка выбора файлов
+    // Обработка выбора файлов - добавляем к существующим
     if (fileInput && fileLabel) {
-        fileInput.addEventListener('change', updateFileList);
+        fileInput.addEventListener('change', function () {
+            const newFiles = Array.from(this.files);
+
+            // Добавляем новые файлы к существующим (проверяем на дубликаты по имени и размеру)
+            newFiles.forEach(newFile => {
+                const isDuplicate = selectedFiles.some(existingFile =>
+                    existingFile.name === newFile.name && existingFile.size === newFile.size
+                );
+                if (!isDuplicate) {
+                    selectedFiles.push(newFile);
+                }
+            });
+
+            window.updateFileInput();
+            updateFileList();
+
+            // Очищаем input для возможности повторного выбора тех же файлов
+            this.value = '';
+        });
     }
 
     // Обработка отправки формы
@@ -674,12 +738,11 @@ function initializeContactForm() {
             // Получаем CSRF токен
             const csrfToken = document.querySelector('[name=csrfmiddlewaretoken]');
 
-            // Добавляем все файлы в FormData
-            const fileInput = document.getElementById('fileInput');
-            if (fileInput && fileInput.files) {
-                for (let i = 0; i < fileInput.files.length; i++) {
-                    formData.append('files', fileInput.files[i]);
-                }
+            // Добавляем все файлы из массива в FormData
+            if (selectedFiles && selectedFiles.length > 0) {
+                selectedFiles.forEach(file => {
+                    formData.append('files', file);
+                });
             }
 
             // Отправляем данные
@@ -697,6 +760,9 @@ function initializeContactForm() {
                     if (data.success) {
                         showNotification('Заявка успешно отправлена! Мы свяжемся с вами в ближайшее время.', 'success');
                         form.reset();
+                        // Очищаем массив файлов
+                        selectedFiles = [];
+                        window.updateFileInput();
                         const fileLabelText = fileLabel ? (fileLabel.querySelector('.file-label-text') || fileLabel.querySelector('span')) : null;
                         if (fileLabelText) {
                             fileLabelText.textContent = 'Прикрепить файлы';

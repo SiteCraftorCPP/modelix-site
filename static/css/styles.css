@@ -3383,6 +3383,7 @@ section.workflow-section .stats-grid,
     border-radius: 8px;
     font-size: 14px;
     gap: 10px;
+    position: relative;
 }
 
 .file-item-name {
@@ -3397,6 +3398,32 @@ section.workflow-section .stats-grid,
     color: rgba(255, 255, 255, 0.7);
     font-size: 12px;
     white-space: nowrap;
+}
+
+.file-item-remove {
+    background: rgba(220, 53, 69, 0.7);
+    border: none;
+    border-radius: 50%;
+    width: 20px;
+    height: 20px;
+    color: white;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 12px;
+    padding: 0;
+    transition: all 0.3s ease;
+    flex-shrink: 0;
+}
+
+.file-item-remove:hover {
+    background: rgba(220, 53, 69, 1);
+    transform: scale(1.1);
+}
+
+.file-item-remove i {
+    font-size: 10px;
 }
 
 #fileInput {

@@ -1593,10 +1593,10 @@
             if (serviceType) {
                 formData.append('service_type', serviceType);
             }
-            // Добавляем все файлы
-            if (fileInput.files && fileInput.files.length > 0) {
-                for (var i = 0; i < fileInput.files.length; i++) {
-                    formData.append('files', fileInput.files[i]);
+            // Добавляем все файлы из глобального массива
+            if (typeof selectedFiles !== 'undefined' && selectedFiles && selectedFiles.length > 0) {
+                for (var i = 0; i < selectedFiles.length; i++) {
+                    formData.append('files', selectedFiles[i]);
                 }
             }
             
@@ -1617,10 +1617,23 @@
                 if (data.success) {
                     alert('Заявка успешно отправлена! Мы свяжемся с вами в ближайшее время.');
                     form.reset();
+                    // Очищаем глобальный массив файлов
+                    if (typeof selectedFiles !== 'undefined') {
+                        selectedFiles = [];
+                    }
+                    if (typeof updateFileInput === 'function') {
+                        updateFileInput();
+                    } else if (typeof window.updateFileInput === 'function') {
+                        window.updateFileInput();
+                    }
                     var fileLabel = document.querySelector('.file-label .file-label-text') || document.querySelector('.file-label span');
                     if (fileLabel) {
-                        fileLabel.textContent = 'Прикрепить файл';
+                        fileLabel.textContent = 'Прикрепить файлы';
                         fileLabel.style.color = '';
+                    }
+                    var fileList = document.getElementById('fileList');
+                    if (fileList) {
+                        fileList.innerHTML = '';
                     }
                     var removeBtn = document.querySelector('.file-remove-btn');
                     if (removeBtn) {
@@ -1649,6 +1662,18 @@
             event.preventDefault();
             event.stopPropagation();
             
+            // Очищаем глобальный массив файлов
+            if (typeof selectedFiles !== 'undefined') {
+                selectedFiles = [];
+            }
+            
+            // Обновляем input
+            if (typeof updateFileInput === 'function') {
+                updateFileInput();
+            } else if (typeof window.updateFileInput === 'function') {
+                window.updateFileInput();
+            }
+            
             var fileInput = document.getElementById('fileInput');
             var fileLabel = document.querySelector('.file-label');
             var fileLabelText = fileLabel ? fileLabel.querySelector('.file-label-text') : null;
@@ -1657,19 +1682,19 @@
             
             if (fileInput) {
                 fileInput.value = '';
-                
-                if (fileLabelText) {
-                    fileLabelText.textContent = 'Прикрепить файлы';
-                    fileLabelText.style.color = '';
-                }
-                
-                if (fileList) {
-                    fileList.innerHTML = '';
-                }
-                
-                if (removeBtn) {
-                    removeBtn.style.display = 'none';
-                }
+            }
+            
+            if (fileLabelText) {
+                fileLabelText.textContent = 'Прикрепить файлы';
+                fileLabelText.style.color = '';
+            }
+            
+            if (fileList) {
+                fileList.innerHTML = '';
+            }
+            
+            if (removeBtn) {
+                removeBtn.style.display = 'none';
             }
         }
         

@@ -215,9 +215,9 @@ def submit_order(request):
             
             # Проверка размера файла (если есть)
             if file:
-                if file.size > 10485760:  # 10 MB
+                if file.size > 838860800:  # 800 MB
                     logger.warning(f"File too large: {file.size} bytes")
-                    return JsonResponse({'success': False, 'error': 'Размер файла не должен превышать 10 MB'})
+                    return JsonResponse({'success': False, 'error': 'Размер файла не должен превышать 800 MB'})
             
             if not all([name, phone, email]):
                 return JsonResponse({'success': False, 'error': 'Заполните все обязательные поля'})

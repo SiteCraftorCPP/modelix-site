@@ -547,11 +547,13 @@
         vertical-align: middle !important;
     }
 
+    /* ОТКЛЮЧЕНО: смена цвета при hover - кнопка должна оставаться зеленой */
     .cta-button:hover {
+        /* Цвет НЕ меняется - остается зеленым как в базовом состоянии */
+        background: linear-gradient(135deg, #90ee90, #98fb98) !important;
+        border-color: #90ee90 !important;
         transform: translateY(-2px) !important;
-        box-shadow: 0 15px 40px rgba(144, 238, 144, 0.6) !important;
-        background: linear-gradient(135deg, #98fb98, #90ee90) !important;
-        border-color: #98fb98 !important;
+        box-shadow: 0 12px 30px rgba(144, 238, 144, 0.5) !important;
     }
 
     .disclaimer-text {

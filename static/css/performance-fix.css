@@ -170,7 +170,7 @@ nav.navigation {
 }
 
 /* 12. ОПТИМИЗАЦИЯ CTA КНОПОК */
-.cta-button:hover,
+/* ОТКЛЮЧЕНО: смена цвета при hover для cta-button - должна оставаться зеленой */
 .submit-btn:hover,
 .modal-submit-btn:hover {
     transform: none !important;
@@ -243,17 +243,18 @@ img {
 }
 
 /* 21. ОПТИМИЗАЦИЯ ДЛЯ RETINA ДИСПЛЕЕВ */
-@media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
+@media (-webkit-min-device-pixel-ratio: 2),
+(min-resolution: 192dpi) {
     * {
         -webkit-font-smoothing: subpixel-antialiased !important;
     }
-    
+
     /* Упрощаем все эффекты на retina */
     *:hover {
         transform: none !important;
         filter: none !important;
     }
-    
+
     /* ИСКЛЮЧЕНИЯ: иконки workflow всегда центрированы */
     .step-icon-new,
     .workflow-step-new:hover .step-icon-new {
@@ -278,6 +279,7 @@ img {
 
 /* 24. КРИТИЧЕСКАЯ ОПТИМИЗАЦИЯ: отключаем все анимации на слабых устройствах */
 @media (prefers-reduced-motion: reduce) {
+
     *,
     *::before,
     *::after {
@@ -365,6 +367,7 @@ img {
 
 /* МОБИЛЬНАЯ ОПТИМИЗАЦИЯ */
 @media (max-width: 768px) {
+
     /* КРИТИЧЕСКИ ВАЖНО: hero-section всегда виден */
     .hero-section,
     #hero,
@@ -375,21 +378,21 @@ img {
         opacity: 1 !important;
         min-height: 100vh !important;
     }
-    
+
     /* На мобилках отключаем только hover эффекты, но НЕ базовое отображение */
     *:hover {
         transform: none !important;
         box-shadow: none !important;
         filter: none !important;
     }
-    
+
     /* ИСКЛЮЧЕНИЯ: иконки workflow всегда центрированы */
     .step-icon-new,
     .step-icon-new:hover,
     .workflow-step-new:hover .step-icon-new {
         transform: translate(-50%, -50%) translateZ(0) !important;
     }
-    
+
     /* Модальные окна на мобилках - правильное позиционирование */
     .modal-content,
     .call-modal-content,
@@ -433,4 +436,3 @@ html body .step-icon-new,
 body .workflow-step-new .step-icon-new:hover {
     transform: translate(-50%, -50%) translateZ(0) !important;
 }
-

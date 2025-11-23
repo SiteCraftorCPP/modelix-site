@@ -662,19 +662,49 @@ function initializeContactForm() {
                 fileItem.innerHTML = `
                     <span class="file-item-name">${displayName}</span>
                     <span class="file-item-size">${formatFileSize(file.size)}</span>
-                    <button type="button" class="file-item-remove" data-index="${index}" title="Удалить файл">
+                    <button type="button" class="file-item-remove" data-index="${index}" title="Удалить файл" aria-label="Удалить файл">
                         <i class="fas fa-times"></i>
+                        <span class="remove-fallback" style="display: none;">×</span>
                     </button>
                 `;
 
                 // Добавляем обработчик клика на кнопку удаления
                 const removeBtnItem = fileItem.querySelector('.file-item-remove');
-                removeBtnItem.addEventListener('click', function (e) {
-                    e.preventDefault();
-                    e.stopPropagation();
-                    const idx = parseInt(this.getAttribute('data-index'));
-                    removeFile(idx);
-                });
+                if (removeBtnItem) {
+                    // КРИТИЧЕСКИ ВАЖНО для Mac: Убеждаемся, что кнопка всегда видима
+                    removeBtnItem.style.display = 'flex';
+                    removeBtnItem.style.visibility = 'visible';
+                    removeBtnItem.style.opacity = '1';
+                    removeBtnItem.style.pointerEvents = 'auto';
+
+                    removeBtnItem.addEventListener('click', function (e) {
+                        e.preventDefault();
+                        e.stopPropagation();
+                        const idx = parseInt(this.getAttribute('data-index'));
+                        if (!isNaN(idx)) {
+                            removeFile(idx);
+                        }
+                    });
+
+                    // Fallback для Mac - проверяем, загрузилась ли иконка Font Awesome
+                    setTimeout(() => {
+                        const icon = removeBtnItem.querySelector('i.fas.fa-times');
+                        const fallback = removeBtnItem.querySelector('.remove-fallback');
+
+                        // Если иконка не загрузилась или не видна, показываем fallback
+                        if (icon) {
+                            const iconStyle = window.getComputedStyle(icon);
+                            if (iconStyle.display === 'none' || iconStyle.visibility === 'hidden' || iconStyle.opacity === '0') {
+                                if (fallback) {
+                                    fallback.style.display = 'block';
+                                }
+                            }
+                        } else if (fallback) {
+                            // Если иконки вообще нет, показываем fallback
+                            fallback.style.display = 'block';
+                        }
+                    }, 200);
+                }
 
                 fileList.appendChild(fileItem);
             });

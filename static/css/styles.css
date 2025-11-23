@@ -1195,11 +1195,17 @@ body {
     box-shadow: 0 4px 12px rgba(144, 238, 144, 0.3) !important;
 }
 
-.call-btn:hover {
+/* КРИТИЧЕСКИ ВАЖНО: call-btn ВСЕГДА зеленый при hover - перекрывает nav-link:hover */
+.call-btn:hover,
+.nav-link.call-btn:hover,
+a.call-btn:hover,
+.navigation .call-btn:hover,
+nav.navigation .call-btn:hover {
     background: linear-gradient(135deg, #98fb98, #90ee90) !important;
     border: 2px solid rgba(152, 251, 152, 0.8) !important;
     transform: translateY(-2px) !important;
     box-shadow: 0 6px 20px rgba(144, 238, 144, 0.4) !important;
+    color: #333 !important;
 }
 
 /* СТАРЫЕ СТИЛИ УДАЛЕНЫ */
@@ -1622,7 +1628,7 @@ body {
     /* Позволяем интегрированному блоку выходить за границы */
     display: grid;
     grid-template-columns: 1.4fr 0.6fr;
-    /* Стык смещен правее (как было) */
+    /* Стык смещен правее (как было) - 70% от ширины */
     min-height: 700px;
     width: 100%;
     max-width: 1800px;
@@ -1632,6 +1638,137 @@ body {
     opacity: 0;
     transform: translateY(50px);
     animation: fadeInUp 1s ease-out 0.4s forwards;
+}
+
+/* ========================================
+   ЧЕТКИЙ BREAKPOINT: РЕЗКОЕ ПЕРЕКЛЮЧЕНИЕ
+   Переключение происходит когда фотография начинает смещаться от стыка
+   Фотография: left: calc(70% - 350px), width: 700px
+   Стык находится на 70% от ширины hero-content-card
+   Расчет: когда 70% - 350px <= 0 (фото выходит за левый край) или начинает перекрывать текст
+   При ширине контейнера < 1500px фотография начинает смещаться от стыка
+   Breakpoint установлен на 1500px - когда фото меняет своё место
+======================================== */
+
+/* ДЕСКТОПНАЯ ВЕРСИЯ: Применяется пока фотография НЕ смещается от стыка */
+@media (min-width: 1501px) {
+
+    /* Десктопная версия - фотография на стыке цветов (70%) */
+    .hero-content-card {
+        display: grid !important;
+        grid-template-columns: 1.4fr 0.6fr !important;
+        /* Стык на 70% (1.4fr / (1.4fr + 0.6fr) = 0.7) */
+        flex-direction: row !important;
+    }
+
+    .integrated-printer-block {
+        position: absolute !important;
+        /* КРИТИЧЕСКИ ВАЖНО: Фотография НЕ ДОЛЖНА смещаться - всегда на стыке (70%) */
+        left: calc(70% - 350px) !important;
+        /* Фиксируем на стыке двух цветов (70% от ширины hero-content-card) */
+        top: 50% !important;
+        transform: translateY(-50%) !important;
+        display: block !important;
+        width: 700px !important;
+        height: 610px !important;
+    }
+
+    /* Скрываем мобильные элементы */
+    .hero-content-card .text-section::after,
+    .about-company::after {
+        display: none !important;
+    }
+
+    .image-section .integrated-printer-block {
+        display: block !important;
+    }
+
+    /* Десктопная версия text-section и image-section */
+    .text-section {
+        display: flex !important;
+        flex-direction: column !important;
+        padding: 60px 80px !important;
+        background: #1a1a1a !important;
+    }
+
+    .image-section {
+        display: flex !important;
+        align-items: flex-start !important;
+        justify-content: center !important;
+        padding: 30px !important;
+        background: linear-gradient(135deg, var(--primary-blue) 0%, var(--secondary-blue) 50%, #191970 100%) !important;
+    }
+}
+
+/* МОБИЛЬНАЯ ВЕРСИЯ: Применяется когда фотография начинает смещаться от стыка */
+@media (max-width: 1500px) {
+    /* НЕ скрываем фотографию! Она должна оставаться видимой */
+    /* Но переключаемся на мобильную версию, где фото в другом месте */
+
+    /* Мобильная версия hero-content-card - flex вместо grid */
+    .hero-content-card {
+        display: flex !important;
+        flex-direction: column !important;
+        grid-template-columns: none !important;
+        width: 100% !important;
+        max-width: 100% !important;
+    }
+
+    /* Скрываем десктопную фотографию (она на стыке) - в мобилке используется другая через ::after */
+    .integrated-printer-block {
+        display: none !important;
+    }
+
+    /* Показываем фотографию через псевдоэлемент в мобильной версии */
+    .about-company::after {
+        content: "" !important;
+        display: block !important;
+        width: 100% !important;
+        aspect-ratio: 1 / 1 !important;
+        background-image: var(--hero-image-url) !important;
+        background-size: cover !important;
+        background-position: center !important;
+        background-repeat: no-repeat !important;
+        border-radius: 15px !important;
+        box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3) !important;
+        margin: 40px auto 25px auto !important;
+    }
+
+    /* Предотвращаем смещение элементов */
+    .text-section {
+        width: 100% !important;
+        max-width: 100% !important;
+        padding: 60px 80px !important;
+        background: #1a1a1a !important;
+    }
+
+    .image-section {
+        width: 100% !important;
+        max-width: 100% !important;
+        background: transparent !important;
+    }
+
+    /* Применяем мобильные стили для навигации */
+    .nav-container {
+        padding: 0 20px !important;
+        max-width: 100% !important;
+    }
+
+    .nav-menu {
+        gap: 8px !important;
+        flex-wrap: wrap !important;
+        justify-content: center !important;
+    }
+
+    .nav-link {
+        font-size: 0.75rem !important;
+        padding: 6px 12px !important;
+    }
+
+    .call-btn {
+        font-size: 0.75rem !important;
+        padding: 6px 12px !important;
+    }
 }
 
 .text-section {
@@ -1770,12 +1907,14 @@ body {
     text-transform: uppercase;
 }
 
+/* ОТКЛЮЧЕНО: смена цвета при hover - кнопка должна оставаться зеленой */
 .cta-button:hover {
-    transform: translateY(-3px) scale(1.05) !important;
-    box-shadow: 0 15px 40px rgba(144, 238, 144, 0.6) !important;
-    background: linear-gradient(135deg, #98fb98, #90ee90) !important;
-    border-color: #98fb98 !important;
-    animation: buttonPulse 0.3s ease-out !important;
+    /* Цвет НЕ меняется - остается зеленым как в базовом состоянии */
+    background: linear-gradient(135deg, #90ee90, #98fb98) !important;
+    border-color: #90ee90 !important;
+    /* Можно оставить только легкую анимацию без смены цвета */
+    transform: translateY(-2px) !important;
+    box-shadow: 0 12px 30px rgba(144, 238, 144, 0.5) !important;
 }
 
 .cta-button i {
@@ -1926,6 +2065,8 @@ div.social-links,
 .integrated-printer-block {
     position: absolute;
     top: 50%;
+    /* КРИТИЧЕСКИ ВАЖНО: Фотография на стыке двух цветов (70% от ширины hero-content-card) */
+    /* 1.4fr / (1.4fr + 0.6fr) = 0.7 = 70% */
     left: calc(70% - 350px);
     transform: translateY(-50%);
     width: 700px;
@@ -1944,6 +2085,54 @@ div.social-links,
     contain: layout style paint;
     backface-visibility: hidden;
     transform-style: preserve-3d;
+}
+
+/* ЧЕТКИЙ BREAKPOINT: Фиксируем фотографию на стыке пока она не смещается */
+@media (min-width: 1501px) {
+    .integrated-printer-block {
+        /* КРИТИЧЕСКИ ВАЖНО: Фотография НЕ ДОЛЖНА смещаться - всегда на стыке (70%) */
+        /* Стык двух цветов: text-section (1.4fr) и image-section (0.6fr) */
+        /* 1.4fr / (1.4fr + 0.6fr) = 0.7 = 70% */
+        left: calc(70% - 350px) !important;
+        position: absolute !important;
+        /* Фиксируем позицию относительно hero-content-card */
+        top: 50% !important;
+        transform: translateY(-50%) !important;
+    }
+
+    .hero-content-card {
+        /* Grid-разметка с фиксированным стыком на 70% */
+        grid-template-columns: 1.4fr 0.6fr !important;
+        display: grid !important;
+        position: relative !important;
+    }
+
+    /* Предотвращаем смещение при изменении размера окна */
+    .text-section {
+        /* Левая часть - темный фон */
+        background: #1a1a1a !important;
+    }
+
+    .image-section {
+        /* Правая часть - градиентный фон */
+        background: linear-gradient(135deg, var(--primary-blue) 0%, var(--secondary-blue) 50%, #191970 100%) !important;
+    }
+}
+
+/* ЧЕТКИЙ BREAKPOINT: После 1500px - мобильная версия (фото меняет место) */
+@media (max-width: 1500px) {
+
+    /* Скрываем десктопную фотографию */
+    .integrated-printer-block {
+        display: none !important;
+    }
+
+    /* Мобильная версия - flex вместо grid */
+    .hero-content-card {
+        display: flex !important;
+        flex-direction: column !important;
+        grid-template-columns: none !important;
+    }
 }
 
 .integrated-printer-image {
@@ -3412,29 +3601,74 @@ section.workflow-section .stats-grid,
 }
 
 .file-item-remove {
-    background: rgba(220, 53, 69, 0.7);
-    border: none;
-    border-radius: 50%;
-    width: 20px;
-    height: 20px;
-    color: white;
-    cursor: pointer;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 12px;
-    padding: 0;
-    transition: all 0.3s ease;
-    flex-shrink: 0;
+    background: rgba(220, 53, 69, 0.9) !important;
+    border: none !important;
+    border-radius: 50% !important;
+    width: 24px !important;
+    height: 24px !important;
+    min-width: 24px !important;
+    min-height: 24px !important;
+    color: white !important;
+    cursor: pointer !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    font-size: 12px !important;
+    padding: 0 !important;
+    margin: 0 !important;
+    transition: all 0.3s ease !important;
+    flex-shrink: 0 !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+    position: relative !important;
+    z-index: 10 !important;
+    pointer-events: auto !important;
 }
 
 .file-item-remove:hover {
-    background: rgba(220, 53, 69, 1);
-    transform: scale(1.1);
+    background: rgba(220, 53, 69, 1) !important;
+    transform: scale(1.15) !important;
+    box-shadow: 0 2px 8px rgba(220, 53, 69, 0.5) !important;
 }
 
 .file-item-remove i {
-    font-size: 10px;
+    font-size: 12px !important;
+    display: block !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+    color: white !important;
+}
+
+/* Fallback для Mac - если иконка не загрузилась, показываем текст */
+.file-item-remove .remove-fallback {
+    position: absolute;
+    font-size: 18px;
+    font-weight: bold;
+    line-height: 1;
+    color: white !important;
+    display: none;
+    visibility: visible;
+    opacity: 1;
+}
+
+/* Дополнительная защита для Mac - кнопка всегда должна быть видна */
+@media screen and (-webkit-min-device-pixel-ratio: 0) {
+    .file-item-remove {
+        display: flex !important;
+        visibility: visible !important;
+        opacity: 1 !important;
+    }
+
+    .file-item-remove i {
+        display: block !important;
+        visibility: visible !important;
+        opacity: 1 !important;
+    }
+}
+
+/* Показываем fallback если иконка не видна (для Mac) */
+.file-item-remove .remove-fallback[style*="display: block"] {
+    display: block !important;
 }
 
 #fileInput {
@@ -7819,6 +8053,7 @@ nav.navigation .nav-link:not(.call-btn):hover,
         border: 2px solid rgba(152, 251, 152, 0.8) !important;
         transform: translateY(-3px) !important;
         box-shadow: 0 6px 20px rgba(144, 238, 144, 0.4) !important;
+        color: #333 !important;
     }
 }
 

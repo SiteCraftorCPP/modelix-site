@@ -662,47 +662,7 @@ function initializeContactForm() {
                 fileItem.innerHTML = `
                     <span class="file-item-name">${displayName}</span>
                     <span class="file-item-size">${formatFileSize(file.size)}</span>
-                    <button type="button" class="file-item-remove" data-index="${index}" title="Удалить файл" aria-label="Удалить файл">
-                        <i class="fas fa-times"></i>
-                        <span class="remove-fallback" style="display: none;">×</span>
-                    </button>
                 `;
-
-                // Добавляем обработчик клика на кнопку удаления
-                const removeBtnItem = fileItem.querySelector('.file-item-remove');
-                
-                // Принудительно устанавливаем видимость для Mac
-                removeBtnItem.style.display = 'flex';
-                removeBtnItem.style.visibility = 'visible';
-                removeBtnItem.style.opacity = '1';
-                removeBtnItem.style.pointerEvents = 'auto';
-                
-                // Проверяем видимость иконки и показываем fallback при необходимости
-                const icon = removeBtnItem.querySelector('i.fas');
-                const fallback = removeBtnItem.querySelector('.remove-fallback');
-                
-                if (icon && fallback) {
-                    // Проверяем, загружена ли иконка Font Awesome
-                    setTimeout(() => {
-                        const computedStyle = window.getComputedStyle(icon);
-                        const isVisible = computedStyle.display !== 'none' && 
-                                         computedStyle.visibility !== 'hidden' && 
-                                         computedStyle.opacity !== '0';
-                        
-                        // Если иконка не видна, показываем fallback
-                        if (!isVisible || !icon.offsetParent) {
-                            icon.style.display = 'none';
-                            fallback.style.display = 'inline-block';
-                        }
-                    }, 100);
-                }
-                
-                removeBtnItem.addEventListener('click', function (e) {
-                    e.preventDefault();
-                    e.stopPropagation();
-                    const idx = parseInt(this.getAttribute('data-index'));
-                    removeFile(idx);
-                });
 
                 fileList.appendChild(fileItem);
             });
@@ -1391,7 +1351,7 @@ window.addEventListener('load', () => {
 // Функция для создания ripple эффекта
 function createRipple(event, element) {
     const circle = document.createElement('span');
-    const diameter = Math.max(element.clientWidth, element.clientHeight);
+    const diameter = Math.max(element.clientWidth, element.clientHeight) * 0.35;
     const radius = diameter / 2;
 
     const rect = element.getBoundingClientRect();

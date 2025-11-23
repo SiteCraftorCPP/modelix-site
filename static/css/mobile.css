@@ -105,7 +105,7 @@
         flex-wrap: wrap !important;
         justify-content: center !important;
         align-items: center !important;
-        gap: 8px !important;
+        gap: 8px !important; /* Уменьшенное расстояние, когда фото скрыто */
         margin: 0 !important;
         padding: 0 !important;
         list-style: none !important;
@@ -142,7 +142,10 @@
         margin: 2px !important;
         min-width: 70px !important;
         height: 28px !important;
+        max-height: 28px !important;
         line-height: 1 !important;
+        box-sizing: border-box !important;
+        flex-shrink: 0 !important;
     }
 
     .nav-menu .nav-link:not(.call-btn):hover {
@@ -176,7 +179,11 @@
         margin: 2px !important;
         min-width: 140px !important;
         height: 28px !important;
+        max-height: 28px !important;
         line-height: 1 !important;
+        box-sizing: border-box !important;
+        /* УБРАН aspect-ratio для предотвращения искажений */
+        flex-shrink: 0 !important;
     }
 
     .nav-menu .nav-link.call-btn:hover,
@@ -549,11 +556,10 @@
 
     /* ОТКЛЮЧЕНО: смена цвета при hover - кнопка должна оставаться зеленой */
     .cta-button:hover {
-        /* Цвет НЕ меняется - остается зеленым как в базовом состоянии */
+        transform: translateY(-2px) !important;
+        box-shadow: 0 15px 40px rgba(144, 238, 144, 0.6) !important;
         background: linear-gradient(135deg, #90ee90, #98fb98) !important;
         border-color: #90ee90 !important;
-        transform: translateY(-2px) !important;
-        box-shadow: 0 12px 30px rgba(144, 238, 144, 0.5) !important;
     }
 
     .disclaimer-text {

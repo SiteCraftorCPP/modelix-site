@@ -64,9 +64,53 @@ nav.navigation {
 }
 
 /* 6. УПРОЩАЕМ HOVER ДЛЯ БЛОКА ПРИНТЕРА */
-.integrated-printer-block:hover {
-    transform: translateY(-50%) !important;
-    box-shadow: 0 20px 40px rgba(25, 25, 112, 0.4) !important;
+/* Отключаем hover-эффекты на маленьких экранах */
+@media (min-width: 1201px) {
+    html body .integrated-printer-block:hover,
+    body .integrated-printer-block:hover {
+        transform: translateY(-50%) scale(1.01) !important;
+        box-shadow: 0 25px 50px rgba(25, 25, 112, 0.5) !important;
+    }
+}
+
+/* На экранах меньше 1200px отключаем scale */
+@media (max-width: 1200px) {
+    html body .integrated-printer-block:hover,
+    body .integrated-printer-block:hover,
+    .hero-section .integrated-printer-block:hover,
+    .image-section .integrated-printer-block:hover {
+        transform: translate(-50%, -50%) !important;
+        box-shadow: 0 20px 40px rgba(25, 25, 112, 0.4) !important;
+        scale: 1 !important;
+    }
+    
+    html body .integrated-printer-image:hover,
+    body .integrated-printer-image:hover,
+    .hero-section .integrated-printer-image:hover,
+    .image-section .integrated-printer-image:hover {
+        transform: translateZ(0) !important;
+        scale: 1 !important;
+    }
+}
+
+/* Полностью отключаем на экранах меньше 1100px */
+@media (max-width: 1100px) {
+    html body .integrated-printer-block,
+    body .integrated-printer-block,
+    html body .integrated-printer-image,
+    body .integrated-printer-image {
+        display: none !important;
+        pointer-events: none !important;
+    }
+    
+    html body .integrated-printer-block:hover,
+    body .integrated-printer-block:hover,
+    html body .integrated-printer-image:hover,
+    body .integrated-printer-image:hover {
+        display: none !important;
+        transform: none !important;
+        scale: 1 !important;
+    }
 }
 
 /* 7. ОПТИМИЗАЦИЯ КАРТОЧЕК УСЛУГ */
@@ -243,18 +287,17 @@ img {
 }
 
 /* 21. ОПТИМИЗАЦИЯ ДЛЯ RETINA ДИСПЛЕЕВ */
-@media (-webkit-min-device-pixel-ratio: 2),
-(min-resolution: 192dpi) {
+@media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
     * {
         -webkit-font-smoothing: subpixel-antialiased !important;
     }
-
+    
     /* Упрощаем все эффекты на retina */
     *:hover {
         transform: none !important;
         filter: none !important;
     }
-
+    
     /* ИСКЛЮЧЕНИЯ: иконки workflow всегда центрированы */
     .step-icon-new,
     .workflow-step-new:hover .step-icon-new {
@@ -279,7 +322,6 @@ img {
 
 /* 24. КРИТИЧЕСКАЯ ОПТИМИЗАЦИЯ: отключаем все анимации на слабых устройствах */
 @media (prefers-reduced-motion: reduce) {
-
     *,
     *::before,
     *::after {
@@ -367,7 +409,6 @@ img {
 
 /* МОБИЛЬНАЯ ОПТИМИЗАЦИЯ */
 @media (max-width: 768px) {
-
     /* КРИТИЧЕСКИ ВАЖНО: hero-section всегда виден */
     .hero-section,
     #hero,
@@ -378,21 +419,21 @@ img {
         opacity: 1 !important;
         min-height: 100vh !important;
     }
-
+    
     /* На мобилках отключаем только hover эффекты, но НЕ базовое отображение */
     *:hover {
         transform: none !important;
         box-shadow: none !important;
         filter: none !important;
     }
-
+    
     /* ИСКЛЮЧЕНИЯ: иконки workflow всегда центрированы */
     .step-icon-new,
     .step-icon-new:hover,
     .workflow-step-new:hover .step-icon-new {
         transform: translate(-50%, -50%) translateZ(0) !important;
     }
-
+    
     /* Модальные окна на мобилках - правильное позиционирование */
     .modal-content,
     .call-modal-content,
@@ -436,3 +477,4 @@ html body .step-icon-new,
 body .workflow-step-new .step-icon-new:hover {
     transform: translate(-50%, -50%) translateZ(0) !important;
 }
+

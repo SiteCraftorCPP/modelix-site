@@ -411,12 +411,25 @@ select {
 
     /* Навигация для маленьких экранов */
     .navigation {
-        padding: 1px 12px;
+        padding: 8px 12px !important;
     }
 
-    .nav-menu .nav-link {
-        font-size: 0.35rem;
-        padding: 2px 1px;
+    .nav-menu .nav-link:not(.call-btn) {
+        font-size: 0.7rem !important;
+        padding: 6px 10px !important;
+        min-width: 60px !important;
+        height: 28px !important;
+        line-height: 1 !important;
+        box-sizing: border-box !important;
+    }
+    
+    .nav-menu .nav-link.call-btn {
+        font-size: 0.7rem !important;
+        padding: 6px 12px !important;
+        min-width: 120px !important;
+        height: 28px !important;
+        line-height: 1 !important;
+        box-sizing: border-box !important;
     }
 
     /* ПРИНУДИТЕЛЬНАЯ ФИКСАЦИЯ ИКОНОК СОЦИАЛЬНЫХ СЕТЕЙ - ЗАБЛОКИРОВАНО! */
@@ -625,12 +638,13 @@ select {
 
     /* Навигация для очень маленьких экранов */
     .navigation {
-        padding: 1px 10px;
+        padding: 8px 10px !important;
     }
 
-    .nav-menu .nav-link {
-        font-size: 0.3rem;
-        padding: 1px 1px;
+    .nav-menu .nav-link:not(.call-btn) {
+        font-size: 0.7rem !important;
+        padding: 6px 10px !important;
+        min-width: 60px !important;
     }
 
     /* ИСПРАВЛЕНИЕ: Убираем конфликтующие стили для мобилки */
@@ -642,7 +656,9 @@ select {
         max-height: 40px !important;
         box-sizing: border-box !important;
         flex-shrink: 0 !important;
-        aspect-ratio: 1/1 !important;
+        /* УБРАН aspect-ratio для предотвращения искажений */
+        min-height: 28px !important;
+        height: auto !important;
     }
 
     /* ПРИНУДИТЕЛЬНАЯ ФИКСАЦИЯ ИКОНОК СОЦИАЛЬНЫХ СЕТЕЙ - ЗАБЛОКИРОВАНО! */
@@ -1122,7 +1138,7 @@ body {
     width: 100% !important;
     background: linear-gradient(135deg, #1a1a1a 0%, #1a1a24 50%, #1a1a1a 100%) !important;
     /* Очень мягкий градиент, близкий к фону сайта */
-    padding: 16px 0 !important;
+    padding: 4px 0 !important;
     z-index: 9999 !important;
     /* Высокий приоритет над всеми элементами */
     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2) !important;
@@ -1156,19 +1172,11 @@ body {
 .nav-menu {
     display: flex;
     list-style: none;
-    gap: 32px;
+    gap: 32px; /* Нормальное расстояние между кнопками, пока фото видно */
     align-items: center;
     justify-content: flex-end;
     margin: 0;
     padding: 0;
-    flex-wrap: nowrap;
-}
-
-.nav-menu li {
-    margin: 0;
-    padding: 0;
-    list-style: none;
-    flex: none;
 }
 
 .nav-link {
@@ -1203,17 +1211,11 @@ body {
     box-shadow: 0 4px 12px rgba(144, 238, 144, 0.3) !important;
 }
 
-/* КРИТИЧЕСКИ ВАЖНО: call-btn ВСЕГДА зеленый при hover - перекрывает nav-link:hover */
-.call-btn:hover,
-.nav-link.call-btn:hover,
-a.call-btn:hover,
-.navigation .call-btn:hover,
-nav.navigation .call-btn:hover {
+.call-btn:hover {
     background: linear-gradient(135deg, #98fb98, #90ee90) !important;
     border: 2px solid rgba(152, 251, 152, 0.8) !important;
     transform: translateY(-2px) !important;
     box-shadow: 0 6px 20px rgba(144, 238, 144, 0.4) !important;
-    color: #333 !important;
 }
 
 /* СТАРЫЕ СТИЛИ УДАЛЕНЫ */
@@ -1636,7 +1638,7 @@ nav.navigation .call-btn:hover {
     /* Позволяем интегрированному блоку выходить за границы */
     display: grid;
     grid-template-columns: 1.4fr 0.6fr;
-    /* Стык смещен правее (как было) - 70% от ширины */
+    /* Стык смещен правее (как было) */
     min-height: 700px;
     width: 100%;
     max-width: 1800px;
@@ -1646,179 +1648,6 @@ nav.navigation .call-btn:hover {
     opacity: 0;
     transform: translateY(50px);
     animation: fadeInUp 1s ease-out 0.4s forwards;
-}
-
-/* ========================================
-   ЧЕТКИЙ BREAKPOINT: РЕЗКОЕ ПЕРЕКЛЮЧЕНИЕ
-   Переключение происходит когда фотография начинает смещаться от стыка
-   Фотография: left: calc(70% - 350px), width: 700px
-   Стык находится на 70% от ширины hero-content-card
-   Расчет: фотография начинает реально мешать при ширине < 1700px
-   Breakpoint установлен на 1700px - когда фото действительно меняет своё место
-======================================== */
-
-/* ДЕСКТОПНАЯ ВЕРСИЯ: Применяется пока фотография НЕ смещается от стыка */
-@media (min-width: 1701px) {
-
-    /* Десктопная версия - фотография на стыке цветов (70%) */
-    .hero-content-card {
-        display: grid !important;
-        grid-template-columns: 1.4fr 0.6fr !important;
-        /* Стык на 70% (1.4fr / (1.4fr + 0.6fr) = 0.7) */
-        flex-direction: row !important;
-    }
-
-    .integrated-printer-block {
-        position: absolute !important;
-        /* КРИТИЧЕСКИ ВАЖНО: Фотография НЕ ДОЛЖНА смещаться - всегда на стыке (70%) */
-        left: calc(70% - 350px) !important;
-        /* Фиксируем на стыке двух цветов (70% от ширины hero-content-card) */
-        top: 50% !important;
-        transform: translateY(-50%) !important;
-        display: block !important;
-        width: 700px !important;
-        height: 610px !important;
-    }
-
-    /* Скрываем мобильные элементы */
-    .hero-content-card .text-section::after,
-    .about-company::after {
-        display: none !important;
-    }
-
-    .image-section .integrated-printer-block {
-        display: block !important;
-    }
-
-    /* Десктопная версия text-section и image-section */
-    .text-section {
-        display: flex !important;
-        flex-direction: column !important;
-        padding: 60px 80px !important;
-        background: #1a1a1a !important;
-    }
-
-    .image-section {
-        display: flex !important;
-        align-items: flex-start !important;
-        justify-content: center !important;
-        padding: 30px !important;
-        background: linear-gradient(135deg, var(--primary-blue) 0%, var(--secondary-blue) 50%, #191970 100%) !important;
-    }
-}
-
-/* ПРОМЕЖУТОЧНАЯ ВЕРСИЯ: Исправляем навигацию при сжатии экрана */
-@media (max-width: 1700px) and (min-width: 769px) {
-
-    /* Исправляем навигацию - убираем полоски и правильно выравниваем кнопки */
-    .navigation {
-        padding: 16px 0 !important;
-        background: linear-gradient(135deg, #1a1a1a 0%, #1a1a24 50%, #1a1a1a 100%) !important;
-        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2) !important;
-        min-height: auto !important;
-    }
-
-    .nav-container {
-        padding: 0 20px !important;
-        max-width: 100% !important;
-        display: flex !important;
-        align-items: center !important;
-        justify-content: center !important;
-        flex-wrap: wrap !important;
-        gap: 8px !important;
-        margin: 0 !important;
-    }
-
-    .nav-menu {
-        display: flex !important;
-        flex-wrap: wrap !important;
-        justify-content: center !important;
-        align-items: center !important;
-        gap: 8px !important;
-        margin: 0 !important;
-        padding: 0 !important;
-        width: 100% !important;
-        list-style: none !important;
-    }
-
-    .nav-menu li {
-        margin: 0 !important;
-        padding: 0 !important;
-        flex: none !important;
-        list-style: none !important;
-    }
-
-    .nav-link {
-        font-size: 0.85rem !important;
-        padding: 10px 18px !important;
-        white-space: nowrap !important;
-        display: flex !important;
-        align-items: center !important;
-        justify-content: center !important;
-        margin: 0 !important;
-        border-radius: 8px !important;
-    }
-
-    .call-btn {
-        font-size: 0.85rem !important;
-        padding: 10px 18px !important;
-        white-space: nowrap !important;
-        display: flex !important;
-        align-items: center !important;
-        justify-content: center !important;
-        margin: 0 !important;
-        border-radius: 8px !important;
-    }
-}
-
-/* МОБИЛЬНАЯ ВЕРСИЯ: Применяется когда фотография начинает смещаться от стыка */
-@media (max-width: 1700px) {
-    /* НЕ скрываем фотографию! Она должна оставаться видимой */
-    /* Но переключаемся на мобильную версию, где фото в другом месте */
-
-    /* Мобильная версия hero-content-card - flex вместо grid */
-    .hero-content-card {
-        display: flex !important;
-        flex-direction: column !important;
-        grid-template-columns: none !important;
-        width: 100% !important;
-        max-width: 100% !important;
-    }
-
-    /* Скрываем десктопную фотографию (она на стыке) - в мобилке используется другая через ::after */
-    .integrated-printer-block {
-        display: none !important;
-    }
-
-    /* Показываем фотографию через псевдоэлемент в мобильной версии */
-    .about-company::after {
-        content: "" !important;
-        display: block !important;
-        width: 100% !important;
-        aspect-ratio: 1 / 1 !important;
-        background-image: var(--hero-image-url) !important;
-        background-size: cover !important;
-        background-position: center !important;
-        background-repeat: no-repeat !important;
-        border-radius: 15px !important;
-        box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3) !important;
-        margin: 40px auto 25px auto !important;
-    }
-
-    /* Предотвращаем смещение элементов */
-    .text-section {
-        width: 100% !important;
-        max-width: 100% !important;
-        padding: 60px 80px !important;
-        background: #1a1a1a !important;
-    }
-
-    .image-section {
-        width: 100% !important;
-        max-width: 100% !important;
-        background: transparent !important;
-    }
-
 }
 
 .text-section {
@@ -1959,12 +1788,11 @@ nav.navigation .call-btn:hover {
 
 /* ОТКЛЮЧЕНО: смена цвета при hover - кнопка должна оставаться зеленой */
 .cta-button:hover {
-    /* Цвет НЕ меняется - остается зеленым как в базовом состоянии */
+    transform: translateY(-3px) scale(1.05) !important;
+    box-shadow: 0 15px 40px rgba(144, 238, 144, 0.6) !important;
     background: linear-gradient(135deg, #90ee90, #98fb98) !important;
     border-color: #90ee90 !important;
-    /* Можно оставить только легкую анимацию без смены цвета */
-    transform: translateY(-2px) !important;
-    box-shadow: 0 12px 30px rgba(144, 238, 144, 0.5) !important;
+    animation: buttonPulse 0.3s ease-out !important;
 }
 
 .cta-button i {
@@ -2115,8 +1943,6 @@ div.social-links,
 .integrated-printer-block {
     position: absolute;
     top: 50%;
-    /* КРИТИЧЕСКИ ВАЖНО: Фотография на стыке двух цветов (70% от ширины hero-content-card) */
-    /* 1.4fr / (1.4fr + 0.6fr) = 0.7 = 70% */
     left: calc(70% - 350px);
     transform: translateY(-50%);
     width: 700px;
@@ -2128,7 +1954,7 @@ div.social-links,
     background-size: 300% 300%;
     animation: midnightBlueGradient 5s ease infinite;
     box-shadow: 0 20px 40px rgba(25, 25, 112, 0.4);
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    /* УБРАН transition для мгновенного скрытия без плавного уменьшения */
     overflow: hidden;
     /* Оптимизация производительности */
     will-change: transform;
@@ -2137,60 +1963,12 @@ div.social-links,
     transform-style: preserve-3d;
 }
 
-/* ЧЕТКИЙ BREAKPOINT: Фиксируем фотографию на стыке пока она не смещается */
-@media (min-width: 1701px) {
-    .integrated-printer-block {
-        /* КРИТИЧЕСКИ ВАЖНО: Фотография НЕ ДОЛЖНА смещаться - всегда на стыке (70%) */
-        /* Стык двух цветов: text-section (1.4fr) и image-section (0.6fr) */
-        /* 1.4fr / (1.4fr + 0.6fr) = 0.7 = 70% */
-        left: calc(70% - 350px) !important;
-        position: absolute !important;
-        /* Фиксируем позицию относительно hero-content-card */
-        top: 50% !important;
-        transform: translateY(-50%) !important;
-    }
-
-    .hero-content-card {
-        /* Grid-разметка с фиксированным стыком на 70% */
-        grid-template-columns: 1.4fr 0.6fr !important;
-        display: grid !important;
-        position: relative !important;
-    }
-
-    /* Предотвращаем смещение при изменении размера окна */
-    .text-section {
-        /* Левая часть - темный фон */
-        background: #1a1a1a !important;
-    }
-
-    .image-section {
-        /* Правая часть - градиентный фон */
-        background: linear-gradient(135deg, var(--primary-blue) 0%, var(--secondary-blue) 50%, #191970 100%) !important;
-    }
-}
-
-/* ЧЕТКИЙ BREAKPOINT: После 1700px - мобильная версия (фото меняет место) */
-@media (max-width: 1700px) {
-
-    /* Скрываем десктопную фотографию */
-    .integrated-printer-block {
-        display: none !important;
-    }
-
-    /* Мобильная версия - flex вместо grid */
-    .hero-content-card {
-        display: flex !important;
-        flex-direction: column !important;
-        grid-template-columns: none !important;
-    }
-}
-
 .integrated-printer-image {
     width: 100%;
     height: 100%;
     object-fit: cover;
     border-radius: 12px;
-    transition: transform 0.3s ease;
+    /* УБРАН transition для мгновенного скрытия без плавного уменьшения */
     /* Упрощенные фильтры - убраны для производительности */
     display: block;
     /* Оптимизация производительности */
@@ -2210,6 +1988,26 @@ div.social-links,
     box-shadow: 0 25px 50px rgba(25, 25, 112, 0.5);
     /* Убираем ускорение анимации при hover - она остается прежней */
     animation: midnightBlueGradient 5s ease infinite;
+}
+
+/* Отключаем hover-эффекты на маленьких экранах */
+@media (max-width: 1200px) {
+    html body .integrated-printer-block:hover,
+    body .integrated-printer-block:hover,
+    .hero-section .integrated-printer-block:hover,
+    .image-section .integrated-printer-block:hover {
+        transform: translate(-50%, -50%) !important;
+        box-shadow: 0 20px 40px rgba(25, 25, 112, 0.4) !important;
+        scale: 1 !important;
+    }
+    
+    html body .integrated-printer-image:hover,
+    body .integrated-printer-image:hover,
+    .hero-section .integrated-printer-image:hover,
+    .image-section .integrated-printer-image:hover {
+        transform: translateZ(0) !important;
+        scale: 1 !important;
+    }
 }
 
 /* ========================================
@@ -3657,7 +3455,6 @@ section.workflow-section .stats-grid,
     width: 24px !important;
     height: 24px !important;
     min-width: 24px !important;
-    min-height: 24px !important;
     color: white !important;
     cursor: pointer !important;
     display: flex !important;
@@ -3665,40 +3462,31 @@ section.workflow-section .stats-grid,
     justify-content: center !important;
     font-size: 12px !important;
     padding: 0 !important;
-    margin: 0 !important;
     transition: all 0.3s ease !important;
     flex-shrink: 0 !important;
     visibility: visible !important;
     opacity: 1 !important;
-    position: relative !important;
-    z-index: 10 !important;
     pointer-events: auto !important;
 }
 
 .file-item-remove:hover {
     background: rgba(220, 53, 69, 1) !important;
-    transform: scale(1.15) !important;
-    box-shadow: 0 2px 8px rgba(220, 53, 69, 0.5) !important;
+    transform: scale(1.1) !important;
 }
 
 .file-item-remove i {
     font-size: 12px !important;
-    display: block !important;
+    display: inline-block !important;
     visibility: visible !important;
     opacity: 1 !important;
-    color: white !important;
 }
 
-/* Fallback для Mac - если иконка не загрузилась, показываем текст */
-.file-item-remove .remove-fallback {
-    position: absolute;
-    font-size: 18px;
-    font-weight: bold;
-    line-height: 1;
-    color: white !important;
-    display: none;
-    visibility: visible;
-    opacity: 1;
+/* Fallback для Mac - если иконка не видна */
+.remove-fallback {
+    font-size: 16px !important;
+    font-weight: bold !important;
+    line-height: 1 !important;
+    display: inline-block !important;
 }
 
 /* Дополнительная защита для Mac - кнопка всегда должна быть видна */
@@ -3707,18 +3495,14 @@ section.workflow-section .stats-grid,
         display: flex !important;
         visibility: visible !important;
         opacity: 1 !important;
+        pointer-events: auto !important;
     }
-
+    
     .file-item-remove i {
-        display: block !important;
+        display: inline-block !important;
         visibility: visible !important;
         opacity: 1 !important;
     }
-}
-
-/* Показываем fallback если иконка не видна (для Mac) */
-.file-item-remove .remove-fallback[style*="display: block"] {
-    display: block !important;
 }
 
 #fileInput {
@@ -5749,25 +5533,146 @@ footer.footer .footer-social .social-icons-row a.social-link:hover {
    АДАПТИВНОСТЬ
 ======================================== */
 
+/* Скрываем изображение сразу при сжатии - без плавного уменьшения */
 @media (max-width: 1200px) {
     .hero-content-card {
         grid-template-columns: 1fr;
     }
-
-    /* На планшетах интегрированный блок центрируем */
-    .integrated-printer-block {
-        left: 50%;
-        transform: translate(-50%, -50%);
-        width: 520px;
-        /* Уменьшено с 600px */
-        height: 445px;
-        /* Уменьшено с 510px */
+    
+    /* Уменьшаем расстояние между кнопками навигации, когда фото скрывается */
+    .nav-menu,
+    nav.navigation .nav-menu,
+    .navigation .nav-menu {
+        gap: 8px !important; /* Отступ уменьшен, но не убран полностью */
     }
-
-    .integrated-printer-block:hover {
-        transform: translate(-50%, -50%) scale(1.02);
+    
+    /* Сразу скрываем изображение без промежуточного уменьшения */
+    html body .hero-content-card .image-section,
+    html body .hero-section .image-section,
+    html body .image-section,
+    html body .hero-content-card .image-section .integrated-printer-block,
+    html body .hero-section .integrated-printer-block,
+    html body .integrated-printer-block,
+    html body .hero-content-card .image-section .integrated-printer-image,
+    html body .hero-section .integrated-printer-image,
+    html body .integrated-printer-image,
+    body .hero-content-card .image-section,
+    body .hero-section .image-section,
+    body .image-section,
+    body .hero-content-card .image-section .integrated-printer-block,
+    body .hero-section .integrated-printer-block,
+    body .integrated-printer-block,
+    body .hero-content-card .image-section .integrated-printer-image,
+    body .hero-section .integrated-printer-image,
+    body .integrated-printer-image {
+        display: none !important;
+        visibility: hidden !important;
+        opacity: 0 !important;
+        height: 0 !important;
+        width: 0 !important;
+        max-width: 0 !important;
+        max-height: 0 !important;
+        overflow: hidden !important;
+        pointer-events: none !important;
+        position: absolute !important;
+        left: -9999px !important;
+        top: -9999px !important;
+        transform: none !important;
+        transition: none !important;
+        animation: none !important;
     }
+    
+    /* Отключаем все hover-эффекты для скрытых элементов */
+    html body .integrated-printer-block:hover,
+    html body .integrated-printer-image:hover,
+    body .integrated-printer-block:hover,
+    body .integrated-printer-image:hover,
+    .hero-section .integrated-printer-block:hover,
+    .hero-section .integrated-printer-image:hover,
+    .image-section .integrated-printer-block:hover,
+    .image-section .integrated-printer-image:hover {
+        transform: none !important;
+        box-shadow: none !important;
+        animation: none !important;
+        scale: 1 !important;
+        display: none !important;
+    }
+    
+    /* Убираем отступы у text-section, когда изображение скрыто */
+    html body .hero-content-card .text-section,
+    html body .hero-section .text-section {
+        padding: 60px 40px !important;
+    }
+    
+    /* Меняем grid на одну колонку, когда изображение скрыто */
+    html body .hero-content-card {
+        grid-template-columns: 1fr !important;
+    }
+}
 
+/* Дублируем для экранов меньше 1100px (на всякий случай) */
+@media (max-width: 1100px) {
+    html body .hero-content-card .image-section,
+    html body .hero-section .image-section,
+    html body .image-section,
+    html body .hero-content-card .image-section .integrated-printer-block,
+    html body .hero-section .integrated-printer-block,
+    html body .integrated-printer-block,
+    html body .hero-content-card .image-section .integrated-printer-image,
+    html body .hero-section .integrated-printer-image,
+    html body .integrated-printer-image,
+    body .hero-content-card .image-section,
+    body .hero-section .image-section,
+    body .image-section,
+    body .hero-content-card .image-section .integrated-printer-block,
+    body .hero-section .integrated-printer-block,
+    body .integrated-printer-block,
+    body .hero-content-card .image-section .integrated-printer-image,
+    body .hero-section .integrated-printer-image,
+    body .integrated-printer-image {
+        display: none !important;
+        visibility: hidden !important;
+        opacity: 0 !important;
+        height: 0 !important;
+        width: 0 !important;
+        max-width: 0 !important;
+        max-height: 0 !important;
+        overflow: hidden !important;
+        pointer-events: none !important;
+        position: absolute !important;
+        left: -9999px !important;
+        top: -9999px !important;
+        transform: none !important;
+        transition: none !important;
+        animation: none !important;
+    }
+    
+    /* Отключаем все hover-эффекты для скрытых элементов */
+    html body .integrated-printer-block:hover,
+    html body .integrated-printer-image:hover,
+    body .integrated-printer-block:hover,
+    body .integrated-printer-image:hover,
+    .hero-section .integrated-printer-block:hover,
+    .hero-section .integrated-printer-image:hover,
+    .image-section .integrated-printer-block:hover,
+    .image-section .integrated-printer-image:hover {
+        transform: none !important;
+        box-shadow: none !important;
+        animation: none !important;
+        scale: 1 !important;
+        display: none !important;
+    }
+    
+    /* Убираем отступы у text-section, когда изображение скрыто */
+    html body .hero-content-card .text-section,
+    html body .hero-section .text-section {
+        padding: 60px 40px !important;
+    }
+    
+    /* Меняем grid на одну колонку, когда изображение скрыто */
+    html body .hero-content-card {
+        grid-template-columns: 1fr !important;
+    }
 
     .advantages-grid {
         grid-template-columns: repeat(2, 1fr);
@@ -5813,7 +5718,7 @@ footer.footer .footer-social .social-icons-row a.social-link:hover {
 
     /* Адаптация фиксированной навигации для мобильных */
     .navigation {
-        padding: 12px 0 !important;
+        padding: 4px 0 !important;
     }
 
     .main-logo h1 {
@@ -8026,19 +7931,28 @@ a,
         transform: translate(-50%, -50%);
     }
 
-    .integrated-printer-block:hover {
-        transform: translate(-50%, -50%) scale(1.02);
+    /* Отключаем hover-эффекты на мобильных устройствах */
+    html body .integrated-printer-block:hover,
+    body .integrated-printer-block:hover,
+    .hero-section .integrated-printer-block:hover,
+    .image-section .integrated-printer-block:hover {
+        transform: translate(-50%, -50%) !important;
+        box-shadow: 0 20px 40px rgba(25, 25, 112, 0.4) !important;
+        scale: 1 !important;
     }
 
-    .integrated-printer-image:hover {
-        transform: scale(1.05) rotateY(2deg);
-        /* Меньше анимации на мобильных */
+    html body .integrated-printer-image:hover,
+    body .integrated-printer-image:hover,
+    .hero-section .integrated-printer-image:hover,
+    .image-section .integrated-printer-image:hover {
+        transform: translateZ(0) !important;
+        scale: 1 !important;
     }
 }
 
 /* Темная тема удалена - используем фиксированные цвета */
 
-/* СУПЕР-ПРИНУДИТЕЛЬНЫЕ СТИЛИ ДЛЯ НАВИГАЦИИ */
+/* СУПЕР-ПРИНУДИТЕЛЬНЫЕ СТИЛИ ДЛЯ НАВИГАЦИИ - ЗАЩИТА ОТ ИСКАЖЕНИЙ */
 nav.navigation .nav-link:not(.call-btn),
 .navigation .nav-link:not(.call-btn),
 .nav-link:not(.call-btn),
@@ -8054,9 +7968,19 @@ nav.navigation .nav-link:not(.call-btn),
     cursor: pointer !important;
     box-shadow: 0 4px 12px rgba(65, 105, 225, 0.25) !important;
     position: relative !important;
-    overflow: hidden !important;
+    overflow: visible !important;
     text-transform: uppercase !important;
     letter-spacing: 0.5px !important;
+    /* ЗАЩИТА ОТ ИСКАЖЕНИЙ */
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    box-sizing: border-box !important;
+    flex-shrink: 0 !important;
+    white-space: nowrap !important;
+    min-height: 48px !important;
+    height: auto !important;
+    line-height: 1.2 !important;
 }
 
 nav.navigation .nav-link:not(.call-btn):hover,
@@ -8103,7 +8027,6 @@ nav.navigation .nav-link:not(.call-btn):hover,
         border: 2px solid rgba(152, 251, 152, 0.8) !important;
         transform: translateY(-3px) !important;
         box-shadow: 0 6px 20px rgba(144, 238, 144, 0.4) !important;
-        color: #333 !important;
     }
 }
 
@@ -8186,10 +8109,16 @@ nav.navigation .nav-link:not(.call-btn):hover,
         gap: 6px !important;
         flex-wrap: wrap !important;
     }
+    
+    /* Уменьшаем расстояние между кнопками навигации, но не убираем полностью */
+    nav.navigation .nav-menu,
+    .navigation .nav-menu {
+        gap: 8px !important; /* Уменьшенное расстояние, когда фото скрыто, но отступ есть */
+    }
 
     nav.navigation .nav-menu,
     .navigation .nav-menu {
-        gap: 8px !important;
+        gap: 8px !important; /* Уменьшенное расстояние, когда фото скрыто */
         flex-wrap: wrap !important;
         justify-content: center !important;
         margin-left: 0 !important;
@@ -8206,6 +8135,17 @@ nav.navigation .nav-link:not(.call-btn):hover,
         font-size: 0.85rem !important;
         border-radius: 14px !important;
         min-width: 150px !important;
+        /* ЗАЩИТА ОТ ИСКАЖЕНИЙ */
+        display: flex !important;
+        align-items: center !important;
+        justify-content: center !important;
+        box-sizing: border-box !important;
+        flex-shrink: 0 !important;
+        white-space: nowrap !important;
+        height: 28px !important;
+        max-height: 28px !important;
+        line-height: 1 !important;
+        overflow: visible !important;
     }
 
     nav.navigation .nav-menu .nav-link.call-btn,
@@ -8224,7 +8164,89 @@ nav.navigation .nav-link:not(.call-btn):hover,
         box-shadow: 0 5px 20px rgba(144, 238, 144, 0.45) !important;
         color: #1b2b1b !important;
         font-weight: 600 !important;
+        /* ЗАЩИТА ОТ ИСКАЖЕНИЙ */
+        box-sizing: border-box !important;
+        flex-shrink: 0 !important;
+        white-space: nowrap !important;
+        height: 28px !important;
+        max-height: 28px !important;
+        line-height: 1 !important;
+        overflow: visible !important;
     }
+}
+
+/* УНИВЕРСАЛЬНАЯ ЗАЩИТА ОТ ИСКАЖЕНИЙ КНОПОК ПРИ СЖАТИИ ЭКРАНА */
+@media (max-width: 1400px) {
+    nav.navigation .nav-link:not(.call-btn),
+    .navigation .nav-link:not(.call-btn),
+    .nav-menu .nav-link:not(.call-btn) {
+        display: flex !important;
+        align-items: center !important;
+        justify-content: center !important;
+        box-sizing: border-box !important;
+        flex-shrink: 0 !important;
+        white-space: nowrap !important;
+        overflow: visible !important;
+        min-height: 28px !important;
+        height: auto !important;
+        line-height: 1.2 !important;
+    }
+    
+    nav.navigation .nav-link.call-btn,
+    .navigation .nav-link.call-btn,
+    .nav-menu .nav-link.call-btn {
+        display: flex !important;
+        align-items: center !important;
+        justify-content: center !important;
+        box-sizing: border-box !important;
+        flex-shrink: 0 !important;
+        white-space: nowrap !important;
+        overflow: visible !important;
+        min-height: 28px !important;
+        height: auto !important;
+        line-height: 1.2 !important;
+    }
+    
+    nav.navigation .nav-menu,
+    .navigation .nav-menu {
+        flex-wrap: wrap !important;
+        justify-content: center !important;
+        /* gap будет установлен отдельными медиа-запросами */
+    }
+    
+    nav.navigation .nav-menu li,
+    .navigation .nav-menu li {
+        flex: none !important;
+        flex-shrink: 0 !important;
+    }
+}
+
+/* На экранах больше 1200px (когда фото видно) - нормальное расстояние */
+@media (min-width: 1201px) {
+    nav.navigation .nav-menu,
+    .navigation .nav-menu,
+    .nav-menu {
+        gap: 32px !important;
+    }
+    
+    /* Исходная высота навигационной полоски для больших экранов */
+    nav.navigation,
+    .navigation {
+        padding: 4px 0 !important;
+    }
+}
+
+/* На экранах 1200px и меньше (когда фото скрыто) - уменьшенное расстояние, но отступ есть */
+@media (max-width: 1200px) {
+    nav.navigation .nav-menu,
+    .navigation .nav-menu,
+    .nav-menu {
+        gap: 8px !important; /* Отступ уменьшен, но не убран полностью */
+    }
+}
+
+/* Ландшафтные экраны с малой высотой: ужимаем навигацию */
+@media (max-height: 520px) {
 
     .contact-dropdown-container {
         position: static !important;
@@ -8413,7 +8435,7 @@ a.call-btn:active {
         justify-content: flex-start;
         align-items: center;
         width: 100%;
-        gap: 2px;
+        gap: 8px !important; /* Уменьшенное расстояние, когда фото скрыто */
         flex-wrap: wrap;
         padding: 0;
         margin: 0;
@@ -8434,19 +8456,26 @@ a.call-btn:active {
         /* Выравнивание по ширине */
     }
 
-    .nav-menu .nav-link {
-        display: block;
-        font-size: 0.4rem;
-        padding: 2px 1px;
-        border-radius: 2px;
-        color: white;
+    .nav-menu .nav-link:not(.call-btn) {
+        display: flex !important;
+        align-items: center !important;
+        justify-content: center !important;
+        font-size: 0.75rem !important;
+        padding: 6px 12px !important;
+        border-radius: 8px !important;
+        color: white !important;
         text-decoration: none;
-        background: rgba(255, 255, 255, 0.1);
-        border: 0.2px solid rgba(255, 255, 255, 0.15);
-        white-space: nowrap;
+        background: rgba(255, 255, 255, 0.1) !important;
+        border: 1px solid rgba(255, 255, 255, 0.15) !important;
+        white-space: nowrap !important;
         overflow: hidden;
         text-overflow: ellipsis;
         transition: all 0.3s ease;
+        min-width: 70px !important;
+        height: 28px !important;
+        line-height: 1 !important;
+        text-align: center !important;
+        box-sizing: border-box !important;
     }
 
     .nav-menu .nav-link.call-btn {

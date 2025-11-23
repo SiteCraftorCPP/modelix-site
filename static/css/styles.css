@@ -3460,9 +3460,7 @@ section.workflow-section .stats-grid,
     display: flex !important;
     align-items: center !important;
     justify-content: center !important;
-    font-size: 18px !important;
-    font-weight: bold !important;
-    line-height: 1 !important;
+    font-size: 12px !important;
     padding: 0 !important;
     transition: all 0.3s ease !important;
     flex-shrink: 0 !important;
@@ -3474,6 +3472,13 @@ section.workflow-section .stats-grid,
 .file-item-remove:hover {
     background: rgba(220, 53, 69, 1) !important;
     transform: scale(1.1) !important;
+}
+
+.file-item-remove i {
+    font-size: 12px !important;
+    display: inline-block !important;
+    visibility: visible !important;
+    opacity: 1 !important;
 }
 
 /* Fallback для Mac - если иконка не видна */
@@ -3491,6 +3496,12 @@ section.workflow-section .stats-grid,
         visibility: visible !important;
         opacity: 1 !important;
         pointer-events: auto !important;
+    }
+    
+    .file-item-remove i {
+        display: inline-block !important;
+        visibility: visible !important;
+        opacity: 1 !important;
     }
 }
 
@@ -8272,7 +8283,7 @@ nav.navigation .nav-link:not(.call-btn):hover,
     }
 
     100% {
-        transform: scale(1);
+        transform: scale(2);
         opacity: 0;
     }
 }

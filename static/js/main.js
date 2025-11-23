@@ -71,8 +71,8 @@ function initializeNavigation() {
     const navLinks = document.querySelectorAll('.nav-link');
     navLinks.forEach(link => {
         link.addEventListener('click', function (e) {
-            // Добавляем ripple эффект
-            createRipple(e, this);
+            // Ripple эффект отключен
+            // createRipple(e, this);
 
             const targetId = this.getAttribute('href');
             if (targetId && targetId.startsWith('#')) {
@@ -662,7 +662,26 @@ function initializeContactForm() {
                 fileItem.innerHTML = `
                     <span class="file-item-name">${displayName}</span>
                     <span class="file-item-size">${formatFileSize(file.size)}</span>
+                    <button type="button" class="file-item-remove" data-index="${index}" title="Удалить файл" aria-label="Удалить файл">
+                        <i class="fas fa-times"></i>
+                    </button>
                 `;
+
+                // Добавляем обработчик клика на кнопку удаления
+                const removeBtnItem = fileItem.querySelector('.file-item-remove');
+                
+                // Принудительно устанавливаем видимость для Mac
+                removeBtnItem.style.display = 'flex';
+                removeBtnItem.style.visibility = 'visible';
+                removeBtnItem.style.opacity = '1';
+                removeBtnItem.style.pointerEvents = 'auto';
+                
+                removeBtnItem.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    e.stopPropagation();
+                    const idx = parseInt(this.getAttribute('data-index'));
+                    removeFile(idx);
+                });
 
                 fileList.appendChild(fileItem);
             });
@@ -1351,7 +1370,7 @@ window.addEventListener('load', () => {
 // Функция для создания ripple эффекта
 function createRipple(event, element) {
     const circle = document.createElement('span');
-    const diameter = Math.max(element.clientWidth, element.clientHeight) * 0.35;
+    const diameter = Math.max(element.clientWidth, element.clientHeight) * 0.7;
     const radius = diameter / 2;
 
     const rect = element.getBoundingClientRect();

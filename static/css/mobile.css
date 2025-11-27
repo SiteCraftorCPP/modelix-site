@@ -626,7 +626,7 @@
         clear: both !important;
     }
     
-    /* Кнопки соц сетей всегда видны */
+    /* Кнопки соц сетей всегда видны - МАКСИМАЛЬНАЯ СПЕЦИФИЧНОСТЬ */
     .image-section .social-links .social-btn,
     .image-section .social-links a,
     .hero-section .social-links .social-btn,
@@ -634,12 +634,18 @@
     html body .image-section .social-links .social-btn,
     html body .image-section .social-links a,
     html body .hero-section .social-links .social-btn,
-    html body .hero-section .social-links a {
+    html body .hero-section .social-links a,
+    html body .hero-content-card .image-section .social-links .social-btn,
+    html body .hero-content-card .image-section .social-links a,
+    html body div.image-section .social-links .social-btn,
+    html body div.image-section .social-links a {
         display: flex !important;
         visibility: visible !important;
         opacity: 1 !important;
         width: 48px !important;
         height: 48px !important;
+        min-width: 48px !important;
+        min-height: 48px !important;
     }
 
     .image-section .integrated-printer-block,

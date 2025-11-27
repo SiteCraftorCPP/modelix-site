@@ -1225,9 +1225,9 @@
             <form id="callRequestForm">
                 {% csrf_token %}
                 <p style="margin-top: 0; margin-bottom: 10px; color: #666; font-size: 16px;">Как вас зовут?</p>
-                <input type="text" name="name" placeholder="Ваше имя" required class="modal-input">
+                <input type="text" name="name" placeholder="Ваше имя" required class="modal-input" autofocus>
                 <p style="margin-top: 20px; margin-bottom: 10px; color: #666; font-size: 16px;">Ваш номер телефона</p>
-                <input type="tel" name="phone" placeholder="+7 (___) ___-__-__" required class="modal-input">
+                <input type="tel" name="phone" placeholder="+7 (___) ___-__-__" required class="modal-input" tabindex="2">
                 <button type="button" class="modal-submit-btn" onclick="submitCallRequest(event)">
                     <i class="fas fa-phone"></i>
                     ЗАКАЗАТЬ ЗВОНОК
@@ -1349,6 +1349,14 @@
             if (modal) {
                 modal.style.display = 'block';
                 document.body.style.overflow = 'hidden';
+                
+                // Устанавливаем фокус на поле имени с небольшой задержкой для мобильных устройств
+                setTimeout(function() {
+                    var nameInput = modal.querySelector('input[name="name"]');
+                    if (nameInput) {
+                        nameInput.focus();
+                    }
+                }, 100);
             }
         }
         
@@ -1368,6 +1376,50 @@
                     if (e.target === callModal) {
                         closeCallModal();
                     }
+                });
+            }
+            
+            // Исправление бага с переключением фокуса на iPhone
+            var nameInput = document.querySelector('#callModal input[name="name"]');
+            var phoneInput = document.querySelector('#callModal input[name="phone"]');
+            
+            if (nameInput && phoneInput) {
+                var isTypingInName = false;
+                var nameInputTimeout = null;
+                
+                // Отслеживаем активный ввод в поле имени
+                nameInput.addEventListener('input', function() {
+                    isTypingInName = true;
+                    clearTimeout(nameInputTimeout);
+                    
+                    // Сбрасываем флаг через небольшую задержку после окончания ввода
+                    nameInputTimeout = setTimeout(function() {
+                        isTypingInName = false;
+                    }, 500);
+                    
+                    // Если фокус переключился на телефон, возвращаем его обратно
+                    if (document.activeElement === phoneInput) {
+                        nameInput.focus();
+                        // Устанавливаем курсор в конец текста
+                        var len = nameInput.value.length;
+                        nameInput.setSelectionRange(len, len);
+                    }
+                });
+                
+                // Предотвращаем автоматический фокус на поле телефона
+                phoneInput.addEventListener('focus', function(e) {
+                    // Если пользователь активно вводит текст в поле имени, возвращаем фокус
+                    if (isTypingInName && nameInput.value.length > 0) {
+                        e.preventDefault();
+                        nameInput.focus();
+                        var len = nameInput.value.length;
+                        nameInput.setSelectionRange(len, len);
+                    }
+                }, true);
+                
+                // При фокусе на поле имени сбрасываем флаг
+                nameInput.addEventListener('focus', function() {
+                    isTypingInName = true;
                 });
             }
         });

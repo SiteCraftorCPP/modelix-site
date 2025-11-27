@@ -26,10 +26,10 @@
     <meta property="og:url" content="/">
 
     <!-- Preload критических CSS для мобильной версии -->
-    <link rel="preload" href="/static/css/mobile.css?v=85.0" as="style">
+    <link rel="preload" href="/static/css/mobile.css?v=86.0" as="style">
     
     <link rel="stylesheet" href="/static/css/styles.css?v=230.1">
-    <link rel="stylesheet" href="/static/css/mobile.css?v=85.0">
+    <link rel="stylesheet" href="/static/css/mobile.css?v=86.0">
     <link rel="stylesheet" href="/static/css/social-links-fixed.css?v=1.6">
     <link rel="stylesheet" href="/static/css/animated-icons-fix.css?v=1.6">
     <link rel="stylesheet" href="/static/css/hero-responsive.css?v=1.3">
@@ -471,7 +471,7 @@
                             </button>
                             <p class="disclaimer-text">Работаем с юридическими и физическими лицами.</p>
                             <!-- Иконки соц сетей под кнопкой для мобильной версии -->
-                            <div class="social-links mobile-social-links" style="display: flex !important; visibility: visible !important; opacity: 1 !important; margin-top: 30px !important;">
+                            <div class="social-links mobile-social-links" style="display: flex !important; visibility: visible !important; opacity: 1 !important; margin-top: 40px !important;">
                                 {% for social in social_links %}
                                     <a href="{{ social.url }}" class="social-btn {{ social.platform }}" target="_blank" title="{{ social.get_platform_display }}" style="display: flex !important; visibility: visible !important; opacity: 1 !important;">
                                         <i class="{{ social.get_icon_class }}"></i>

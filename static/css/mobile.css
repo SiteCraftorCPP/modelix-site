@@ -588,6 +588,41 @@
         margin-right: auto !important;
     }
     
+    /* Иконки соц сетей в cta-section под кнопкой - ВСЕГДА ВИДИМЫ */
+    .cta-section .social-links,
+    .cta-section .mobile-social-links,
+    html body .cta-section .social-links,
+    html body .cta-section .mobile-social-links {
+        display: flex !important;
+        visibility: visible !important;
+        opacity: 1 !important;
+        justify-content: center !important;
+        align-items: center !important;
+        gap: 12px !important;
+        margin-top: 20px !important;
+        margin-bottom: 0 !important;
+        width: 100% !important;
+        flex-wrap: wrap !important;
+    }
+    
+    /* Кнопки соц сетей в cta-section */
+    .cta-section .social-links .social-btn,
+    .cta-section .social-links a,
+    .cta-section .mobile-social-links .social-btn,
+    .cta-section .mobile-social-links a,
+    html body .cta-section .social-links .social-btn,
+    html body .cta-section .social-links a,
+    html body .cta-section .mobile-social-links .social-btn,
+    html body .cta-section .mobile-social-links a {
+        display: flex !important;
+        visibility: visible !important;
+        opacity: 1 !important;
+        width: 48px !important;
+        height: 48px !important;
+        min-width: 48px !important;
+        min-height: 48px !important;
+    }
+    
     /* Секция изображения */
     .image-section {
         order: 2 !important;

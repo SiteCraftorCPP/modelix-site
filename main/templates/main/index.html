@@ -26,10 +26,10 @@
     <meta property="og:url" content="/">
 
     <!-- Preload критических CSS для мобильной версии -->
-    <link rel="preload" href="/static/css/mobile.css?v=67.0" as="style">
+    <link rel="preload" href="/static/css/mobile.css?v=80.0" as="style">
     
     <link rel="stylesheet" href="/static/css/styles.css?v=230.1">
-    <link rel="stylesheet" href="/static/css/mobile.css?v=79.0">
+    <link rel="stylesheet" href="/static/css/mobile.css?v=80.0">
     <link rel="stylesheet" href="/static/css/social-links-fixed.css?v=1.5">
     <link rel="stylesheet" href="/static/css/animated-icons-fix.css?v=1.6">
     <link rel="stylesheet" href="/static/css/hero-responsive.css?v=1.2">
@@ -1386,41 +1386,87 @@
             if (nameInput && phoneInput) {
                 var isTypingInName = false;
                 var nameInputTimeout = null;
+                var lastActiveElement = nameInput;
                 
                 // Отслеживаем активный ввод в поле имени
                 nameInput.addEventListener('input', function() {
                     isTypingInName = true;
+                    lastActiveElement = nameInput;
                     clearTimeout(nameInputTimeout);
                     
-                    // Сбрасываем флаг через небольшую задержку после окончания ввода
+                    // Сбрасываем флаг через задержку после окончания ввода
                     nameInputTimeout = setTimeout(function() {
                         isTypingInName = false;
-                    }, 500);
+                    }, 1000);
                     
-                    // Если фокус переключился на телефон, возвращаем его обратно
-                    if (document.activeElement === phoneInput) {
-                        nameInput.focus();
-                        // Устанавливаем курсор в конец текста
-                        var len = nameInput.value.length;
-                        nameInput.setSelectionRange(len, len);
-                    }
+                    // Принудительно возвращаем фокус на поле имени с небольшой задержкой
+                    setTimeout(function() {
+                        if (document.activeElement === phoneInput && isTypingInName) {
+                            nameInput.focus();
+                            try {
+                                var len = nameInput.value.length;
+                                nameInput.setSelectionRange(len, len);
+                            } catch(e) {
+                                // Игнорируем ошибки setSelectionRange на некоторых устройствах
+                            }
+                        }
+                    }, 50);
                 });
                 
-                // Предотвращаем автоматический фокус на поле телефона
-                phoneInput.addEventListener('focus', function(e) {
+                // Используем focusin для более надежного перехвата (работает на iOS)
+                phoneInput.addEventListener('focusin', function(e) {
                     // Если пользователь активно вводит текст в поле имени, возвращаем фокус
                     if (isTypingInName && nameInput.value.length > 0) {
                         e.preventDefault();
-                        nameInput.focus();
-                        var len = nameInput.value.length;
-                        nameInput.setSelectionRange(len, len);
+                        e.stopPropagation();
+                        setTimeout(function() {
+                            nameInput.focus();
+                            try {
+                                var len = nameInput.value.length;
+                                nameInput.setSelectionRange(len, len);
+                            } catch(e) {
+                                // Игнорируем ошибки
+                            }
+                        }, 10);
+                        return false;
                     }
                 }, true);
                 
-                // При фокусе на поле имени сбрасываем флаг
+                // Дополнительная защита через focus
+                phoneInput.addEventListener('focus', function(e) {
+                    if (isTypingInName && nameInput.value.length > 0) {
+                        setTimeout(function() {
+                            if (document.activeElement === phoneInput) {
+                                nameInput.focus();
+                                try {
+                                    var len = nameInput.value.length;
+                                    nameInput.setSelectionRange(len, len);
+                                } catch(e) {
+                                    // Игнорируем ошибки
+                                }
+                            }
+                        }, 10);
+                    }
+                }, true);
+                
+                // При фокусе на поле имени устанавливаем флаг
                 nameInput.addEventListener('focus', function() {
                     isTypingInName = true;
+                    lastActiveElement = nameInput;
                 });
+                
+                // Отслеживаем изменения активного элемента
+                setInterval(function() {
+                    if (isTypingInName && document.activeElement === phoneInput && nameInput.value.length > 0) {
+                        nameInput.focus();
+                        try {
+                            var len = nameInput.value.length;
+                            nameInput.setSelectionRange(len, len);
+                        } catch(e) {
+                            // Игнорируем ошибки
+                        }
+                    }
+                }, 100);
             }
         });
         

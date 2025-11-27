@@ -44,9 +44,9 @@
 /* Мобильная адаптация для экранов до 768px */
 @media (max-width: 768px),
 (orientation: landscape) and (max-height: 520px) {
-
+    
     /* ===== УБИРАЕМ ВСЕ ПРИНУДИТЕЛЬНЫЕ ОТСТУПЫ ===== */
-
+    
     /* Общий фон для всего сайта */
     body,
     html {
@@ -55,7 +55,7 @@
         margin: 0 !important;
         padding: 0 !important;
     }
-
+    
     /* ===== НАВИГАЦИЯ ===== */
     nav.navigation,
     .navigation,
@@ -81,7 +81,7 @@
         min-height: auto !important;
         overflow: visible !important;
     }
-
+    
     .navigation .nav-container,
     .nav-container,
     nav .nav-container {
@@ -99,7 +99,7 @@
         z-index: 2 !important;
         overflow: visible !important;
     }
-
+    
     .nav-menu {
         display: flex !important;
         flex-wrap: wrap !important;
@@ -114,12 +114,12 @@
         z-index: 3 !important;
         overflow: visible !important;
     }
-
+    
     .nav-menu li {
         margin: 0 !important;
         flex: none !important;
     }
-
+    
     /* Обычные кнопки навигации */
     .nav-menu .nav-link:not(.call-btn) {
         display: flex !important;
@@ -147,14 +147,14 @@
         box-sizing: border-box !important;
         flex-shrink: 0 !important;
     }
-
+    
     .nav-menu .nav-link:not(.call-btn):hover {
         background: linear-gradient(135deg, #6495ed, #87ceeb) !important;
         border: 2px solid rgba(100, 149, 237, 0.8) !important;
         transform: translateY(-2px) !important;
         box-shadow: 0 4px 15px rgba(100, 149, 237, 0.3) !important;
     }
-
+    
     /* Кнопка "Заказать звонок" - точно такая же высота как остальные */
     .nav-menu .nav-link.call-btn,
     .navigation .nav-menu .nav-link.call-btn,
@@ -185,7 +185,7 @@
         /* УБРАН aspect-ratio для предотвращения искажений */
         flex-shrink: 0 !important;
     }
-
+    
     .nav-menu .nav-link.call-btn:hover,
     .navigation .nav-menu .nav-link.call-btn:hover,
     nav .nav-menu .nav-link.call-btn:hover {
@@ -197,18 +197,18 @@
 
     /* Перевёрнутые телефоны: уплотняем навигацию */
     /* Удалено — финальный блок вынесен в конец файла */
-
+    
     /* Скрываем кнопку переключения навигации */
     .nav-toggle-btn {
         display: none !important;
     }
-
+    
     /* Скрываем мобильное меню */
     .mobile-menu-btn {
         display: none !important;
     }
-
-
+    
+    
     /* ===== ГЛАВНЫЙ БЛОК ===== */
     /* ПРИНУДИТЕЛЬНО УБИРАЕМ ВСЕ ОГРАНИЧЕНИЯ ШИРИНЫ - ТЁМНЫЙ ФОН */
     .hero-section,
@@ -228,7 +228,7 @@
         max-width: 100vw !important;
         box-sizing: border-box !important;
     }
-
+    
     /* ПРИНУДИТЕЛЬНО ПЕРЕОПРЕДЕЛЯЕМ .container ДЛЯ HERO-SECTION */
     .hero-section .container,
     html body .hero-section .container,
@@ -241,19 +241,19 @@
         margin: 0 !important;
         box-sizing: border-box !important;
     }
-
+    
     /* ПРИНУДИТЕЛЬНО ПЕРЕОПРЕДЕЛЯЕМ ОБЩИЙ .container */
     @media (max-width: 768px),
     (orientation: landscape) and (max-height: 520px) {
-        .container {
-            width: 100% !important;
-            max-width: 100% !important;
+    .container {
+        width: 100% !important;
+        max-width: 100% !important;
             padding: 0 5px !important;
             margin: 0 !important;
-            box-sizing: border-box !important;
+        box-sizing: border-box !important;
         }
     }
-
+    
     /* Логотип */
     .main-logo-section {
         text-align: center !important;
@@ -264,14 +264,14 @@
         align-items: center !important;
         justify-content: center !important;
     }
-
+    
     .main-logo h1 {
         font-size: 2.5rem !important;
         color: #ffffff !important;
         margin: 0 !important;
         font-weight: 700 !important;
     }
-
+    
     /* ПРИНУДИТЕЛЬНО ПЕРЕОПРЕДЕЛЯЕМ hero-content-card - УБИРАЕМ ВСЕ ОГРАНИЧЕНИЯ */
     .hero-section .hero-content-card,
     html body .hero-section .hero-content-card,
@@ -296,25 +296,25 @@
         margin: 0 !important;
         box-sizing: border-box !important;
     }
-
+    
     .hero-content-card * {
         text-align: left !important;
         margin-left: 0 !important;
         margin-right: 0 !important;
     }
-
+    
     /* Центрирование заголовка hero - приоритет над общим правилом */
     .hero-content-card .hero-title,
     .hero-content-card .hero-text-content .hero-title,
     .hero-title {
         text-align: center !important;
     }
-
+    
     .hero-content-card .hero-title .highlight-text,
     .hero-title .highlight-text {
         text-align: center !important;
     }
-
+    
     /* Текстовая секция - ПРИНУДИТЕЛЬНО НА ВСЮ ШИРИНУ, ПРОЗРАЧНЫЙ ФОН */
     .text-section,
     html body .text-section,
@@ -333,7 +333,7 @@
         max-width: 100% !important;
         box-sizing: border-box !important;
     }
-
+    
     .hero-text-content,
     html body .hero-text-content,
     body .hero-text-content,
@@ -348,13 +348,13 @@
         padding: 0 !important;
         box-sizing: border-box !important;
     }
-
+    
     .hero-text-content * {
         text-align: left !important;
         margin-left: 0 !important;
         margin-right: 0 !important;
     }
-
+    
     /* Заголовок */
     .hero-text-content .hero-title,
     .hero-title {
@@ -370,7 +370,7 @@
         letter-spacing: normal !important;
         white-space: normal !important;
     }
-
+    
     .hero-title .highlight-text {
         color: #f8fafc !important;
         display: inline !important;
@@ -380,7 +380,7 @@
         white-space: normal !important;
         text-align: center !important;
     }
-
+    
     /* О компании - ПРИНУДИТЕЛЬНО НА ВСЮ ШИРИНУ */
     .about-company,
     html body .about-company,
@@ -392,7 +392,7 @@
         padding: 0 !important;
         box-sizing: border-box !important;
     }
-
+    
     .gradient-title,
     html body .gradient-title,
     body .gradient-title,
@@ -417,7 +417,7 @@
         padding: 0 !important;
         box-sizing: border-box !important;
     }
-
+    
     .description-text,
     html body .description-text,
     body .description-text,
@@ -432,14 +432,14 @@
         padding: 0 !important;
         box-sizing: border-box !important;
     }
-
+    
     .description-text p {
         text-align: left !important;
         margin: 0 0 15px 0 !important;
         padding: 0 !important;
         width: 100% !important;
     }
-
+    
     /* Перемещаем изображение в текстовый блок только на мобильных */
     .hero-text-content .about-company::after,
     .about-company::after {
@@ -477,7 +477,9 @@
         .image-section .social-links,
         .text-section .social-links,
         html body .hero-section .social-links,
-        body .hero-section .social-links {
+        body .hero-section .social-links,
+        html body .image-section .social-links,
+        body .image-section .social-links {
             position: static !important;
             left: auto !important;
             right: auto !important;
@@ -487,9 +489,21 @@
             margin-left: 0 !important;
             margin-right: 0 !important;
             display: flex !important;
+            visibility: visible !important;
+            opacity: 1 !important;
             justify-content: flex-start !important;
             width: 100% !important;
             clear: both !important;
+        }
+        
+        /* Убеждаемся, что иконки соц сетей всегда видны */
+        .image-section .social-links .social-btn,
+        .image-section .social-links a,
+        .hero-section .social-links .social-btn,
+        .hero-section .social-links a {
+            display: flex !important;
+            visibility: visible !important;
+            opacity: 1 !important;
         }
 
         /* Заголовок должен быть выше иконок */
@@ -506,12 +520,12 @@
             box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3) !important;
         }
     }
-
+    
     /* Скрываем оригинальное изображение на мобильных */
     .image-section .integrated-printer-block {
         display: none !important;
     }
-
+    
     /* CTA секция */
     .cta-section {
         width: 100% !important;
@@ -521,7 +535,7 @@
         /* Центрируем кнопку и текст */
         text-align: center !important;
     }
-
+    
     .cta-button {
         display: block !important;
         /* Изменено на block */
@@ -553,7 +567,7 @@
         /* Чтобы элементы были в строке */
         vertical-align: middle !important;
     }
-
+    
     /* ОТКЛЮЧЕНО: смена цвета при hover - кнопка должна оставаться зеленой */
     .cta-button:hover {
         transform: translateY(-2px) !important;
@@ -561,7 +575,7 @@
         background: linear-gradient(135deg, #90ee90, #98fb98) !important;
         border-color: #90ee90 !important;
     }
-
+    
     .disclaimer-text {
         font-size: 0.85rem !important;
         color: var(--gray-500) !important;
@@ -573,7 +587,7 @@
         margin-left: auto !important;
         margin-right: auto !important;
     }
-
+    
     /* Секция изображения */
     .image-section {
         order: 2 !important;
@@ -616,7 +630,7 @@
             object-fit: cover !important;
         }
     }
-
+    
     /* Социальные ссылки */
     .social-links {
         display: flex !important;
@@ -627,7 +641,7 @@
         width: 100% !important;
         flex-wrap: wrap !important;
     }
-
+    
     /* Прозрачные иконки hero-блока */
     .hero-section .social-links .social-btn.telegram,
     .hero-section .social-links .social-btn.vk,
@@ -667,20 +681,20 @@
         text-decoration: none !important;
         box-shadow: 0 4px 12px rgba(0, 136, 204, 0.3) !important;
     }
-
+    
     .social-links .social-btn.telegram:hover,
     .social-links a[href*="t.me"]:hover {
         background: #0077b5 !important;
         transform: translateY(-3px) !important;
         box-shadow: 0 6px 16px rgba(0, 136, 204, 0.5) !important;
     }
-
+    
     .social-links .social-btn.telegram i,
     .social-links a[href*="t.me"] i {
         font-size: 1.4rem !important;
         color: #ffffff !important;
     }
-
+    
     /* VK */
     .social-links .social-btn.vk,
     .social-links a[href*="vk.com"] {
@@ -696,20 +710,20 @@
         text-decoration: none !important;
         box-shadow: 0 4px 12px rgba(70, 128, 194, 0.3) !important;
     }
-
+    
     .social-links .social-btn.vk:hover,
     .social-links a[href*="vk.com"]:hover {
         background: #3a6ca8 !important;
         transform: translateY(-3px) !important;
         box-shadow: 0 6px 16px rgba(70, 128, 194, 0.5) !important;
     }
-
+    
     .social-links .social-btn.vk i,
     .social-links a[href*="vk.com"] i {
         font-size: 1.4rem !important;
         color: #ffffff !important;
     }
-
+    
     /* YouTube */
     .social-links .social-btn.youtube,
     .social-links a[href*="youtube.com"] {
@@ -725,20 +739,20 @@
         text-decoration: none !important;
         box-shadow: 0 4px 12px rgba(255, 0, 0, 0.3) !important;
     }
-
+    
     .social-links .social-btn.youtube:hover,
     .social-links a[href*="youtube.com"]:hover {
         background: #cc0000 !important;
         transform: translateY(-3px) !important;
         box-shadow: 0 6px 16px rgba(255, 0, 0, 0.5) !important;
     }
-
+    
     .social-links .social-btn.youtube i,
     .social-links a[href*="youtube.com"] i {
         font-size: 1.4rem !important;
         color: #ffffff !important;
     }
-
+    
     /* Интегрированное изображение принтера */
     .integrated-printer-block {
         width: 100% !important;
@@ -752,7 +766,7 @@
         width: 100% !important;
         height: auto !important;
     }
-
+    
     .integrated-printer-image {
         width: 100% !important;
         max-width: 300px !important;
@@ -770,45 +784,45 @@
     .hero-section {
         padding: 15px 10px !important;
     }
-
+    
     .hero-content-card {
         padding: 25px 20px !important;
         gap: 25px !important;
         border-radius: 15px !important;
     }
-
+    
     .main-logo h1 {
         font-size: 2rem !important;
     }
-
+    
     .hero-title {
         font-size: 2rem !important;
         margin-bottom: 25px !important;
         text-align: center !important;
     }
-
+    
     .gradient-title {
         font-size: 1.2rem !important;
         margin-bottom: 18px !important;
         text-align: left !important;
     }
-
+    
     .description-text {
         font-size: 0.95rem !important;
         margin-bottom: 15px !important;
         text-align: left !important;
     }
-
+    
     .cta-button {
         font-size: 0.9rem !important;
         padding: 12px 10px !important;
         min-width: 180px !important;
     }
-
+    
     .integrated-printer-image {
         max-width: 250px !important;
     }
-
+    
     .social-links .social-btn,
     .social-links a[href*="t.me"],
     .social-links a[href*="vk.com"],
@@ -816,19 +830,19 @@
         width: 48px !important;
         height: 48px !important;
     }
-
+    
     .social-links .social-btn i,
     .social-links a[href*="t.me"] i,
     .social-links a[href*="vk.com"] i,
     .social-links a[href*="youtube.com"] i {
         font-size: 1.3rem !important;
     }
-
+    
     .nav-menu .nav-link {
         font-size: 0.8rem !important;
         padding: 6px 12px !important;
     }
-
+    
     /* Кнопка "Заказать звонок" на средних экранах */
     .nav-menu .nav-link.call-btn {
         padding: 6px 12px !important;
@@ -840,49 +854,49 @@
     .hero-section {
         padding: 15px 10px !important;
     }
-
+    
     .hero-content-card {
         padding: 25px 18px !important;
         gap: 20px !important;
         border-radius: 12px !important;
     }
-
+    
     .main-logo h1 {
         font-size: 1.8rem !important;
     }
-
+    
     .hero-title {
         font-size: 1.8rem !important;
         margin-bottom: 20px !important;
         text-align: center !important;
     }
-
+    
     .gradient-title {
         font-size: 1.15rem !important;
         margin-bottom: 15px !important;
         text-align: left !important;
     }
-
+    
     .description-text {
         font-size: 0.9rem !important;
         margin-bottom: 12px !important;
         text-align: left !important;
     }
-
+    
     .cta-button {
         font-size: 0.85rem !important;
         padding: 10px 10px !important;
         min-width: 160px !important;
     }
-
+    
     .integrated-printer-image {
         max-width: 220px !important;
     }
-
+    
     .social-links {
         gap: 12px !important;
     }
-
+    
     .social-links .social-btn,
     .social-links a[href*="t.me"],
     .social-links a[href*="vk.com"],
@@ -890,23 +904,23 @@
         width: 45px !important;
         height: 45px !important;
     }
-
+    
     .social-links .social-btn i,
     .social-links a[href*="t.me"] i,
     .social-links a[href*="vk.com"] i,
     .social-links a[href*="youtube.com"] i {
         font-size: 1.25rem !important;
     }
-
+    
     .nav-menu {
         gap: 6px !important;
     }
-
+    
     .nav-menu .nav-link {
         font-size: 0.75rem !important;
         padding: 5px 8px !important;
     }
-
+    
     /* Кнопка "Заказать звонок" на очень маленьких экранах */
     .nav-menu .nav-link.call-btn {
         padding: 5px 8px !important;
@@ -925,7 +939,7 @@
         flex-direction: column !important;
         align-items: center !important;
     }
-
+    
     .about-section .container {
         width: 100% !important;
         max-width: 100% !important;
@@ -935,7 +949,7 @@
         flex-direction: column !important;
         align-items: center !important;
     }
-
+    
     .section-header {
         text-align: center !important;
         margin-bottom: 18px !important;
@@ -945,18 +959,18 @@
         justify-content: center !important;
         align-items: center !important;
     }
-
+    
     .projects-section .section-header,
     .projects-section .container .section-header,
     .projects-section .section-header .section-title {
         margin-bottom: 0 !important;
         margin-top: -20px !important;
     }
-
+    
     .projects-section .section-header .section-title {
         margin-top: 0 !important;
     }
-
+    
     .section-title {
         font-size: 1.8rem !important;
         color: var(--white) !important;
@@ -971,7 +985,7 @@
         width: fit-content !important;
         display: block !important;
     }
-
+    
     .advantages-grid {
         display: grid !important;
         grid-template-columns: 1fr !important;
@@ -981,7 +995,7 @@
         width: 100% !important;
         max-width: 100% !important;
     }
-
+    
     .advantage-card {
         background: #ffffff !important;
         border-radius: 15px !important;
@@ -995,7 +1009,7 @@
         flex-direction: column !important;
         align-items: center !important;
     }
-
+    
     .advantage-card .text-content {
         width: 100% !important;
         text-align: center !important;
@@ -1003,7 +1017,7 @@
         flex-direction: column !important;
         align-items: center !important;
     }
-
+    
     .advantage-icon {
         margin: 0 auto 10px auto !important;
         width: 60px !important;
@@ -1014,12 +1028,12 @@
         align-items: center !important;
         justify-content: center !important;
     }
-
+    
     .advantage-icon i {
         font-size: 24px !important;
         color: white !important;
     }
-
+    
     /* Принудительное изменение цвета символов в иконках */
     .advantage-card .advantage-icon i,
     .modern-card .advantage-icon i,
@@ -1027,14 +1041,14 @@
     .modern-card .modern-icon i {
         color: white !important;
     }
-
+    
     .advantage-card .advantage-icon .fas,
     .modern-card .advantage-icon .fas,
     .advantage-card .modern-icon .fas,
     .modern-card .modern-icon .fas {
         color: white !important;
     }
-
+    
     .advantage-card h3 {
         font-size: 1.2rem !important;
         color: #1e293b !important;
@@ -1043,7 +1057,7 @@
         text-align: center !important;
         width: 100% !important;
     }
-
+    
     .advantage-card p {
         font-size: 0.9rem !important;
         color: #64748b !important;
@@ -1052,7 +1066,7 @@
         text-align: center !important;
         width: 100% !important;
     }
-
+    
     /* ===== ЗАГОЛОВКИ ВСЕХ БЛОКОВ ===== */
     .section-title {
         font-size: 1.8rem !important;
@@ -1071,11 +1085,11 @@
         position: relative !important;
         overflow: hidden !important;
     }
-
+    
     .projects-section .section-title {
         margin: 0 !important;
     }
-
+    
     .section-title::before {
         content: '' !important;
         position: absolute !important;
@@ -1086,11 +1100,11 @@
         background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.1), transparent) !important;
         transition: left 0.6s ease !important;
     }
-
+    
     .section-title:hover::before {
         left: 100% !important;
     }
-
+    
     .section-title:hover {
         background: linear-gradient(135deg, var(--primary-blue), var(--accent-blue)) !important;
         color: white !important;
@@ -1098,7 +1112,7 @@
         box-shadow: 0 15px 40px rgba(25, 25, 112, 0.5) !important;
         border-color: rgba(255, 255, 255, 0.4) !important;
     }
-
+    
     /* ===== БЛОК ПРОЦЕССА РАБОТЫ ===== */
     .process-section {
         background: var(--gray-900) !important;
@@ -1109,7 +1123,7 @@
         flex-direction: column !important;
         align-items: center !important;
     }
-
+    
     .process-header {
         width: 100% !important;
         display: flex !important;
@@ -1118,7 +1132,7 @@
         text-align: center !important;
         margin-bottom: 30px !important;
     }
-
+    
     .process-icon {
         width: 80px !important;
         height: 80px !important;
@@ -1129,12 +1143,12 @@
         justify-content: center !important;
         margin: 0 auto 20px auto !important;
     }
-
+    
     .process-icon i {
         font-size: 32px !important;
         color: white !important;
     }
-
+    
     /* Заголовок "Получение результата" в одну строчку - специальный класс */
     .single-line-title {
         white-space: nowrap !important;
@@ -1147,12 +1161,12 @@
         overflow: hidden !important;
         text-overflow: ellipsis !important;
     }
-
+    
     /* Полное соответствие десктопному блоку "Как мы работаем" */
     .workflow-section {
         padding: 25px 10px !important;
     }
-
+    
     .workflow-section .workflow-steps-new,
     .workflow-section .container .workflow-steps-new,
     .workflow-steps-new {
@@ -1163,19 +1177,19 @@
         justify-items: center !important;
         margin-bottom: 30px !important;
     }
-
+    
     .workflow-step-new {
         margin-bottom: 18px !important;
     }
-
+    
     .workflow-step-new:first-child {
         margin-bottom: 0 !important;
     }
-
+    
     .workflow-step-new:last-child {
         margin-bottom: 0 !important;
     }
-
+    
     .workflow-step-new {
         display: flex !important;
         flex-direction: column !important;
@@ -1185,14 +1199,14 @@
         margin: 0 !important;
         padding: 0 !important;
     }
-
+    
     .workflow-step-new .step-content-new {
         width: min(320px, 92%) !important;
         margin: 14px auto 0 auto !important;
         padding: 0 !important;
         text-align: center !important;
     }
-
+    
     .workflow-step-new .step-content-new h3 {
         margin: 0 auto 10px auto !important;
         text-align: center !important;
@@ -1201,7 +1215,7 @@
         color: #ffffff !important;
         white-space: normal !important;
     }
-
+    
     .workflow-step-new .step-content-new p {
         margin: 0 auto !important;
         text-align: justify !important;
@@ -1224,195 +1238,195 @@
         column-gap: 0 !important;
         margin-bottom: 30px !important;
     }
-
+    
     .workflow-step-new {
         margin-bottom: 18px !important;
     }
-
+    
     .workflow-step-new:first-child {
         margin-bottom: 0 !important;
     }
-
+    
     .workflow-step-new:last-child {
         margin-bottom: 0 !important;
     }
-
+    
     .workflow-steps-new .workflow-step-new .step-content-new {
         width: min(320px, 94%) !important;
         margin: 14px auto 0 auto !important;
         padding: 0 !important;
         text-align: center !important;
     }
-
+    
     .workflow-steps-new .workflow-step-new .step-content-new h3 {
         font-size: 20px !important;
         line-height: 1.4 !important;
         color: #ffffff !important;
         margin-bottom: 10px !important;
     }
-
+    
     .workflow-steps-new .workflow-step-new .step-content-new p {
         font-size: 16px !important;
         line-height: 1.6 !important;
         color: #ffffff !important;
     }
 }
-
-
-.process-info {
-    width: 100% !important;
-    text-align: center !important;
-    display: flex !important;
-    flex-direction: column !important;
-    align-items: center !important;
-}
-
-.process-info h3 {
-    font-size: 1.8rem !important;
-    color: white !important;
-    margin: 0 0 15px 0 !important;
-    font-weight: 700 !important;
-    text-align: center !important;
-}
-
-.process-info p {
-    font-size: 1rem !important;
-    color: #e2e8f0 !important;
-    line-height: 1.6 !important;
-    margin: 0 !important;
-    text-align: center !important;
-    max-width: 100% !important;
-}
-
-/* ===== ФУТЕР ===== */
-.footer {
-    background: white !important;
-    padding: 20px 10px 30px 10px !important;
-    margin: 0 !important;
-    width: 100% !important;
-}
-
-.footer .container {
-    width: 100% !important;
-    max-width: 100% !important;
-    padding: 0 !important;
-    margin: 0 !important;
-}
-
-.footer-content {
-    display: flex !important;
-    justify-content: space-between !important;
-    align-items: flex-start !important;
-    flex-direction: row !important;
-}
-
-.footer-logo {
-    display: none !important;
-}
-
-.footer-info {
-    width: 100% !important;
-    display: flex !important;
-    flex-direction: column !important;
-    align-items: center !important;
-    gap: 20px !important;
-}
-
-/* Скрываем блок с реквизитами (второй footer-section) */
-.footer-info .footer-section:nth-child(2) {
-    display: none !important;
-}
-
-.footer-section {
-    width: 100% !important;
-    text-align: center !important;
-}
-
-.footer-section h3 {
-    font-size: 1.2rem !important;
-    color: var(--gray-900) !important;
-    margin-bottom: 15px !important;
-    font-weight: 600 !important;
-}
-
-.footer-section .contact-item {
-    display: flex !important;
-    align-items: center !important;
-    justify-content: center !important;
-    gap: 10px !important;
-    margin-bottom: 10px !important;
-    font-size: 0.9rem !important;
-    color: var(--gray-700) !important;
-    text-align: center !important;
-}
-
-/* Все контактные элементы по центру в мобилке */
-html body .footer .footer-section .contact-item,
-.footer-section .contact-item {
-    justify-content: center !important;
-    text-align: center !important;
-    padding-left: 0 !important;
-}
-
-.footer-section .contact-item i {
-    color: var(--primary-blue) !important;
-    font-size: 1rem !important;
-}
-
-.footer-social {
-    width: 100% !important;
-    text-align: center !important;
-    display: flex !important;
-    flex-direction: column !important;
-    align-items: center !important;
-    justify-content: center !important;
-}
-
-.footer-social h3 {
-    font-size: 1.2rem !important;
-    color: var(--gray-900) !important;
-    margin-bottom: 15px !important;
-    font-weight: 600 !important;
-}
-
-.social-icons-row {
-    display: flex !important;
-    justify-content: center !important;
-    align-items: center !important;
-    gap: 15px !important;
-    width: 100% !important;
-    margin: 0 auto !important;
-}
-
-.social-link {
-    width: 40px !important;
-    height: 40px !important;
-    background: var(--primary-blue) !important;
-    border-radius: 50% !important;
-    display: flex !important;
-    align-items: center !important;
-    justify-content: center !important;
-    color: white !important;
-    text-decoration: none !important;
-    transition: all 0.3s ease !important;
-}
-
-.social-link:hover {
-    background: var(--secondary-blue) !important;
-    transform: translateY(-2px) !important;
-}
-
-.footer-bottom {
-    text-align: center !important;
-    padding-top: 20px !important;
-    border-top: 1px solid var(--gray-200) !important;
-}
-
-.footer-bottom p {
-    font-size: 0.8rem !important;
-    color: var(--gray-500) !important;
-    margin: 0 !important;
-}
+    
+    
+    .process-info {
+        width: 100% !important;
+        text-align: center !important;
+        display: flex !important;
+        flex-direction: column !important;
+        align-items: center !important;
+    }
+    
+    .process-info h3 {
+        font-size: 1.8rem !important;
+        color: white !important;
+        margin: 0 0 15px 0 !important;
+        font-weight: 700 !important;
+        text-align: center !important;
+    }
+    
+    .process-info p {
+        font-size: 1rem !important;
+        color: #e2e8f0 !important;
+        line-height: 1.6 !important;
+        margin: 0 !important;
+        text-align: center !important;
+        max-width: 100% !important;
+    }
+    
+    /* ===== ФУТЕР ===== */
+    .footer {
+        background: white !important;
+        padding: 20px 10px 30px 10px !important;
+        margin: 0 !important;
+        width: 100% !important;
+    }
+    
+    .footer .container {
+        width: 100% !important;
+        max-width: 100% !important;
+        padding: 0 !important;
+        margin: 0 !important;
+    }
+    
+    .footer-content {
+        display: flex !important;
+        justify-content: space-between !important;
+        align-items: flex-start !important;
+        flex-direction: row !important;
+    }
+    
+    .footer-logo {
+        display: none !important;
+    }
+    
+    .footer-info {
+        width: 100% !important;
+        display: flex !important;
+        flex-direction: column !important;
+        align-items: center !important;
+        gap: 20px !important;
+    }
+    
+    /* Скрываем блок с реквизитами (второй footer-section) */
+    .footer-info .footer-section:nth-child(2) {
+        display: none !important;
+    }
+    
+    .footer-section {
+        width: 100% !important;
+        text-align: center !important;
+    }
+    
+    .footer-section h3 {
+        font-size: 1.2rem !important;
+        color: var(--gray-900) !important;
+        margin-bottom: 15px !important;
+        font-weight: 600 !important;
+    }
+    
+    .footer-section .contact-item {
+        display: flex !important;
+        align-items: center !important;
+        justify-content: center !important;
+        gap: 10px !important;
+        margin-bottom: 10px !important;
+        font-size: 0.9rem !important;
+        color: var(--gray-700) !important;
+        text-align: center !important;
+    }
+    
+    /* Все контактные элементы по центру в мобилке */
+    html body .footer .footer-section .contact-item,
+    .footer-section .contact-item {
+        justify-content: center !important;
+        text-align: center !important;
+        padding-left: 0 !important;
+    }
+    
+    .footer-section .contact-item i {
+        color: var(--primary-blue) !important;
+        font-size: 1rem !important;
+    }
+    
+    .footer-social {
+        width: 100% !important;
+        text-align: center !important;
+        display: flex !important;
+        flex-direction: column !important;
+        align-items: center !important;
+        justify-content: center !important;
+    }
+    
+    .footer-social h3 {
+        font-size: 1.2rem !important;
+        color: var(--gray-900) !important;
+        margin-bottom: 15px !important;
+        font-weight: 600 !important;
+    }
+    
+    .social-icons-row {
+        display: flex !important;
+        justify-content: center !important;
+        align-items: center !important;
+        gap: 15px !important;
+        width: 100% !important;
+        margin: 0 auto !important;
+    }
+    
+    .social-link {
+        width: 40px !important;
+        height: 40px !important;
+        background: var(--primary-blue) !important;
+        border-radius: 50% !important;
+        display: flex !important;
+        align-items: center !important;
+        justify-content: center !important;
+        color: white !important;
+        text-decoration: none !important;
+        transition: all 0.3s ease !important;
+    }
+    
+    .social-link:hover {
+        background: var(--secondary-blue) !important;
+        transform: translateY(-2px) !important;
+    }
+    
+    .footer-bottom {
+        text-align: center !important;
+        padding-top: 20px !important;
+        border-top: 1px solid var(--gray-200) !important;
+    }
+    
+    .footer-bottom p {
+        font-size: 0.8rem !important;
+        color: var(--gray-500) !important;
+        margin: 0 !important;
+    }
 }
 
 /* СУПЕР-ПРИНУДИТЕЛЬНЫЕ СТИЛИ ДЛЯ SERVICE-DETAILS НА МОБИЛКЕ */
@@ -1455,7 +1469,7 @@ html body .footer .footer-section .contact-item,
         background: #1a1a1a !important;
         background-color: #1a1a1a !important;
     }
-
+    
     .hero-section .container {
         padding: 0 5px !important;
         margin: 0 !important;
@@ -1463,7 +1477,7 @@ html body .footer .footer-section .contact-item,
         max-width: 100% !important;
         box-sizing: border-box !important;
     }
-
+    
     .hero-section .hero-content-card {
         padding: 20px 15px !important;
         margin: 0 !important;
@@ -1471,7 +1485,7 @@ html body .footer .footer-section .contact-item,
         max-width: 100% !important;
         box-sizing: border-box !important;
     }
-
+    
     /* ПРИНУДИТЕЛЬНО ПРОЗРАЧНЫЙ ФОН ДЛЯ text-section */
     .hero-section .text-section,
     html body .hero-section .text-section,
@@ -1479,14 +1493,14 @@ html body .footer .footer-section .contact-item,
         background: transparent !important;
         background-color: transparent !important;
     }
-
+    
     .hero-section .about-company {
         width: 100% !important;
         max-width: 100% !important;
         padding: 0 !important;
         margin: 0 !important;
     }
-
+    
     .hero-section .about-company .gradient-title {
         font-size: 1.3rem !important;
         text-align: left !important;
@@ -1506,7 +1520,7 @@ html body .footer .footer-section .contact-item,
         text-shadow: 0 2px 4px rgba(0, 102, 255, 0.2) !important;
         filter: contrast(1.2) brightness(1.1) !important;
     }
-
+    
     .hero-section .about-company .description-text {
         font-size: 1rem !important;
         text-align: left !important;
@@ -1515,14 +1529,14 @@ html body .footer .footer-section .contact-item,
         padding: 0 !important;
         margin: 0 0 15px 0 !important;
     }
-
+    
     .hero-section .about-company .hero-title {
         text-align: center !important;
         width: 100% !important;
         padding: 0 !important;
         margin: 0 0 30px 0 !important;
     }
-
+    
     .modelix-brand {
         font-size: 1.1em !important;
     }
@@ -1548,7 +1562,7 @@ html body .footer .footer-section .contact-item,
         background: linear-gradient(135deg, #2d5a2d, #1a6b5a) !important;
         animation: bounce 2s infinite !important;
     }
-
+    
     .service-icon i {
         font-size: 18px !important;
         color: white !important;
@@ -1556,7 +1570,7 @@ html body .footer .footer-section .contact-item,
         width: auto !important;
         height: auto !important;
     }
-
+    
     /* Адаптация блока с корзиночкой */
     .service-item {
         display: flex !important;
@@ -1571,7 +1585,7 @@ html body .footer .footer-section .contact-item,
         width: 100% !important;
         max-width: 100% !important;
     }
-
+    
     .service-text {
         font-size: 14px !important;
         font-weight: 500 !important;
@@ -1579,7 +1593,7 @@ html body .footer .footer-section .contact-item,
         flex: 1 !important;
         text-align: left !important;
     }
-
+    
     /* Дополнительная защита от сжатия */
     .additional-service {
         width: 100% !important;
@@ -1587,22 +1601,22 @@ html body .footer .footer-section .contact-item,
         padding: 0 !important;
         margin: 0 0 25px 0 !important;
     }
-
+    
     .additional-service .service-item {
         width: 100% !important;
         max-width: 100% !important;
         box-sizing: border-box !important;
         margin-bottom: 0 !important;
     }
-
+    
     /* ===== ДОПОЛНИТЕЛЬНЫЕ КОМФОРТНЫЕ ОТСТУПЫ ===== */
-
+    
     /* УБИРАЕМ ВСЕ ПРИНУДИТЕЛЬНЫЕ ОТСТУПЫ */
-
+    
     /* ========================================
        БЛОК "НАШИ ПРОЕКТЫ" - МОБИЛЬНАЯ ВЕРСИЯ
     ======================================== */
-
+    
     .projects-section {
         padding: 0 0 30px 0 !important;
     }
@@ -1616,43 +1630,43 @@ html body .footer .footer-section .contact-item,
         flex-direction: column !important;
         align-items: center !important;
     }
-
+    
     .projects-intro {
         margin: 6px 7.5px 17.5px 7.5px !important;
         padding: 0 !important;
     }
-
+    
     .projects-section .section-header {
         margin-bottom: 0 !important;
         margin-top: -20px !important;
     }
-
+    
     .projects-section .container .section-header {
         margin-bottom: 0 !important;
         margin-top: -20px !important;
     }
-
+    
     .projects-section .section-header .section-title {
         margin-bottom: 0 !important;
         margin-top: 0 !important;
     }
-
+    
     .projects-intro {
         margin-top: 4px !important;
     }
-
+    
     .projects-section .projects-intro {
         margin-top: 4px !important;
         margin-bottom: 17.5px !important;
     }
-
+    
     .projects-intro p {
         font-size: 16px !important;
         padding: 10px 12.5px !important;
         line-height: 1.5 !important;
         margin: 0 !important;
     }
-
+    
     /* Галерея проектов */
     .projects-gallery {
         display: flex !important;
@@ -1664,7 +1678,7 @@ html body .footer .footer-section .contact-item,
         margin: 0 auto !important;
         overflow: visible !important;
     }
-
+    
     /* Главное окно */
     .projects-main-window {
         order: 1 !important;
@@ -1674,7 +1688,7 @@ html body .footer .footer-section .contact-item,
         margin: 0 auto !important;
         overflow: visible !important;
     }
-
+    
     /* Боковые окна */
     .projects-side-windows {
         flex-direction: row !important;
@@ -1686,7 +1700,7 @@ html body .footer .footer-section .contact-item,
         overflow: visible !important;
         justify-content: space-between !important;
     }
-
+    
     /* КРИТИЧЕСКИЕ ИСПРАВЛЕНИЯ ДЛЯ СКРИНШОТОВ - ПЕРЕКРЫВАЕМ ВСЕ СТИЛИ */
     .projects-section .side-window,
     .projects-gallery .side-window,
@@ -1700,14 +1714,14 @@ html body .footer .footer-section .contact-item,
         height: auto !important;
         position: relative !important;
     }
-
+    
     /* Боковые окна внутри projects-side-windows - по 50% ширины */
     .projects-side-windows .side-window {
         width: calc(50% - 3.75px) !important;
         max-width: calc(50% - 3.75px) !important;
         flex: 0 0 calc(50% - 3.75px) !important;
     }
-
+    
     .projects-section .side-window img,
     .projects-gallery .side-window img,
     .projects-side-windows .side-window img,
@@ -1719,11 +1733,11 @@ html body .footer .footer-section .contact-item,
         display: block !important;
         position: relative !important;
     }
-
+    
     .side-window:hover {
         transform: translateY(-3px) scale(1.02) !important;
     }
-
+    
     .projects-section .main-window-content,
     .projects-gallery .main-window-content,
     .projects-main-window .main-window-content,
@@ -1739,7 +1753,7 @@ html body .footer .footer-section .contact-item,
         height: auto !important;
         position: relative !important;
     }
-
+    
     .projects-section .main-window-content img,
     .projects-gallery .main-window-content img,
     .projects-main-window .main-window-content img,
@@ -1751,11 +1765,11 @@ html body .footer .footer-section .contact-item,
         display: block !important;
         position: relative !important;
     }
-
+    
     .main-window-content:hover {
         transform: translateY(-3px) !important;
     }
-
+    
     .main-window-link {
         padding: 14px 30px !important;
         font-size: 16px !important;
@@ -1763,7 +1777,7 @@ html body .footer .footer-section .contact-item,
         max-width: 300px !important;
         margin: 0 auto !important;
     }
-
+    
     /* Обёртка для плашки и иконок */
     .projects-social-wrapper {
         margin: 15px auto 0 auto !important;
@@ -1774,7 +1788,7 @@ html body .footer .footer-section .contact-item,
         width: 100% !important;
         max-width: 560px !important;
     }
-
+    
     /* Плашка с соцсетями (только текст) */
     .projects-social-banner {
         padding: 7.5px 10px !important;
@@ -1786,14 +1800,14 @@ html body .footer .footer-section .contact-item,
         justify-content: center !important;
         align-self: center !important;
     }
-
+    
     .social-banner-text {
         font-size: 13px !important;
         margin: 0 !important;
         white-space: normal !important;
         text-align: center !important;
     }
-
+    
     .social-icons-inline {
         gap: 6px !important;
         justify-content: center !important;
@@ -1803,50 +1817,50 @@ html body .footer .footer-section .contact-item,
         max-width: 520px !important;
         margin: 0 auto !important;
     }
-
+    
     .social-icon-small {
         width: 55px !important;
         height: 55px !important;
         font-size: 26px !important;
         border-radius: 15px !important;
     }
-
+    
     .social-icon-small:hover {
         transform: translateY(-3px) scale(1.05) !important;
     }
-
+    
     .projects-section .social-icon-small,
     .projects-social-under .social-icon-small {
         width: 55px !important;
         height: 55px !important;
         font-size: 26px !important;
     }
-
+    
     .projects-section .social-icon-small i,
     .projects-social-under .social-icon-small i {
         font-size: 26px !important;
     }
-
+    
     .projects-section .social-icon-small.telegram-icon i,
     .projects-social-under .social-icon-small.telegram-icon i {
         font-size: 26px !important;
     }
-
+    
     .projects-section .social-icon-small.vk-icon i,
     .projects-social-under .social-icon-small.vk-icon i {
         font-size: 26px !important;
     }
-
+    
     .projects-section .social-icon-small.youtube-icon i,
     .projects-social-under .social-icon-small.youtube-icon i {
         font-size: 28px !important;
     }
-
+    
     /* Иконки соц сетей под скриншотами */
     .projects-social-under {
         margin-bottom: 8px !important;
     }
-
+    
     /* Текст о продукции */
     .projects-marketplace-text {
         margin: 8px auto 12.5px auto !important;
@@ -1857,14 +1871,14 @@ html body .footer .footer-section .contact-item,
         align-items: center !important;
         align-self: center !important;
     }
-
+    
     .projects-marketplace-text p {
         font-size: 16px !important;
         line-height: 1.6 !important;
         text-align: center !important;
         margin: 0 !important;
     }
-
+    
     /* Большие иконки маркетплейсов */
     .projects-marketplace-icons {
         flex-direction: row !important;
@@ -1875,22 +1889,22 @@ html body .footer .footer-section .contact-item,
         align-items: center !important;
         justify-content: center !important;
     }
-
+    
     .marketplace-icon-large {
         width: 61px !important;
         height: 61px !important;
         border-radius: 13px !important;
         border-width: 2px !important;
     }
-
+    
     .marketplace-icon-large:hover {
         transform: translateY(-8px) scale(1.04) !important;
     }
-
+    
     .marketplace-icon-large i {
         font-size: 31px !important;
     }
-
+    
     .marketplace-icon-large span {
         font-size: 14px !important;
     }
@@ -2005,7 +2019,7 @@ html body .footer .footer-section .contact-item,
         gap: 18px !important;
         margin-bottom: 30px !important;
     }
-
+    
     body .workflow-section .workflow-step-new .step-content-new,
     html body .workflow-section .workflow-step-new .step-content-new,
     section.workflow-section .workflow-step-new .step-content-new,
@@ -2013,7 +2027,7 @@ html body .footer .footer-section .contact-item,
         margin-top: 14px !important;
         padding: 0 !important;
     }
-
+    
     body .workflow-section .workflow-step-new .step-content-new h3,
     html body .workflow-section .workflow-step-new .step-content-new h3,
     section.workflow-section .workflow-step-new .step-content-new h3,
@@ -2021,13 +2035,13 @@ html body .footer .footer-section .contact-item,
     .workflow-step-new .step-content-new h3 {
         margin-bottom: 10px !important;
     }
-
+    
     body .workflow-section,
     html body .workflow-section,
     section.workflow-section {
         padding: 25px 10px !important;
     }
-
+    
     /* Исправление наложения иконки на текст в статистике */
     .workflow-section .stat-icon,
     .stats-grid .stat-icon,
@@ -2035,14 +2049,14 @@ html body .footer .footer-section .contact-item,
         margin-bottom: 20px !important;
         margin-top: 0 !important;
     }
-
+    
     .workflow-section .stat-number,
     .stats-grid .stat-number,
     .stat-item .stat-number {
         margin-top: 0 !important;
         margin-bottom: 12px !important;
     }
-
+    
     .workflow-section .stat-item,
     .stats-grid .stat-item {
         padding-top: 30px !important;

@@ -600,6 +600,47 @@
         align-items: center !important;
         justify-content: center !important;
     }
+    
+    /* КРИТИЧЕСКИ ВАЖНО: Иконки соц сетей ВСЕГДА ВИДИМЫ на мобильных */
+    .image-section .social-links,
+    .hero-section .social-links,
+    .hero-content-card .social-links,
+    html body .image-section .social-links,
+    html body .hero-section .social-links,
+    body .image-section .social-links,
+    body .hero-section .social-links {
+        display: flex !important;
+        visibility: visible !important;
+        opacity: 1 !important;
+        position: static !important;
+        left: auto !important;
+        right: auto !important;
+        top: auto !important;
+        margin-top: 20px !important;
+        margin-bottom: 20px !important;
+        width: 100% !important;
+        justify-content: flex-start !important;
+        align-items: center !important;
+        gap: 12px !important;
+        flex-wrap: wrap !important;
+        clear: both !important;
+    }
+    
+    /* Кнопки соц сетей всегда видны */
+    .image-section .social-links .social-btn,
+    .image-section .social-links a,
+    .hero-section .social-links .social-btn,
+    .hero-section .social-links a,
+    html body .image-section .social-links .social-btn,
+    html body .image-section .social-links a,
+    html body .hero-section .social-links .social-btn,
+    html body .hero-section .social-links a {
+        display: flex !important;
+        visibility: visible !important;
+        opacity: 1 !important;
+        width: 48px !important;
+        height: 48px !important;
+    }
 
     .image-section .integrated-printer-block,
     .integrated-printer-block {
@@ -631,15 +672,43 @@
         }
     }
     
-    /* Социальные ссылки */
-    .social-links {
+    /* Социальные ссылки - КРИТИЧЕСКИ ВАЖНО: ВСЕГДА ВИДИМЫ */
+    .social-links,
+    .hero-section .social-links,
+    .hero-content-card .social-links,
+    .image-section .social-links,
+    .text-section .social-links,
+    html body .hero-section .social-links,
+    body .hero-section .social-links,
+    html body .image-section .social-links,
+    body .image-section .social-links {
         display: flex !important;
+        visibility: visible !important;
+        opacity: 1 !important;
         justify-content: flex-start !important;
         align-items: center !important;
         gap: 12px !important;
         margin-bottom: 20px !important;
+        margin-top: 20px !important;
         width: 100% !important;
         flex-wrap: wrap !important;
+        position: static !important;
+        left: auto !important;
+        right: auto !important;
+        top: auto !important;
+        clear: both !important;
+    }
+    
+    /* Убеждаемся, что кнопки соц сетей всегда видны */
+    .social-links .social-btn,
+    .social-links a,
+    .image-section .social-links .social-btn,
+    .image-section .social-links a,
+    .hero-section .social-links .social-btn,
+    .hero-section .social-links a {
+        display: flex !important;
+        visibility: visible !important;
+        opacity: 1 !important;
     }
     
     /* Прозрачные иконки hero-блока */

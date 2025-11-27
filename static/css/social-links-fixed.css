@@ -75,14 +75,24 @@ html body .social-btn {
         justify-content: center !important;
         width: 100% !important;
         max-width: 100% !important;
+        display: flex !important;
+        visibility: visible !important;
+        opacity: 1 !important;
     }
     
     /* СБРОС ПРИНУДИТЕЛЬНЫХ ПРАВИЛ ДЛЯ КНОПОК НА МОБИЛЬНЫХ */
     html body .social-links .social-btn,
-    html body .social-btn {
+    html body .social-btn,
+    html body .image-section .social-links .social-btn,
+    html body .image-section .social-links a,
+    html body .hero-section .social-links .social-btn,
+    html body .hero-section .social-links a {
         width: 48px !important;
         height: 48px !important;
         margin: 0 8px !important;
+        display: flex !important;
+        visibility: visible !important;
+        opacity: 1 !important;
     }
     
     /* СБРОС ЭКСТРЕННЫХ ПРАВИЛ НА МОБИЛЬНЫХ */
@@ -91,6 +101,9 @@ html body .social-btn {
         position: static !important;
         margin-left: auto !important;
         margin-right: auto !important;
+        display: flex !important;
+        visibility: visible !important;
+        opacity: 1 !important;
     }
 }
 

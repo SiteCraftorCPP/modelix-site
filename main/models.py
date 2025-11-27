@@ -29,7 +29,7 @@ class PrintOrder(models.Model):
     
     def __str__(self):
         return f'Заявка от {self.name} - {self.created_at.strftime("%d.%m.%Y %H:%M")}'
-    
+
     def get_all_files(self):
         """Возвращает все файлы заявки (из OrderFile)"""
         return self.files.all()

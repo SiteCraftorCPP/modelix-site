@@ -134,3 +134,4 @@ def send_order_to_telegram(order_id, chat_id, bot):
 tail -f /path/to/logs/django.log | grep "Order created"
 ```
 
+

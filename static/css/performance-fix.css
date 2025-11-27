@@ -80,7 +80,7 @@ nav.navigation {
     .hero-section .integrated-printer-block:hover,
     .image-section .integrated-printer-block:hover {
         transform: translate(-50%, -50%) !important;
-        box-shadow: 0 20px 40px rgba(25, 25, 112, 0.4) !important;
+    box-shadow: 0 20px 40px rgba(25, 25, 112, 0.4) !important;
         scale: 1 !important;
     }
     

@@ -1436,27 +1436,30 @@
             if (nameInput && phoneInput) {
                 var isTypingInName = false;
                 var nameInputTimeout = null;
-                var phoneInputBlurTimeout = null;
                 
                 // Убираем autofocus, чтобы избежать проблем на iOS
                 nameInput.removeAttribute('autofocus');
                 
-                // При фокусе на поле имени разблокируем его и блокируем поле телефона
-                nameInput.addEventListener('focus', function() {
-                    isTypingInName = true;
+                // Функция для разблокировки поля телефона
+                function unlockPhoneInput() {
+                    phoneInput.removeAttribute('tabindex');
+                    phoneInput.style.pointerEvents = 'auto';
+                    isTypingInName = false;
+                }
+                
+                // Функция для блокировки поля телефона
+                function lockPhoneInput() {
                     phoneInput.setAttribute('tabindex', '-1');
                     phoneInput.style.pointerEvents = 'none';
-                    clearTimeout(nameInputTimeout);
-                });
+                    isTypingInName = true;
+                }
                 
                 // Отслеживаем активный ввод в поле имени
                 nameInput.addEventListener('input', function() {
-                    isTypingInName = true;
                     clearTimeout(nameInputTimeout);
                     
                     // Блокируем поле телефона во время ввода
-                    phoneInput.setAttribute('tabindex', '-1');
-                    phoneInput.style.pointerEvents = 'none';
+                    lockPhoneInput();
                     
                     // Если фокус случайно переключился на поле телефона, возвращаем его
                     setTimeout(function() {
@@ -1471,26 +1474,19 @@
                         }
                     }, 0);
                     
-                    // Сбрасываем флаг через задержку после окончания ввода
+                    // Разблокируем поле телефона через задержку после окончания ввода
                     nameInputTimeout = setTimeout(function() {
-                        isTypingInName = false;
-                        // Разблокируем поле телефона только если пользователь не вводит текст
-                        if (!isTypingInName && document.activeElement !== nameInput) {
-                            phoneInput.removeAttribute('tabindex');
-                            phoneInput.style.pointerEvents = 'auto';
-                        }
-                    }, 1500);
+                        unlockPhoneInput();
+                    }, 800);
                 });
                 
-                // При потере фокуса поля имени разблокируем поле телефона
+                // При потере фокуса поля имени сразу разблокируем поле телефона
                 nameInput.addEventListener('blur', function() {
-                    clearTimeout(phoneInputBlurTimeout);
-                    phoneInputBlurTimeout = setTimeout(function() {
-                        if (!isTypingInName) {
-                            phoneInput.removeAttribute('tabindex');
-                            phoneInput.style.pointerEvents = 'auto';
-                        }
-                    }, 300);
+                    clearTimeout(nameInputTimeout);
+                    // Небольшая задержка, чтобы не конфликтовать с возможным переключением фокуса
+                    setTimeout(function() {
+                        unlockPhoneInput();
+                    }, 100);
                 });
                 
                 // Используем focusin для перехвата попыток фокуса на поле телефона (работает на iOS)
@@ -1528,16 +1524,6 @@
                                 }
                             }
                         }, 0);
-                    }
-                }, true);
-                
-                // При клике на поле телефона проверяем, можно ли его активировать
-                phoneInput.addEventListener('click', function(e) {
-                    if (isTypingInName) {
-                        e.preventDefault();
-                        e.stopPropagation();
-                        nameInput.focus();
-                        return false;
                     }
                 }, true);
             }
@@ -2209,7 +2195,7 @@
         });
     </script>
     
-    <script src="/static/js/main.js?v=3.7"></script>
+    <script src="/static/js/main.js?v=3.8"></script>
     <script src="/static/js/hero-responsive.js?v=1.2"></script>
     
 </body>

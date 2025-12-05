@@ -65,7 +65,7 @@
         background: linear-gradient(135deg, #1a1a1a 0%, #1a1a24 50%, #1a1a1a 100%) !important;
         /* Очень мягкий градиент, близкий к фону сайта */
         background-image: none !important;
-        padding: 15px 10px !important;
+        padding: 10px 10px !important; /* УВЕЛИЧЕНО вертикальный padding для размещения 3-го ряда */
         border-bottom: none !important;
         backdrop-filter: none !important;
         margin: 0 !important;
@@ -75,11 +75,16 @@
         left: 0 !important;
         right: 0 !important;
         width: 100% !important;
+        max-width: 100% !important; /* Ограничиваем ширину */
         z-index: 1 !important;
         transform: none !important;
         opacity: 1 !important;
-        min-height: auto !important;
-        overflow: visible !important;
+        min-height: auto !important; /* Убираем ограничение высоты */
+        max-height: none !important; /* УБИРАЕМ ограничение max-height для расширения по высоте */
+        height: auto !important; /* Автоматическая высота */
+        overflow-x: hidden !important; /* Предотвращаем горизонтальный выход */
+        overflow-y: visible !important; /* Разрешаем вертикальное расширение */
+        box-sizing: border-box !important; /* Правильный расчет размеров */
     }
     
     .navigation .nav-container,
@@ -89,6 +94,7 @@
         justify-content: center !important;
         align-items: center !important;
         width: 100% !important;
+        max-width: 100% !important; /* Ограничиваем ширину */
         padding: 0 !important;
         background: transparent !important;
         background-image: none !important;
@@ -97,7 +103,12 @@
         box-shadow: none !important;
         position: relative !important;
         z-index: 2 !important;
-        overflow: visible !important;
+        min-height: auto !important; /* Убираем ограничение высоты */
+        max-height: none !important; /* УБИРАЕМ ограничение max-height для расширения по высоте */
+        height: auto !important; /* Автоматическая высота */
+        overflow-x: hidden !important; /* Предотвращаем горизонтальный выход */
+        overflow-y: visible !important; /* Разрешаем вертикальное расширение */
+        box-sizing: border-box !important; /* Правильный расчет размеров */
     }
     
     .nav-menu {
@@ -110,9 +121,15 @@
         padding: 0 !important;
         list-style: none !important;
         width: 100% !important;
+        max-width: 100% !important; /* Ограничиваем ширину контейнера */
         position: relative !important;
         z-index: 3 !important;
-        overflow: visible !important;
+        min-height: auto !important; /* Убираем ограничение высоты */
+        max-height: none !important; /* УБИРАЕМ ограничение max-height для расширения по высоте */
+        height: auto !important; /* Автоматическая высота */
+        overflow-x: hidden !important; /* Предотвращаем горизонтальный выход */
+        overflow-y: visible !important; /* Разрешаем вертикальное расширение */
+        box-sizing: border-box !important; /* Правильный расчет размеров */
     }
     
     .nav-menu li {

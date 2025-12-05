@@ -8409,9 +8409,15 @@ a.call-btn:active {
 
     /* Простая мобильная навигация */
     .navigation {
-        padding: 2px 20px;
+        padding: 10px 10px !important; /* УВЕЛИЧЕНО вертикальный padding для размещения 3-го ряда */
         background: linear-gradient(135deg, #1a1a1a 0%, #1a1a24 50%, #1a1a1a 100%) !important;
         /* Темный градиент */
+        min-height: auto !important; /* Убираем ограничение высоты */
+        max-height: none !important; /* УБИРАЕМ ограничение max-height для расширения по высоте */
+        height: auto !important; /* Автоматическая высота */
+        overflow-x: hidden !important; /* Предотвращаем горизонтальный выход */
+        overflow-y: visible !important; /* Разрешаем вертикальное расширение */
+        box-sizing: border-box !important; /* Правильный расчет размеров */
     }
 
     .nav-container {
@@ -8419,10 +8425,17 @@ a.call-btn:active {
         justify-content: center;
         align-items: center;
         width: 100%;
+        padding: 0 !important; /* ЯВНО убираем padding для nav-container */
+        margin: 0 !important;
+        box-sizing: border-box !important;
         transition: all 0.3s ease;
-        max-height: 100px;
+        min-height: auto !important; /* Убираем ограничение высоты */
+        max-height: none !important; /* УБИРАЕМ ограничение max-height для расширения по высоте */
+        height: auto !important; /* Автоматическая высота */
         opacity: 1;
         transform: translateY(0);
+        overflow-x: hidden !important; /* Предотвращаем горизонтальный выход */
+        overflow-y: visible !important; /* Разрешаем вертикальное расширение */
     }
 
     .mobile-menu-btn {
@@ -8432,18 +8445,24 @@ a.call-btn:active {
     .nav-menu {
         display: flex;
         flex-direction: row;
-        justify-content: flex-start;
+        justify-content: center; /* Центрируем кнопки */
         align-items: center;
         width: 100%;
+        max-width: 100% !important; /* Ограничиваем ширину контейнера */
         gap: 8px !important; /* Уменьшенное расстояние, когда фото скрыто */
-        flex-wrap: wrap;
+        flex-wrap: wrap; /* Разрешаем перенос на новую строку */
         padding: 0;
         margin: 0;
         list-style: none;
         transition: all 0.3s ease;
-        max-height: 100px;
+        min-height: auto !important; /* Убираем ограничение высоты */
+        max-height: none !important; /* УБИРАЕМ ограничение max-height для расширения по высоте */
+        height: auto !important; /* Автоматическая высота */
         opacity: 1;
         transform: translateY(0);
+        box-sizing: border-box !important; /* Правильный расчет размеров */
+        overflow-x: hidden !important; /* Предотвращаем горизонтальный выход */
+        overflow-y: visible !important; /* Разрешаем вертикальное расширение */
     }
 
     .nav-menu li {
@@ -8482,7 +8501,7 @@ a.call-btn:active {
         background: linear-gradient(135deg, #90ee90, #98fb98) !important;
         border: 2px solid #90ee90 !important;
         color: #333 !important;
-        padding: 6px 28px !important;
+        padding: 6px 12px !important; /* УМЕНЬШЕНО с 28px до 12px для экономии места */
         border-radius: 12px !important;
         font-weight: 600 !important;
         transition: all 0.3s ease !important;
@@ -8492,6 +8511,7 @@ a.call-btn:active {
         overflow: hidden !important;
         text-transform: uppercase !important;
         letter-spacing: 0.5px !important;
+        box-sizing: border-box !important; /* Добавлено для правильного расчета ширины */
     }
 
 

@@ -5434,13 +5434,13 @@ html body .footer .footer-social .social-icons-row a.social-link:hover,
 .footer-section .contact-item a.policy-footer-link {
     font-size: 16px !important;
     font-weight: 700 !important;
-    color: #334155 !important;
-    text-decoration: underline;
-    text-underline-offset: 4px;
+    color: inherit !important;
+    text-decoration: none !important;
 }
 
 .footer-section .contact-item a.policy-footer-link:hover {
-    color: #191970 !important;
+    color: inherit !important;
+    opacity: 0.88;
 }
 
 /* Страница политики: без отступа под фикс. меню главной (styles.css даёт body padding-top: 80px) */

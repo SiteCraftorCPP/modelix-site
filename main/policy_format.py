@@ -139,16 +139,24 @@ def policy_text_to_html(raw: str) -> SafeString:
     header_chunks: list[str] = []
     while i < len(lines) and not MAJOR_SECTION.match(lines[i]):
         ln = lines[i]
-        if ln == "УТВЕРЖДАЮ":
-            header_chunks.append(
-                '<p class="policy-doc-approve"><strong>УТВЕРЖДАЮ</strong></p>'
-            )
-        elif ln.startswith("ИП "):
+        if ln.startswith("ИП "):
             header_chunks.append(
                 f'<p class="policy-doc-ip"><strong>{escape(ln)}</strong></p>'
             )
         elif "Настоящую Политику" in ln:
+            if i + 1 < len(lines) and lines[i + 1] == "УТВЕРЖДАЮ":
+                merged = f"{ln} УТВЕРЖДАЮ"
+                header_chunks.append(
+                    '<p class="policy-doc-lead-approve"><strong>'
+                    f"{escape(merged)}</strong></p>"
+                )
+                i += 2
+                continue
             header_chunks.append(f'<p class="policy-doc-lead">{escape(ln)}</p>')
+        elif ln == "УТВЕРЖДАЮ":
+            header_chunks.append(
+                '<p class="policy-doc-approve"><strong>УТВЕРЖДАЮ</strong></p>'
+            )
         else:
             header_chunks.append(f'<p class="policy-doc-meta">{escape(ln)}</p>')
         i += 1

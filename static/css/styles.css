@@ -5048,13 +5048,13 @@ section.workflow-section .stats-grid,
 
 .footer {
     background: white;
-    color: #f8fafc;
+    color: #334155;
     padding: 60px 0 30px;
     border-top: 1px solid var(--gray-200);
 }
 
 .footer h3 {
-    color: #f8fafc;
+    color: #334155;
     margin-bottom: 20px;
     font-size: 18px;
     font-weight: 600;
@@ -5091,7 +5091,7 @@ section.workflow-section .stats-grid,
     display: flex !important;
     align-items: center !important;
     gap: 8px !important;
-    color: #f8fafc !important;
+    color: #334155 !important;
     margin-bottom: 4px !important;
     padding: 1px 0 !important;
 }
@@ -5119,7 +5119,7 @@ section.workflow-section .stats-grid,
     margin-bottom: 15px;
     font-size: 18px;
     font-weight: 600;
-    color: #f8fafc;
+    color: #334155;
     text-align: center;
 }
 
@@ -5434,13 +5434,13 @@ html body .footer .footer-social .social-icons-row a.social-link:hover,
 .footer-section .contact-item a.policy-footer-link {
     font-size: 16px !important;
     font-weight: 700 !important;
-    color: inherit !important;
+    color: #334155 !important;
     text-decoration: none !important;
 }
 
 .footer-section .contact-item a.policy-footer-link:hover {
-    color: inherit !important;
-    opacity: 0.88;
+    color: #191970 !important;
+    opacity: 1;
 }
 
 /* Страница политики: без отступа под фикс. меню главной (styles.css даёт body padding-top: 80px) */

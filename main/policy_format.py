@@ -1,4 +1,8 @@
-"""Преобразование утверждённого текста политики в семантический HTML (структура как в PDF)."""
+"""Преобразование текста политики (.txt) в HTML.
+
+Строки вида «-- 1 of 12 --» (метки страниц при экспорте из PDF) выкидываются.
+Пункты, начинающиеся с «- », верстаются абзацами с тем же дефисом, без маркеров <ul>.
+"""
 from __future__ import annotations
 
 import re
@@ -14,15 +18,9 @@ _TITLE_JOIN = "\u241e"
 
 
 def _normalize(raw: str) -> list[str]:
-    raw = raw.replace(
-        "информационнотелекоммуникационной",
-        "информационно-телекоммуникационной",
-    )
-    raw = raw.replace(
-        "информационно-\nтелекоммуникационной",
-        "информационно-телекоммуникационной",
-    )
+    # Только типичные склейки из PDF, без правки юридической формулировки из файла.
     raw = raw.replace("IP-\nадрес", "IP-адрес")
+    raw = raw.replace("IPадрес", "IP-адрес")
     lines: list[str] = []
     for ln in raw.splitlines():
         s = ln.strip()
@@ -33,6 +31,18 @@ def _normalize(raw: str) -> list[str]:
 
 
 def _starts_new_structural(line: str) -> bool:
+    s = line.strip()
+    # Шапка документа — каждая строка отдельно (иначе склеивается в один абзац).
+    if s.startswith("ИП "):
+        return True
+    if s.startswith("Настоящую Политику"):
+        return True
+    if s == "УТВЕРЖДАЮ":
+        return True
+    if s.startswith("г.") and "Петербург" in s:
+        return True
+    if re.match(r'^"\d+"\s+апреля', s):
+        return True
     if SUB_CLAUSE.match(line):
         return True
     if MAJOR_SECTION.match(line):
@@ -160,12 +170,15 @@ def policy_text_to_html(raw: str) -> SafeString:
             continue
 
         if ln.startswith("- "):
-            items: list[str] = []
+            paras: list[str] = []
             while i < len(lines) and lines[i].startswith("- "):
-                items.append(lines[i][2:])
+                paras.append(
+                    f'<p class="policy-dash">{escape(lines[i][2:])}</p>'
+                )
                 i += 1
-            lis = "".join(f"<li>{escape(it)}</li>" for it in items)
-            html.append(f'<ul class="policy-ul">{lis}</ul>')
+            html.append(
+                '<div class="policy-dash-block">' + "".join(paras) + "</div>"
+            )
             continue
 
         msub = SUB_CLAUSE.match(ln)

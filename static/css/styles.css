@@ -5434,8 +5434,9 @@ html body .footer .footer-social .social-icons-row a.social-link:hover,
 .footer-section .contact-item a.policy-footer-link {
     font-size: 16px !important;
     font-weight: 700 !important;
-    color: #334155 !important;
+    color: #000000 !important;
     text-decoration: none !important;
+    white-space: nowrap !important;
 }
 
 .footer-section .contact-item a.policy-footer-link:hover {

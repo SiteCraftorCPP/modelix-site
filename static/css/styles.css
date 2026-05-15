@@ -1263,91 +1263,6 @@ body {
     align-items: center;
 }
 
-.nav-main-row {
-    display: flex;
-    align-items: center;
-    justify-content: flex-end;
-    width: 100%;
-    gap: 16px;
-}
-
-.nav-container.nav-container-stack {
-    flex-direction: column !important;
-    align-items: stretch !important;
-    justify-content: flex-start !important;
-    gap: 2px;
-}
-
-.nav-meta-bar {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-wrap: wrap;
-    gap: clamp(18px, 6vw, 88px);
-    padding: 4px 8px 10px;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.14);
-    width: 100%;
-}
-
-.nav-meta-address {
-    display: inline-flex;
-    align-items: center;
-    gap: 8px;
-    color: rgba(248, 250, 252, 0.94);
-    font-size: 13px;
-    font-weight: 500;
-    letter-spacing: 0.02em;
-}
-
-.nav-meta-address i {
-    color: #7dd3fc;
-}
-
-.nav-meta-policy {
-    display: inline-flex;
-    align-items: center;
-    text-align: center;
-    max-width: min(420px, 92vw);
-    color: #e0f2fe !important;
-    font-size: 13px;
-    font-weight: 500;
-    line-height: 1.35;
-    text-decoration: underline !important;
-    text-underline-offset: 3px;
-    padding: 6px 10px !important;
-    border-radius: 8px;
-    background: transparent !important;
-    border: none !important;
-    box-shadow: none !important;
-    transition: background 0.2s ease, color 0.2s ease;
-}
-
-.nav-meta-policy:hover {
-    color: #fff !important;
-    background: rgba(255, 255, 255, 0.1) !important;
-}
-
-.mobile-meta-address i {
-    color: #191970;
-}
-
-.mobile-policy-link {
-    display: block;
-    margin-top: 14px;
-    padding-top: 12px;
-    border-top: 1px solid rgba(25, 25, 112, 0.15);
-    color: #191970;
-    font-size: 14px;
-    font-weight: 600;
-    text-decoration: underline;
-    text-align: center;
-    line-height: 1.35;
-}
-
-.mobile-policy-link:hover {
-    color: #0f172a;
-}
-
 /* УДАЛЕНЫ ДУБЛИРОВАННЫЕ СТИЛИ */
 
 .contact-link {
@@ -5511,9 +5426,56 @@ html body .footer .footer-social .social-icons-row a.social-link:hover,
     opacity: 1 !important;
 }
 
+.footer-extra-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px 32px;
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 28px 24px 12px;
+    align-items: center;
+    justify-items: center;
+    border-top: 1px solid var(--gray-200);
+}
+
+.footer-extra-col {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    text-align: center;
+    font-size: 15px;
+    font-weight: 700;
+    color: #334155 !important;
+}
+
+.footer-extra-address i {
+    color: #191970;
+    font-size: 18px;
+}
+
+.footer-extra-policy a {
+    color: #191970 !important;
+    font-weight: 700;
+    text-decoration: underline;
+    text-underline-offset: 4px;
+}
+
+.footer-extra-policy a:hover {
+    color: #0f172a !important;
+}
+
+@media (max-width: 640px) {
+    .footer-extra-row {
+        grid-template-columns: 1fr;
+        gap: 14px;
+        padding-top: 22px;
+    }
+}
+
 .footer-bottom {
     text-align: center;
-    padding-top: 40px;
+    padding-top: 24px;
     border-top: 1px solid var(--gray-200);
     color: #475569 !important;
 }

@@ -8,58 +8,111 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer">
     <link rel="stylesheet" href="/static/css/styles.css?v=232.0">
     <style>
-        .policy-page-wrap {
+        html { scroll-behavior: smooth; }
+        body.policy-body {
+            margin: 0;
             min-height: 100vh;
-            padding: 100px 20px 48px;
-            background: linear-gradient(180deg, #f8fafc 0%, #e2e8f0 100%);
-            color: #0f172a;
+            background: linear-gradient(135deg, #0f172a 0%, #1e293b 40%, #0f172a 100%);
+            color: #e2e8f0;
         }
-        .policy-inner {
-            max-width: 920px;
+        .policy-nav {
+            position: sticky;
+            top: 0;
+            z-index: 10000;
+            width: 100%;
+            background: linear-gradient(135deg, #1a1a1a 0%, #1a1a24 50%, #1a1a1a 100%);
+            box-shadow: 0 2px 14px rgba(0, 0, 0, 0.35);
+            border-bottom: 1px solid rgba(148, 163, 184, 0.2);
+        }
+        .policy-nav-inner {
+            max-width: 960px;
             margin: 0 auto;
-            background: #fff;
-            border-radius: 12px;
-            box-shadow: 0 10px 40px rgba(15, 23, 42, 0.08);
-            padding: 32px 28px 40px;
+            padding: 10px 20px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 16px;
         }
         .policy-back {
             display: inline-flex;
             align-items: center;
-            gap: 8px;
-            margin-bottom: 24px;
-            color: #191970;
+            gap: 10px;
+            color: #e2e8f0 !important;
             font-weight: 600;
+            font-size: 14px;
             text-decoration: none;
+            padding: 8px 14px;
+            border-radius: 8px;
+            border: 1px solid rgba(148, 163, 184, 0.35);
+            background: rgba(15, 23, 42, 0.35);
+            transition: background 0.2s ease, border-color 0.2s ease;
+            flex-shrink: 0;
         }
-        .policy-back:hover { text-decoration: underline; }
-        .policy-inner h1 {
-            font-size: 1.35rem;
-            margin: 0 0 20px;
-            color: #0f172a;
+        .policy-back:hover {
+            background: rgba(56, 189, 248, 0.12);
+            border-color: rgba(125, 211, 252, 0.45);
+            color: #fff !important;
+        }
+        .policy-brand {
+            font-weight: 700;
+            font-size: 1.15rem;
+            letter-spacing: 0.06em;
+            color: #f8fafc;
+            text-align: right;
+            flex: 1;
+        }
+        .policy-main {
+            max-width: 960px;
+            margin: 0 auto;
+            padding: 18px 16px 56px;
+            box-sizing: border-box;
+        }
+        .policy-panel {
+            background: rgba(15, 23, 42, 0.72);
+            border: 1px solid rgba(148, 163, 184, 0.28);
+            border-radius: 14px;
+            padding: 26px 22px 36px;
+            box-shadow: 0 12px 40px rgba(2, 6, 23, 0.55);
+        }
+        .policy-panel h1 {
+            margin: 0 0 22px;
+            font-size: clamp(1.05rem, 2.8vw, 1.35rem);
+            font-weight: 700;
             line-height: 1.35;
+            color: #f8fafc;
+            text-align: center;
+            padding-bottom: 18px;
+            border-bottom: 1px solid rgba(148, 163, 184, 0.22);
         }
         .policy-document {
             white-space: pre-wrap;
             word-wrap: break-word;
             font-family: inherit;
-            font-size: 15px;
-            line-height: 1.55;
+            font-size: 14px;
+            line-height: 1.58;
             margin: 0;
-            color: #1e293b;
+            color: #cbd5e1;
+            text-align: left;
         }
-        @media (max-width: 640px) {
-            .policy-inner { padding: 22px 18px 32px; }
-            .policy-document { font-size: 14px; }
+        @media (min-width: 768px) {
+            .policy-main { padding: 22px 24px 64px; }
+            .policy-panel { padding: 32px 36px 44px; }
+            .policy-document { font-size: 15px; }
         }
     </style>
 </head>
-<body>
-<div class="policy-page-wrap">
-    <div class="policy-inner">
-        <a href="{% url 'index' %}" class="policy-back"><i class="fas fa-arrow-left" aria-hidden="true"></i> На главную</a>
-        <h1>Политика обработки персональных данных</h1>
-        <pre class="policy-document">{{ policy_text }}</pre>
-    </div>
-</div>
+<body class="policy-body">
+    <header class="policy-nav">
+        <div class="policy-nav-inner">
+            <a href="{% url 'index' %}" class="policy-back"><i class="fas fa-arrow-left" aria-hidden="true"></i> На главную</a>
+            <span class="policy-brand">Modelix</span>
+        </div>
+    </header>
+    <main class="policy-main">
+        <div class="policy-panel">
+            <h1>Политика обработки персональных данных</h1>
+            <pre class="policy-document">{{ policy_text }}</pre>
+        </div>
+    </main>
 </body>
 </html>

@@ -4517,6 +4517,15 @@ section.workflow-section .stats-grid,
     box-shadow: 0 20px 50px rgba(0, 91, 255, 0.4);
 }
 
+.marketplace-icon-large.wildberries {
+    border-color: rgba(203, 17, 171, 0.5);
+}
+
+.marketplace-icon-large.wildberries:hover {
+    border-color: #cb11ab;
+    box-shadow: 0 20px 50px rgba(203, 17, 171, 0.4);
+}
+
 .marketplace-icon-large i {
     font-size: 36px;
     position: relative;
@@ -4533,14 +4542,16 @@ section.workflow-section .stats-grid,
 }
 
 .marketplace-icon-large.ozon,
-.marketplace-icon-large.avito {
+.marketplace-icon-large.avito,
+.marketplace-icon-large.wildberries {
     background: rgba(15, 23, 42, 0.35);
     border: 1px solid rgba(148, 163, 184, 0.45);
     box-shadow: 0 8px 18px rgba(2, 6, 23, 0.35);
 }
 
 .marketplace-icon-large.ozon i,
-.marketplace-icon-large.avito i {
+.marketplace-icon-large.avito i,
+.marketplace-icon-large.wildberries i {
     color: #e2e8f0;
 }
 

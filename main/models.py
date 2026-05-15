@@ -64,6 +64,7 @@ class MarketplaceLink(models.Model):
         ('youtube', 'YouTube'),
         ('ozon', 'Озон'),
         ('avito', 'Авито'),
+        ('wildberries', 'Wildberries'),
     ]
     
     ICON_MAP = {
@@ -72,6 +73,7 @@ class MarketplaceLink(models.Model):
         'youtube': 'fab fa-youtube',
         'ozon': 'fas fa-shopping-bag',
         'avito': 'fas fa-shopping-cart',
+        'wildberries': 'fas fa-shopping-basket',
     }
     
     COLOR_MAP = {
@@ -80,6 +82,7 @@ class MarketplaceLink(models.Model):
         'youtube': '#ff0000',
         'ozon': '#005BFF',
         'avito': '#FF6C37',
+        'wildberries': '#cb11ab',
     }
     
     platform = models.CharField('Платформа', max_length=20, choices=PLATFORM_CHOICES, unique=True)

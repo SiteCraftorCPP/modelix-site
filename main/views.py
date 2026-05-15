@@ -156,7 +156,7 @@ def index(request):
     
     # Получаем ссылки для мини-иконок и маркетплейсов в блоке проектов
     phone_links = {}
-    phone_platforms = ['telegram', 'youtube', 'vk_group', 'avito', 'ozon']
+    phone_platforms = ['telegram', 'youtube', 'vk_group', 'avito', 'ozon', 'wildberries']
     for platform in phone_platforms:
         try:
             link = MarketplaceLink.objects.get(platform=platform, is_active=True)
@@ -174,6 +174,7 @@ def index(request):
                 'vk_group': {'url': '#', 'title': 'ВКонтакте', 'icon': 'fab fa-vk', 'color': '#4680c2'},
                 'avito': {'url': '#', 'title': 'Авито', 'icon': 'fas fa-store', 'color': '#FF6C37'},
                 'ozon': {'url': '#', 'title': 'Озон', 'icon': 'fas fa-shopping-bag', 'color': '#005BFF'},
+                'wildberries': {'url': '#', 'title': 'Wildberries', 'icon': 'fas fa-shopping-basket', 'color': '#cb11ab'},
             }
             phone_links[platform] = defaults.get(platform, {'url': '#', 'title': platform, 'icon': 'fas fa-link', 'color': '#191970'})
     

@@ -4,6 +4,7 @@ from django.shortcuts import render, redirect
 from django.http import JsonResponse
 from django.contrib import messages
 from .models import PrintOrder, CallRequest, Service, SocialLink, ContactInfo, FAQ, HeroImage, Stat, MarketplaceLink, WorksBlock, ProjectsBlock, OrderFile
+from .policy_format import policy_text_to_html
 import json
 
 _LEGAL_DIR = Path(__file__).resolve().parent / "legal_texts"
@@ -12,7 +13,12 @@ _LEGAL_DIR = Path(__file__).resolve().parent / "legal_texts"
 def privacy_policy(request):
     path = _LEGAL_DIR / "privacy_policy_ru.txt"
     policy_text = path.read_text(encoding="utf-8")
-    return render(request, "main/privacy_policy.html", {"policy_text": policy_text})
+    policy_html = policy_text_to_html(policy_text)
+    return render(
+        request,
+        "main/privacy_policy.html",
+        {"policy_html": policy_html},
+    )
 
 
 def index(request):

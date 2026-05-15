@@ -1,0 +1,188 @@
+"""Преобразование утверждённого текста политики в семантический HTML (структура как в PDF)."""
+from __future__ import annotations
+
+import re
+
+from django.utils.html import escape
+from django.utils.safestring import SafeString, mark_safe
+
+PAGE_MARKER = re.compile(r"^\s*--\s*\d+\s+of\s+\d+\s*--\s*$", re.I)
+SUB_CLAUSE = re.compile(r"^(?P<num>\d+(?:\.\d+)+\.)\s+(?P<body>.*)$")
+MAJOR_SECTION = re.compile(r"^[1-9]\.(?!\d)\s+.+$")
+
+_TITLE_JOIN = "\u241e"
+
+
+def _normalize(raw: str) -> list[str]:
+    raw = raw.replace(
+        "информационнотелекоммуникационной",
+        "информационно-телекоммуникационной",
+    )
+    raw = raw.replace(
+        "информационно-\nтелекоммуникационной",
+        "информационно-телекоммуникационной",
+    )
+    raw = raw.replace("IP-\nадрес", "IP-адрес")
+    lines: list[str] = []
+    for ln in raw.splitlines():
+        s = ln.strip()
+        if not s or PAGE_MARKER.match(s):
+            continue
+        lines.append(s)
+    return lines
+
+
+def _starts_new_structural(line: str) -> bool:
+    if SUB_CLAUSE.match(line):
+        return True
+    if MAJOR_SECTION.match(line):
+        return True
+    if line.startswith("- "):
+        return True
+    if line.startswith("вариант:"):
+        return True
+    if line.startswith(("Пользователь -", "Сервисы Сайта -")):
+        return True
+    if line.startswith("Оператор и Пользователи"):
+        return True
+    if line.startswith("Обработке подлежат"):
+        return True
+    if line.startswith("Условием прекращения"):
+        return True
+    if line.startswith("В случае выявления неточных"):
+        return True
+    if line.startswith("Моральный вред"):
+        return True
+    if line.startswith("Новая редакция Политики применяется"):
+        return True
+    return False
+
+
+def _should_join(prev: str, nxt: str) -> bool:
+    if _starts_new_structural(nxt):
+        return False
+    prev_stripped = prev.rstrip()
+    ends_sentence = prev_stripped.endswith((".", ";", ":", "!", "?", "»"))
+    if prev.startswith("- ") and not ends_sentence:
+        return True
+    if nxt and nxt[0].isalpha() and nxt[0].lower() == nxt[0] and not ends_sentence:
+        return True
+    if not ends_sentence and nxt and nxt[0].isupper():
+        if not SUB_CLAUSE.match(nxt) and not MAJOR_SECTION.match(nxt):
+            return True
+    return False
+
+
+def _merge_soft(lines: list[str]) -> list[str]:
+    out: list[str] = []
+    i = 0
+    while i < len(lines):
+        cur = lines[i]
+        j = i + 1
+        while j < len(lines):
+            nxt = lines[j]
+            if _starts_new_structural(nxt):
+                break
+            if _should_join(cur, nxt):
+                cur = f"{cur} {nxt}"
+                j += 1
+            else:
+                break
+        out.append(cur)
+        i = j
+    return out
+
+
+def _merge_section6_heading(lines: list[str]) -> list[str]:
+    out: list[str] = []
+    i = 0
+    while i < len(lines):
+        ln = lines[i]
+        if ln.startswith("6.") and "БЛОКИРОВАНИЕ" in ln and not ln.startswith("6.1"):
+            parts = [ln]
+            i += 1
+            while i < len(lines):
+                nxt = lines[i]
+                if nxt.startswith("6.1"):
+                    break
+                if SUB_CLAUSE.match(nxt) or MAJOR_SECTION.match(nxt):
+                    break
+                if nxt.startswith("- "):
+                    break
+                parts.append(nxt)
+                i += 1
+            out.append(_TITLE_JOIN.join(parts))
+            continue
+        out.append(ln)
+        i += 1
+    return out
+
+
+def policy_text_to_html(raw: str) -> SafeString:
+    lines = _normalize(raw)
+    lines = _merge_soft(lines)
+    lines = _merge_section6_heading(lines)
+
+    html: list[str] = []
+    i = 0
+
+    header_chunks: list[str] = []
+    while i < len(lines) and not MAJOR_SECTION.match(lines[i]):
+        ln = lines[i]
+        if ln == "УТВЕРЖДАЮ":
+            header_chunks.append(
+                '<p class="policy-doc-approve"><strong>УТВЕРЖДАЮ</strong></p>'
+            )
+        elif ln.startswith("ИП "):
+            header_chunks.append(
+                f'<p class="policy-doc-ip"><strong>{escape(ln)}</strong></p>'
+            )
+        elif "Настоящую Политику" in ln:
+            header_chunks.append(f'<p class="policy-doc-lead">{escape(ln)}</p>')
+        else:
+            header_chunks.append(f'<p class="policy-doc-meta">{escape(ln)}</p>')
+        i += 1
+
+    html.append(
+        '<header class="policy-doc-head">' + "".join(header_chunks) + "</header>"
+    )
+
+    while i < len(lines):
+        ln = lines[i]
+
+        if MAJOR_SECTION.match(ln):
+            if _TITLE_JOIN in ln:
+                inner = "<br>".join(escape(p.strip()) for p in ln.split(_TITLE_JOIN))
+                html.append(f'<h2 class="policy-h2">{inner}</h2>')
+            else:
+                html.append(f'<h2 class="policy-h2">{escape(ln)}</h2>')
+            i += 1
+            continue
+
+        if ln.startswith("- "):
+            items: list[str] = []
+            while i < len(lines) and lines[i].startswith("- "):
+                items.append(lines[i][2:])
+                i += 1
+            lis = "".join(f"<li>{escape(it)}</li>" for it in items)
+            html.append(f'<ul class="policy-ul">{lis}</ul>')
+            continue
+
+        msub = SUB_CLAUSE.match(ln)
+        if msub:
+            num = msub.group("num")
+            body = msub.group("body")
+            html.append(
+                '<p class="policy-clause">'
+                f'<span class="policy-num">{escape(num)}</span>'
+                f'<span class="policy-clause-body">{escape(body)}</span>'
+                "</p>"
+            )
+            i += 1
+            continue
+
+        cls = "policy-variant" if ln.startswith("вариант:") else "policy-p"
+        html.append(f'<p class="{cls}">{escape(ln)}</p>')
+        i += 1
+
+    return mark_safe("\n".join(html))

@@ -84,20 +84,96 @@
             padding-bottom: 18px;
             border-bottom: 1px solid rgba(148, 163, 184, 0.22);
         }
-        .policy-document {
-            white-space: pre-wrap;
-            word-wrap: break-word;
+        .policy-body-html {
             font-family: inherit;
             font-size: 14px;
-            line-height: 1.58;
+            line-height: 1.65;
             margin: 0;
             color: #cbd5e1;
             text-align: left;
         }
+        .policy-doc-head {
+            margin: 0 0 1.5rem;
+            padding-bottom: 1rem;
+            border-bottom: 1px solid rgba(148, 163, 184, 0.18);
+            text-align: center;
+        }
+        .policy-doc-head p {
+            margin: 0.2rem 0;
+        }
+        .policy-doc-ip strong {
+            font-size: 1.05rem;
+            letter-spacing: 0.02em;
+            color: #f8fafc;
+        }
+        .policy-doc-lead {
+            font-weight: 600;
+            color: #e2e8f0;
+            max-width: 34rem;
+            margin-left: auto;
+            margin-right: auto;
+            line-height: 1.45;
+        }
+        .policy-doc-meta {
+            font-size: 0.92rem;
+            color: #94a3b8;
+        }
+        .policy-doc-approve {
+            margin: 0.65rem 0 !important;
+            letter-spacing: 0.08em;
+            color: #f1f5f9;
+        }
+        .policy-h2 {
+            margin: 1.65rem 0 0.95rem;
+            padding-bottom: 0.45rem;
+            border-bottom: 1px solid rgba(148, 163, 184, 0.22);
+            font-size: clamp(0.92rem, 2.4vw, 1.08rem);
+            font-weight: 700;
+            color: #f1f5f9;
+            line-height: 1.38;
+            letter-spacing: 0.02em;
+        }
+        .policy-doc-head + .policy-h2 {
+            margin-top: 0;
+        }
+        .policy-clause {
+            margin: 0 0 0.85rem;
+            display: flex;
+            gap: 0.4rem;
+            align-items: baseline;
+        }
+        .policy-num {
+            flex-shrink: 0;
+            font-weight: 600;
+            color: #e2e8f0;
+        }
+        .policy-clause-body {
+            flex: 1;
+            min-width: 0;
+        }
+        .policy-ul {
+            margin: 0.25rem 0 1rem;
+            padding-left: 1.35rem;
+        }
+        .policy-ul li {
+            margin: 0.4rem 0;
+            padding-left: 0.15rem;
+        }
+        .policy-ul li::marker {
+            color: #94a3b8;
+        }
+        .policy-p {
+            margin: 0 0 0.85rem;
+        }
+        .policy-variant {
+            margin: 1rem 0 0.4rem;
+            font-weight: 600;
+            color: #e2e8f0;
+        }
         @media (min-width: 768px) {
             .policy-main { padding: 22px 24px 64px; }
             .policy-panel { padding: 32px 36px 44px; }
-            .policy-document { font-size: 15px; }
+            .policy-body-html { font-size: 15px; }
         }
     </style>
 </head>
@@ -111,7 +187,7 @@
     <main class="policy-main">
         <div class="policy-panel">
             <h1>Политика обработки персональных данных</h1>
-            <pre class="policy-document">{{ policy_text }}</pre>
+            <article class="policy-body-html">{{ policy_html|safe }}</article>
         </div>
     </main>
 </body>

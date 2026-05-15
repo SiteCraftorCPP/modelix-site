@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Политика обработки персональных данных — Modelix</title>
+    <link rel="icon" type="image/png" href="/media/services/modelix.png">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer">
+    <link rel="stylesheet" href="/static/css/styles.css?v=232.0">
+    <style>
+        .policy-page-wrap {
+            min-height: 100vh;
+            padding: 100px 20px 48px;
+            background: linear-gradient(180deg, #f8fafc 0%, #e2e8f0 100%);
+            color: #0f172a;
+        }
+        .policy-inner {
+            max-width: 920px;
+            margin: 0 auto;
+            background: #fff;
+            border-radius: 12px;
+            box-shadow: 0 10px 40px rgba(15, 23, 42, 0.08);
+            padding: 32px 28px 40px;
+        }
+        .policy-back {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            margin-bottom: 24px;
+            color: #191970;
+            font-weight: 600;
+            text-decoration: none;
+        }
+        .policy-back:hover { text-decoration: underline; }
+        .policy-inner h1 {
+            font-size: 1.35rem;
+            margin: 0 0 20px;
+            color: #0f172a;
+            line-height: 1.35;
+        }
+        .policy-document {
+            white-space: pre-wrap;
+            word-wrap: break-word;
+            font-family: inherit;
+            font-size: 15px;
+            line-height: 1.55;
+            margin: 0;
+            color: #1e293b;
+        }
+        @media (max-width: 640px) {
+            .policy-inner { padding: 22px 18px 32px; }
+            .policy-document { font-size: 14px; }
+        }
+    </style>
+</head>
+<body>
+<div class="policy-page-wrap">
+    <div class="policy-inner">
+        <a href="{% url 'index' %}" class="policy-back"><i class="fas fa-arrow-left" aria-hidden="true"></i> На главную</a>
+        <h1>Политика обработки персональных данных</h1>
+        <pre class="policy-document">{{ policy_text }}</pre>
+    </div>
+</div>
+</body>
+</html>

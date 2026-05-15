@@ -3,17 +3,22 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Политика обработки персональных данных — Modelix</title>
+    <title>Политика обработки пд — Modelix</title>
     <link rel="icon" type="image/png" href="/media/services/modelix.png">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer">
-    <link rel="stylesheet" href="/static/css/styles.css?v=232.0">
+    <link rel="stylesheet" href="/static/css/styles.css?v=233.0">
     <style>
         html { scroll-behavior: smooth; }
         body.policy-body {
             margin: 0;
+            padding-top: 0 !important;
             min-height: 100vh;
-            background: linear-gradient(135deg, #0f172a 0%, #1e293b 40%, #0f172a 100%);
+            background: linear-gradient(135deg, #0f172a 0%, #1e293b 40%, #0f172a 100%) !important;
             color: #e2e8f0;
+        }
+        html:has(body.policy-body),
+        body.policy-body {
+            background: linear-gradient(135deg, #0f172a 0%, #1e293b 40%, #0f172a 100%) !important;
         }
         .policy-nav {
             position: sticky;
@@ -64,7 +69,7 @@
         .policy-main {
             max-width: 960px;
             margin: 0 auto;
-            padding: 18px 16px 56px;
+            padding: 12px 16px 56px;
             box-sizing: border-box;
         }
         .policy-panel {
@@ -186,7 +191,7 @@
     </header>
     <main class="policy-main">
         <div class="policy-panel">
-            <h1>Политика обработки персональных данных</h1>
+            <h1>Политика обработки пд</h1>
             <article class="policy-body-html">{{ policy_html|safe }}</article>
         </div>
     </main>

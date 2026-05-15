@@ -5426,51 +5426,26 @@ html body .footer .footer-social .social-icons-row a.social-link:hover,
     opacity: 1 !important;
 }
 
-.footer-extra-row {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 20px 32px;
-    max-width: 1000px;
-    margin: 0 auto;
-    padding: 28px 24px 12px;
-    align-items: center;
-    justify-items: center;
-    border-top: 1px solid var(--gray-200);
+.footer-section .contact-item.footer-policy-item,
+.footer-section .contact-item.footer-address-item {
+    margin-top: 10px;
 }
 
-.footer-extra-col {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    gap: 10px;
-    text-align: center;
-    font-size: 15px;
-    font-weight: 700;
+.footer-section .contact-item a.policy-footer-link {
+    font-size: 16px !important;
+    font-weight: 700 !important;
     color: #334155 !important;
-}
-
-.footer-extra-address i {
-    color: #191970;
-    font-size: 18px;
-}
-
-.footer-extra-policy a {
-    color: #191970 !important;
-    font-weight: 700;
     text-decoration: underline;
     text-underline-offset: 4px;
 }
 
-.footer-extra-policy a:hover {
-    color: #0f172a !important;
+.footer-section .contact-item a.policy-footer-link:hover {
+    color: #191970 !important;
 }
 
-@media (max-width: 640px) {
-    .footer-extra-row {
-        grid-template-columns: 1fr;
-        gap: 14px;
-        padding-top: 22px;
-    }
+/* Страница политики: без отступа под фикс. меню главной (styles.css даёт body padding-top: 80px) */
+body.policy-body {
+    padding-top: 0 !important;
 }
 
 .footer-bottom {

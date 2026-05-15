@@ -28,7 +28,7 @@
     <!-- Preload критических CSS для мобильной версии -->
     <link rel="preload" href="/static/css/mobile.css?v=99.0" as="style">
     
-    <link rel="stylesheet" href="/static/css/styles.css?v=232.0">
+    <link rel="stylesheet" href="/static/css/styles.css?v=233.0">
     <link rel="stylesheet" href="/static/css/mobile.css?v=101.0">
     <link rel="stylesheet" href="/static/css/social-links-fixed.css?v=1.6">
     <link rel="stylesheet" href="/static/css/animated-icons-fix.css?v=1.6">
@@ -1198,6 +1198,10 @@
                             <div style="font-size: 16px !important; font-weight: 700 !important; margin-top: -5px !important;">ПН-ПТ 10:00-20:00</div>
                         </div>
                     </div>
+                    <div class="contact-item footer-policy-item">
+                        <i class="fas fa-file-contract" aria-hidden="true"></i>
+                        <a href="{% url 'privacy_policy' %}" class="policy-footer-link">Политика обработки пд</a>
+                    </div>
                 </div>
                 
                 <div class="footer-section">
@@ -1208,6 +1212,10 @@
                     <div class="contact-item">
                         <i class="fas fa-id-card"></i>
                         <span style="font-size: 16px !important; font-weight: 700 !important;">ИНН {{ contact_info.inn }}</span>
+                    </div>
+                    <div class="contact-item footer-address-item">
+                        <i class="fas fa-map-marker-alt" aria-hidden="true"></i>
+                        <span style="font-size: 16px !important; font-weight: 700 !important;">СПБ Таврическая, 17</span>
                     </div>
                 </div>
                 
@@ -1223,16 +1231,6 @@
                 
             </div>
 
-            <div class="footer-extra-row">
-                <div class="footer-extra-col footer-extra-address">
-                    <i class="fas fa-map-marker-alt" aria-hidden="true"></i>
-                    <span>СПБ Таврическая, 17</span>
-                </div>
-                <div class="footer-extra-col footer-extra-policy">
-                    <a href="{% url 'privacy_policy' %}">Политика обработки персональных данных</a>
-                </div>
-            </div>
-            
             <div class="footer-bottom">
                     <p>&copy; 2026 Modelix. Все права защищены.</p>
             </div>

@@ -5431,6 +5431,44 @@ html body .footer .footer-social .social-icons-row a.social-link:hover,
     margin-top: 10px;
 }
 
+.footer-section .contact-item.footer-address-item {
+    align-items: flex-start !important;
+}
+
+.footer-section .contact-item.footer-address-item > i {
+    margin-top: 3px;
+}
+
+.footer-address-block {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    line-height: 1.35;
+    max-width: 280px;
+}
+
+.footer-address-studio {
+    font-size: 16px !important;
+    font-weight: 700 !important;
+    color: #334155 !important;
+    letter-spacing: 0.01em;
+}
+
+.footer-address-link {
+    font-size: 15px !important;
+    font-weight: 700 !important;
+    color: #191970 !important;
+    text-decoration: none !important;
+    border-bottom: 1px solid rgba(25, 25, 112, 0.25);
+    transition: color 0.15s ease, border-color 0.15s ease;
+    width: fit-content;
+}
+
+.footer-address-link:hover {
+    color: #0d0d4d !important;
+    border-bottom-color: rgba(25, 25, 112, 0.55);
+}
+
 .footer-section .contact-item a.policy-footer-link {
     font-size: 16px !important;
     font-weight: 700 !important;

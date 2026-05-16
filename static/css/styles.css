@@ -6922,9 +6922,23 @@ body section#about .container .advantages-grid .advantage-card.modern-card p {
         width: 100% !important;
     }
 
-    html body .footer .footer-section .contact-item.footer-address-item {
-        justify-content: flex-start !important;
-        align-items: flex-start !important;
+    html body .footer .footer-section .contact-item.footer-address-item .footer-address-block,
+    html body .footer .footer-section .contact-item.footer-address-item .footer-address-studio,
+    html body .footer .footer-section .contact-item.footer-address-item .footer-address-link {
+        text-align: center !important;
+    }
+
+    html body .footer .footer-section .contact-item.footer-address-item .footer-address-block {
+        align-items: center !important;
+        flex: 0 1 auto !important;
+    }
+
+    html body .footer .footer-section .contact-item.footer-address-item .footer-address-link {
+        align-self: center !important;
+    }
+
+    html body .footer .footer-section .contact-item.footer-address-item > i {
+        margin-top: 0 !important;
     }
 
     html body .footer .footer-social {

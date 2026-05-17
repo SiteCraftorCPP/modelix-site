@@ -4805,8 +4805,9 @@ section.workflow-section .stats-grid,
 
 .map-studio-section {
     padding: var(--section-padding);
-    padding-top: 80px;
+    padding-top: 50px;
     padding-bottom: 50px;
+    margin-top: -40px;
     background: #0f0f0f;
 }
 
@@ -7029,8 +7030,9 @@ body section#about .container .advantages-grid .advantage-card.modern-card p {
     }
 
     .map-studio-section {
-        padding-top: 70px !important;
+        padding-top: 50px !important;
         padding-bottom: 40px !important;
+        margin-top: -40px !important;
     }
 
     .faq-section {
@@ -7041,7 +7043,8 @@ body section#about .container .advantages-grid .advantage-card.modern-card p {
 
 @media (max-width: 768px) {
     html body .map-studio-section {
-        padding: 44px 8px 34px !important;
+        padding: 50px 8px 34px !important;
+        margin-top: -40px !important;
     }
 
     html body .faq-section {

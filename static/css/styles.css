@@ -9336,7 +9336,7 @@ a.call-btn:active {
     html body .footer .footer-section .footer-address-block {
         flex: initial !important;
         align-items: flex-start !important;
-        gap: 10px !important;
+        gap: 16px !important;
         max-width: 360px !important;
     }
 }

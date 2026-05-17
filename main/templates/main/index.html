@@ -28,7 +28,7 @@
     <!-- Preload критических CSS для мобильной версии -->
     <link rel="preload" href="/static/css/mobile.css?v=102.0" as="style">
     
-    <link rel="stylesheet" href="/static/css/styles.css?v=238.0">
+    <link rel="stylesheet" href="/static/css/styles.css?v=240.0">
     <link rel="stylesheet" href="/static/css/mobile.css?v=102.0">
     <link rel="stylesheet" href="/static/css/social-links-fixed.css?v=1.6">
     <link rel="stylesheet" href="/static/css/animated-icons-fix.css?v=1.6">
@@ -1154,7 +1154,7 @@
                         Таврическая улица, 17<br>Санкт-Петербург
                     </address>
                     <a class="map-studio-yandex-btn"
-                       href="https://yandex.ru/maps?ol=geo&amp;text=%D0%A2%D0%B0%D0%B2%D1%80%D0%B8%D1%87%D0%B5%D1%81%D0%BA%D0%B0%D1%8F%20%D1%83%D0%BB%D0%B8%D1%86%D0%B0,%2017&amp;sll=30.378418,59.944039&amp;sspn=0.004119,0.008211&amp;si=de39gqhuzqqwk5pnkx1fhne81m"
+                       href="https://yandex.com.tr/maps/2/saint-petersburg/house/tavricheskaya_ulitsa_no_17/Z0kYdQBoTUQPQFtjfXV1dXxgbQ==/?ll=30.378417%2C59.944040&amp;z=16"
                        target="_blank"
                        rel="noopener noreferrer">
                         <i class="fas fa-map-marker-alt" aria-hidden="true"></i>
@@ -1164,7 +1164,7 @@
                 <div class="map-studio-frame-shell">
                     <iframe class="map-studio-iframe"
                             title="Modelix на карте: Таврическая улица, 17, Санкт-Петербург"
-                            src="https://yandex.ru/map-widget/v1/?lang=ru_RU&amp;ll=30.378418%2C59.944039&amp;pt=30.378418%2C59.944039&amp;z=17&amp;l=map"
+                            src="https://yandex.ru/map-widget/v1/?lang=ru_RU&amp;ll=30.378417%2C59.944040&amp;pt=30.378417%2C59.944040&amp;z=16&amp;l=map"
                             loading="lazy"
                             referrerpolicy="strict-origin-when-cross-origin"
                             width="560"
@@ -1909,22 +1909,37 @@
             removeAllFiles(event);
         }
         
-        // Обработка textarea - скрываем placeholder при фокусе
+        // Обработка textarea: скрываем placeholder и увеличиваем высоту при вводе
         document.addEventListener('DOMContentLoaded', function() {
-            var textarea = document.querySelector('textarea.textarea-with-icon');
-            if (textarea) {
+            var textareas = document.querySelectorAll('textarea.form-textarea');
+            
+            function autoResizeTextarea(textarea) {
+                textarea.style.height = 'auto';
+                textarea.style.height = textarea.scrollHeight + 'px';
+            }
+            
+            textareas.forEach(function(textarea) {
                 var originalPlaceholder = textarea.placeholder;
                 
                 textarea.addEventListener('focus', function() {
-                    this.placeholder = '';
+                    if (this.classList.contains('textarea-with-icon')) {
+                        this.placeholder = '';
+                    }
+                    autoResizeTextarea(this);
                 });
                 
                 textarea.addEventListener('blur', function() {
-                    if (this.value === '') {
+                    if (this.classList.contains('textarea-with-icon') && this.value === '') {
                         this.placeholder = originalPlaceholder;
                     }
                 });
-            }
+                
+                textarea.addEventListener('input', function() {
+                    autoResizeTextarea(this);
+                });
+                
+                autoResizeTextarea(textarea);
+            });
         });
         
         // НОВЫЕ ПРОСТЫЕ функции для материалов

@@ -4805,7 +4805,7 @@ section.workflow-section .stats-grid,
 
 .map-studio-section {
     padding: var(--section-padding);
-    padding-top: 82px;
+    padding-top: 54px;
     padding-bottom: 50px;
     margin-top: 0;
     background: #0f0f0f;
@@ -7030,7 +7030,7 @@ body section#about .container .advantages-grid .advantage-card.modern-card p {
     }
 
     .map-studio-section {
-        padding-top: 82px !important;
+        padding-top: 54px !important;
         padding-bottom: 40px !important;
         margin-top: 0 !important;
     }
@@ -7043,7 +7043,7 @@ body section#about .container .advantages-grid .advantage-card.modern-card p {
 
 @media (max-width: 768px) {
     html body .map-studio-section {
-        padding: 64px 8px 34px !important;
+        padding: 44px 8px 34px !important;
         margin-top: 0 !important;
     }
 

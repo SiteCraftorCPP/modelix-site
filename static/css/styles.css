@@ -9290,7 +9290,7 @@ a.call-btn:active {
         gap: 56px !important;
         max-width: 900px !important;
         padding: 0 20px !important;
-        transform: translateX(clamp(36px, 6vw, 90px)) !important;
+        transform: translateX(clamp(76px, 9vw, 150px)) !important;
     }
 
     html body .footer .footer-section {
@@ -9336,6 +9336,7 @@ a.call-btn:active {
     html body .footer .footer-section .footer-address-block {
         flex: initial !important;
         align-items: flex-start !important;
+        gap: 10px !important;
         max-width: 360px !important;
     }
 }

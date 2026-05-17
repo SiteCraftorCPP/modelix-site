@@ -4809,11 +4809,6 @@ section.workflow-section .stats-grid,
     background: #0f0f0f;
 }
 
-.map-studio-section .section-header {
-    text-align: center;
-    margin-bottom: 36px;
-}
-
 .map-studio-card {
     max-width: 1100px;
     margin: 0 auto;

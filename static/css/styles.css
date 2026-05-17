@@ -9281,6 +9281,64 @@ a.call-btn:active {
 
 /* Удалены конфликтующие правила для contact-item */
 
+/* Финальное выравнивание футера на десктопе: фиксированная колонка иконки + ровная колонка текста */
+@media (min-width: 769px) {
+    html body .footer .footer-content {
+        grid-template-columns: 340px 430px !important;
+        justify-content: center !important;
+        justify-items: stretch !important;
+        gap: 56px !important;
+        max-width: 900px !important;
+        padding: 0 20px !important;
+    }
+
+    html body .footer .footer-section {
+        width: 100% !important;
+        align-items: stretch !important;
+        text-align: left !important;
+        text-justify: auto !important;
+    }
+
+    html body .footer .footer-section .contact-item {
+        display: grid !important;
+        grid-template-columns: 24px minmax(0, 1fr) !important;
+        column-gap: 14px !important;
+        align-items: start !important;
+        justify-content: start !important;
+        width: 100% !important;
+        margin: 0 0 10px 0 !important;
+        padding: 0 !important;
+        text-align: left !important;
+    }
+
+    html body .footer .footer-section .contact-item i {
+        width: 24px !important;
+        margin: 1px 0 0 0 !important;
+        text-align: center !important;
+        line-height: 1.35 !important;
+    }
+
+    html body .footer .footer-section .contact-item > span,
+    html body .footer .footer-section .contact-item > a,
+    html body .footer .footer-section .working-hours-text,
+    html body .footer .footer-section .footer-address-block {
+        justify-self: start !important;
+        text-align: left !important;
+    }
+
+    html body .footer .footer-section .working-hours-text div,
+    html body .footer .footer-section .footer-address-studio,
+    html body .footer .footer-section .footer-address-link {
+        text-align: left !important;
+    }
+
+    html body .footer .footer-section .footer-address-block {
+        flex: initial !important;
+        align-items: flex-start !important;
+        max-width: 360px !important;
+    }
+}
+
 /* ПРИНУДИТЕЛЬНОЕ ПОЗИЦИОНИРОВАНИЕ ИКОНОК СОЦИАЛЬНЫХ СЕТЕЙ - ЗАФИКСИРОВАНО! */
 .hero-section .social-links,
 .image-section .social-links,

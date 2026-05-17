@@ -28,7 +28,7 @@
     <!-- Preload критических CSS для мобильной версии -->
     <link rel="preload" href="/static/css/mobile.css?v=102.0" as="style">
     
-    <link rel="stylesheet" href="/static/css/styles.css?v=236.0">
+    <link rel="stylesheet" href="/static/css/styles.css?v=237.0">
     <link rel="stylesheet" href="/static/css/mobile.css?v=102.0">
     <link rel="stylesheet" href="/static/css/social-links-fixed.css?v=1.6">
     <link rel="stylesheet" href="/static/css/animated-icons-fix.css?v=1.6">
@@ -1140,6 +1140,40 @@
                     <span class="marketplace-label">WB</span>
                 </div>
                 {% endif %}
+            </div>
+        </div>
+    </section>
+
+    <!-- Блок: студия на карте (перед FAQ) -->
+    <section class="map-studio-section" id="studio-location" aria-labelledby="map-studio-heading">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title" id="map-studio-heading">Как добраться</h2>
+            </div>
+
+            <div class="map-studio-card">
+                <div class="map-studio-info">
+                    <p class="map-studio-brand">Modelix 3D студия</p>
+                    <address class="map-studio-address">
+                        Таврическая улица, 17<br>Санкт-Петербург
+                    </address>
+                    <a class="map-studio-yandex-btn"
+                       href="https://yandex.ru/maps?ol=geo&amp;text=%D0%A2%D0%B0%D0%B2%D1%80%D0%B8%D1%87%D0%B5%D1%81%D0%BA%D0%B0%D1%8F%20%D1%83%D0%BB%D0%B8%D1%86%D0%B0,%2017&amp;sll=30.378418,59.944039&amp;sspn=0.004119,0.008211&amp;si=de39gqhuzqqwk5pnkx1fhne81m"
+                       target="_blank"
+                       rel="noopener noreferrer">
+                        <i class="fas fa-map-marker-alt" aria-hidden="true"></i>
+                        Открыть в Яндекс.Картах
+                    </a>
+                </div>
+                <div class="map-studio-frame-shell">
+                    <iframe class="map-studio-iframe"
+                            title="Modelix на карте: Таврическая улица, 17, Санкт-Петербург"
+                            src="https://yandex.ru/map-widget/v1/?lang=ru_RU&amp;ll=30.378418%2C59.944039&amp;pt=30.378418%2C59.944039&amp;z=17&amp;l=map"
+                            loading="lazy"
+                            referrerpolicy="strict-origin-when-cross-origin"
+                            width="560"
+                            height="400"></iframe>
+                </div>
             </div>
         </div>
     </section>

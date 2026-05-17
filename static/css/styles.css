@@ -5008,7 +5008,7 @@ section.workflow-section .stats-grid,
 
 .faq-section {
     padding: var(--section-padding);
-    padding-top: 90px !important;
+    padding-top: 50px !important;
     margin-top: -40px !important;
     background: #0f0f0f;
     /* Графитно-черный фон блока */
@@ -7034,7 +7034,7 @@ body section#about .container .advantages-grid .advantage-card.modern-card p {
     }
 
     .faq-section {
-        padding-top: 90px !important;
+        padding-top: 50px !important;
         margin-top: -40px !important;
     }
 }
@@ -7045,8 +7045,8 @@ body section#about .container .advantages-grid .advantage-card.modern-card p {
     }
 
     html body .faq-section {
-        padding-top: 72px !important;
-        margin-top: -34px !important;
+        padding-top: 50px !important;
+        margin-top: -40px !important;
     }
 }
 

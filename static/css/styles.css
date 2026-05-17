@@ -4828,9 +4828,11 @@ section.workflow-section .stats-grid,
     display: flex;
     flex-direction: column;
     justify-content: center;
+    align-items: center;
     gap: 16px;
     background: rgba(15, 15, 25, 0.6);
     border-right: 1px solid rgba(255, 255, 255, 0.06);
+    text-align: center;
 }
 
 .map-studio-brand {
@@ -4847,7 +4849,7 @@ section.workflow-section .stats-grid,
     font-style: normal;
     font-size: 1.05rem;
     font-weight: 600;
-    color: #cbd5e1;
+    color: #ffffff;
     line-height: 1.55;
 }
 

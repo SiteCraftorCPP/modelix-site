@@ -328,6 +328,16 @@ img {
         animation: none !important;
         transition: none !important;
     }
+
+    /* Без этого: .main-logo / .hero-content-card стартуют с opacity:0 и keyframes уже отключены
+       → пользователь видит только тёмный фон hero («вся страница чёрная»), типичный кейс iOS «Уменьшить движение». */
+    .main-logo,
+    .hero-content-card,
+    .animate-on-scroll {
+        opacity: 1 !important;
+        transform: none !important;
+        visibility: visible !important;
+    }
 }
 
 /* 25. УПРОЩАЕМ FOOTER */

@@ -4944,6 +4944,63 @@ section.workflow-section .stats-grid,
     }
 }
 
+/* Финальная мобильная правка блока карты: один спокойный фон без лишних слоёв */
+@media (max-width: 768px) {
+    html body .map-studio-section {
+        padding: 44px 8px 34px !important;
+        background: #0f0f0f !important;
+    }
+
+    html body .map-studio-section .container {
+        padding: 0 !important;
+    }
+
+    html body .map-studio-card {
+        display: flex !important;
+        flex-direction: column !important;
+        gap: 0 !important;
+        background: #0f0f0f !important;
+        border: none !important;
+        border-radius: 0 !important;
+        box-shadow: none !important;
+        overflow: visible !important;
+    }
+
+    html body .map-studio-info {
+        padding: 0 0 22px !important;
+        background: #0f0f0f !important;
+        border: none !important;
+        text-align: center !important;
+        align-items: center !important;
+    }
+
+    html body .map-studio-brand,
+    html body .map-studio-address {
+        color: #ffffff !important;
+        text-align: center !important;
+    }
+
+    html body .map-studio-yandex-btn {
+        width: calc(100% - 28px) !important;
+        max-width: 360px !important;
+        margin: 8px auto 0 !important;
+        box-shadow: none !important;
+    }
+
+    html body .map-studio-frame-shell {
+        min-height: 260px !important;
+        margin: 0 !important;
+        background: #0f0f0f !important;
+        border-radius: 14px !important;
+        overflow: hidden !important;
+        border: 1px solid rgba(255, 255, 255, 0.08) !important;
+    }
+
+    html body .map-studio-frame-shell::before {
+        box-shadow: none !important;
+    }
+}
+
 /* ========================================
    БЛОК 7: FAQ
 ======================================== */
